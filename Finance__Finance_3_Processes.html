@@ -1,0 +1,944 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Finance 3 · Processes of Financial Management — HSC Business Vault</title><style>
+:root{--paper:#faf8f2;--ink:#1e1b16;--muted:#6b655a;--line:#e3ddd0;--accent:#1d4ed8;--card:#fffdf8;--side:#f3efe6;--side-bg:rgba(243,239,230,.88);--active:#e8e0cd;--rail-tint:rgba(29,78,216,.14);--rail-tint-soft:rgba(29,78,216,.07);--code:#efe9db;--quote:#4a4438;--dot-rgb:30,27,22;--scheme:light}
+[data-theme="dark"]{--paper:#13151b;--ink:#e9e7e1;--muted:#9aa0ab;--line:#2b2f3a;--accent:#8ab4ff;--card:#1b1e27;--side:#101218;--side-bg:rgba(16,18,24,.88);--active:#262b38;--rail-tint:rgba(138,180,255,.18);--rail-tint-soft:rgba(138,180,255,.09);--code:#262a36;--quote:#c3c7cf;--dot-rgb:233,231,225;--scheme:dark}
+*{box-sizing:border-box}html{color-scheme:var(--scheme)}body{margin:0;background:var(--paper);color:var(--ink);font:16.5px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;overflow-x:hidden}
+a{color:var(--accent);text-decoration:none;transition:color .18s ease}a:hover{text-decoration:underline}
+#dotgrid{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:0}
+.wrap{position:relative;z-index:1;display:grid;grid-template-columns:280px 1fr;min-height:100vh}
+.side{position:sticky;top:0;height:100vh;overflow:auto;padding:22px 18px;border-right:1px solid var(--line);background:var(--side-bg)}
+.side h3{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:22px 0 6px}
+.side ul{list-style:none;margin:0;padding:0}.side li{margin:3px 0}
+.side a{display:block;padding:7px 10px;border-radius:8px;color:var(--ink);transition:background .18s ease,transform .18s ease}
+.side a.active{background:var(--active);font-weight:600}
+.side a:hover{background:var(--active);text-decoration:none;transform:translateX(3px)}
+.side-head{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.theme-btn{flex:none;width:40px;height:40px;border:1px solid var(--line);border-radius:50%;background:var(--card);color:var(--ink);font-size:18px;cursor:pointer;transition:background .18s ease}
+.theme-btn:hover{background:var(--active)}
+.home-link{font-weight:700;font-size:18px}.side-search{width:100%;margin:14px 0 4px;padding:10px 12px;border:1px solid var(--line);border-radius:8px;background:var(--card);color:var(--ink);font-size:16px}
+.side-note{font-size:12.5px;color:var(--muted);line-height:1.5;margin-top:24px}
+.topbar{display:none}.backdrop{display:none}
+main{padding:36px 44px;max-width:860px}.prose h1{font-size:32px;line-height:1.2;letter-spacing:-.02em;margin:0 0 6px}
+.prose h2{font-size:23px;margin:34px 0 8px;padding-top:14px;border-top:1px solid var(--line)}
+.prose h3{font-size:18px;margin:26px 0 6px}.prose p{margin:10px 0}
+.prose table{border-collapse:collapse;width:100%;margin:14px 0;font-size:14.5px;display:block;overflow-x:auto;-webkit-overflow-scrolling:touch}
+.prose th,.prose td{border:1px solid var(--line);padding:7px 10px;text-align:left;vertical-align:top}
+.prose th{background:var(--side)}.prose blockquote{border-left:3px solid var(--line);margin:14px 0;padding:2px 14px;color:var(--quote);background:var(--card)}
+.prose code{background:var(--code);padding:1px 5px;border-radius:4px;font-size:14px}.prose pre{background:#0d0f14;color:#f5f1e6;padding:14px;border-radius:8px;overflow:auto}
+.prose pre code{background:none;color:inherit;padding:0}.prose hr{border:none;border-top:1px solid var(--line);margin:24px 0}
+.meta{color:var(--muted);font-size:14px;margin-bottom:20px}.toc{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 18px;margin:18px 0}
+.toc b{font-size:13px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}.toc ul{margin:8px 0 0;padding-left:18px}.toc li{margin:3px 0}
+.cards{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:20px 0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 18px;transition:transform .2s ease,border-color .2s ease,box-shadow .2s ease}
+.card:hover{transform:translateY(-3px);border-color:var(--accent);box-shadow:0 8px 24px rgba(0,0,0,.18)}
+.card h3{margin:0 0 4px}.card p{margin:0;color:var(--muted);font-size:14.5px}
+#search{width:100%;padding:13px 14px;font-size:17px;border:1px solid var(--line);border-radius:10px;background:var(--card);color:var(--ink)}
+.result{border-bottom:1px solid var(--line);padding:14px 6px;border-radius:8px;transition:background .18s ease,transform .18s ease}
+.result:hover{background:var(--card);transform:translateX(3px)}
+.result h3{margin:0}.result p{margin:4px 0;color:var(--quote)}.result .path{font-size:13px;color:var(--muted)}
+mark{background:#fde68a;color:#1e1b16;padding:0 1px}
+html{scroll-behavior:smooth}
+.rail{display:none}
+@media(min-width:1280px){
+main{max-width:min(860px,calc(100vw - 692px))}
+.rail{display:block;position:fixed;right:24px;top:50%;transform:translateY(-50%);width:340px;max-height:76vh;overflow:auto;z-index:15;background:none;border:none;box-shadow:none;padding:18px 14px;-webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 36px,#000 calc(100% - 36px),transparent 100%);mask-image:linear-gradient(to bottom,transparent 0,#000 36px,#000 calc(100% - 36px),transparent 100%)}
+.rail-title{font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:2px 0 12px 12px}
+.rail ul{list-style:none;margin:0;padding:0}
+.rail li{margin:3px 0}
+.rail a{display:block;padding:11px 14px;border-radius:10px;color:var(--ink);font-size:17px;line-height:1.4;transition:transform .2s ease,background .2s ease}
+.rail a:hover,.rail a:focus-visible{background:var(--rail-tint-soft);transform:translateX(-4px) scale(1.02);text-decoration:none}
+.rail a.active{background:var(--rail-tint);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);font-weight:600;transform:translateX(-12px);width:calc(100% + 12px)}
+.rail a.parent-active{background:var(--rail-tint-soft)}
+.rail ul.sub{margin:3px 0 3px 14px;padding-left:14px;border-left:1px solid var(--line)}
+.rail ul.sub a{padding:9px 12px;font-size:15px;color:var(--muted)}
+.rail ul.sub a:hover{color:var(--ink)}
+.rail ul.sub a.active{color:var(--ink);transform:translateX(-8px);width:calc(100% + 8px)}
+}
+@media(max-width:900px){
+.topbar{display:flex;position:sticky;top:0;z-index:20;align-items:center;gap:10px;padding:12px 14px;background:var(--side);border-bottom:1px solid var(--line)}
+.topbar b{flex:1;font-size:17px}.menu-btn,.topbar .theme-btn{width:44px;height:44px;border:1px solid var(--line);border-radius:10px;background:var(--card);color:var(--ink);font-size:19px;cursor:pointer}
+.wrap{grid-template-columns:1fr}
+.wrap{z-index:auto}
+.side{background:var(--side)}
+.side a{padding:11px 12px}
+body.menu-open{overflow:hidden}
+.side{position:fixed;inset:0 auto 0 0;width:300px;max-width:86vw;height:100dvh;z-index:30;transform:translateX(-105%);transition:transform .25s ease;box-shadow:0 0 40px rgba(0,0,0,.4)}
+body.menu-open .side{transform:translateX(0)}
+.backdrop{display:none}body.menu-open .backdrop{display:block;position:fixed;inset:0;z-index:25;background:rgba(0,0,0,.45)}
+main{padding:22px 16px}.prose h1{font-size:26px}.prose h2{font-size:21px}.cards{grid-template-columns:1fr}
+.prose table{font-size:14px}.prose pre{font-size:13.5px}
+}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}html{scroll-behavior:auto}}
+</style><script>(function(){try{var t=localStorage.getItem("vault-theme")||"dark";document.documentElement.setAttribute("data-theme",t)}catch(e){document.documentElement.setAttribute("data-theme","dark")}})()</script></head><body><canvas id="dotgrid" aria-hidden="true"></canvas><header class="topbar"><button class="menu-btn" type="button" onclick="toggleMenu()" aria-label="Open notes menu">☰</button><b>Business Vault</b><button class="theme-btn" type="button" onclick="toggleTheme(event)" aria-label="Toggle dark / light mode">◐</button></header><div class="backdrop" onclick="toggleMenu(false)"></div><div class="wrap"><nav class="side" id="side"><div class="side-head"><a class="home-link" href="index.html">⌂ Vault home</a><button class="theme-btn" type="button" onclick="toggleTheme(event)" aria-label="Toggle dark / light mode">◐</button></div><input class="side-search" type="search" placeholder="Search notes…  ( / )" onkeydown="if(event.key==='Enter'){location.href='index.html?q='+encodeURIComponent(this.value)}"><h3>Operations</h3><ul><li><a class="" href="Operations__Operations_1_Role.html">1 Role</a></li><li><a class="" href="Operations__Operations_2_Influences.html">2 Influences</a></li><li><a class="" href="Operations__Operations_3_Processes.html">3 Processes</a></li><li><a class="" href="Operations__Operations_4_Strategies.html">4 Strategies</a></li><li><a class="" href="Operations__Operations_Syllabus_Summary.html">Syllabus Summary</a></li><li><a class="" href="Operations__Operations_FULL.html">FULL</a></li></ul><h3>Marketing</h3><ul><li><a class="" href="Marketing__Marketing_1_Role.html">1 Role</a></li><li><a class="" href="Marketing__Marketing_2_Influences.html">2 Influences</a></li><li><a class="" href="Marketing__Marketing_3_Processes.html">3 Processes</a></li><li><a class="" href="Marketing__Marketing_4_Strategies.html">4 Strategies</a></li><li><a class="" href="Marketing__Marketing_Syllabus_Summary.html">Syllabus Summary</a></li><li><a class="" href="Marketing__Marketing_FULL.html">FULL</a></li></ul><h3>Finance</h3><ul><li><a class="" href="Finance__Finance_1_Role.html">1 Role</a></li><li><a class="" href="Finance__Finance_2_Influences.html">2 Influences</a></li><li><a class="active" href="Finance__Finance_3_Processes.html">3 Processes</a></li><li><a class="" href="Finance__Finance_4_Strategies.html">4 Strategies</a></li><li><a class="" href="Finance__Finance_Syllabus_Summary.html">Syllabus Summary</a></li><li><a class="" href="Finance__Finance_FULL.html">FULL</a></li></ul><h3>Human Resources</h3><ul><li><a class="" href="Human_Resources__Human_Resources_1_Role.html">1 Role</a></li><li><a class="" href="Human_Resources__Human_Resources_2_Influences.html">2 Influences</a></li><li><a class="" href="Human_Resources__Human_Resources_3_Processes.html">3 Processes</a></li><li><a class="" href="Human_Resources__Human_Resources_4_Strategies.html">4 Strategies</a></li><li><a class="" href="Human_Resources__Human_Resources_Syllabus_Summary.html">Syllabus Summary</a></li><li><a class="" href="Human_Resources__Human_Resources_FULL.html">FULL</a></li></ul><h3>Exam &amp; revision</h3><ul><li><a class="" href="MOC.html">Final Notes</a></li><li><a class="" href="Case_Study_Stats_Sheet.html">Business Studies Case Study Stats Sheet</a></li><li><a class="" href="Case_Studies.html">Case Studies — HSC Business Studies Final Notes</a></li><li><a class="" href="Confusing_Pairs.html">Confusing Pairs — MCQ Drill Sheet</a></li><li><a class="" href="Crichton_Office_Supplies_Report_and_Apple_Marketing_Essay.html">Crichton Office Supplies Report and Apple Marketing Essay</a></li><li><a class="" href="Trial_Practice_Killara_2022.html">Killara 2022 Trial — Marked Paper and Model Answers</a></li><li><a class="" href="McDonalds_Case_Study.html">McDonald's Case Study — Section IV Essay Resource</a></li><li><a class="" href="Section_III_Business_Report.html">Section III — How to Write the Business Report</a></li><li><a class="" href="Section_IV_Extended_Response.html">Section IV — How to Write the Extended Response</a></li><li><a class="" href="Marketing_Universal_Essay.html">Universal Marketing Essay — McDonald's Case Study</a></li><li><a class="" href="Finance_Management.html">Finance (moved)</a></li><li><a class="" href="Human_Resources.html">Human Resources (moved)</a></li><li><a class="" href="Marketing.html">Marketing (moved)</a></li><li><a class="" href="Operations.html">Operations (moved)</a></li></ul><p class="side-note">Source: TheSashi HSC Business Studies Notes, Final folder. Cloned 25 Oct 2026. Plus one added McDonald's note (see Exam & revision).</p></nav><main><article class="prose"><h1>Finance 3 · Processes of Financial Management</h1><p class="meta">Finance · Finance/Finance_3_Processes.md</p><div class="toc"><b>On this page</b><ul><li><a href="#1-planning-and-implementing">1. Planning and Implementing</a></li><li><a href="#2-debt-vs-equity-financing">2. Debt vs Equity Financing</a></li><li><a href="#3-the-matching-principle">3. The Matching Principle</a></li><li><a href="#4-the-three-financial-statements">4. The Three Financial Statements</a></li><li><a href="#5-financial-ratios">5. Financial Ratios</a></li><li><a href="#6-limitations-of-financial-reports">6. Limitations of Financial Reports</a></li><li><a href="#7-ethical-issues-in-financial-reporting">7. Ethical Issues in Financial Reporting</a></li><li><a href="#confusing-pairs-in-this-section">Confusing pairs in this section</a></li><li><a href="#exam-habits-that-have-cost-you-marks">Exam habits that have cost you marks</a></li><li><a href="#definitions-to-quote">Definitions to quote</a></li></ul></div><h1>📊 Finance 3 · Processes of Financial Management</h1>
+<blockquote>
+<p><strong>Finance</strong> · <a href="Finance__Finance_1_Role.html">① Role</a> · <a href="Finance__Finance_2_Influences.html">② Influences</a> · <strong>③ Processes</strong> ← you are here · <a href="Finance__Finance_4_Strategies.html">④ Strategies</a> · <a href="Finance__Finance_FULL.html">📕 Full note</a></p>
+</blockquote>
+<blockquote>
+<p><strong>Scope:</strong> the full HSC Finance module is examinable. This file covers the <strong>Processes of financial management</strong> dot points only.</p>
+<p>⭐ <strong>This is the section the calculations come from.</strong> The three statements and the seven ratios are directly examinable.</p>
+</blockquote>
+<hr>
+<h2 id="1-planning-and-implementing">1. Planning and Implementing</h2>
+<p><strong>Financial planning</strong> is responsible for both short-term and long-term planning. It includes:</p>
+<ol>
+<li>Determining the <strong>viability</strong> of projects</li>
+<li>Making decisions and projections for future <strong>liquidity and performance</strong></li>
+<li>Setting <strong>financial goals</strong>, and determining and implementing strategies to achieve them</li>
+</ol>
+<p><strong>Financial needs</strong>: A <strong>new</strong> business must determine <strong>establishment costs</strong> and how to finance them (debt and/or equity). An <strong>existing</strong> business must determine the financing required for <strong>future plans</strong>.</p>
+<h3 id="1-1-budgets">1.1 Budgets</h3>
+<p><strong>Budgets</strong> show the cash required for planned outlays for a particular period, and the cost of capital expenditure and associated expenses.</p>
+<p>Budgets are used as:</p>
+<ul>
+<li>A <strong>plan</strong> for achieving set outcomes</li>
+<li>A means of <strong>establishing standards</strong> for monitoring</li>
+</ul>
+<blockquote>
+<p>Budgets sit in <strong>both</strong> the planning process (giving departments and cost centres a plan to follow) <strong>and</strong> the implementation process (identifying <strong>variances</strong> and flagging areas to investigate).</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Type of budget</th>
+<th>Covers</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Operating budgets</strong></td>
+<td>Main activities — sales, production, raw materials, labour</td>
+</tr>
+<tr>
+<td><strong>Project budgets</strong></td>
+<td>Capital expenditure and research and development</td>
+</tr>
+<tr>
+<td><strong>Financial budgets</strong></td>
+<td>Funds required to pay for inputs and anticipated inflows from future sales</td>
+</tr>
+</tbody></table>
+<h3 id="1-2-record-systems">1.2 Record Systems</h3>
+<p>Systems that ensure data recorded and information provided is <strong>accurate, reliable, efficient and accessible</strong>. Minimising errors is important to fulfil the legal requirement to provide information to <strong>shareholders and the ATO</strong>.</p>
+<blockquote>
+<p>Most errors in computerised accounting systems occur through <strong>human error</strong> at data entry.</p>
+</blockquote>
+<p><strong>All public companies are legally required to have an audit every year.</strong> Auditors are qualified, <strong>independent, external</strong> people who check the records to ensure the accounts show a <strong>true and fair view</strong>.</p>
+<h3 id="1-3-financial-risks">1.3 Financial Risks</h3>
+<p>The risk that a business is <strong>unable to pay its debts as they fall due</strong>. Factors include:</p>
+<ol>
+<li>Theft of goods</li>
+<li>Not meeting sales targets</li>
+<li>Non-payment of accounts by accounts receivable</li>
+<li>Interest rate rises</li>
+</ol>
+<blockquote>
+<p><strong>Risk and borrowing</strong>: There is a <strong>direct relationship</strong> between borrowing and risk. Higher debt (gearing) increases fixed interest costs, reduces financial flexibility, and raises the risk of insolvency if sales targets are not met.</p>
+</blockquote>
+<h3 id="1-4-financial-controls">1.4 Financial Controls</h3>
+<p>Controls ensuring financial plans are implemented effectively and achieving set goals:</p>
+<ol>
+<li><strong>Monitoring and controlling budgets</strong> — ongoing throughout the year</li>
+<li><strong>Monitoring finances</strong> through the preparation of the cash flow statement, income statement and balance sheet — for most businesses, <strong>monthly</strong></li>
+<li><strong>Use of financial ratios</strong> to monitor performance</li>
+</ol>
+<hr>
+<h2 id="2-debt-vs-equity-financing">2. Debt vs Equity Financing</h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th><strong>Debt</strong></th>
+<th><strong>Equity</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Repayment</td>
+<td><strong>Must</strong> be repaid</td>
+<td>No repayment obligation</td>
+</tr>
+<tr>
+<td>Cost</td>
+<td>Interest — <strong>tax deductible</strong></td>
+<td>Dividends — <strong>not</strong> tax deductible</td>
+</tr>
+<tr>
+<td>Ownership</td>
+<td>Ownership retained</td>
+<td><strong>Dilutes</strong> ownership</td>
+</tr>
+<tr>
+<td>Risk to business</td>
+<td>Higher — fixed commitments regardless of profit</td>
+<td>Lower — no payment required if a loss is made</td>
+</tr>
+<tr>
+<td>Effect on gearing</td>
+<td><strong>Increases</strong> gearing</td>
+<td><strong>Decreases</strong> gearing</td>
+</tr>
+<tr>
+<td>Speed</td>
+<td>Generally faster</td>
+<td>Slower — takes time</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="3-the-matching-principle">3. The Matching Principle</h2>
+<p><strong>Matching the term and source of finance to the use of finance.</strong></p>
+<ul>
+<li><strong>Short-term</strong> finance (overdraft, commercial bill, factoring) should fund <strong>short-term</strong> needs — working capital, inventory, wages</li>
+<li><strong>Long-term</strong> finance (mortgage, debenture, shares, leasing) should fund <strong>long-term</strong> assets — property, plant, equipment</li>
+</ul>
+<blockquote>
+<p><strong>Why it matters</strong>: Using an overdraft to buy a factory means the debt falls due long before the asset generates a return, creating a <strong>liquidity crisis</strong>. Using a 20-year mortgage to buy stock means paying interest for two decades on inventory sold in a month.</p>
+</blockquote>
+<blockquote>
+<p><strong>Note — a second meaning.</strong> &quot;Matching principle&quot; is <em>also</em> an accounting term (see §6): revenue must be matched to the expenses incurred in earning it, in the same accounting period. Read the question carefully to see which is being asked.</p>
+</blockquote>
+<hr>
+<h2 id="4-the-three-financial-statements">4. The Three Financial Statements</h2>
+<blockquote>
+<p><strong>Memorise these three structures — they are examinable directly.</strong></p>
+</blockquote>
+<h3 id="4-1-cash-flow-statement">4.1 Cash Flow Statement</h3>
+<pre><code>Opening Cash Balance
++ Cash Receipts (inflows)
+− Cash Payments (outflows)
+= Closing Cash Balance
+</code></pre>
+<p>Records <strong>actual</strong> cash movements over a period. A <strong>cash flow budget</strong>, by contrast, is a <strong>forecast</strong> of expected future cash flows used to identify shortfalls in advance.</p>
+<h3 id="4-2-income-statement-revenue-statement-profit-and-loss">4.2 Income Statement (Revenue Statement / Profit and Loss)</h3>
+<pre><code>        Sales
+Less:   Sales Returns
+   =    NET SALES
+
+Less:   Cost of Goods Sold
+   =    GROSS PROFIT
+
+Less:   Expenses  (selling + administrative + financial)
+   =    NET PROFIT
+</code></pre>
+<blockquote>
+<p><strong>The whole statement is two subtractions.</strong>
+Sales − COGS = <strong>Gross Profit</strong>. Gross Profit − Expenses = <strong>Net Profit</strong>.</p>
+</blockquote>
+<p><strong>Cost of Goods Sold</strong> is itself a calculation:</p>
+<pre><code>COGS = Opening Stock + Purchases − Closing Stock
+</code></pre>
+<blockquote>
+<p><strong>Why closing stock is subtracted:</strong> stock still sitting in the warehouse wasn&#39;t sold, so it isn&#39;t a cost of goods <em>sold</em>. It carries forward as next period&#39;s opening stock.</p>
+</blockquote>
+<p><strong>The three expense categories</strong> — you may be asked to classify these:</p>
+<table>
+<thead>
+<tr>
+<th>Category</th>
+<th>What goes in it</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Selling</strong></td>
+<td>Advertising, sales staff wages and commission, delivery to customers</td>
+</tr>
+<tr>
+<td><strong>Administrative</strong></td>
+<td>Office wages, rent, electricity, insurance, stationery, depreciation</td>
+</tr>
+<tr>
+<td><strong>Financial</strong></td>
+<td>Interest on loans, bank fees, discounts given, bad debts</td>
+</tr>
+</tbody></table>
+<h4>Worked example — building a revenue statement from scratch</h4>
+<blockquote>
+<p><strong>Given</strong>: Sales $620,000 | Sales returns $20,000 | Opening stock $60,000 | Purchases $310,000 | Closing stock $70,000 | Selling expenses $55,000 | Administrative expenses $50,000 | Financial expenses $15,000</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Step</th>
+<th>Working</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Net Sales</td>
+<td>620,000 − 20,000</td>
+<td><strong>$600,000</strong></td>
+</tr>
+<tr>
+<td>COGS</td>
+<td>60,000 + 310,000 − 70,000</td>
+<td><strong>$300,000</strong></td>
+</tr>
+<tr>
+<td><strong>Gross Profit</strong></td>
+<td>600,000 − 300,000</td>
+<td><strong>$300,000</strong></td>
+</tr>
+<tr>
+<td>Total Expenses</td>
+<td>55,000 + 50,000 + 15,000</td>
+<td><strong>$120,000</strong></td>
+</tr>
+<tr>
+<td><strong>Net Profit</strong></td>
+<td>300,000 − 120,000</td>
+<td><strong>$180,000</strong></td>
+</tr>
+</tbody></table>
+<p>Then the ratios follow straight off it:</p>
+<ul>
+<li><strong>Gross Profit Ratio</strong> = (300,000 ÷ 600,000) × 100 = <strong>50%</strong></li>
+<li><strong>Net Profit Ratio</strong> = (180,000 ÷ 600,000) × 100 = <strong>30%</strong></li>
+<li><strong>Expense Ratio</strong> = (120,000 ÷ 600,000) × 100 = <strong>20%</strong></li>
+</ul>
+<blockquote>
+<p><strong>Check:</strong> Gross Profit Ratio − Expense Ratio = Net Profit Ratio. 50 − 20 = 30 ✅
+Use this to catch arithmetic errors in the exam in about five seconds.</p>
+</blockquote>
+<h4>Four traps in these calculations</h4>
+<table>
+<thead>
+<tr>
+<th>Trap</th>
+<th>The fix</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Using <strong>Sales</strong> instead of <strong>Net Sales</strong> as the denominator</td>
+<td>If the question gives sales returns, you must deduct them first. Every ratio then uses <strong>net sales</strong></td>
+</tr>
+<tr>
+<td><strong>Adding</strong> closing stock in COGS</td>
+<td>It&#39;s <strong>minus</strong>. Opening <strong>plus</strong>, closing <strong>minus</strong></td>
+</tr>
+<tr>
+<td>Dividing profit ratios by <strong>Gross Profit</strong></td>
+<td>The denominator for gross profit ratio, net profit ratio <em>and</em> expense ratio is always <strong>sales</strong></td>
+</tr>
+<tr>
+<td>Forgetting <strong>× 100</strong> and the <strong>%</strong> sign</td>
+<td>These three are percentages. Current ratio and gearing are <strong>ratios</strong> written <code>2:1</code> — no percentage</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>Net Profit vs Return on Owners&#39; Equity.</strong> Both use net profit on top. Net profit ratio divides by <strong>sales</strong> (how efficiently the business converts revenue into profit). ROE divides by <strong>owners&#39; equity</strong> (what the owners get back on what they put in). Different question, same numerator.</p>
+</blockquote>
+<h3 id="4-3-balance-sheet">4.3 Balance Sheet</h3>
+<pre><code>Owners&#39; Equity = Assets (Current + Non-Current) − Liabilities (Current + Non-Current)
+</code></pre>
+<p>Shows the <strong>financial position at a point in time</strong> — a snapshot. The income statement, by contrast, shows <strong>performance over a period</strong>.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Current</th>
+<th>Non-Current</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Assets</strong></td>
+<td>Cash, accounts receivable, inventory</td>
+<td>Property, plant, equipment, vehicles, intangibles (goodwill, patents)</td>
+</tr>
+<tr>
+<td><strong>Liabilities</strong></td>
+<td>Overdraft, accounts payable, short-term loans</td>
+<td>Mortgage, debentures, long-term loans</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>Worked example — building a balance sheet</strong>
+A business has: Cash $20,000 | Accounts Receivable $40,000 | Inventory $50,000 | Equipment $200,000 | Accounts Payable $30,000 | Overdraft $20,000 | Mortgage $150,000</p>
+<ul>
+<li>Current Assets = 20,000 + 40,000 + 50,000 = <strong>$110,000</strong></li>
+<li>Non-Current Assets = <strong>$200,000</strong> → Total Assets = <strong>$310,000</strong></li>
+<li>Current Liabilities = 30,000 + 20,000 = <strong>$50,000</strong></li>
+<li>Non-Current Liabilities = <strong>$150,000</strong> → Total Liabilities = <strong>$200,000</strong></li>
+<li><strong>Owners&#39; Equity = 310,000 − 200,000 = $110,000</strong></li>
+</ul>
+</blockquote>
+<hr>
+<h2 id="5-financial-ratios">5. Financial Ratios</h2>
+<blockquote>
+<p><strong>These are the ratios your course requires, with the formulas and benchmarks as taught.</strong> Learn these exact forms.</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Ratio</th>
+<th>Formula</th>
+<th>Objective</th>
+<th>Benchmark</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td><strong>Current Ratio</strong></td>
+<td>Current Assets ÷ Current Liabilities</td>
+<td><strong>Liquidity</strong></td>
+<td><strong>2:1</strong></td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>Gearing Ratio</strong></td>
+<td>Total Liabilities ÷ <strong>Owners&#39; Equity</strong></td>
+<td><strong>Solvency</strong></td>
+<td><strong>0.5:1 to 1:1</strong> (i.e. up to 100%)</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>Gross Profit Ratio</strong></td>
+<td>(Gross Profit ÷ Sales) × 100</td>
+<td><strong>Profitability</strong></td>
+<td>No ideal — compare to previous periods and industry average</td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>Net Profit Ratio</strong></td>
+<td>(Net Profit ÷ Sales) × 100</td>
+<td><strong>Profitability</strong></td>
+<td>No ideal — compare to previous periods and industry average</td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>Return on Owners&#39; Equity</strong></td>
+<td>(Net Profit ÷ Owners&#39; Equity) × 100</td>
+<td><strong>Profitability</strong></td>
+<td>No ideal — compare to previous periods and industry average</td>
+</tr>
+<tr>
+<td>6</td>
+<td><strong>Expense Ratio</strong></td>
+<td>(Total Expenses ÷ Sales) × 100</td>
+<td><strong>Efficiency</strong></td>
+<td><strong>Lowest possible</strong></td>
+</tr>
+<tr>
+<td>7</td>
+<td><strong>Accounts Receivable Turnover</strong></td>
+<td><strong>Step 1:</strong> Sales ÷ Accounts Receivable → <strong>Step 2:</strong> 365 ÷ Step 1 answer</td>
+<td><strong>Efficiency</strong></td>
+<td><strong>30 days</strong></td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>⚠️ <strong>Common error — the gearing formula.</strong> Gearing is <strong>Total Liabilities ÷ Owners&#39; Equity</strong>, <em>not</em> non-current liabilities over total assets. Some textbooks use other variants; use the one above for this course.</p>
+<p>📎 The syllabus wording is <em>&quot;total equity&quot;</em> where your teacher&#39;s sheet says <em>&quot;owners&#39; equity&quot;</em> — same figure, use your teacher&#39;s wording.</p>
+</blockquote>
+<h3 id="5-0-comparative-ratio-analysis-the-named-dot-point">5.0 Comparative Ratio Analysis — the named dot point</h3>
+<blockquote>
+<p>✅ <strong>Syllabus dot point:</strong> <em>&quot;comparative ratio analysis — over different time periods, against standards, with similar businesses.&quot;</em></p>
+<p>This is a <strong>named part of the course</strong>, not just good technique. A ratio on its own earns the calculation mark; the <strong>comparison</strong> earns the analysis marks.</p>
+</blockquote>
+<p>Three comparisons, and the question usually tells you which to use:</p>
+<table>
+<thead>
+<tr>
+<th>Compare against</th>
+<th>When</th>
+<th>What it shows</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Different time periods</strong></td>
+<td>The stimulus gives two or more years</td>
+<td><strong>Trend</strong> — is it improving or deteriorating, and how fast</td>
+</tr>
+<tr>
+<td><strong>Standards / benchmarks</strong></td>
+<td>The stimulus gives an industry average, or you use the ideal (2:1, 0.5–1:1, 30 days)</td>
+<td>Whether performance is <strong>acceptable</strong></td>
+</tr>
+<tr>
+<td><strong>Similar businesses</strong></td>
+<td>The stimulus names a competitor</td>
+<td><strong>Relative</strong> competitive position</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>⚠️ <strong>If the stimulus prints an industry average, that is the standard — it overrides the generic ideal.</strong> Knox 21(a) gave a debt-to-equity industry average of <strong>0.3:1</strong>; you used the generic 0.5–1:1 range and lost the mark. QTC&#39;s 0.99:1 is inside the generic range but <strong>more than three times</strong> the industry figure.</p>
+</blockquote>
+<h3 id="5-1-what-each-ratio-tells-you-say-this-in-the-exam-don-t-just-calculate">5.1 What each ratio <em>tells you</em> (say this in the exam, don&#39;t just calculate)</h3>
+<table>
+<thead>
+<tr>
+<th>Ratio</th>
+<th>Plain-English meaning</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Current Ratio</td>
+<td>For every <strong>$1</strong> of current liabilities, how many <strong>$</strong> of current assets the business has</td>
+</tr>
+<tr>
+<td>Gearing Ratio</td>
+<td>For every <strong>$1</strong> of equity, how much <strong>debt</strong> the business has</td>
+</tr>
+<tr>
+<td>Gross Profit Ratio</td>
+<td>For every <strong>$1</strong> of sales, how much is left after paying <strong>COGS</strong></td>
+</tr>
+<tr>
+<td>Net Profit Ratio</td>
+<td>For every <strong>$1</strong> of sales, how much is left after paying <strong>all expenses</strong></td>
+</tr>
+<tr>
+<td>Return on Owners&#39; Equity</td>
+<td>How much <strong>return owners get back</strong> from their investment</td>
+</tr>
+<tr>
+<td>Expense Ratio</td>
+<td>For every <strong>$1</strong> of sales, how much is <strong>spent on expenses</strong></td>
+</tr>
+<tr>
+<td>Accounts Receivable Turnover</td>
+<td>How many <strong>days</strong> it takes to collect money from customers</td>
+</tr>
+</tbody></table>
+<h3 id="5-2-worked-ratio-example-full-set">5.2 Worked Ratio Example — full set</h3>
+<blockquote>
+<p><strong>Given</strong>: Sales $500,000 | COGS $300,000 | Total Expenses $120,000 | Current Assets $150,000 | Current Liabilities $75,000 | Total Liabilities $200,000 | Owners&#39; Equity $250,000 | Accounts Receivable $41,000</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Ratio</th>
+<th>Working</th>
+<th>Result</th>
+<th>Interpretation</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Gross Profit</td>
+<td>500,000 − 300,000</td>
+<td>$200,000</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Net Profit</td>
+<td>200,000 − 120,000</td>
+<td>$80,000</td>
+<td>—</td>
+</tr>
+<tr>
+<td><strong>Current Ratio</strong></td>
+<td>150,000 ÷ 75,000</td>
+<td><strong>2:1</strong></td>
+<td>Meets the 2:1 benchmark — sound liquidity</td>
+</tr>
+<tr>
+<td><strong>Gearing</strong></td>
+<td>200,000 ÷ 250,000</td>
+<td><strong>0.8:1</strong></td>
+<td>Within the 0.5–1:1 range — acceptable solvency</td>
+</tr>
+<tr>
+<td><strong>Gross Profit Ratio</strong></td>
+<td>(200,000 ÷ 500,000) × 100</td>
+<td><strong>40%</strong></td>
+<td>40c in every sales dollar remains after COGS</td>
+</tr>
+<tr>
+<td><strong>Net Profit Ratio</strong></td>
+<td>(80,000 ÷ 500,000) × 100</td>
+<td><strong>16%</strong></td>
+<td>16c in every sales dollar is net profit</td>
+</tr>
+<tr>
+<td><strong>Return on Owners&#39; Equity</strong></td>
+<td>(80,000 ÷ 250,000) × 100</td>
+<td><strong>32%</strong></td>
+<td>Owners earn 32c per dollar invested</td>
+</tr>
+<tr>
+<td><strong>Expense Ratio</strong></td>
+<td>(120,000 ÷ 500,000) × 100</td>
+<td><strong>24%</strong></td>
+<td>24c of every sales dollar goes to expenses</td>
+</tr>
+<tr>
+<td><strong>AR Turnover</strong></td>
+<td>Step 1: 500,000 ÷ 41,000 = 12.2 → Step 2: 365 ÷ 12.2</td>
+<td><strong>≈ 30 days</strong></td>
+<td>Meets the 30-day benchmark</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="6-limitations-of-financial-reports">6. Limitations of Financial Reports</h2>
+<blockquote>
+<p>Financial reports can be complicated to understand without a financial background and <strong>may not give a clear picture</strong> of the performance and position of the business.</p>
+</blockquote>
+<h3 id="6-1-normalised-earnings">6.1 Normalised Earnings</h3>
+<p>Earnings <strong>adjusted for the cyclical ups and downs</strong> of the economy. On the Profit and Loss Statement and Retained Profits on the Balance Sheet, earnings are adjusted to <strong>remove unusual or one-off influences</strong>.</p>
+<blockquote>
+<p><em>Example</em>: the sale of land or property where the business made a capital gain. Normalised earnings show a <strong>true reflection of earnings from operations</strong>.</p>
+</blockquote>
+<h3 id="6-2-capitalising-expenses">6.2 Capitalising Expenses</h3>
+<p>The purchase price of a non-current asset is added to the cost of setting it up, and that total is used as the <strong>value of the asset in the balance sheet</strong>. The value is then written off as an expense in the income statement over the asset&#39;s useful life — this is <strong>depreciation</strong>.</p>
+<p><strong>Worked example — capitalising expenses</strong></p>
+<p>Purchased new equipment for $1,000,000:</p>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Amount</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Purchase price</td>
+<td>$1,000,000</td>
+</tr>
+<tr>
+<td>Delivery costs</td>
+<td>$500</td>
+</tr>
+<tr>
+<td>Installation costs</td>
+<td>$1,500</td>
+</tr>
+<tr>
+<td>Training costs</td>
+<td>$5,000</td>
+</tr>
+<tr>
+<td><strong>Value of asset in Balance Sheet</strong></td>
+<td><strong>$1,007,000</strong> (historical cost)</td>
+</tr>
+</tbody></table>
+<p>These costs would normally appear as <strong>expenses</strong> in the P&amp;L, <strong>except</strong> where they relate to purchasing a non-current asset — then they are included in the <strong>asset&#39;s value</strong> on the Balance Sheet.</p>
+<p><strong>The abuse</strong>: Taking ordinary expenses and <strong>inappropriately capitalising</strong> them is illegal. It lowers reported expenses, inflates profit, and misleads stakeholders.</p>
+<h3 id="6-3-valuing-assets">6.3 Valuing Assets</h3>
+<p>Businesses normally follow the <strong>historical cost concept</strong> — recording assets at purchase price. But real values change:</p>
+<ol>
+<li><strong>Appreciation</strong> — inflation and market forces mean land and property tend to <strong>rise</strong> in value, so the business should <strong>revalue</strong> to show a true reflection</li>
+<li><strong>Wear and tear</strong> — equipment loses value, so it should be <strong>devalued</strong> through depreciation</li>
+</ol>
+<p><strong>Increasing asset values</strong>: To increase the value of assets such as land and property, a business needs <strong>at least two independent valuations</strong> as evidence.</p>
+<p><strong>Worked example — straight-line depreciation</strong>
+Historical cost $1,000,000 | Useful lifetime 10 years | Disposal value $1,000</p>
+<pre><code>Straight-line depreciation = (Historical cost − Disposal value) ÷ Useful lifetime
+                           = (1,000,000 − 1,000) ÷ 10
+                           = 999,000 ÷ 10
+                           = $99,900 per year
+</code></pre>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Income Statement (Expenses)</th>
+<th>Balance Sheet (Non-Current Assets)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Year 1</strong></td>
+<td>Depreciation $99,900</td>
+<td>1,000,000 − 99,900 accumulated = <strong>$900,100</strong></td>
+</tr>
+<tr>
+<td><strong>Year 2</strong></td>
+<td>Depreciation $99,900</td>
+<td>1,000,000 − 199,800 accumulated = <strong>$800,200</strong></td>
+</tr>
+</tbody></table>
+<p><strong>Intangibles</strong>: Goodwill, trademarks, licences and patents are <strong>impossible to value accurately</strong>, which is itself a limitation.</p>
+<h3 id="6-4-timing-issues">6.4 Timing Issues</h3>
+<p>Financial reports cover a <strong>period</strong>, usually one year. If the business experiences <strong>seasonal fluctuations</strong>, the position may not be a true representation — and businesses may exploit this to appear more profitable.</p>
+<p><strong>The matching principle (accounting sense)</strong>: Each transaction should be recorded at the time it <strong>actually occurs</strong>. Revenue must be matched to all expenses incurred in earning that revenue in a particular accounting period — <strong>even if cash has not been paid or received</strong>.</p>
+<blockquote>
+<p>By recording some transactions <strong>outside</strong> the current financial year, they will not appear on the current reports.</p>
+</blockquote>
+<h3 id="6-5-debt-repayments">6.5 Debt Repayments</h3>
+<p>Reports <strong>do not disclose specific information</strong> about some debt repayments.</p>
+<blockquote>
+<p><em>Example</em>: money owed to workers for annual leave or sick leave. It is difficult to predict when workers will take leave, so the business cannot recognise exactly when the debt will be paid.</p>
+</blockquote>
+<h3 id="6-6-notes-to-the-financial-statements">6.6 Notes to the Financial Statements</h3>
+<p>The <strong>details and additional information left out</strong> of the main reporting documents (balance sheet, income statement). These normally appear in the <strong>appendices</strong> of Annual Reports and/or a Prospectus.</p>
+<blockquote>
+<p><strong>Limitation</strong>: Notes are <strong>not regulated by law as strictly</strong> as the financial report itself, so notes may in fact be used to <strong>mislead</strong>.</p>
+</blockquote>
+<hr>
+<h2 id="7-ethical-issues-in-financial-reporting">7. Ethical Issues in Financial Reporting</h2>
+<p>Accountants must display:</p>
+<ul>
+<li><strong>Integrity</strong></li>
+<li><strong>Objectivity</strong></li>
+<li><strong>Confidentiality</strong></li>
+<li>A high level of <strong>professional and technical ability</strong></li>
+</ul>
+<blockquote>
+<p>Financial managers and accountants therefore cannot be <strong>&quot;creative&quot;</strong> when recording transactions and preparing reports in order to make the business appear more profitable.</p>
+</blockquote>
+<p><strong>Standards</strong>: <strong>IFRS</strong> (International Financial Reporting Standards) and <strong>AAS</strong> (Australian Accounting Standards). AAS selects the appropriate IFRS standards to adapt to the Australian market and adds specific requirements. Business accounts must be <strong>audited and monitored</strong> by independent organisations such as <strong>ASIC</strong>, which checks accounts and procedures to ensure a <strong>true and fair representation</strong>.</p>
+<h3 id="7-1-unethical-financial-practices">7.1 Unethical Financial Practices</h3>
+<table>
+<thead>
+<tr>
+<th>Practice</th>
+<th>Definition</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Audits (misuse of)</strong></td>
+<td>Audits are independent examinations of financial information — internal or external. External auditors are <strong>independent</strong>; compromising that independence is unethical</td>
+</tr>
+<tr>
+<td><strong>Cut-off periods</strong></td>
+<td>Financial reporting <strong>timed</strong> to give a misleading impression of current performance</td>
+</tr>
+<tr>
+<td><strong>Inappropriate use of funds</strong></td>
+<td>Company officials using company assets for personal gain; false invoices issued for more than inputs are worth</td>
+</tr>
+<tr>
+<td><strong>Corporate raiding</strong></td>
+<td>Buying an undervalued company and increasing profit or <strong>selling off the assets</strong>. The owner&#39;s personal wealth increases at the cost of employees who lose their jobs</td>
+</tr>
+<tr>
+<td><strong>Misuse of business credit cards</strong></td>
+<td>Managers and employees using business credit cards and money for personal use</td>
+</tr>
+</tbody></table>
+<p>Other issues: <strong>fictitious revenues, hidden liabilities and expenses, improper disclosures or omissions, and fraudulent asset valuations</strong>.</p>
+<h3 id="7-2-six-named-ethical-examples">7.2 Six Named Ethical Examples</h3>
+<table>
+<thead>
+<tr>
+<th>Issue</th>
+<th>Explanation and example</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Window dressing</strong></td>
+<td>Using <strong>legal</strong> techniques to show a better financial position than actually exists. <em>Example</em>: at year end, offering a valued customer bulk stock at a discount. This shows improved cash flow and low stock on the Balance Sheet. Ethically it may not show a true and fair position — it hides whether stock was sold below cost, or would have sold at all at full price</td>
+</tr>
+<tr>
+<td><strong>Income smoothing</strong> (timing)</td>
+<td>Reducing taxation by reducing net profit. <em>Example</em>: XYZ pays $10,000 insurance in advance in January 2022 for the year, and records <strong>all</strong> of it as an expense in June for FY2021/22. Only 6 months was incurred, so $5,000 belongs in FY2021/22 and $5,000 in FY2022/23. Profit falls, so less tax is paid</td>
+</tr>
+<tr>
+<td><strong>Continuous disclosure</strong></td>
+<td>Legally a business need not inform shareholders if it is likely to make a loss after previously indicating profit. <strong>Ethically</strong> it should, so shareholders can make informed decisions. Disclosure requirements are also reduced during takeovers</td>
+</tr>
+<tr>
+<td><strong>Valuing intangible assets</strong></td>
+<td>Hard to value. <em>Example</em>: Facebook bought WhatsApp for <strong>$19 billion</strong> despite it never making a profit, but with over 45 million users. Should it be valued at purchase price or potential future value?</td>
+</tr>
+<tr>
+<td><strong>Valuing assets</strong></td>
+<td>Legally a business needs an independent valuation — but it can obtain several and <strong>choose the one that suits</strong> the position it wants to show. Legal, but may not be the most accurate</td>
+</tr>
+<tr>
+<td><strong>Debt repayments</strong></td>
+<td>A business must provide for annual leave and long service leave. Annual leave is easy to estimate. <strong>Long service leave</strong> vests after 10 years, so the business must assess the probability of employees staying that long and when they will take it — raising the ethical question of how to value that future liability</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="confusing-pairs-in-this-section">⚠️ Confusing pairs in this section</h2>
+<table>
+<thead>
+<tr>
+<th>Pair</th>
+<th>The tell</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Gearing</strong> vs <strong>leverage</strong></td>
+<td>The <strong>same thing</strong>. Highly geared = highly leveraged = heavy reliance on borrowed funds</td>
+</tr>
+<tr>
+<td><strong>Cash flow statement</strong> vs <strong>cash flow budget</strong></td>
+<td>Statement = <strong>record</strong> of what happened. Budget = <strong>forecast</strong> of what will</td>
+</tr>
+<tr>
+<td><strong>Income statement</strong> vs <strong>balance sheet</strong></td>
+<td>Income statement = performance <strong>over a period</strong>. Balance sheet = position at a <strong>point in time</strong></td>
+</tr>
+<tr>
+<td><strong>Normalised earnings</strong> vs <strong>window dressing</strong></td>
+<td>Normalised earnings <strong>removes one-offs for clarity</strong> (legitimate). Window dressing is <strong>deliberately flattering</strong> (legal but misleading)</td>
+</tr>
+<tr>
+<td><strong>Window dressing</strong> vs <strong>fraud</strong></td>
+<td>Window dressing is <strong>legal</strong>. Fraud is not</td>
+</tr>
+<tr>
+<td><strong>Capitalising</strong> vs <strong>expensing</strong></td>
+<td>Capitalising puts the cost on the <strong>balance sheet</strong> as an asset. Expensing puts it on the <strong>P&amp;L</strong> immediately</td>
+</tr>
+<tr>
+<td><strong>Matching principle</strong> — two meanings</td>
+<td>(a) match the <strong>finance term to the use</strong>; (b) match <strong>revenue to expenses in a period</strong>. Read the question</td>
+</tr>
+<tr>
+<td><strong>Appreciation</strong> vs <strong>depreciation</strong></td>
+<td>Assets: appreciation = <strong>rises</strong> in value, depreciation = <strong>falls</strong>. Also used for currency — same words, different context</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="exam-habits-that-have-cost-you-marks">📝 Exam habits that have cost you marks</h2>
+<blockquote>
+<p><strong>Use the benchmark printed in the stimulus.</strong> In your Knox trial, 21(a) gave an industry average of <strong>0.3:1</strong> for gearing and you used the generic 0.5–1:1 range. If the paper supplies a benchmark, that benchmark wins.</p>
+</blockquote>
+<blockquote>
+<p><strong>A ratio without a comparison is a number, not analysis.</strong> Compare to last year, to the industry, or to the benchmark — then say whether it is good or bad and why.</p>
+</blockquote>
+<hr>
+<h2 id="definitions-to-quote">📖 Definitions to quote</h2>
+<table>
+<thead>
+<tr>
+<th>Term</th>
+<th>Definition</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Budget</strong></td>
+<td>A statement of the cash required for planned outlays in a particular period</td>
+</tr>
+<tr>
+<td><strong>Audit</strong></td>
+<td>An independent examination of financial information</td>
+</tr>
+<tr>
+<td><strong>Matching principle</strong></td>
+<td>Matching the term and source of finance to its use; in accounting, matching revenue to the expenses incurred in earning it</td>
+</tr>
+<tr>
+<td><strong>Working capital</strong></td>
+<td>Current Assets − Current Liabilities</td>
+</tr>
+<tr>
+<td><strong>Normalised earnings</strong></td>
+<td>Earnings adjusted to remove unusual or one-off influences</td>
+</tr>
+<tr>
+<td><strong>Capitalising expenses</strong></td>
+<td>Adding set-up costs to an asset&#39;s balance-sheet value</td>
+</tr>
+<tr>
+<td><strong>Historical cost</strong></td>
+<td>Recording assets at their original purchase price</td>
+</tr>
+<tr>
+<td><strong>Depreciation</strong></td>
+<td>The systematic write-off of an asset&#39;s cost over its useful life</td>
+</tr>
+<tr>
+<td><strong>Window dressing</strong></td>
+<td>Using legal techniques to present a better financial position than actually exists</td>
+</tr>
+<tr>
+<td><strong>Income smoothing</strong></td>
+<td>Shifting expenses between periods to reduce net profit and therefore tax</td>
+</tr>
+</tbody></table>
+<hr>
+<blockquote>
+<p><strong>Next:</strong> <a href="Finance__Finance_4_Strategies.html">④ Financial Management Strategies</a> · Drill sheet: <a href="Confusing_Pairs.html">Confusing Pairs</a> · Back to <a href="MOC.html">MOC</a></p>
+</blockquote>
+</article></main></div><nav class="rail" aria-label="On this page"><div class="rail-title">On this page</div><ul><li><a href="#1-planning-and-implementing" data-target="1-planning-and-implementing">1. Planning and Implementing</a><ul class="sub"><li><a href="#1-1-budgets" data-target="1-1-budgets" data-parent="1-planning-and-implementing">1.1 Budgets</a></li><li><a href="#1-2-record-systems" data-target="1-2-record-systems" data-parent="1-planning-and-implementing">1.2 Record Systems</a></li><li><a href="#1-3-financial-risks" data-target="1-3-financial-risks" data-parent="1-planning-and-implementing">1.3 Financial Risks</a></li><li><a href="#1-4-financial-controls" data-target="1-4-financial-controls" data-parent="1-planning-and-implementing">1.4 Financial Controls</a></li></ul></li><li><a href="#2-debt-vs-equity-financing" data-target="2-debt-vs-equity-financing">2. Debt vs Equity Financing</a></li><li><a href="#3-the-matching-principle" data-target="3-the-matching-principle">3. The Matching Principle</a></li><li><a href="#4-the-three-financial-statements" data-target="4-the-three-financial-statements">4. The Three Financial Statements</a><ul class="sub"><li><a href="#4-1-cash-flow-statement" data-target="4-1-cash-flow-statement" data-parent="4-the-three-financial-statements">4.1 Cash Flow Statement</a></li><li><a href="#4-2-income-statement-revenue-statement-profit-and-loss" data-target="4-2-income-statement-revenue-statement-profit-and-loss" data-parent="4-the-three-financial-statements">4.2 Income Statement (Revenue Statement / Profit and Loss)</a></li><li><a href="#4-3-balance-sheet" data-target="4-3-balance-sheet" data-parent="4-the-three-financial-statements">4.3 Balance Sheet</a></li></ul></li><li><a href="#5-financial-ratios" data-target="5-financial-ratios">5. Financial Ratios</a><ul class="sub"><li><a href="#5-0-comparative-ratio-analysis-the-named-dot-point" data-target="5-0-comparative-ratio-analysis-the-named-dot-point" data-parent="5-financial-ratios">5.0 Comparative Ratio Analysis — the named dot point</a></li><li><a href="#5-1-what-each-ratio-tells-you-say-this-in-the-exam-don-t-just-calculate" data-target="5-1-what-each-ratio-tells-you-say-this-in-the-exam-don-t-just-calculate" data-parent="5-financial-ratios">5.1 What each ratio tells you (say this in the exam, don't just calculate)</a></li><li><a href="#5-2-worked-ratio-example-full-set" data-target="5-2-worked-ratio-example-full-set" data-parent="5-financial-ratios">5.2 Worked Ratio Example — full set</a></li></ul></li><li><a href="#6-limitations-of-financial-reports" data-target="6-limitations-of-financial-reports">6. Limitations of Financial Reports</a><ul class="sub"><li><a href="#6-1-normalised-earnings" data-target="6-1-normalised-earnings" data-parent="6-limitations-of-financial-reports">6.1 Normalised Earnings</a></li><li><a href="#6-2-capitalising-expenses" data-target="6-2-capitalising-expenses" data-parent="6-limitations-of-financial-reports">6.2 Capitalising Expenses</a></li><li><a href="#6-3-valuing-assets" data-target="6-3-valuing-assets" data-parent="6-limitations-of-financial-reports">6.3 Valuing Assets</a></li><li><a href="#6-4-timing-issues" data-target="6-4-timing-issues" data-parent="6-limitations-of-financial-reports">6.4 Timing Issues</a></li><li><a href="#6-5-debt-repayments" data-target="6-5-debt-repayments" data-parent="6-limitations-of-financial-reports">6.5 Debt Repayments</a></li><li><a href="#6-6-notes-to-the-financial-statements" data-target="6-6-notes-to-the-financial-statements" data-parent="6-limitations-of-financial-reports">6.6 Notes to the Financial Statements</a></li></ul></li><li><a href="#7-ethical-issues-in-financial-reporting" data-target="7-ethical-issues-in-financial-reporting">7. Ethical Issues in Financial Reporting</a><ul class="sub"><li><a href="#7-1-unethical-financial-practices" data-target="7-1-unethical-financial-practices" data-parent="7-ethical-issues-in-financial-reporting">7.1 Unethical Financial Practices</a></li><li><a href="#7-2-six-named-ethical-examples" data-target="7-2-six-named-ethical-examples" data-parent="7-ethical-issues-in-financial-reporting">7.2 Six Named Ethical Examples</a></li></ul></li><li><a href="#confusing-pairs-in-this-section" data-target="confusing-pairs-in-this-section">Confusing pairs in this section</a></li><li><a href="#exam-habits-that-have-cost-you-marks" data-target="exam-habits-that-have-cost-you-marks">Exam habits that have cost you marks</a></li><li><a href="#definitions-to-quote" data-target="definitions-to-quote">Definitions to quote</a></li></ul></nav><script>
+function toggleTheme(ev){
+var oldTheme=document.documentElement.getAttribute("data-theme")||"dark";
+var next=oldTheme==="light"?"dark":"light";
+function apply(){document.documentElement.setAttribute("data-theme",next);try{localStorage.setItem("vault-theme",next)}catch(e){}updateThemeIcons(next);}
+var reduced=false;try{reduced=window.matchMedia("(prefers-reduced-motion: reduce)").matches}catch(e){}
+if(reduced){apply();return;}
+if(window.__vaultThemeAnimating){return;}
+window.__vaultThemeAnimating=1;
+var newPaper=next==="light"?"#faf8f2":"#13151b";
+var W=window.innerWidth,H=window.innerHeight;
+var spacing=W<768?36:28;
+var maxR=spacing*0.78;
+var dpr=1;try{dpr=W<768?1:Math.min(window.devicePixelRatio||1,1.5);}catch(e){}
+var canvas=document.createElement("canvas");
+canvas.id="theme-wave";
+canvas.style.cssText="position:fixed;left:0;top:0;width:"+W+"px;height:"+H+"px;z-index:9999;pointer-events:none;";
+canvas.width=Math.round(W*dpr);canvas.height=Math.round(H*dpr);
+var ctx=canvas.getContext("2d");
+try{ctx.setTransform(dpr,0,0,dpr,0,0);}catch(e){}
+ctx.fillStyle=newPaper;
+var dots=[];
+for(var y=spacing/2;y<H+spacing;y+=spacing){for(var x=spacing/2;x<W+spacing;x+=spacing){dots.push({x:x,y:y,delay:(x+y)/(W+H)*450,done:0});}}
+var waveMs=450,growMs=300;
+var start=Date.now();
+function easeOutCubic(p){return 1-Math.pow(1-p,3);}
+function step(){
+var elapsed=Date.now()-start;
+var allDone=true;
+var any=false;
+ctx.beginPath();
+for(var i=0;i<dots.length;i++){
+var d=dots[i];
+if(d.done){continue;}
+var p=(elapsed-d.delay)/growMs;
+if(p<0){allDone=false;continue;}
+if(p<1){allDone=false;}
+else{d.done=1;}
+var r=maxR*easeOutCubic(p<1?p:1);
+if(r>0){ctx.moveTo(d.x+r,d.y);ctx.arc(d.x,d.y,r,0,Math.PI*2);any=true;}
+}
+if(any){ctx.fill();}
+if(!allDone){requestAnimationFrame(step);return;}
+apply();
+canvas.style.transition="opacity 0.15s ease";
+canvas.style.opacity="0";
+setTimeout(function(){window.__vaultThemeAnimating=0;if(canvas.parentNode)canvas.parentNode.removeChild(canvas);},180);
+}
+document.body.appendChild(canvas);
+requestAnimationFrame(step);
+}
+function updateThemeIcons(theme){var icon=theme==="dark"?"☀":"☾";document.querySelectorAll(".theme-btn").forEach(function(b){b.textContent=icon;});}
+try{updateThemeIcons(document.documentElement.getAttribute("data-theme")||"dark");}catch(e){}
+function toggleMenu(force){document.body.classList.toggle("menu-open",force)}
+document.addEventListener("keydown",function(e){if(e.key==="/"&&!/INPUT|TEXTAREA/.test(document.activeElement.tagName)){e.preventDefault();var s=document.querySelector(".side-search");if(s)s.focus()}});
+document.addEventListener("click",function(e){if(e.target.closest(".side a"))toggleMenu(false)});
+(function(){try{
+var links=Array.prototype.slice.call(document.querySelectorAll(".rail a"));
+if(!links.length||!window.IntersectionObserver)return;
+var map={};links.forEach(function(a){map[a.getAttribute("data-target")]=a});
+var obs=new IntersectionObserver(function(es){
+  es.forEach(function(e){
+    if(e.isIntersecting){
+      links.forEach(function(a){a.classList.remove("active");a.classList.remove("parent-active")});
+      var l=map[e.target.id];
+      if(l){l.classList.add("active");var p=l.getAttribute("data-parent");if(p&&map[p])map[p].classList.add("parent-active")}
+    }
+  });
+}, {rootMargin:"-20% 0px -70% 0px"});
+document.querySelectorAll(".prose h2[id], .prose h3[id]").forEach(function(h){obs.observe(h)});
+}catch(e){}})();
+(function(){try{
+var cv=document.getElementById("dotgrid");if(!cv)return;var ctx=cv.getContext("2d");if(!ctx)return;
+var reduced=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+var W=0,H=0,dpr=1,cols=0,rows=0,SP=28,px=0,py=0,pt=0,hasP=false;
+function dotRGB(){try{return getComputedStyle(document.documentElement).getPropertyValue("--dot-rgb").trim()||"233,231,225"}catch(e){return "233,231,225"}}
+function resize(){dpr=Math.min(window.devicePixelRatio||1,window.innerWidth<700?1.5:2);SP=window.innerWidth<700?36:28;W=window.innerWidth;H=window.innerHeight;cv.width=W*dpr;cv.height=H*dpr;cv.style.width=W+"px";cv.style.height=H+"px";ctx.setTransform(dpr,0,0,dpr,0,0);cols=Math.ceil(W/SP)+1;rows=Math.ceil(H/SP)+1}
+var R=Math.random()*Math.PI*2;
+var FORCES=[
+ {ax:.42,ay:.15,tx:26,ty:31,px:R,py:R+1.3,circ:false},
+ {ax:.38,ay:.42,tx:37,ty:23,px:R+2.1,py:R+0.7,circ:false},
+ {ax:.30,ay:.30,tx:41,ty:41,px:R+4.0,py:R+4.0,circ:true}
+];
+function draw(now){var t=now/1000;var rgb=dotRGB();
+var activeForces=W>=1280?FORCES:FORCES.slice(0,1);
+var pFade=hasP?Math.max(0,1-(now-pt)/4000):0;
+ctx.clearRect(0,0,W,H);
+for(var y=0;y<rows;y++)for(var x=0;x<cols;x++){var ox=x*SP+10,oy=y*SP+10,a=0.14,dispX=0,dispY=0;
+for(var fi=0;fi<activeForces.length;fi++){var F=activeForces[fi];
+var fx=F.circ?W*(0.5+F.ax*Math.cos(t*2*Math.PI/F.tx+F.px)):W*(0.5+F.ax*Math.sin(t*2*Math.PI/F.tx+F.px));
+var fy=F.circ?H*(0.5+F.ay*Math.sin(t*2*Math.PI/F.ty+F.py)):H*(0.5+F.ay*Math.sin(t*2*Math.PI/F.ty+F.py));
+var ddx=ox-fx,ddy=oy-fy,d=Math.sqrt(ddx*ddx+ddy*ddy);
+if(d<170&&d>0.01){var f=1-d/170;f=f*f;dispX+=(ddx/d)*6*f;dispY+=(ddy/d)*6*f;a+=0.20*f}}
+var dm=Math.sqrt(dispX*dispX+dispY*dispY);if(dm>9){dispX*=9/dm;dispY*=9/dm}
+var dx=ox+dispX,dy=oy+dispY;if(a>0.38)a=0.38;
+if(pFade>0){var pdx=ox-px,pdy=oy-py,pd=Math.sqrt(pdx*pdx+pdy*pdy);
+if(pd<150&&pd>0.01){var pf=1-pd/150;pf=pf*pf*pFade;dx+=(pdx/pd)*5*pf;dy+=(pdy/pd)*5*pf;a=Math.min(0.38,a+0.18*pf)}}
+ctx.beginPath();ctx.arc(dx,dy,1.3,0,Math.PI*2);ctx.fillStyle="rgba("+rgb+","+a.toFixed(3)+")";ctx.fill()}}
+function loop(now){if(!window.__vaultThemeAnimating)draw(now);if(!reduced)requestAnimationFrame(loop)}
+window.addEventListener("resize",resize);resize();
+window.addEventListener("pointermove",function(e){px=e.clientX;py=e.clientY;pt=performance.now();hasP=true},{passive:true});
+requestAnimationFrame(loop);
+}catch(e){}})();
+</script></body></html>

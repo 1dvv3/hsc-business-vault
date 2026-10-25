@@ -1,0 +1,785 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Marketing 4 · Marketing Strategies — HSC Business Vault</title><style>
+:root{--paper:#faf8f2;--ink:#1e1b16;--muted:#6b655a;--line:#e3ddd0;--accent:#1d4ed8;--card:#fffdf8;--side:#f3efe6;--side-bg:rgba(243,239,230,.88);--active:#e8e0cd;--rail-tint:rgba(29,78,216,.14);--rail-tint-soft:rgba(29,78,216,.07);--code:#efe9db;--quote:#4a4438;--dot-rgb:30,27,22;--scheme:light}
+[data-theme="dark"]{--paper:#13151b;--ink:#e9e7e1;--muted:#9aa0ab;--line:#2b2f3a;--accent:#8ab4ff;--card:#1b1e27;--side:#101218;--side-bg:rgba(16,18,24,.88);--active:#262b38;--rail-tint:rgba(138,180,255,.18);--rail-tint-soft:rgba(138,180,255,.09);--code:#262a36;--quote:#c3c7cf;--dot-rgb:233,231,225;--scheme:dark}
+*{box-sizing:border-box}html{color-scheme:var(--scheme)}body{margin:0;background:var(--paper);color:var(--ink);font:16.5px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;overflow-x:hidden}
+a{color:var(--accent);text-decoration:none;transition:color .18s ease}a:hover{text-decoration:underline}
+#dotgrid{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:0}
+.wrap{position:relative;z-index:1;display:grid;grid-template-columns:280px 1fr;min-height:100vh}
+.side{position:sticky;top:0;height:100vh;overflow:auto;padding:22px 18px;border-right:1px solid var(--line);background:var(--side-bg)}
+.side h3{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:22px 0 6px}
+.side ul{list-style:none;margin:0;padding:0}.side li{margin:3px 0}
+.side a{display:block;padding:7px 10px;border-radius:8px;color:var(--ink);transition:background .18s ease,transform .18s ease}
+.side a.active{background:var(--active);font-weight:600}
+.side a:hover{background:var(--active);text-decoration:none;transform:translateX(3px)}
+.side-head{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.theme-btn{flex:none;width:40px;height:40px;border:1px solid var(--line);border-radius:50%;background:var(--card);color:var(--ink);font-size:18px;cursor:pointer;transition:background .18s ease}
+.theme-btn:hover{background:var(--active)}
+.home-link{font-weight:700;font-size:18px}.side-search{width:100%;margin:14px 0 4px;padding:10px 12px;border:1px solid var(--line);border-radius:8px;background:var(--card);color:var(--ink);font-size:16px}
+.side-note{font-size:12.5px;color:var(--muted);line-height:1.5;margin-top:24px}
+.topbar{display:none}.backdrop{display:none}
+main{padding:36px 44px;max-width:860px}.prose h1{font-size:32px;line-height:1.2;letter-spacing:-.02em;margin:0 0 6px}
+.prose h2{font-size:23px;margin:34px 0 8px;padding-top:14px;border-top:1px solid var(--line)}
+.prose h3{font-size:18px;margin:26px 0 6px}.prose p{margin:10px 0}
+.prose table{border-collapse:collapse;width:100%;margin:14px 0;font-size:14.5px;display:block;overflow-x:auto;-webkit-overflow-scrolling:touch}
+.prose th,.prose td{border:1px solid var(--line);padding:7px 10px;text-align:left;vertical-align:top}
+.prose th{background:var(--side)}.prose blockquote{border-left:3px solid var(--line);margin:14px 0;padding:2px 14px;color:var(--quote);background:var(--card)}
+.prose code{background:var(--code);padding:1px 5px;border-radius:4px;font-size:14px}.prose pre{background:#0d0f14;color:#f5f1e6;padding:14px;border-radius:8px;overflow:auto}
+.prose pre code{background:none;color:inherit;padding:0}.prose hr{border:none;border-top:1px solid var(--line);margin:24px 0}
+.meta{color:var(--muted);font-size:14px;margin-bottom:20px}.toc{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 18px;margin:18px 0}
+.toc b{font-size:13px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}.toc ul{margin:8px 0 0;padding-left:18px}.toc li{margin:3px 0}
+.cards{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:20px 0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 18px;transition:transform .2s ease,border-color .2s ease,box-shadow .2s ease}
+.card:hover{transform:translateY(-3px);border-color:var(--accent);box-shadow:0 8px 24px rgba(0,0,0,.18)}
+.card h3{margin:0 0 4px}.card p{margin:0;color:var(--muted);font-size:14.5px}
+#search{width:100%;padding:13px 14px;font-size:17px;border:1px solid var(--line);border-radius:10px;background:var(--card);color:var(--ink)}
+.result{border-bottom:1px solid var(--line);padding:14px 6px;border-radius:8px;transition:background .18s ease,transform .18s ease}
+.result:hover{background:var(--card);transform:translateX(3px)}
+.result h3{margin:0}.result p{margin:4px 0;color:var(--quote)}.result .path{font-size:13px;color:var(--muted)}
+mark{background:#fde68a;color:#1e1b16;padding:0 1px}
+html{scroll-behavior:smooth}
+.rail{display:none}
+@media(min-width:1280px){
+main{max-width:min(860px,calc(100vw - 692px))}
+.rail{display:block;position:fixed;right:24px;top:50%;transform:translateY(-50%);width:340px;max-height:76vh;overflow:auto;z-index:15;background:none;border:none;box-shadow:none;padding:18px 14px;-webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 36px,#000 calc(100% - 36px),transparent 100%);mask-image:linear-gradient(to bottom,transparent 0,#000 36px,#000 calc(100% - 36px),transparent 100%)}
+.rail-title{font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:2px 0 12px 12px}
+.rail ul{list-style:none;margin:0;padding:0}
+.rail li{margin:3px 0}
+.rail a{display:block;padding:11px 14px;border-radius:10px;color:var(--ink);font-size:17px;line-height:1.4;transition:transform .2s ease,background .2s ease}
+.rail a:hover,.rail a:focus-visible{background:var(--rail-tint-soft);transform:translateX(-4px) scale(1.02);text-decoration:none}
+.rail a.active{background:var(--rail-tint);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);font-weight:600;transform:translateX(-12px);width:calc(100% + 12px)}
+.rail a.parent-active{background:var(--rail-tint-soft)}
+.rail ul.sub{margin:3px 0 3px 14px;padding-left:14px;border-left:1px solid var(--line)}
+.rail ul.sub a{padding:9px 12px;font-size:15px;color:var(--muted)}
+.rail ul.sub a:hover{color:var(--ink)}
+.rail ul.sub a.active{color:var(--ink);transform:translateX(-8px);width:calc(100% + 8px)}
+}
+@media(max-width:900px){
+.topbar{display:flex;position:sticky;top:0;z-index:20;align-items:center;gap:10px;padding:12px 14px;background:var(--side);border-bottom:1px solid var(--line)}
+.topbar b{flex:1;font-size:17px}.menu-btn,.topbar .theme-btn{width:44px;height:44px;border:1px solid var(--line);border-radius:10px;background:var(--card);color:var(--ink);font-size:19px;cursor:pointer}
+.wrap{grid-template-columns:1fr}
+.wrap{z-index:auto}
+.side{background:var(--side)}
+.side a{padding:11px 12px}
+body.menu-open{overflow:hidden}
+.side{position:fixed;inset:0 auto 0 0;width:300px;max-width:86vw;height:100dvh;z-index:30;transform:translateX(-105%);transition:transform .25s ease;box-shadow:0 0 40px rgba(0,0,0,.4)}
+body.menu-open .side{transform:translateX(0)}
+.backdrop{display:none}body.menu-open .backdrop{display:block;position:fixed;inset:0;z-index:25;background:rgba(0,0,0,.45)}
+main{padding:22px 16px}.prose h1{font-size:26px}.prose h2{font-size:21px}.cards{grid-template-columns:1fr}
+.prose table{font-size:14px}.prose pre{font-size:13.5px}
+}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}html{scroll-behavior:auto}}
+</style><script>(function(){try{var t=localStorage.getItem("vault-theme")||"dark";document.documentElement.setAttribute("data-theme",t)}catch(e){document.documentElement.setAttribute("data-theme","dark")}})()</script></head><body><canvas id="dotgrid" aria-hidden="true"></canvas><header class="topbar"><button class="menu-btn" type="button" onclick="toggleMenu()" aria-label="Open notes menu">☰</button><b>Business Vault</b><button class="theme-btn" type="button" onclick="toggleTheme(event)" aria-label="Toggle dark / light mode">◐</button></header><div class="backdrop" onclick="toggleMenu(false)"></div><div class="wrap"><nav class="side" id="side"><div class="side-head"><a class="home-link" href="index.html">⌂ Vault home</a><button class="theme-btn" type="button" onclick="toggleTheme(event)" aria-label="Toggle dark / light mode">◐</button></div><input class="side-search" type="search" placeholder="Search notes…  ( / )" onkeydown="if(event.key==='Enter'){location.href='index.html?q='+encodeURIComponent(this.value)}"><h3>Operations</h3><ul><li><a class="" href="Operations__Operations_1_Role.html">1 Role</a></li><li><a class="" href="Operations__Operations_2_Influences.html">2 Influences</a></li><li><a class="" href="Operations__Operations_3_Processes.html">3 Processes</a></li><li><a class="" href="Operations__Operations_4_Strategies.html">4 Strategies</a></li><li><a class="" href="Operations__Operations_Syllabus_Summary.html">Syllabus Summary</a></li><li><a class="" href="Operations__Operations_FULL.html">FULL</a></li></ul><h3>Marketing</h3><ul><li><a class="" href="Marketing__Marketing_1_Role.html">1 Role</a></li><li><a class="" href="Marketing__Marketing_2_Influences.html">2 Influences</a></li><li><a class="" href="Marketing__Marketing_3_Processes.html">3 Processes</a></li><li><a class="active" href="Marketing__Marketing_4_Strategies.html">4 Strategies</a></li><li><a class="" href="Marketing__Marketing_Syllabus_Summary.html">Syllabus Summary</a></li><li><a class="" href="Marketing__Marketing_FULL.html">FULL</a></li></ul><h3>Finance</h3><ul><li><a class="" href="Finance__Finance_1_Role.html">1 Role</a></li><li><a class="" href="Finance__Finance_2_Influences.html">2 Influences</a></li><li><a class="" href="Finance__Finance_3_Processes.html">3 Processes</a></li><li><a class="" href="Finance__Finance_4_Strategies.html">4 Strategies</a></li><li><a class="" href="Finance__Finance_Syllabus_Summary.html">Syllabus Summary</a></li><li><a class="" href="Finance__Finance_FULL.html">FULL</a></li></ul><h3>Human Resources</h3><ul><li><a class="" href="Human_Resources__Human_Resources_1_Role.html">1 Role</a></li><li><a class="" href="Human_Resources__Human_Resources_2_Influences.html">2 Influences</a></li><li><a class="" href="Human_Resources__Human_Resources_3_Processes.html">3 Processes</a></li><li><a class="" href="Human_Resources__Human_Resources_4_Strategies.html">4 Strategies</a></li><li><a class="" href="Human_Resources__Human_Resources_Syllabus_Summary.html">Syllabus Summary</a></li><li><a class="" href="Human_Resources__Human_Resources_FULL.html">FULL</a></li></ul><h3>Exam &amp; revision</h3><ul><li><a class="" href="MOC.html">Final Notes</a></li><li><a class="" href="Case_Study_Stats_Sheet.html">Business Studies Case Study Stats Sheet</a></li><li><a class="" href="Case_Studies.html">Case Studies — HSC Business Studies Final Notes</a></li><li><a class="" href="Confusing_Pairs.html">Confusing Pairs — MCQ Drill Sheet</a></li><li><a class="" href="Crichton_Office_Supplies_Report_and_Apple_Marketing_Essay.html">Crichton Office Supplies Report and Apple Marketing Essay</a></li><li><a class="" href="Trial_Practice_Killara_2022.html">Killara 2022 Trial — Marked Paper and Model Answers</a></li><li><a class="" href="McDonalds_Case_Study.html">McDonald's Case Study — Section IV Essay Resource</a></li><li><a class="" href="Section_III_Business_Report.html">Section III — How to Write the Business Report</a></li><li><a class="" href="Section_IV_Extended_Response.html">Section IV — How to Write the Extended Response</a></li><li><a class="" href="Marketing_Universal_Essay.html">Universal Marketing Essay — McDonald's Case Study</a></li><li><a class="" href="Finance_Management.html">Finance (moved)</a></li><li><a class="" href="Human_Resources.html">Human Resources (moved)</a></li><li><a class="" href="Marketing.html">Marketing (moved)</a></li><li><a class="" href="Operations.html">Operations (moved)</a></li></ul><p class="side-note">Source: TheSashi HSC Business Studies Notes, Final folder. Cloned 25 Oct 2026. Plus one added McDonald's note (see Exam & revision).</p></nav><main><article class="prose"><h1>Marketing 4 · Marketing Strategies</h1><p class="meta">Marketing · Marketing/Marketing_4_Strategies.md</p><div class="toc"><b>On this page</b><ul><li><a href="#1-market-segmentation-differentiation-and-positioning">1. Market Segmentation, Differentiation and Positioning</a></li><li><a href="#2-marketing-mix-the-4ps">2. Marketing Mix — the 4Ps</a></li><li><a href="#3-extended-marketing-mix-people-processes-physical-evidence">3. Extended Marketing Mix — People, Processes, Physical Evidence</a></li><li><a href="#4-e-marketing">4. E-Marketing</a></li><li><a href="#5-global-marketing-strategies">5. Global Marketing Strategies</a></li><li><a href="#6-section-iv-essay-structures">6. Section IV Essay Structures</a></li><li><a href="#confusing-pairs-in-this-section">Confusing pairs in this section</a></li><li><a href="#exam-habits">Exam habits</a></li><li><a href="#definitions-to-quote">Definitions to quote</a></li></ul></div><h1>🎯 Marketing 4 · Marketing Strategies</h1>
+<blockquote>
+<p><strong>Marketing</strong> · <a href="Marketing__Marketing_1_Role.html">① Role</a> · <a href="Marketing__Marketing_2_Influences.html">② Influences</a> · <a href="Marketing__Marketing_3_Processes.html">③ Processes</a> · <strong>④ Strategies</strong> ← you are here · <a href="Marketing__Marketing_FULL.html">📕 Full note</a></p>
+</blockquote>
+<blockquote>
+<p><strong>Scope:</strong> the full HSC Marketing module is examinable. This file covers the <strong>Marketing strategies</strong> dot points only.</p>
+<p>⭐ <strong>This is the highest-yield section in the module.</strong> Most 20-mark Marketing questions are answered mainly out of this file.</p>
+</blockquote>
+<hr>
+<h2 id="1-market-segmentation-differentiation-and-positioning">1. Market Segmentation, Differentiation and Positioning</h2>
+<blockquote>
+<p>✅ <strong>Syllabus dot point:</strong> <em>&quot;market segmentation, product/service differentiation and positioning&quot;</em> — the <strong>first</strong> dot point under Marketing strategies.</p>
+<p>⚠️ This is <strong>not</strong> part of the marketing process. <em>Identifying</em> the target market is the process step (<a href="Marketing__Marketing_3_Processes.html">Marketing 3 Processes</a> §5). <em>Segmenting, differentiating and positioning</em> are strategies.</p>
+</blockquote>
+<h3 id="1-1-market-segmentation">1.1 Market Segmentation</h3>
+<p>Dividing the total market into distinct groups with similar characteristics, so the marketing mix can be tailored to each.</p>
+<table>
+<thead>
+<tr>
+<th>Base</th>
+<th>Criteria</th>
+<th>Apple Example</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Geographic</strong></td>
+<td>Location, region, climate</td>
+<td>Strong in Americas, Europe, Greater China</td>
+</tr>
+<tr>
+<td><strong>Demographic</strong></td>
+<td>Age, income, occupation, education</td>
+<td>Young to middle-aged, middle to high income, professionals/students</td>
+</tr>
+<tr>
+<td><strong>Psychographic</strong></td>
+<td>Lifestyle, values, attitudes, personality, socioeconomic groups</td>
+<td>Innovation-seekers, quality-focused, early adopters, brand-loyal</td>
+</tr>
+<tr>
+<td><strong>Behavioural</strong></td>
+<td>Buying patterns, brand loyalty, usage, benefits sought</td>
+<td>Apple ecosystem loyalty, repeat purchasers</td>
+</tr>
+</tbody></table>
+<p><strong>Apple&#39;s product-segment targets:</strong></p>
+<ul>
+<li><strong>iPhone</strong>: Broad audience — young adults, professionals, tech enthusiasts</li>
+<li><strong>iPad</strong>: Creative professionals, students</li>
+<li><strong>Mac</strong>: Developers, creative professionals</li>
+<li><strong>Apple Watch</strong>: Fitness enthusiasts, professionals</li>
+</ul>
+<h3 id="1-2-product-service-differentiation">1.2 Product / Service Differentiation</h3>
+<p>Making a product that is the same as or similar to competitors&#39; <strong>appear different from and better than</strong> theirs. This gives the seller greater control in the marketplace, <strong>especially over price</strong> — a differentiated product can command a premium instead of competing on cost alone.</p>
+<p>Differentiation can be achieved through: quality, features, design, branding, packaging, warranty, after-sales service, and for services, the expertise and time given.</p>
+<h3 id="1-3-positioning">1.3 Positioning</h3>
+<ul>
+<li><strong>Definition</strong>: How potential buyers from the target market perceive the product <strong>relative to competitors</strong></li>
+<li>The business decides on the image it wishes to create for a product/service</li>
+<li>Brand names evoke certain images — e.g. No Frills (budget), Rolex (luxury)</li>
+<li>This image gives the product its <strong>position in the market</strong></li>
+<li>Positioning is linked to the marketing mix — <strong>all 4Ps must reinforce the desired position</strong></li>
+</ul>
+<blockquote>
+<p><strong>The three work as one chain:</strong> <strong>segment</strong> the market → <strong>differentiate</strong> your product for the chosen segment → <strong>position</strong> it in their minds. A question naming any one of them usually wants all three.</p>
+</blockquote>
+<hr>
+<h2 id="2-marketing-mix-the-4ps">2. Marketing Mix — the 4Ps</h2>
+<h3 id="2-1-product">2.1 Product</h3>
+<p>Decisions about: quality, packaging/labelling, design, brand name, guarantee. Strategies change with product life cycle stage.</p>
+<p><strong>Total Product Concepts — Tangible and Intangible:</strong></p>
+<ul>
+<li>Most products are a combination of tangible and intangible components</li>
+<li>Customers buy both tangible and intangible benefits</li>
+<li>A product includes: the package, brand name, warranty, after-sale service</li>
+</ul>
+<p><strong>Product Branding:</strong></p>
+<ul>
+<li>A <strong>brand</strong> is a name, term, symbol, design or combination that identifies a specific product and distinguishes it from competitors</li>
+<li><strong>Brand symbol and logo</strong>: Graphic representation that identifies a business or product</li>
+<li><strong>Branding strategies</strong> (by ownership):<ol>
+<li><strong>Manufacturer&#39;s/national brand</strong>: Manufacturer owns the brand name — high appeal, recognised across the country</li>
+<li><strong>Private/household brand</strong>: Owned by a retailer or wholesaler</li>
+<li><strong>Generic brands</strong>: Products with no brand name — normally used for supermarket products</li>
+</ol>
+</li>
+<li>Branding must be linked to the <strong>reputation</strong> of the business</li>
+</ul>
+<p><strong>Packaging:</strong></p>
+<ul>
+<li>Development of container and graphic design for a product</li>
+<li>How easily is the package recognised — colours, branding, logo</li>
+<li>Packaging reinforces brand messaging and consumer perception</li>
+</ul>
+<h3 id="2-2-price">2.2 Price</h3>
+<p><strong>Pricing Methods:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Cost-plus pricing</strong></td>
+<td>Formula: Cost + (Cost × Markup %) = Price. Disadvantage: doesn&#39;t consider market conditions or other parts of the marketing mix</td>
+</tr>
+<tr>
+<td><strong>Market-based pricing</strong></td>
+<td>Sets prices according to supply and demand interaction — whatever the market is willing to pay. Prices constantly change with market fluctuations</td>
+</tr>
+<tr>
+<td><strong>Competitive pricing</strong></td>
+<td>Price covers costs and is comparable to competitor&#39;s price. Used in highly competitive markets — price below, equal to, or above competitors</td>
+</tr>
+</tbody></table>
+<p><strong>Pricing Strategies:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Strategy</th>
+<th>When Used</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Price skimming</strong></td>
+<td>New/innovative products — charge high initial price before competitors enter, then lower over time. E.g. iPhone launch ($2,199 Pro Max)</td>
+</tr>
+<tr>
+<td><strong>Penetration pricing</strong></td>
+<td>Entering competitive markets — lowest possible price that still covers cost. Quick market share gain (&quot;mass market pricing&quot;). Not long-term as it impacts revenue</td>
+</tr>
+<tr>
+<td><strong>Competitive pricing</strong></td>
+<td>Established markets with many competitors — match or slightly vary from price leader</td>
+</tr>
+<tr>
+<td><strong>Loss leader</strong></td>
+<td>Sell some products below cost to attract customers who also buy higher-margin items. E.g. supermarket specials at start of aisles</td>
+</tr>
+<tr>
+<td><strong>Price points</strong></td>
+<td>Psychological pricing at predetermined levels — e.g. watches at $55, $75, $95. Common in retail</td>
+</tr>
+<tr>
+<td><strong>Prestige pricing</strong></td>
+<td>Deliberately high price to signal quality/exclusivity — e.g. Rolex, Apple</td>
+</tr>
+<tr>
+<td><strong>Price discrimination</strong></td>
+<td>Different prices in different markets (prohibited if reduces competition)</td>
+</tr>
+<tr>
+<td><strong>Price bundling</strong></td>
+<td>Combining products at a lower total price — e.g. McValue Meals</td>
+</tr>
+<tr>
+<td><strong>Dynamic pricing</strong></td>
+<td>AI-powered adjustments based on real-time demand — e.g. McDonald&#39;s</td>
+</tr>
+</tbody></table>
+<p><strong>Apple pricing:</strong> Price skimming at launches, prestige pricing reinforces luxury image, selective price reductions on older models.</p>
+<h3 id="2-3-promotion">2.3 Promotion</h3>
+<p><strong>Definition</strong>: The methods used to communicate information about a product to persuade and remind the target market about its products.</p>
+<p><strong>Elements of the Promotional Communication Process:</strong></p>
+<ul>
+<li><strong>Sender</strong> (business) → <strong>Message</strong> (advertisement) → <strong>Channel</strong> (medium) → <strong>Receiver</strong> (customer)</li>
+<li><strong>Noise</strong>: Any interference or distraction that affects any stage in the promotional communication process</li>
+</ul>
+<p><strong>Elements of the Promotion Mix:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Details</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Advertising</strong></td>
+<td>Paid, non-personal communication. Six main media: (1) Mass marketing (TV, radio), (2) Direct marketing catalogues, (3) Telemarketing, (4) Internet, (5) Social media advertising, (6) Billboards</td>
+</tr>
+<tr>
+<td><strong>Personal selling</strong></td>
+<td>Activities of a sales consultant directed to a customer — involves the human aspect of promotion. More persuasive than advertising because of direct interaction</td>
+</tr>
+<tr>
+<td><strong>Sales promotion</strong></td>
+<td>Short-term incentives: coupons, contests, samples, loyalty/rewards programs, free gifts, price discounts, two-for-one deals</td>
+</tr>
+<tr>
+<td><strong>Publicity</strong></td>
+<td>Free news about a business&#39;s products — NOT paid for</td>
+</tr>
+<tr>
+<td><strong>Public Relations (PR)</strong></td>
+<td>Activities aimed at creating and maintaining favourable relationships with stakeholders — planned, not free</td>
+</tr>
+<tr>
+<td><strong>Direct marketing</strong></td>
+<td>Direct communication with individual customers — email, mail, catalogues</td>
+</tr>
+</tbody></table>
+<p><strong>Distinction: Publicity vs Public Relations</strong></p>
+<ul>
+<li>Publicity = free, unplanned media coverage</li>
+<li>PR = planned, strategic management of relationships</li>
+</ul>
+<h3 id="2-4-place-distribution">2.4 Place (Distribution)</h3>
+<p><strong>Definition</strong>: Not about location — about distribution channels and channel choices. How to get the product from factory to customer.</p>
+<p><strong>Distribution Channels:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Level</th>
+<th>Path</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Direct</td>
+<td>Manufacturer → Consumer (e.g. Apple website, Apple stores)</td>
+</tr>
+<tr>
+<td>One-level</td>
+<td>Manufacturer → Retailer → Consumer (e.g. Apple via JB Hi-Fi, Optus, Telstra)</td>
+</tr>
+<tr>
+<td>Two-level</td>
+<td>Manufacturer → Wholesaler → Retailer → Consumer</td>
+</tr>
+<tr>
+<td>Three-level</td>
+<td>Manufacturer → Agent → Wholesaler → Retailer → Consumer</td>
+</tr>
+</tbody></table>
+<p>Most large businesses use <strong>at least 2 methods</strong> for flexibility.</p>
+<p><strong>Channel Choice — Distribution Intensity:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Intensive</strong></td>
+<td>Saturate the market — product available everywhere</td>
+<td>Coca-Cola, Pepsi (supermarkets, vending machines, restaurants)</td>
+</tr>
+<tr>
+<td><strong>Selective</strong></td>
+<td>Moderate proportion of all possible outlets</td>
+<td>Apple (Apple stores + selected retailers like JB Hi-Fi)</td>
+</tr>
+<tr>
+<td><strong>Exclusive</strong></td>
+<td>Only one retail outlet in a large geographic area</td>
+<td>Ferrari, Tiffany jewellery (specific outlets only)</td>
+</tr>
+</tbody></table>
+<p><strong>Innovative Distribution Methods:</strong></p>
+<ul>
+<li>Retailing activity conducted away from the traditional store</li>
+<li>Includes online retailing, pop-up stores, vending machines, direct-to-consumer platforms</li>
+</ul>
+<p><strong>Physical Distribution Issues:</strong></p>
+<ul>
+<li>All activities concerned with the efficient movement of products</li>
+<li>Includes warehousing, transport, inventory management, order processing</li>
+</ul>
+<hr>
+<h2 id="3-extended-marketing-mix-people-processes-physical-evidence">3. Extended Marketing Mix — People, Processes, Physical Evidence</h2>
+<p>The traditional 4Ps focus on goods. The extra 3 Ps address <strong>services</strong>, which are intangible, inseparable, variable, and perishable.</p>
+<table>
+<thead>
+<tr>
+<th>P</th>
+<th>Definition</th>
+<th>Apple Example</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>People</strong></td>
+<td>Quality of customer-employee interaction</td>
+<td>&quot;Genius&quot; and &quot;Specialist&quot; job titles; strong sales/customer service training; in-store, online, phone support</td>
+</tr>
+<tr>
+<td><strong>Processes</strong></td>
+<td>Flow of activities in service delivery</td>
+<td>Online ordering; free iOS upgrades; pre-ordering; roaming payment systems in stores</td>
+</tr>
+<tr>
+<td><strong>Physical evidence</strong></td>
+<td>Environment where service is delivered + tangible brand materials</td>
+<td>Stores designed for innovation/quality; hands-on &quot;test-drive&quot; approach; prime city locations; sleek packaging; professional website</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>Apple</strong>: The extra 3 Ps strengthen premium brand image, increase customer satisfaction and loyalty, and maintain competitive advantage.</p>
+</blockquote>
+<hr>
+<h2 id="4-e-marketing">4. E-Marketing</h2>
+<p><strong>Definition</strong>: Internet marketing — allows a business with online operations to reach a global audience.</p>
+<h3 id="4-1-e-marketing-technologies">4.1 E-Marketing Technologies</h3>
+<table>
+<thead>
+<tr>
+<th>Technology</th>
+<th>Description</th>
+<th>Marketing Use</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Web pages</strong></td>
+<td>Combination of text, graphics, animation and video</td>
+<td>Physical evidence (branding/packaging), process (ordering/communication), place (distribution), promotion (advertising on other sites)</td>
+</tr>
+<tr>
+<td><strong>Podcasts</strong></td>
+<td>Distribution of digital audio/video files over internet</td>
+<td>Publicity — promoting companies through talking/showcasing. Effective if aimed at same audience as target market</td>
+</tr>
+<tr>
+<td><strong>SMS</strong></td>
+<td>Short message service — text messages between mobile phones</td>
+<td>Direct promotion — cannot be ignored unless blocked. Used for sales notifications, tracking info, status updates, incentives</td>
+</tr>
+<tr>
+<td><strong>Blogs</strong></td>
+<td>Online diary allowing communication between business and customers</td>
+<td>Building relationships, feedback, product information</td>
+</tr>
+<tr>
+<td><strong>Social media advertising</strong></td>
+<td>Use of Facebook and Twitter to promote business</td>
+<td>Cost efficiency, vast global reach, higher market share. Disadvantage: anyone can comment (even without trying product) — can worsen brand reputation</td>
+</tr>
+</tbody></table>
+<h3 id="4-2-apple-s-e-marketing-impact-on-the-4ps">4.2 Apple&#39;s E-Marketing Impact on the 4Ps</h3>
+<table>
+<thead>
+<tr>
+<th>P</th>
+<th>How E-Marketing Influences It</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Product</strong></td>
+<td>Detailed specifications online; displayed alongside accessories; FAQs and technical specs reduce customer service costs</td>
+</tr>
+<tr>
+<td><strong>Price</strong></td>
+<td>Price transparency — comparison with competitors; price comparison websites; increased profit margins by selling online (no retail store costs)</td>
+</tr>
+<tr>
+<td><strong>Place</strong></td>
+<td>Global platform without retail costs; sell directly to customers; tailor websites for languages/cultures. Limitation: some customers prefer viewing before purchasing</td>
+</tr>
+<tr>
+<td><strong>Promotion</strong></td>
+<td>Images, audio, video, detailed info on website; new product launches published online; social media ads; database of existing/potential customers for email/social media promotion</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="5-global-marketing-strategies">5. Global Marketing Strategies</h2>
+<p><strong>Why businesses go global</strong>: TNCs (Transnational Corporations) operate beyond domestic operations to increase sales, further brand awareness, and establish markets in new countries.</p>
+<h3 id="5-1-global-branding">5.1 Global Branding</h3>
+<ul>
+<li>Worldwide use of a name, logo, term or symbol</li>
+<li>More effective and efficient to promote a brand rather than individual products</li>
+<li>A brand has the same meaning in any language</li>
+<li><strong>Apple</strong>: Logo changed three times since 1979 — simple, globally recognisable. Competitive advantage due to global brand recognition.</li>
+</ul>
+<h3 id="5-2-standardisation-vs-customisation">5.2 Standardisation vs Customisation</h3>
+<table>
+<thead>
+<tr>
+<th>Approach</th>
+<th>Description</th>
+<th>Apple Example</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Standardisation</strong></td>
+<td>Same marketing strategies worldwide — minor adjustments (language, actors) but overall script is the same</td>
+<td>Same iPhone in every country; iPhone 5c ad featured people of various nationalities speaking their own language</td>
+</tr>
+<tr>
+<td><strong>Customisation</strong></td>
+<td>Entirely different strategies for each country — changes based on culture, religion, tastes</td>
+<td>iPhone 6 Plus designed for Asian market (large screen); different pricing by market</td>
+</tr>
+<tr>
+<td><strong>Combination</strong></td>
+<td>Most businesses use both — standardise core elements, customise for local markets</td>
+<td>Apple changes language/actors (standardised) but adapts pricing and some features (customised)</td>
+</tr>
+</tbody></table>
+<p><strong>Why research the market</strong>: Differences in language, religion, tastes, and ethics require understanding before entering new markets.</p>
+<h3 id="5-3-global-pricing-strategies">5.3 Global Pricing Strategies</h3>
+<table>
+<thead>
+<tr>
+<th>Strategy</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Customised pricing</strong></td>
+<td>Different prices for the same product in different markets. Uses cost-plus method covering: transportation, taxes, warehousing, tariffs</td>
+</tr>
+<tr>
+<td><strong>Market customised pricing</strong></td>
+<td>Prices set according to local market conditions and exchange rate fluctuations</td>
+</tr>
+<tr>
+<td><strong>Standardised pricing</strong></td>
+<td>Same price anywhere in the world — risky due to different purchasing powers</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>iPhone X prices around the world (64GB $US)</strong>: Russia $1,390 | EU $1,377 | UK $1,330 | China $1,280 | Australia $1,259 | USA $999</p>
+</blockquote>
+<p><strong>Factors affecting global pricing</strong>: Currency exchange rates, transportation costs, local taxes, tariffs, competition in overseas markets.</p>
+<h3 id="5-4-global-promotional-strategies">5.4 Global Promotional Strategies</h3>
+<ul>
+<li>Use variety of mediums: TV, Internet, radio</li>
+<li>Must consider language, religion, culture</li>
+</ul>
+<h3 id="5-5-competitive-positioning">5.5 Competitive Positioning</h3>
+<ul>
+<li>Formal process of determining how to differentiate from competitors</li>
+<li><strong>Value proposition</strong> includes:<ol>
+<li>Operational excellence</li>
+<li>Customer intimacy</li>
+<li>Product leadership</li>
+</ol>
+</li>
+</ul>
+<blockquote>
+<p><strong>Apple</strong>: Historically positioned at high end (quality/design). As developed markets saturated, turned to high-growth emerging economies (China, India). 2014: secured contract with China Mobile (largest carrier) — significant sales increase. Huawei has since overtaken Apple in market share.</p>
+</blockquote>
+<hr>
+<h2 id="6-section-iv-essay-structures">6. Section IV Essay Structures</h2>
+<h3 id="6-1-assess-evaluate-explain-the-importance-of-judgement-based">6.1 Assess / Evaluate / Explain the Importance of (Judgement-Based)</h3>
+<p><strong>Introduction</strong>: Start with judgement sentence → state what you&#39;re evaluating (use syllabus dot points) → include all case studies.</p>
+<table>
+<thead>
+<tr>
+<th>Body Paragraph</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Paragraph 1</strong></td>
+<td>Answer the question — judgement with brief overview. Define key concepts. Include case study.</td>
+</tr>
+<tr>
+<td><strong>Paragraph 2</strong></td>
+<td><strong>Advantages</strong> — prove they are advantages by linking to a topic-specific goal. Use stats.</td>
+</tr>
+<tr>
+<td><strong>Paragraph 3</strong></td>
+<td><strong>Disadvantages</strong> — prove they are disadvantages by linking to a topic-specific goal.</td>
+</tr>
+<tr>
+<td><strong>Paragraph 4</strong></td>
+<td>Re-state judgement, link to long-term business goals.</td>
+</tr>
+</tbody></table>
+<p><strong>Conclusion</strong>: 1–2 summary sentences per body paragraph (including case study).</p>
+<h3 id="6-2-analyse-explain-how-cause-and-effect">6.2 Analyse / Explain How (Cause-and-Effect)</h3>
+<p><strong>Introduction</strong>: Link two ideas together (cause and effect) → state what you&#39;re analysing (syllabus dot points) → include all case studies.</p>
+<table>
+<thead>
+<tr>
+<th>Body Paragraph</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Paragraph 1</strong></td>
+<td><strong>Cause/effect #1</strong> — How is the business impacted? Why? Show cause and effect with case study.</td>
+</tr>
+<tr>
+<td><strong>Paragraph 2</strong></td>
+<td><strong>Cause/effect #2</strong> — Same structure. Link to cause #1.</td>
+</tr>
+<tr>
+<td><strong>Paragraph 3</strong></td>
+<td><strong>Positive implications (LONG TERM)</strong> — Link to strategic role and business goals.</td>
+</tr>
+<tr>
+<td><strong>Paragraph 4</strong></td>
+<td><strong>Negative implications</strong> — Point out an issue.</td>
+</tr>
+</tbody></table>
+<p><strong>Conclusion</strong>: 1–2 summary sentences per body paragraph (including case study).</p>
+<h3 id="6-3-to-get-12-marks-20-mark-questions">6.3 To Get 12+ Marks (20-mark questions)</h3>
+<ul>
+<li>At least ONE paragraph on SWOT <strong>and</strong> one on Product Life Cycle</li>
+<li>SWOT: 2 body paragraphs — choose ONE part, do at least 2 examples</li>
+<li>Product Life Cycle: 1 body paragraph — show how ONE strategy changes through the PLC</li>
+</ul>
+<blockquote>
+<p>Full guides: <a href="Section_IV_Extended_Response.html">Section IV Extended Response</a> · <a href="Section_III_Business_Report.html">Section III Business Report</a> · <a href="Marketing_Universal_Essay.html">Marketing Universal Essay</a></p>
+</blockquote>
+<hr>
+<h2 id="confusing-pairs-in-this-section">⚠️ Confusing pairs in this section</h2>
+<table>
+<thead>
+<tr>
+<th>Pair</th>
+<th>The tell</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Identifying target markets</strong> (process) vs <strong>segmentation and positioning</strong> (strategy)</td>
+<td>⭐ <strong>Syllabus splits these.</strong> <em>Identifying</em> which group you sell to is <strong>step 4 of the marketing process</strong>. <em>Dividing</em> the market, <em>differentiating</em> the product and <em>positioning</em> it are the <strong>first dot point of marketing strategies</strong>. A &quot;marketing strategies&quot; question expects segmentation; a &quot;marketing process&quot; question expects target market identification</td>
+</tr>
+<tr>
+<td><strong>Segmentation</strong> vs <strong>differentiation</strong> vs <strong>positioning</strong></td>
+<td>Segmentation divides <strong>the market</strong>. Differentiation changes <strong>the product</strong>. Positioning changes <strong>the perception</strong></td>
+</tr>
+<tr>
+<td><strong>Price skimming</strong> vs <strong>Penetration pricing</strong></td>
+<td>Skimming starts <strong>high</strong> and falls. Penetration starts <strong>low</strong> to buy share</td>
+</tr>
+<tr>
+<td><strong>Publicity</strong> vs <strong>Public relations</strong></td>
+<td>Publicity is <strong>free and unplanned</strong>. PR is <strong>planned and managed</strong></td>
+</tr>
+<tr>
+<td><strong>Cost-plus</strong> vs <strong>Competitive</strong> vs <strong>Market-based</strong></td>
+<td>Cost-plus looks at <strong>your costs</strong>. Competitive looks at <strong>rivals</strong>. Market-based looks at <strong>supply and demand</strong></td>
+</tr>
+<tr>
+<td><strong>Selective</strong> vs <strong>Exclusive distribution</strong></td>
+<td>Selective = <strong>several</strong> chosen outlets. Exclusive = <strong>one</strong> outlet per large area</td>
+</tr>
+<tr>
+<td><strong>Standardisation</strong> vs <strong>Customisation</strong></td>
+<td>Standardisation = <strong>same everywhere</strong>. Customisation = <strong>rebuilt per country</strong></td>
+</tr>
+<tr>
+<td><strong>Place</strong> vs <strong>location</strong></td>
+<td>Place means <strong>distribution channels</strong>, not where the shop is. This is the single most misread P</td>
+</tr>
+<tr>
+<td><strong>Loss leader</strong> vs <strong>Penetration pricing</strong></td>
+<td>Loss leader = <strong>one product</strong> below cost to pull traffic. Penetration = <strong>the whole product&#39;s</strong> launch price</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="exam-habits">📝 Exam habits</h2>
+<blockquote>
+<p><strong>Never write about &quot;Place&quot; as if it means location.</strong> It is distribution: channel levels and channel intensity.</p>
+</blockquote>
+<blockquote>
+<p><strong>In a 20-mark answer, name the strategy, then the business, then the outcome.</strong> &quot;Apple uses price skimming&quot; is 1 mark. &quot;Apple uses price skimming, launching the Pro Max at $2,199 before reducing it once competitors respond, which maximises revenue from early adopters&quot; is the full mark.</p>
+</blockquote>
+<hr>
+<h2 id="definitions-to-quote">📖 Definitions to quote</h2>
+<table>
+<thead>
+<tr>
+<th>Term</th>
+<th>Definition</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Marketing mix</strong></td>
+<td>The combination of product, price, promotion and place used to achieve marketing objectives</td>
+</tr>
+<tr>
+<td><strong>Brand</strong></td>
+<td>A name, term, symbol or design identifying a product and distinguishing it from competitors</td>
+</tr>
+<tr>
+<td><strong>Price skimming</strong></td>
+<td>Charging the highest possible price for a new or innovative product during the introduction stage before competitors enter</td>
+</tr>
+<tr>
+<td><strong>Penetration pricing</strong></td>
+<td>Charging the lowest price that still covers costs in order to gain market share quickly</td>
+</tr>
+<tr>
+<td><strong>Loss leader</strong></td>
+<td>Selling a product below cost price to attract customers who will also buy higher-margin items</td>
+</tr>
+<tr>
+<td><strong>Publicity</strong></td>
+<td>Free news or media coverage about a business&#39;s products</td>
+</tr>
+<tr>
+<td><strong>Public relations</strong></td>
+<td>Planned activities aimed at creating and maintaining favourable relationships with stakeholders</td>
+</tr>
+<tr>
+<td><strong>E-marketing</strong></td>
+<td>Internet marketing, allowing a business with online operations to reach a global audience</td>
+</tr>
+<tr>
+<td><strong>Standardisation</strong></td>
+<td>Using the same marketing strategy in every global market with only minor adjustments</td>
+</tr>
+</tbody></table>
+<hr>
+<blockquote>
+<p><strong>Back to:</strong> <a href="Marketing__Marketing_1_Role.html">① Role</a> · <a href="Marketing__Marketing_FULL.html">📕 Full note</a> · Drill sheet: <a href="Confusing_Pairs.html">Confusing Pairs</a> · <a href="MOC.html">MOC</a></p>
+</blockquote>
+</article></main></div><nav class="rail" aria-label="On this page"><div class="rail-title">On this page</div><ul><li><a href="#1-market-segmentation-differentiation-and-positioning" data-target="1-market-segmentation-differentiation-and-positioning">1. Market Segmentation, Differentiation and Positioning</a><ul class="sub"><li><a href="#1-1-market-segmentation" data-target="1-1-market-segmentation" data-parent="1-market-segmentation-differentiation-and-positioning">1.1 Market Segmentation</a></li><li><a href="#1-2-product-service-differentiation" data-target="1-2-product-service-differentiation" data-parent="1-market-segmentation-differentiation-and-positioning">1.2 Product / Service Differentiation</a></li><li><a href="#1-3-positioning" data-target="1-3-positioning" data-parent="1-market-segmentation-differentiation-and-positioning">1.3 Positioning</a></li></ul></li><li><a href="#2-marketing-mix-the-4ps" data-target="2-marketing-mix-the-4ps">2. Marketing Mix — the 4Ps</a><ul class="sub"><li><a href="#2-1-product" data-target="2-1-product" data-parent="2-marketing-mix-the-4ps">2.1 Product</a></li><li><a href="#2-2-price" data-target="2-2-price" data-parent="2-marketing-mix-the-4ps">2.2 Price</a></li><li><a href="#2-3-promotion" data-target="2-3-promotion" data-parent="2-marketing-mix-the-4ps">2.3 Promotion</a></li><li><a href="#2-4-place-distribution" data-target="2-4-place-distribution" data-parent="2-marketing-mix-the-4ps">2.4 Place (Distribution)</a></li></ul></li><li><a href="#3-extended-marketing-mix-people-processes-physical-evidence" data-target="3-extended-marketing-mix-people-processes-physical-evidence">3. Extended Marketing Mix — People, Processes, Physical Evidence</a></li><li><a href="#4-e-marketing" data-target="4-e-marketing">4. E-Marketing</a><ul class="sub"><li><a href="#4-1-e-marketing-technologies" data-target="4-1-e-marketing-technologies" data-parent="4-e-marketing">4.1 E-Marketing Technologies</a></li><li><a href="#4-2-apple-s-e-marketing-impact-on-the-4ps" data-target="4-2-apple-s-e-marketing-impact-on-the-4ps" data-parent="4-e-marketing">4.2 Apple's E-Marketing Impact on the 4Ps</a></li></ul></li><li><a href="#5-global-marketing-strategies" data-target="5-global-marketing-strategies">5. Global Marketing Strategies</a><ul class="sub"><li><a href="#5-1-global-branding" data-target="5-1-global-branding" data-parent="5-global-marketing-strategies">5.1 Global Branding</a></li><li><a href="#5-2-standardisation-vs-customisation" data-target="5-2-standardisation-vs-customisation" data-parent="5-global-marketing-strategies">5.2 Standardisation vs Customisation</a></li><li><a href="#5-3-global-pricing-strategies" data-target="5-3-global-pricing-strategies" data-parent="5-global-marketing-strategies">5.3 Global Pricing Strategies</a></li><li><a href="#5-4-global-promotional-strategies" data-target="5-4-global-promotional-strategies" data-parent="5-global-marketing-strategies">5.4 Global Promotional Strategies</a></li><li><a href="#5-5-competitive-positioning" data-target="5-5-competitive-positioning" data-parent="5-global-marketing-strategies">5.5 Competitive Positioning</a></li></ul></li><li><a href="#6-section-iv-essay-structures" data-target="6-section-iv-essay-structures">6. Section IV Essay Structures</a><ul class="sub"><li><a href="#6-1-assess-evaluate-explain-the-importance-of-judgement-based" data-target="6-1-assess-evaluate-explain-the-importance-of-judgement-based" data-parent="6-section-iv-essay-structures">6.1 Assess / Evaluate / Explain the Importance of (Judgement-Based)</a></li><li><a href="#6-2-analyse-explain-how-cause-and-effect" data-target="6-2-analyse-explain-how-cause-and-effect" data-parent="6-section-iv-essay-structures">6.2 Analyse / Explain How (Cause-and-Effect)</a></li><li><a href="#6-3-to-get-12-marks-20-mark-questions" data-target="6-3-to-get-12-marks-20-mark-questions" data-parent="6-section-iv-essay-structures">6.3 To Get 12+ Marks (20-mark questions)</a></li></ul></li><li><a href="#confusing-pairs-in-this-section" data-target="confusing-pairs-in-this-section">Confusing pairs in this section</a></li><li><a href="#exam-habits" data-target="exam-habits">Exam habits</a></li><li><a href="#definitions-to-quote" data-target="definitions-to-quote">Definitions to quote</a></li></ul></nav><script>
+function toggleTheme(ev){
+var oldTheme=document.documentElement.getAttribute("data-theme")||"dark";
+var next=oldTheme==="light"?"dark":"light";
+function apply(){document.documentElement.setAttribute("data-theme",next);try{localStorage.setItem("vault-theme",next)}catch(e){}updateThemeIcons(next);}
+var reduced=false;try{reduced=window.matchMedia("(prefers-reduced-motion: reduce)").matches}catch(e){}
+if(reduced){apply();return;}
+if(window.__vaultThemeAnimating){return;}
+window.__vaultThemeAnimating=1;
+var newPaper=next==="light"?"#faf8f2":"#13151b";
+var W=window.innerWidth,H=window.innerHeight;
+var spacing=W<768?36:28;
+var maxR=spacing*0.78;
+var dpr=1;try{dpr=W<768?1:Math.min(window.devicePixelRatio||1,1.5);}catch(e){}
+var canvas=document.createElement("canvas");
+canvas.id="theme-wave";
+canvas.style.cssText="position:fixed;left:0;top:0;width:"+W+"px;height:"+H+"px;z-index:9999;pointer-events:none;";
+canvas.width=Math.round(W*dpr);canvas.height=Math.round(H*dpr);
+var ctx=canvas.getContext("2d");
+try{ctx.setTransform(dpr,0,0,dpr,0,0);}catch(e){}
+ctx.fillStyle=newPaper;
+var dots=[];
+for(var y=spacing/2;y<H+spacing;y+=spacing){for(var x=spacing/2;x<W+spacing;x+=spacing){dots.push({x:x,y:y,delay:(x+y)/(W+H)*450,done:0});}}
+var waveMs=450,growMs=300;
+var start=Date.now();
+function easeOutCubic(p){return 1-Math.pow(1-p,3);}
+function step(){
+var elapsed=Date.now()-start;
+var allDone=true;
+var any=false;
+ctx.beginPath();
+for(var i=0;i<dots.length;i++){
+var d=dots[i];
+if(d.done){continue;}
+var p=(elapsed-d.delay)/growMs;
+if(p<0){allDone=false;continue;}
+if(p<1){allDone=false;}
+else{d.done=1;}
+var r=maxR*easeOutCubic(p<1?p:1);
+if(r>0){ctx.moveTo(d.x+r,d.y);ctx.arc(d.x,d.y,r,0,Math.PI*2);any=true;}
+}
+if(any){ctx.fill();}
+if(!allDone){requestAnimationFrame(step);return;}
+apply();
+canvas.style.transition="opacity 0.15s ease";
+canvas.style.opacity="0";
+setTimeout(function(){window.__vaultThemeAnimating=0;if(canvas.parentNode)canvas.parentNode.removeChild(canvas);},180);
+}
+document.body.appendChild(canvas);
+requestAnimationFrame(step);
+}
+function updateThemeIcons(theme){var icon=theme==="dark"?"☀":"☾";document.querySelectorAll(".theme-btn").forEach(function(b){b.textContent=icon;});}
+try{updateThemeIcons(document.documentElement.getAttribute("data-theme")||"dark");}catch(e){}
+function toggleMenu(force){document.body.classList.toggle("menu-open",force)}
+document.addEventListener("keydown",function(e){if(e.key==="/"&&!/INPUT|TEXTAREA/.test(document.activeElement.tagName)){e.preventDefault();var s=document.querySelector(".side-search");if(s)s.focus()}});
+document.addEventListener("click",function(e){if(e.target.closest(".side a"))toggleMenu(false)});
+(function(){try{
+var links=Array.prototype.slice.call(document.querySelectorAll(".rail a"));
+if(!links.length||!window.IntersectionObserver)return;
+var map={};links.forEach(function(a){map[a.getAttribute("data-target")]=a});
+var obs=new IntersectionObserver(function(es){
+  es.forEach(function(e){
+    if(e.isIntersecting){
+      links.forEach(function(a){a.classList.remove("active");a.classList.remove("parent-active")});
+      var l=map[e.target.id];
+      if(l){l.classList.add("active");var p=l.getAttribute("data-parent");if(p&&map[p])map[p].classList.add("parent-active")}
+    }
+  });
+}, {rootMargin:"-20% 0px -70% 0px"});
+document.querySelectorAll(".prose h2[id], .prose h3[id]").forEach(function(h){obs.observe(h)});
+}catch(e){}})();
+(function(){try{
+var cv=document.getElementById("dotgrid");if(!cv)return;var ctx=cv.getContext("2d");if(!ctx)return;
+var reduced=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+var W=0,H=0,dpr=1,cols=0,rows=0,SP=28,px=0,py=0,pt=0,hasP=false;
+function dotRGB(){try{return getComputedStyle(document.documentElement).getPropertyValue("--dot-rgb").trim()||"233,231,225"}catch(e){return "233,231,225"}}
+function resize(){dpr=Math.min(window.devicePixelRatio||1,window.innerWidth<700?1.5:2);SP=window.innerWidth<700?36:28;W=window.innerWidth;H=window.innerHeight;cv.width=W*dpr;cv.height=H*dpr;cv.style.width=W+"px";cv.style.height=H+"px";ctx.setTransform(dpr,0,0,dpr,0,0);cols=Math.ceil(W/SP)+1;rows=Math.ceil(H/SP)+1}
+var R=Math.random()*Math.PI*2;
+var FORCES=[
+ {ax:.42,ay:.15,tx:26,ty:31,px:R,py:R+1.3,circ:false},
+ {ax:.38,ay:.42,tx:37,ty:23,px:R+2.1,py:R+0.7,circ:false},
+ {ax:.30,ay:.30,tx:41,ty:41,px:R+4.0,py:R+4.0,circ:true}
+];
+function draw(now){var t=now/1000;var rgb=dotRGB();
+var activeForces=W>=1280?FORCES:FORCES.slice(0,1);
+var pFade=hasP?Math.max(0,1-(now-pt)/4000):0;
+ctx.clearRect(0,0,W,H);
+for(var y=0;y<rows;y++)for(var x=0;x<cols;x++){var ox=x*SP+10,oy=y*SP+10,a=0.14,dispX=0,dispY=0;
+for(var fi=0;fi<activeForces.length;fi++){var F=activeForces[fi];
+var fx=F.circ?W*(0.5+F.ax*Math.cos(t*2*Math.PI/F.tx+F.px)):W*(0.5+F.ax*Math.sin(t*2*Math.PI/F.tx+F.px));
+var fy=F.circ?H*(0.5+F.ay*Math.sin(t*2*Math.PI/F.ty+F.py)):H*(0.5+F.ay*Math.sin(t*2*Math.PI/F.ty+F.py));
+var ddx=ox-fx,ddy=oy-fy,d=Math.sqrt(ddx*ddx+ddy*ddy);
+if(d<170&&d>0.01){var f=1-d/170;f=f*f;dispX+=(ddx/d)*6*f;dispY+=(ddy/d)*6*f;a+=0.20*f}}
+var dm=Math.sqrt(dispX*dispX+dispY*dispY);if(dm>9){dispX*=9/dm;dispY*=9/dm}
+var dx=ox+dispX,dy=oy+dispY;if(a>0.38)a=0.38;
+if(pFade>0){var pdx=ox-px,pdy=oy-py,pd=Math.sqrt(pdx*pdx+pdy*pdy);
+if(pd<150&&pd>0.01){var pf=1-pd/150;pf=pf*pf*pFade;dx+=(pdx/pd)*5*pf;dy+=(pdy/pd)*5*pf;a=Math.min(0.38,a+0.18*pf)}}
+ctx.beginPath();ctx.arc(dx,dy,1.3,0,Math.PI*2);ctx.fillStyle="rgba("+rgb+","+a.toFixed(3)+")";ctx.fill()}}
+function loop(now){if(!window.__vaultThemeAnimating)draw(now);if(!reduced)requestAnimationFrame(loop)}
+window.addEventListener("resize",resize);resize();
+window.addEventListener("pointermove",function(e){px=e.clientX;py=e.clientY;pt=performance.now();hasP=true},{passive:true});
+requestAnimationFrame(loop);
+}catch(e){}})();
+</script></body></html>

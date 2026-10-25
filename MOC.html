@@ -1,0 +1,619 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Business Studies — Final Notes — HSC Business Vault</title><style>
+:root{--paper:#faf8f2;--ink:#1e1b16;--muted:#6b655a;--line:#e3ddd0;--accent:#1d4ed8;--card:#fffdf8;--side:#f3efe6;--side-bg:rgba(243,239,230,.88);--active:#e8e0cd;--rail-tint:rgba(29,78,216,.14);--rail-tint-soft:rgba(29,78,216,.07);--code:#efe9db;--quote:#4a4438;--dot-rgb:30,27,22;--scheme:light}
+[data-theme="dark"]{--paper:#13151b;--ink:#e9e7e1;--muted:#9aa0ab;--line:#2b2f3a;--accent:#8ab4ff;--card:#1b1e27;--side:#101218;--side-bg:rgba(16,18,24,.88);--active:#262b38;--rail-tint:rgba(138,180,255,.18);--rail-tint-soft:rgba(138,180,255,.09);--code:#262a36;--quote:#c3c7cf;--dot-rgb:233,231,225;--scheme:dark}
+*{box-sizing:border-box}html{color-scheme:var(--scheme)}body{margin:0;background:var(--paper);color:var(--ink);font:16.5px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;overflow-x:hidden}
+a{color:var(--accent);text-decoration:none;transition:color .18s ease}a:hover{text-decoration:underline}
+#dotgrid{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:0}
+.wrap{position:relative;z-index:1;display:grid;grid-template-columns:280px 1fr;min-height:100vh}
+.side{position:sticky;top:0;height:100vh;overflow:auto;padding:22px 18px;border-right:1px solid var(--line);background:var(--side-bg)}
+.side h3{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:22px 0 6px}
+.side ul{list-style:none;margin:0;padding:0}.side li{margin:3px 0}
+.side a{display:block;padding:7px 10px;border-radius:8px;color:var(--ink);transition:background .18s ease,transform .18s ease}
+.side a.active{background:var(--active);font-weight:600}
+.side a:hover{background:var(--active);text-decoration:none;transform:translateX(3px)}
+.side-head{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.theme-btn{flex:none;width:40px;height:40px;border:1px solid var(--line);border-radius:50%;background:var(--card);color:var(--ink);font-size:18px;cursor:pointer;transition:background .18s ease}
+.theme-btn:hover{background:var(--active)}
+.home-link{font-weight:700;font-size:18px}.side-search{width:100%;margin:14px 0 4px;padding:10px 12px;border:1px solid var(--line);border-radius:8px;background:var(--card);color:var(--ink);font-size:16px}
+.side-note{font-size:12.5px;color:var(--muted);line-height:1.5;margin-top:24px}
+.topbar{display:none}.backdrop{display:none}
+main{padding:36px 44px;max-width:860px}.prose h1{font-size:32px;line-height:1.2;letter-spacing:-.02em;margin:0 0 6px}
+.prose h2{font-size:23px;margin:34px 0 8px;padding-top:14px;border-top:1px solid var(--line)}
+.prose h3{font-size:18px;margin:26px 0 6px}.prose p{margin:10px 0}
+.prose table{border-collapse:collapse;width:100%;margin:14px 0;font-size:14.5px;display:block;overflow-x:auto;-webkit-overflow-scrolling:touch}
+.prose th,.prose td{border:1px solid var(--line);padding:7px 10px;text-align:left;vertical-align:top}
+.prose th{background:var(--side)}.prose blockquote{border-left:3px solid var(--line);margin:14px 0;padding:2px 14px;color:var(--quote);background:var(--card)}
+.prose code{background:var(--code);padding:1px 5px;border-radius:4px;font-size:14px}.prose pre{background:#0d0f14;color:#f5f1e6;padding:14px;border-radius:8px;overflow:auto}
+.prose pre code{background:none;color:inherit;padding:0}.prose hr{border:none;border-top:1px solid var(--line);margin:24px 0}
+.meta{color:var(--muted);font-size:14px;margin-bottom:20px}.toc{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 18px;margin:18px 0}
+.toc b{font-size:13px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}.toc ul{margin:8px 0 0;padding-left:18px}.toc li{margin:3px 0}
+.cards{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:20px 0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 18px;transition:transform .2s ease,border-color .2s ease,box-shadow .2s ease}
+.card:hover{transform:translateY(-3px);border-color:var(--accent);box-shadow:0 8px 24px rgba(0,0,0,.18)}
+.card h3{margin:0 0 4px}.card p{margin:0;color:var(--muted);font-size:14.5px}
+#search{width:100%;padding:13px 14px;font-size:17px;border:1px solid var(--line);border-radius:10px;background:var(--card);color:var(--ink)}
+.result{border-bottom:1px solid var(--line);padding:14px 6px;border-radius:8px;transition:background .18s ease,transform .18s ease}
+.result:hover{background:var(--card);transform:translateX(3px)}
+.result h3{margin:0}.result p{margin:4px 0;color:var(--quote)}.result .path{font-size:13px;color:var(--muted)}
+mark{background:#fde68a;color:#1e1b16;padding:0 1px}
+html{scroll-behavior:smooth}
+.rail{display:none}
+@media(min-width:1280px){
+main{max-width:min(860px,calc(100vw - 692px))}
+.rail{display:block;position:fixed;right:24px;top:50%;transform:translateY(-50%);width:340px;max-height:76vh;overflow:auto;z-index:15;background:none;border:none;box-shadow:none;padding:18px 14px;-webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 36px,#000 calc(100% - 36px),transparent 100%);mask-image:linear-gradient(to bottom,transparent 0,#000 36px,#000 calc(100% - 36px),transparent 100%)}
+.rail-title{font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:2px 0 12px 12px}
+.rail ul{list-style:none;margin:0;padding:0}
+.rail li{margin:3px 0}
+.rail a{display:block;padding:11px 14px;border-radius:10px;color:var(--ink);font-size:17px;line-height:1.4;transition:transform .2s ease,background .2s ease}
+.rail a:hover,.rail a:focus-visible{background:var(--rail-tint-soft);transform:translateX(-4px) scale(1.02);text-decoration:none}
+.rail a.active{background:var(--rail-tint);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);font-weight:600;transform:translateX(-12px);width:calc(100% + 12px)}
+.rail a.parent-active{background:var(--rail-tint-soft)}
+.rail ul.sub{margin:3px 0 3px 14px;padding-left:14px;border-left:1px solid var(--line)}
+.rail ul.sub a{padding:9px 12px;font-size:15px;color:var(--muted)}
+.rail ul.sub a:hover{color:var(--ink)}
+.rail ul.sub a.active{color:var(--ink);transform:translateX(-8px);width:calc(100% + 8px)}
+}
+@media(max-width:900px){
+.topbar{display:flex;position:sticky;top:0;z-index:20;align-items:center;gap:10px;padding:12px 14px;background:var(--side);border-bottom:1px solid var(--line)}
+.topbar b{flex:1;font-size:17px}.menu-btn,.topbar .theme-btn{width:44px;height:44px;border:1px solid var(--line);border-radius:10px;background:var(--card);color:var(--ink);font-size:19px;cursor:pointer}
+.wrap{grid-template-columns:1fr}
+.wrap{z-index:auto}
+.side{background:var(--side)}
+.side a{padding:11px 12px}
+body.menu-open{overflow:hidden}
+.side{position:fixed;inset:0 auto 0 0;width:300px;max-width:86vw;height:100dvh;z-index:30;transform:translateX(-105%);transition:transform .25s ease;box-shadow:0 0 40px rgba(0,0,0,.4)}
+body.menu-open .side{transform:translateX(0)}
+.backdrop{display:none}body.menu-open .backdrop{display:block;position:fixed;inset:0;z-index:25;background:rgba(0,0,0,.45)}
+main{padding:22px 16px}.prose h1{font-size:26px}.prose h2{font-size:21px}.cards{grid-template-columns:1fr}
+.prose table{font-size:14px}.prose pre{font-size:13.5px}
+}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}html{scroll-behavior:auto}}
+</style><script>(function(){try{var t=localStorage.getItem("vault-theme")||"dark";document.documentElement.setAttribute("data-theme",t)}catch(e){document.documentElement.setAttribute("data-theme","dark")}})()</script></head><body><canvas id="dotgrid" aria-hidden="true"></canvas><header class="topbar"><button class="menu-btn" type="button" onclick="toggleMenu()" aria-label="Open notes menu">☰</button><b>Business Vault</b><button class="theme-btn" type="button" onclick="toggleTheme(event)" aria-label="Toggle dark / light mode">◐</button></header><div class="backdrop" onclick="toggleMenu(false)"></div><div class="wrap"><nav class="side" id="side"><div class="side-head"><a class="home-link" href="index.html">⌂ Vault home</a><button class="theme-btn" type="button" onclick="toggleTheme(event)" aria-label="Toggle dark / light mode">◐</button></div><input class="side-search" type="search" placeholder="Search notes…  ( / )" onkeydown="if(event.key==='Enter'){location.href='index.html?q='+encodeURIComponent(this.value)}"><h3>Operations</h3><ul><li><a class="" href="Operations__Operations_1_Role.html">1 Role</a></li><li><a class="" href="Operations__Operations_2_Influences.html">2 Influences</a></li><li><a class="" href="Operations__Operations_3_Processes.html">3 Processes</a></li><li><a class="" href="Operations__Operations_4_Strategies.html">4 Strategies</a></li><li><a class="" href="Operations__Operations_Syllabus_Summary.html">Syllabus Summary</a></li><li><a class="" href="Operations__Operations_FULL.html">FULL</a></li></ul><h3>Marketing</h3><ul><li><a class="" href="Marketing__Marketing_1_Role.html">1 Role</a></li><li><a class="" href="Marketing__Marketing_2_Influences.html">2 Influences</a></li><li><a class="" href="Marketing__Marketing_3_Processes.html">3 Processes</a></li><li><a class="" href="Marketing__Marketing_4_Strategies.html">4 Strategies</a></li><li><a class="" href="Marketing__Marketing_Syllabus_Summary.html">Syllabus Summary</a></li><li><a class="" href="Marketing__Marketing_FULL.html">FULL</a></li></ul><h3>Finance</h3><ul><li><a class="" href="Finance__Finance_1_Role.html">1 Role</a></li><li><a class="" href="Finance__Finance_2_Influences.html">2 Influences</a></li><li><a class="" href="Finance__Finance_3_Processes.html">3 Processes</a></li><li><a class="" href="Finance__Finance_4_Strategies.html">4 Strategies</a></li><li><a class="" href="Finance__Finance_Syllabus_Summary.html">Syllabus Summary</a></li><li><a class="" href="Finance__Finance_FULL.html">FULL</a></li></ul><h3>Human Resources</h3><ul><li><a class="" href="Human_Resources__Human_Resources_1_Role.html">1 Role</a></li><li><a class="" href="Human_Resources__Human_Resources_2_Influences.html">2 Influences</a></li><li><a class="" href="Human_Resources__Human_Resources_3_Processes.html">3 Processes</a></li><li><a class="" href="Human_Resources__Human_Resources_4_Strategies.html">4 Strategies</a></li><li><a class="" href="Human_Resources__Human_Resources_Syllabus_Summary.html">Syllabus Summary</a></li><li><a class="" href="Human_Resources__Human_Resources_FULL.html">FULL</a></li></ul><h3>Exam &amp; revision</h3><ul><li><a class="active" href="MOC.html">Final Notes</a></li><li><a class="" href="Case_Study_Stats_Sheet.html">Business Studies Case Study Stats Sheet</a></li><li><a class="" href="Case_Studies.html">Case Studies — HSC Business Studies Final Notes</a></li><li><a class="" href="Confusing_Pairs.html">Confusing Pairs — MCQ Drill Sheet</a></li><li><a class="" href="Crichton_Office_Supplies_Report_and_Apple_Marketing_Essay.html">Crichton Office Supplies Report and Apple Marketing Essay</a></li><li><a class="" href="Trial_Practice_Killara_2022.html">Killara 2022 Trial — Marked Paper and Model Answers</a></li><li><a class="" href="McDonalds_Case_Study.html">McDonald's Case Study — Section IV Essay Resource</a></li><li><a class="" href="Section_III_Business_Report.html">Section III — How to Write the Business Report</a></li><li><a class="" href="Section_IV_Extended_Response.html">Section IV — How to Write the Extended Response</a></li><li><a class="" href="Marketing_Universal_Essay.html">Universal Marketing Essay — McDonald's Case Study</a></li><li><a class="" href="Finance_Management.html">Finance (moved)</a></li><li><a class="" href="Human_Resources.html">Human Resources (moved)</a></li><li><a class="" href="Marketing.html">Marketing (moved)</a></li><li><a class="" href="Operations.html">Operations (moved)</a></li></ul><p class="side-note">Source: TheSashi HSC Business Studies Notes, Final folder. Cloned 25 Oct 2026. Plus one added McDonald's note (see Exam & revision).</p></nav><main><article class="prose"><h1>Business Studies — Final Notes</h1><p class="meta">Exam &amp; revision · MOC.md</p><div class="toc"><b>On this page</b><ul><li><a href="#the-four-modules">The Four Modules</a></li><li><a href="#syllabus-check-where-each-dot-point-actually-sits">Syllabus Check — where each dot point actually sits</a></li><li><a href="#hsc-monday-26-october-2026-9-25am-12-30pm">HSC — Monday 26 October 2026, 9:25am–12:30pm</a></li><li><a href="#quick-formulas-finance">Quick Formulas — Finance</a></li><li><a href="#the-three-financial-statements">The Three Financial Statements</a></li><li><a href="#the-verbs">The Verbs</a></li><li><a href="#exam-tips">Exam Tips</a></li><li><a href="#cross-topic-threads">Cross-Topic Threads</a></li></ul></div><h1>Business Studies — Final Notes</h1>
+<blockquote>
+<p><strong>Exam-ready</strong> revision material for HSC Business Studies. Each module is a folder split by syllabus section — <strong>Role → Influences → Processes → Strategies</strong> — with a <code>_FULL</code> note holding the whole module plus worked examples, case studies, confusing pairs and a definitions table. For raw research, see the Brain vault.</p>
+</blockquote>
+<blockquote>
+<p>ℹ️ <code>Marketing.md</code>, <code>Operations.md</code>, <code>Finance_Management.md</code> and <code>Human_Resources.md</code> at the top level are <strong>redirect stubs</strong> left behind so old links still work. Delete them whenever you like.</p>
+</blockquote>
+<hr>
+<h2 id="the-four-modules">The Four Modules</h2>
+<blockquote>
+<p><strong>Every module is one folder with five files.</strong> The four numbered files split the module by syllabus section — <strong>Role → Influences → Processes → Strategies</strong>. The <code>_FULL</code> file is the same content in one document, plus the case studies, essay scaffolds and glossaries.</p>
+<p>Revising one dot point? Open the numbered file. Revising the whole topic? Open <code>_FULL</code>.</p>
+</blockquote>
+<h3 id="1-operations-operations">1. ⚙️ Operations — <code>Operations/</code></h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>📕</td>
+<td><a href="Operations__Operations_FULL.html">Operations FULL</a></td>
+<td>Everything, plus the Apple case study, essay structures, pitfalls and glossary</td>
+</tr>
+<tr>
+<td>①</td>
+<td><a href="Operations__Operations_1_Role.html">Operations 1 Role</a></td>
+<td>Transformation and value adding · cost leadership vs differentiation · goods vs services</td>
+</tr>
+<tr>
+<td>②</td>
+<td><a href="Operations__Operations_2_Influences.html">Operations 2 Influences</a></td>
+<td>The seven influences · <strong>the ten Acts, what each requires and who enforces it</strong> · CSR</td>
+</tr>
+<tr>
+<td>③</td>
+<td><a href="Operations__Operations_3_Processes.html">Operations 3 Processes</a></td>
+<td>Inputs · the 4 Vs · layout · monitoring and control · <strong>worked critical path analysis and Gantt</strong></td>
+</tr>
+<tr>
+<td>④</td>
+<td><a href="Operations__Operations_4_Strategies.html">Operations 4 Strategies</a></td>
+<td>Performance objectives · supply chain · outsourcing · <strong>JIT/JIC vs worked FIFO/LIFO</strong> · quality · change · global</td>
+</tr>
+</tbody></table>
+<h3 id="2-marketing-marketing">2. 📣 Marketing — <code>Marketing/</code></h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>📕</td>
+<td><a href="Marketing__Marketing_FULL.html">Marketing FULL</a></td>
+<td>Everything, plus the McDonald&#39;s case study, worked HSC paragraphs and glossary</td>
+</tr>
+<tr>
+<td>①</td>
+<td><a href="Marketing__Marketing_1_Role.html">Marketing 1 Role</a></td>
+<td>Strategic role · marketing plan · approaches · types of markets and segments</td>
+</tr>
+<tr>
+<td>②</td>
+<td><a href="Marketing__Marketing_2_Influences.html">Marketing 2 Influences</a></td>
+<td>Customer choice (psychological, sociocultural, economic, government) · ethics · <strong>consumer law and the ACCC</strong></td>
+</tr>
+<tr>
+<td>③</td>
+<td><a href="Marketing__Marketing_3_Processes.html">Marketing 3 Processes</a></td>
+<td>The six steps · <strong>SWOT and product life cycle</strong> · market research · objectives · target markets · positioning</td>
+</tr>
+<tr>
+<td>④</td>
+<td><a href="Marketing__Marketing_4_Strategies.html">Marketing 4 Strategies</a></td>
+<td><strong>The 4 Ps and extended 3 Ps</strong> · e-marketing · global marketing · Section IV structures</td>
+</tr>
+</tbody></table>
+<h3 id="3-finance-finance">3. 💰 Finance — <code>Finance/</code></h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>📕</td>
+<td><a href="Finance__Finance_FULL.html">Finance FULL</a></td>
+<td>Everything, plus the ratio scaffold, pitfalls and glossary</td>
+</tr>
+<tr>
+<td>①</td>
+<td><a href="Finance__Finance_1_Role.html">Finance 1 Role</a></td>
+<td>Strategic role · <strong>the five objectives</strong> · interdependence</td>
+</tr>
+<tr>
+<td>②</td>
+<td><a href="Finance__Finance_2_Influences.html">Finance 2 Influences</a></td>
+<td><strong>Sources of finance</strong> (internal, debt, equity) · institutions · primary vs secondary market · government · global</td>
+</tr>
+<tr>
+<td>③</td>
+<td><a href="Finance__Finance_3_Processes.html">Finance 3 Processes</a></td>
+<td>Planning · debt vs equity · matching principle · <strong>the three statements</strong> · <strong>the seven ratios worked</strong> · limitations · ethics</td>
+</tr>
+<tr>
+<td>④</td>
+<td><a href="Finance__Finance_4_Strategies.html">Finance 4 Strategies</a></td>
+<td>Cash flow · working capital · profitability and <strong>break-even</strong> · <strong>global finance, hedging and derivatives</strong></td>
+</tr>
+</tbody></table>
+<h3 id="4-human-resources-human-resources">4. 👥 Human Resources — <code>Human_Resources/</code></h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>📕</td>
+<td><a href="Human_Resources__Human_Resources_FULL.html">Human Resources FULL</a></td>
+<td>Everything, plus answer structures, pitfalls and glossary</td>
+</tr>
+<tr>
+<td>①</td>
+<td><a href="Human_Resources__Human_Resources_1_Role.html">Human Resources 1 Role</a></td>
+<td>Strategic role · outsourcing and contractors · stakeholders</td>
+</tr>
+<tr>
+<td>②</td>
+<td><a href="Human_Resources__Human_Resources_2_Influences.html">Human Resources 2 Influences</a></td>
+<td>The six influences · <strong>the legal framework</strong> · awards vs agreements · termination and unfair dismissal</td>
+</tr>
+<tr>
+<td>③</td>
+<td><a href="Human_Resources__Human_Resources_3_Processes.html">Human Resources 3 Processes</a></td>
+<td><strong>The HR cycle</strong> — acquisition → development → maintenance → separation</td>
+</tr>
+<tr>
+<td>④</td>
+<td><a href="Human_Resources__Human_Resources_4_Strategies.html">Human Resources 4 Strategies</a></td>
+<td>The eight strategies · motivation theories · <strong>the seven effectiveness indicators and the strategy → indicator map</strong></td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="syllabus-check-where-each-dot-point-actually-sits">✅ Syllabus Check — where each dot point actually sits</h2>
+<blockquote>
+<p>Verified against the <strong>NSW Business Studies Stage 6 Syllabus (2010)</strong>, §10.1–10.4, on <strong>15 September 2026</strong>. If a placement ever looks wrong, this table is the answer.</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Module</th>
+<th>① Role</th>
+<th>② Influences</th>
+<th>③ Processes</th>
+<th>④ Strategies</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Operations</strong></td>
+<td>Strategic role · goods/services · interdependence</td>
+<td>The 7 influences · CSR</td>
+<td>Inputs · transformation (4 Vs, sequencing &amp; scheduling, technology/task design/layout, <strong>monitoring, control and improvement</strong>) · outputs</td>
+<td>Performance objectives · new product design · supply chain · outsourcing · technology · inventory · <strong>quality management (control, assurance, improvement)</strong> · resistance to change · global</td>
+</tr>
+<tr>
+<td><strong>Marketing</strong></td>
+<td>Strategic role · interdependence · approaches · types of markets</td>
+<td>Customer choice · consumer laws · ethical</td>
+<td>Situational analysis · market research · objectives · <strong>identifying target markets</strong> · developing strategies · implementation, monitoring &amp; controlling</td>
+<td><strong>Segmentation, differentiation &amp; positioning</strong> · product · price · promotion · place · people/processes/physical evidence · e-marketing · global</td>
+</tr>
+<tr>
+<td><strong>Finance</strong></td>
+<td>Strategic role · the 5 objectives · interdependence</td>
+<td>Internal &amp; external sources · institutions · government · global</td>
+<td>Planning &amp; implementing · <strong>monitoring and controlling (the 3 statements)</strong> · ratios · <strong>comparative ratio analysis</strong> · limitations · ethics</td>
+<td>Cash flow · working capital · profitability · global</td>
+</tr>
+<tr>
+<td><strong>HR</strong></td>
+<td>Strategic role · interdependence · outsourcing</td>
+<td><strong>Stakeholders</strong> · legal · economic · technological · social · ethics &amp; CSR</td>
+<td>Acquisition · development · maintenance · separation</td>
+<td>Leadership · job design · recruitment · training &amp; development · performance management · rewards · global · workplace disputes · <strong>+ effectiveness indicators (own 5th heading)</strong></td>
+</tr>
+</tbody></table>
+<h3 id="the-three-placements-that-catch-people">The three placements that catch people</h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Where it feels like it goes</th>
+<th>Where the syllabus puts it</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Monitoring, control and improvement</strong></td>
+<td>Strategies</td>
+<td><strong>Operations PROCESSES</strong> — because <em>&quot;quality management: control, assurance, improvement&quot;</em> is separately a strategy, the same words appear twice</td>
+</tr>
+<tr>
+<td><strong>Market segmentation and positioning</strong></td>
+<td>The marketing process (next to target markets)</td>
+<td><strong>Marketing STRATEGIES</strong> — only <em>identifying</em> target markets is a process step</td>
+</tr>
+<tr>
+<td><strong>Stakeholders</strong></td>
+<td>Role of HRM</td>
+<td><strong>HR INFLUENCES</strong> — it&#39;s the first dot point there</td>
+</tr>
+</tbody></table>
+<hr>
+<h3 id="5-case-studies">5. <a href="Case_Studies.html">Case Studies</a></h3>
+<p>Apple Inc., McDonald&#39;s Corporation, Perfect Fresh Pty Ltd. Financial data, analysis and model answers.</p>
+<h3 id="5a-case-study-stats-sheet">5a. <a href="Case_Study_Stats_Sheet.html">Case Study Stats Sheet</a></h3>
+<p>📊 <strong>One compact table for Apple, McDonald’s and Xiaomi.</strong> FY2025 finance, marketing, operations and HR evidence, with sources and dates.</p>
+<h3 id="6-section-iii-business-report">6. <a href="Section_III_Business_Report.html">Section III Business Report</a></h3>
+<p>📋 <strong>How to write the business report.</strong> Marking criteria, the heading trick, executive summary formula, recommendation shape, and both worked examples — the teacher-marked Jumbo Movies report and your full-marks Apple finance report.</p>
+<h3 id="7-section-iv-extended-response">7. <a href="Section_IV_Extended_Response.html">Section IV Extended Response</a></h3>
+<p>📝 <strong>How to write the extended response.</strong> The two verb scaffolds from your teacher&#39;s handout, an annotated full-marks HSC paragraph, the marker&#39;s own reasons for awarding 2/2 and 4/4, and the case study figures worth memorising.</p>
+<h3 id="8-confusing-pairs">8. <a href="Confusing_Pairs.html">Confusing Pairs</a></h3>
+<p>⚠️ <strong>Drill this before every exam.</strong> Every &quot;terms students mix up&quot; pair from all four topics, in one place, with the single distinguishing tell for each. Opens with the <strong>eight pairs you have actually got wrong</strong> in trials, and closes with a 40-item self-test and an MCQ reading method.</p>
+<h3 id="9-trial-practice-killara-2022">9. <a href="Trial_Practice_Killara_2022.html">Trial Practice Killara 2022</a></h3>
+<p>✅ <strong>Teacher-marked</strong> Killara 2022 trial — <strong>16/20 MCQ · 35/40 short answer · 16–17/20 report · 84% overall</strong>. Answer key with explanations for the four MCQs missed, the teacher&#39;s margin notes on every part, corrected model answers, the <strong>Jumbo Movies business report</strong> (751 words), and the Section III report template.</p>
+<h3 id="10-question-image-answers">10. Question Image Answers</h3>
+<p><a href="Crichton_Office_Supplies_Report_and_Apple_Marketing_Essay.html">Crichton Office Supplies Report and Apple Marketing Essay</a>: Q25 Crichton Office Supplies report and Q27 Apple marketing essay from the supplied images.</p>
+<hr>
+<h2 id="hsc-monday-26-october-2026-9-25am-12-30pm">🚨 HSC — Monday 26 October 2026, 9:25am–12:30pm</h2>
+<p>✅ <strong>The whole course is examinable.</strong> The trial (5 Aug) excluded HR Strategies and HR Effectiveness Indicators. <strong>That exclusion has expired</strong> — <a href="Human_Resources__Human_Resources_4_Strategies.html">Human Resources 4 Strategies</a> is back in scope and is where most HR marks sit.</p>
+<table>
+<thead>
+<tr>
+<th>Section</th>
+<th>Marks</th>
+<th>Time</th>
+<th>Format</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>I</strong> Multiple choice</td>
+<td>20</td>
+<td>~25 min</td>
+<td>20 × 1 mark</td>
+</tr>
+<tr>
+<td><strong>II</strong> Short answer</td>
+<td>40</td>
+<td>~75 min</td>
+<td>5–6 questions, multiple parts</td>
+</tr>
+<tr>
+<td><strong>III</strong> Extended response</td>
+<td>20</td>
+<td>~40 min</td>
+<td>Choose 1 → <a href="Section_III_Business_Report.html">Section III Business Report</a></td>
+</tr>
+<tr>
+<td><strong>IV</strong> Extended response</td>
+<td>20</td>
+<td>~40 min</td>
+<td>Choose 1 → <a href="Section_IV_Extended_Response.html">Section IV Extended Response</a></td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td><strong>80</strong></td>
+<td><strong>~180 min</strong></td>
+<td></td>
+</tr>
+</tbody></table>
+<p><strong>Topics:</strong> Operations · Marketing · Finance · HR</p>
+<blockquote>
+<p><strong>Bring figures.</strong> Section IV rewards case study data — <a href="Case_Study_Stats_Sheet.html">Case Study Stats Sheet</a>. Every stat needs a year.</p>
+</blockquote>
+<blockquote>
+<p><strong>Two habits that have cost you marks across two trials:</strong></p>
+<ol>
+<li><strong>Use the benchmark printed in the stimulus.</strong> If the paper gives an industry average, it beats the generic range.</li>
+<li><strong>Seven of your eight MCQ errors were the right dot point, wrong member of the pair.</strong> Drill <a href="Confusing_Pairs.html">Confusing Pairs</a>.</li>
+</ol>
+</blockquote>
+<hr>
+<h2 id="quick-formulas-finance">Quick Formulas — Finance</h2>
+<blockquote>
+<p>Full worked examples in <a href="Finance__Finance_3_Processes.html">Finance 3 Processes</a> §5.</p>
+</blockquote>
+<pre><code>LIQUIDITY
+  Current Ratio        = Current Assets / Current Liabilities        ideal 2:1
+
+SOLVENCY
+  Gearing Ratio        = Total Liabilities / Owners&#39; Equity          ideal 0.5:1 to 1:1
+
+PROFITABILITY
+  Gross Profit Ratio   = (Gross Profit / Sales) x 100                higher is better
+  Net Profit Ratio     = (Net Profit / Sales) x 100                  higher is better
+  Return on Owners&#39;    = (Net Profit / Owners&#39; Equity) x 100         higher is better
+    Equity
+
+EFFICIENCY
+  Expense Ratio        = (Total Expenses / Sales) x 100              lowest possible
+  Accounts Receivable  = Step 1: Sales / Accounts Receivable
+    Turnover             Step 2: 365 / Step 1 answer                 ideal 30 days
+
+BREAK-EVEN
+  Break-Even (units)   = Fixed Costs / (Selling Price - Variable Cost)
+  Contribution         = Selling Price - Variable Cost per unit
+  Margin of Safety     = Actual sales - Break-even sales
+</code></pre>
+<h2 id="the-three-financial-statements">The Three Financial Statements</h2>
+<pre><code>CASH FLOW STATEMENT
+  Opening Cash Balance + Cash Receipts - Cash Payments = Closing Cash Balance
+
+INCOME STATEMENT
+  Sales
+  Less Sales Returns
+  = NET SALES
+  Less COGS  (Opening Stock + Purchases - Closing Stock)
+  = GROSS PROFIT
+  Less Expenses  (selling + administrative + financial)
+  = NET PROFIT
+
+  Check:  Gross Profit Ratio - Expense Ratio = Net Profit Ratio
+
+BALANCE SHEET
+  Owners&#39; Equity = Assets (Current + Non-Current) - Liabilities (Current + Non-Current)
+</code></pre>
+<hr>
+<h2 id="the-verbs">The Verbs</h2>
+<table>
+<thead>
+<tr>
+<th>Verb</th>
+<th>What to do</th>
+<th>Marks guide</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Identify / State</strong></td>
+<td>Name it — no explanation</td>
+<td>1–2</td>
+</tr>
+<tr>
+<td><strong>Outline</strong></td>
+<td>Sketch in general terms</td>
+<td>2–3</td>
+</tr>
+<tr>
+<td><strong>Describe</strong></td>
+<td>Features and characteristics</td>
+<td>2–3</td>
+</tr>
+<tr>
+<td><strong>Distinguish</strong></td>
+<td>Differences between two things</td>
+<td>3–4</td>
+</tr>
+<tr>
+<td><strong>Explain</strong></td>
+<td>Cause and effect — how and why</td>
+<td>3–4</td>
+</tr>
+<tr>
+<td><strong>Analyse</strong></td>
+<td>Relationships and implications</td>
+<td>4–6</td>
+</tr>
+<tr>
+<td><strong>Discuss</strong></td>
+<td>For and against, then judgement</td>
+<td>5–6</td>
+</tr>
+<tr>
+<td><strong>Assess / Evaluate</strong></td>
+<td>Weighted judgement with evidence</td>
+<td>7–8</td>
+</tr>
+<tr>
+<td><strong>Recommend</strong></td>
+<td>Course of action with justification</td>
+<td>7–8</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="exam-tips">Exam Tips</h2>
+<ol>
+<li><strong>Always apply theory to a case study</strong> — Apple, McDonald&#39;s, BYD.</li>
+<li><strong>Use specific data</strong> — ratios, figures, percentages, dates.</li>
+<li><strong>Show interdependence</strong> between the four functions.</li>
+<li><strong>Interpret, don&#39;t just calculate</strong> — a ratio means nothing without a judgement on it.</li>
+<li><strong>Link back to the strategic role</strong> — cost leadership/differentiation (Ops), profit maximisation (Marketing), the five objectives (Finance), effectiveness indicators (HR).</li>
+<li><strong>Know your verbs</strong> and match answer length to marks.</li>
+</ol>
+<hr>
+<h2 id="cross-topic-threads">Cross-Topic Threads</h2>
+<p>Top-band answers integrate across topics. These are the highest-value links.</p>
+<table>
+<thead>
+<tr>
+<th>Thread</th>
+<th>Where it connects</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>JIT inventory</strong></td>
+<td><a href="Operations__Operations_4_Strategies.html">Operations 4 Strategies</a> (management strategy) → <a href="Finance__Finance_4_Strategies.html">Finance 4 Strategies</a> (frees working capital, improves liquidity)</td>
+</tr>
+<tr>
+<td><strong>Interdependence</strong></td>
+<td>Every module&#39;s ① Role file — required in almost every extended response</td>
+</tr>
+<tr>
+<td><strong>Globalisation</strong></td>
+<td><a href="Operations__Operations_4_Strategies.html">Operations 4 Strategies</a> (global sourcing) · <a href="Marketing__Marketing_4_Strategies.html">Marketing 4 Strategies</a> (standardisation vs customisation) · <a href="Finance__Finance_4_Strategies.html">Finance 4 Strategies</a> (exchange rates, hedging) · <a href="Human_Resources__Human_Resources_4_Strategies.html">Human Resources 4 Strategies</a> (global HR)</td>
+</tr>
+<tr>
+<td><strong>Technology</strong></td>
+<td>Influences all four functions — automation, e-marketing, HRIS, e-procurement. Each module&#39;s ② Influences file</td>
+</tr>
+<tr>
+<td><strong>Cost leadership</strong></td>
+<td><a href="Operations__Operations_1_Role.html">Operations 1 Role</a> (strategic role) → <a href="Finance__Finance_4_Strategies.html">Finance 4 Strategies</a> (cost controls, expense ratio)</td>
+</tr>
+<tr>
+<td><strong>Training</strong></td>
+<td><a href="Human_Resources__Human_Resources_3_Processes.html">Human Resources 3 Processes</a> (development) → <a href="Operations__Operations_4_Strategies.html">Operations 4 Strategies</a> (quality, productivity) → <a href="Finance__Finance_4_Strategies.html">Finance 4 Strategies</a> (cost vs return)</td>
+</tr>
+<tr>
+<td><strong>Ethics and CSR</strong></td>
+<td><a href="Operations__Operations_2_Influences.html">Operations 2 Influences</a> (triple bottom line) · <a href="Marketing__Marketing_2_Influences.html">Marketing 2 Influences</a> (deceptive conduct) · <a href="Finance__Finance_3_Processes.html">Finance 3 Processes</a> (window dressing) · <a href="Human_Resources__Human_Resources_2_Influences.html">Human Resources 2 Influences</a> (fair treatment)</td>
+</tr>
+<tr>
+<td><strong>Legislation</strong></td>
+<td><a href="Operations__Operations_2_Influences.html">Operations 2 Influences</a> (the ten Acts) · <a href="Marketing__Marketing_2_Influences.html">Marketing 2 Influences</a> (Competition and Consumer Act) · <a href="Human_Resources__Human_Resources_2_Influences.html">Human Resources 2 Influences</a> (Fair Work Act, WHS)</td>
+</tr>
+</tbody></table>
+</article></main></div><nav class="rail" aria-label="On this page"><div class="rail-title">On this page</div><ul><li><a href="#the-four-modules" data-target="the-four-modules">The Four Modules</a><ul class="sub"><li><a href="#1-operations-operations" data-target="1-operations-operations" data-parent="the-four-modules">1. ⚙️ Operations — Operations/</a></li><li><a href="#2-marketing-marketing" data-target="2-marketing-marketing" data-parent="the-four-modules">2. 📣 Marketing — Marketing/</a></li><li><a href="#3-finance-finance" data-target="3-finance-finance" data-parent="the-four-modules">3. 💰 Finance — Finance/</a></li><li><a href="#4-human-resources-human-resources" data-target="4-human-resources-human-resources" data-parent="the-four-modules">4. 👥 Human Resources — Human Resources/</a></li></ul></li><li><a href="#syllabus-check-where-each-dot-point-actually-sits" data-target="syllabus-check-where-each-dot-point-actually-sits">Syllabus Check — where each dot point actually sits</a><ul class="sub"><li><a href="#the-three-placements-that-catch-people" data-target="the-three-placements-that-catch-people" data-parent="syllabus-check-where-each-dot-point-actually-sits">The three placements that catch people</a></li><li><a href="#5-case-studies" data-target="5-case-studies" data-parent="syllabus-check-where-each-dot-point-actually-sits">5. Case Studies</a></li><li><a href="#5a-case-study-stats-sheet" data-target="5a-case-study-stats-sheet" data-parent="syllabus-check-where-each-dot-point-actually-sits">5a. Case Study Stats Sheet</a></li><li><a href="#6-section-iii-business-report" data-target="6-section-iii-business-report" data-parent="syllabus-check-where-each-dot-point-actually-sits">6. Section III Business Report</a></li><li><a href="#7-section-iv-extended-response" data-target="7-section-iv-extended-response" data-parent="syllabus-check-where-each-dot-point-actually-sits">7. Section IV Extended Response</a></li><li><a href="#8-confusing-pairs" data-target="8-confusing-pairs" data-parent="syllabus-check-where-each-dot-point-actually-sits">8. Confusing Pairs</a></li><li><a href="#9-trial-practice-killara-2022" data-target="9-trial-practice-killara-2022" data-parent="syllabus-check-where-each-dot-point-actually-sits">9. Trial Practice Killara 2022</a></li><li><a href="#10-question-image-answers" data-target="10-question-image-answers" data-parent="syllabus-check-where-each-dot-point-actually-sits">10. Question Image Answers</a></li></ul></li><li><a href="#hsc-monday-26-october-2026-9-25am-12-30pm" data-target="hsc-monday-26-october-2026-9-25am-12-30pm">HSC — Monday 26 October 2026, 9:25am–12:30pm</a></li><li><a href="#quick-formulas-finance" data-target="quick-formulas-finance">Quick Formulas — Finance</a></li><li><a href="#the-three-financial-statements" data-target="the-three-financial-statements">The Three Financial Statements</a></li><li><a href="#the-verbs" data-target="the-verbs">The Verbs</a></li><li><a href="#exam-tips" data-target="exam-tips">Exam Tips</a></li><li><a href="#cross-topic-threads" data-target="cross-topic-threads">Cross-Topic Threads</a></li></ul></nav><script>
+function toggleTheme(ev){
+var oldTheme=document.documentElement.getAttribute("data-theme")||"dark";
+var next=oldTheme==="light"?"dark":"light";
+function apply(){document.documentElement.setAttribute("data-theme",next);try{localStorage.setItem("vault-theme",next)}catch(e){}updateThemeIcons(next);}
+var reduced=false;try{reduced=window.matchMedia("(prefers-reduced-motion: reduce)").matches}catch(e){}
+if(reduced){apply();return;}
+if(window.__vaultThemeAnimating){return;}
+window.__vaultThemeAnimating=1;
+var newPaper=next==="light"?"#faf8f2":"#13151b";
+var W=window.innerWidth,H=window.innerHeight;
+var spacing=W<768?36:28;
+var maxR=spacing*0.78;
+var dpr=1;try{dpr=W<768?1:Math.min(window.devicePixelRatio||1,1.5);}catch(e){}
+var canvas=document.createElement("canvas");
+canvas.id="theme-wave";
+canvas.style.cssText="position:fixed;left:0;top:0;width:"+W+"px;height:"+H+"px;z-index:9999;pointer-events:none;";
+canvas.width=Math.round(W*dpr);canvas.height=Math.round(H*dpr);
+var ctx=canvas.getContext("2d");
+try{ctx.setTransform(dpr,0,0,dpr,0,0);}catch(e){}
+ctx.fillStyle=newPaper;
+var dots=[];
+for(var y=spacing/2;y<H+spacing;y+=spacing){for(var x=spacing/2;x<W+spacing;x+=spacing){dots.push({x:x,y:y,delay:(x+y)/(W+H)*450,done:0});}}
+var waveMs=450,growMs=300;
+var start=Date.now();
+function easeOutCubic(p){return 1-Math.pow(1-p,3);}
+function step(){
+var elapsed=Date.now()-start;
+var allDone=true;
+var any=false;
+ctx.beginPath();
+for(var i=0;i<dots.length;i++){
+var d=dots[i];
+if(d.done){continue;}
+var p=(elapsed-d.delay)/growMs;
+if(p<0){allDone=false;continue;}
+if(p<1){allDone=false;}
+else{d.done=1;}
+var r=maxR*easeOutCubic(p<1?p:1);
+if(r>0){ctx.moveTo(d.x+r,d.y);ctx.arc(d.x,d.y,r,0,Math.PI*2);any=true;}
+}
+if(any){ctx.fill();}
+if(!allDone){requestAnimationFrame(step);return;}
+apply();
+canvas.style.transition="opacity 0.15s ease";
+canvas.style.opacity="0";
+setTimeout(function(){window.__vaultThemeAnimating=0;if(canvas.parentNode)canvas.parentNode.removeChild(canvas);},180);
+}
+document.body.appendChild(canvas);
+requestAnimationFrame(step);
+}
+function updateThemeIcons(theme){var icon=theme==="dark"?"☀":"☾";document.querySelectorAll(".theme-btn").forEach(function(b){b.textContent=icon;});}
+try{updateThemeIcons(document.documentElement.getAttribute("data-theme")||"dark");}catch(e){}
+function toggleMenu(force){document.body.classList.toggle("menu-open",force)}
+document.addEventListener("keydown",function(e){if(e.key==="/"&&!/INPUT|TEXTAREA/.test(document.activeElement.tagName)){e.preventDefault();var s=document.querySelector(".side-search");if(s)s.focus()}});
+document.addEventListener("click",function(e){if(e.target.closest(".side a"))toggleMenu(false)});
+(function(){try{
+var links=Array.prototype.slice.call(document.querySelectorAll(".rail a"));
+if(!links.length||!window.IntersectionObserver)return;
+var map={};links.forEach(function(a){map[a.getAttribute("data-target")]=a});
+var obs=new IntersectionObserver(function(es){
+  es.forEach(function(e){
+    if(e.isIntersecting){
+      links.forEach(function(a){a.classList.remove("active");a.classList.remove("parent-active")});
+      var l=map[e.target.id];
+      if(l){l.classList.add("active");var p=l.getAttribute("data-parent");if(p&&map[p])map[p].classList.add("parent-active")}
+    }
+  });
+}, {rootMargin:"-20% 0px -70% 0px"});
+document.querySelectorAll(".prose h2[id], .prose h3[id]").forEach(function(h){obs.observe(h)});
+}catch(e){}})();
+(function(){try{
+var cv=document.getElementById("dotgrid");if(!cv)return;var ctx=cv.getContext("2d");if(!ctx)return;
+var reduced=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+var W=0,H=0,dpr=1,cols=0,rows=0,SP=28,px=0,py=0,pt=0,hasP=false;
+function dotRGB(){try{return getComputedStyle(document.documentElement).getPropertyValue("--dot-rgb").trim()||"233,231,225"}catch(e){return "233,231,225"}}
+function resize(){dpr=Math.min(window.devicePixelRatio||1,window.innerWidth<700?1.5:2);SP=window.innerWidth<700?36:28;W=window.innerWidth;H=window.innerHeight;cv.width=W*dpr;cv.height=H*dpr;cv.style.width=W+"px";cv.style.height=H+"px";ctx.setTransform(dpr,0,0,dpr,0,0);cols=Math.ceil(W/SP)+1;rows=Math.ceil(H/SP)+1}
+var R=Math.random()*Math.PI*2;
+var FORCES=[
+ {ax:.42,ay:.15,tx:26,ty:31,px:R,py:R+1.3,circ:false},
+ {ax:.38,ay:.42,tx:37,ty:23,px:R+2.1,py:R+0.7,circ:false},
+ {ax:.30,ay:.30,tx:41,ty:41,px:R+4.0,py:R+4.0,circ:true}
+];
+function draw(now){var t=now/1000;var rgb=dotRGB();
+var activeForces=W>=1280?FORCES:FORCES.slice(0,1);
+var pFade=hasP?Math.max(0,1-(now-pt)/4000):0;
+ctx.clearRect(0,0,W,H);
+for(var y=0;y<rows;y++)for(var x=0;x<cols;x++){var ox=x*SP+10,oy=y*SP+10,a=0.14,dispX=0,dispY=0;
+for(var fi=0;fi<activeForces.length;fi++){var F=activeForces[fi];
+var fx=F.circ?W*(0.5+F.ax*Math.cos(t*2*Math.PI/F.tx+F.px)):W*(0.5+F.ax*Math.sin(t*2*Math.PI/F.tx+F.px));
+var fy=F.circ?H*(0.5+F.ay*Math.sin(t*2*Math.PI/F.ty+F.py)):H*(0.5+F.ay*Math.sin(t*2*Math.PI/F.ty+F.py));
+var ddx=ox-fx,ddy=oy-fy,d=Math.sqrt(ddx*ddx+ddy*ddy);
+if(d<170&&d>0.01){var f=1-d/170;f=f*f;dispX+=(ddx/d)*6*f;dispY+=(ddy/d)*6*f;a+=0.20*f}}
+var dm=Math.sqrt(dispX*dispX+dispY*dispY);if(dm>9){dispX*=9/dm;dispY*=9/dm}
+var dx=ox+dispX,dy=oy+dispY;if(a>0.38)a=0.38;
+if(pFade>0){var pdx=ox-px,pdy=oy-py,pd=Math.sqrt(pdx*pdx+pdy*pdy);
+if(pd<150&&pd>0.01){var pf=1-pd/150;pf=pf*pf*pFade;dx+=(pdx/pd)*5*pf;dy+=(pdy/pd)*5*pf;a=Math.min(0.38,a+0.18*pf)}}
+ctx.beginPath();ctx.arc(dx,dy,1.3,0,Math.PI*2);ctx.fillStyle="rgba("+rgb+","+a.toFixed(3)+")";ctx.fill()}}
+function loop(now){if(!window.__vaultThemeAnimating)draw(now);if(!reduced)requestAnimationFrame(loop)}
+window.addEventListener("resize",resize);resize();
+window.addEventListener("pointermove",function(e){px=e.clientX;py=e.clientY;pt=performance.now();hasP=true},{passive:true});
+requestAnimationFrame(loop);
+}catch(e){}})();
+</script></body></html>

@@ -1,0 +1,472 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Section IV — How to Write the Extended Response — HSC Business Vault</title><style>
+:root{--paper:#faf8f2;--ink:#1e1b16;--muted:#6b655a;--line:#e3ddd0;--accent:#1d4ed8;--card:#fffdf8;--side:#f3efe6;--side-bg:rgba(243,239,230,.88);--active:#e8e0cd;--rail-tint:rgba(29,78,216,.14);--rail-tint-soft:rgba(29,78,216,.07);--code:#efe9db;--quote:#4a4438;--dot-rgb:30,27,22;--scheme:light}
+[data-theme="dark"]{--paper:#13151b;--ink:#e9e7e1;--muted:#9aa0ab;--line:#2b2f3a;--accent:#8ab4ff;--card:#1b1e27;--side:#101218;--side-bg:rgba(16,18,24,.88);--active:#262b38;--rail-tint:rgba(138,180,255,.18);--rail-tint-soft:rgba(138,180,255,.09);--code:#262a36;--quote:#c3c7cf;--dot-rgb:233,231,225;--scheme:dark}
+*{box-sizing:border-box}html{color-scheme:var(--scheme)}body{margin:0;background:var(--paper);color:var(--ink);font:16.5px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;overflow-x:hidden}
+a{color:var(--accent);text-decoration:none;transition:color .18s ease}a:hover{text-decoration:underline}
+#dotgrid{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:0}
+.wrap{position:relative;z-index:1;display:grid;grid-template-columns:280px 1fr;min-height:100vh}
+.side{position:sticky;top:0;height:100vh;overflow:auto;padding:22px 18px;border-right:1px solid var(--line);background:var(--side-bg)}
+.side h3{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:22px 0 6px}
+.side ul{list-style:none;margin:0;padding:0}.side li{margin:3px 0}
+.side a{display:block;padding:7px 10px;border-radius:8px;color:var(--ink);transition:background .18s ease,transform .18s ease}
+.side a.active{background:var(--active);font-weight:600}
+.side a:hover{background:var(--active);text-decoration:none;transform:translateX(3px)}
+.side-head{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.theme-btn{flex:none;width:40px;height:40px;border:1px solid var(--line);border-radius:50%;background:var(--card);color:var(--ink);font-size:18px;cursor:pointer;transition:background .18s ease}
+.theme-btn:hover{background:var(--active)}
+.home-link{font-weight:700;font-size:18px}.side-search{width:100%;margin:14px 0 4px;padding:10px 12px;border:1px solid var(--line);border-radius:8px;background:var(--card);color:var(--ink);font-size:16px}
+.side-note{font-size:12.5px;color:var(--muted);line-height:1.5;margin-top:24px}
+.topbar{display:none}.backdrop{display:none}
+main{padding:36px 44px;max-width:860px}.prose h1{font-size:32px;line-height:1.2;letter-spacing:-.02em;margin:0 0 6px}
+.prose h2{font-size:23px;margin:34px 0 8px;padding-top:14px;border-top:1px solid var(--line)}
+.prose h3{font-size:18px;margin:26px 0 6px}.prose p{margin:10px 0}
+.prose table{border-collapse:collapse;width:100%;margin:14px 0;font-size:14.5px;display:block;overflow-x:auto;-webkit-overflow-scrolling:touch}
+.prose th,.prose td{border:1px solid var(--line);padding:7px 10px;text-align:left;vertical-align:top}
+.prose th{background:var(--side)}.prose blockquote{border-left:3px solid var(--line);margin:14px 0;padding:2px 14px;color:var(--quote);background:var(--card)}
+.prose code{background:var(--code);padding:1px 5px;border-radius:4px;font-size:14px}.prose pre{background:#0d0f14;color:#f5f1e6;padding:14px;border-radius:8px;overflow:auto}
+.prose pre code{background:none;color:inherit;padding:0}.prose hr{border:none;border-top:1px solid var(--line);margin:24px 0}
+.meta{color:var(--muted);font-size:14px;margin-bottom:20px}.toc{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 18px;margin:18px 0}
+.toc b{font-size:13px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}.toc ul{margin:8px 0 0;padding-left:18px}.toc li{margin:3px 0}
+.cards{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:20px 0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 18px;transition:transform .2s ease,border-color .2s ease,box-shadow .2s ease}
+.card:hover{transform:translateY(-3px);border-color:var(--accent);box-shadow:0 8px 24px rgba(0,0,0,.18)}
+.card h3{margin:0 0 4px}.card p{margin:0;color:var(--muted);font-size:14.5px}
+#search{width:100%;padding:13px 14px;font-size:17px;border:1px solid var(--line);border-radius:10px;background:var(--card);color:var(--ink)}
+.result{border-bottom:1px solid var(--line);padding:14px 6px;border-radius:8px;transition:background .18s ease,transform .18s ease}
+.result:hover{background:var(--card);transform:translateX(3px)}
+.result h3{margin:0}.result p{margin:4px 0;color:var(--quote)}.result .path{font-size:13px;color:var(--muted)}
+mark{background:#fde68a;color:#1e1b16;padding:0 1px}
+html{scroll-behavior:smooth}
+.rail{display:none}
+@media(min-width:1280px){
+main{max-width:min(860px,calc(100vw - 692px))}
+.rail{display:block;position:fixed;right:24px;top:50%;transform:translateY(-50%);width:340px;max-height:76vh;overflow:auto;z-index:15;background:none;border:none;box-shadow:none;padding:18px 14px;-webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 36px,#000 calc(100% - 36px),transparent 100%);mask-image:linear-gradient(to bottom,transparent 0,#000 36px,#000 calc(100% - 36px),transparent 100%)}
+.rail-title{font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:2px 0 12px 12px}
+.rail ul{list-style:none;margin:0;padding:0}
+.rail li{margin:3px 0}
+.rail a{display:block;padding:11px 14px;border-radius:10px;color:var(--ink);font-size:17px;line-height:1.4;transition:transform .2s ease,background .2s ease}
+.rail a:hover,.rail a:focus-visible{background:var(--rail-tint-soft);transform:translateX(-4px) scale(1.02);text-decoration:none}
+.rail a.active{background:var(--rail-tint);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);font-weight:600;transform:translateX(-12px);width:calc(100% + 12px)}
+.rail a.parent-active{background:var(--rail-tint-soft)}
+.rail ul.sub{margin:3px 0 3px 14px;padding-left:14px;border-left:1px solid var(--line)}
+.rail ul.sub a{padding:9px 12px;font-size:15px;color:var(--muted)}
+.rail ul.sub a:hover{color:var(--ink)}
+.rail ul.sub a.active{color:var(--ink);transform:translateX(-8px);width:calc(100% + 8px)}
+}
+@media(max-width:900px){
+.topbar{display:flex;position:sticky;top:0;z-index:20;align-items:center;gap:10px;padding:12px 14px;background:var(--side);border-bottom:1px solid var(--line)}
+.topbar b{flex:1;font-size:17px}.menu-btn,.topbar .theme-btn{width:44px;height:44px;border:1px solid var(--line);border-radius:10px;background:var(--card);color:var(--ink);font-size:19px;cursor:pointer}
+.wrap{grid-template-columns:1fr}
+.wrap{z-index:auto}
+.side{background:var(--side)}
+.side a{padding:11px 12px}
+body.menu-open{overflow:hidden}
+.side{position:fixed;inset:0 auto 0 0;width:300px;max-width:86vw;height:100dvh;z-index:30;transform:translateX(-105%);transition:transform .25s ease;box-shadow:0 0 40px rgba(0,0,0,.4)}
+body.menu-open .side{transform:translateX(0)}
+.backdrop{display:none}body.menu-open .backdrop{display:block;position:fixed;inset:0;z-index:25;background:rgba(0,0,0,.45)}
+main{padding:22px 16px}.prose h1{font-size:26px}.prose h2{font-size:21px}.cards{grid-template-columns:1fr}
+.prose table{font-size:14px}.prose pre{font-size:13.5px}
+}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}html{scroll-behavior:auto}}
+</style><script>(function(){try{var t=localStorage.getItem("vault-theme")||"dark";document.documentElement.setAttribute("data-theme",t)}catch(e){document.documentElement.setAttribute("data-theme","dark")}})()</script></head><body><canvas id="dotgrid" aria-hidden="true"></canvas><header class="topbar"><button class="menu-btn" type="button" onclick="toggleMenu()" aria-label="Open notes menu">☰</button><b>Business Vault</b><button class="theme-btn" type="button" onclick="toggleTheme(event)" aria-label="Toggle dark / light mode">◐</button></header><div class="backdrop" onclick="toggleMenu(false)"></div><div class="wrap"><nav class="side" id="side"><div class="side-head"><a class="home-link" href="index.html">⌂ Vault home</a><button class="theme-btn" type="button" onclick="toggleTheme(event)" aria-label="Toggle dark / light mode">◐</button></div><input class="side-search" type="search" placeholder="Search notes…  ( / )" onkeydown="if(event.key==='Enter'){location.href='index.html?q='+encodeURIComponent(this.value)}"><h3>Operations</h3><ul><li><a class="" href="Operations__Operations_1_Role.html">1 Role</a></li><li><a class="" href="Operations__Operations_2_Influences.html">2 Influences</a></li><li><a class="" href="Operations__Operations_3_Processes.html">3 Processes</a></li><li><a class="" href="Operations__Operations_4_Strategies.html">4 Strategies</a></li><li><a class="" href="Operations__Operations_Syllabus_Summary.html">Syllabus Summary</a></li><li><a class="" href="Operations__Operations_FULL.html">FULL</a></li></ul><h3>Marketing</h3><ul><li><a class="" href="Marketing__Marketing_1_Role.html">1 Role</a></li><li><a class="" href="Marketing__Marketing_2_Influences.html">2 Influences</a></li><li><a class="" href="Marketing__Marketing_3_Processes.html">3 Processes</a></li><li><a class="" href="Marketing__Marketing_4_Strategies.html">4 Strategies</a></li><li><a class="" href="Marketing__Marketing_Syllabus_Summary.html">Syllabus Summary</a></li><li><a class="" href="Marketing__Marketing_FULL.html">FULL</a></li></ul><h3>Finance</h3><ul><li><a class="" href="Finance__Finance_1_Role.html">1 Role</a></li><li><a class="" href="Finance__Finance_2_Influences.html">2 Influences</a></li><li><a class="" href="Finance__Finance_3_Processes.html">3 Processes</a></li><li><a class="" href="Finance__Finance_4_Strategies.html">4 Strategies</a></li><li><a class="" href="Finance__Finance_Syllabus_Summary.html">Syllabus Summary</a></li><li><a class="" href="Finance__Finance_FULL.html">FULL</a></li></ul><h3>Human Resources</h3><ul><li><a class="" href="Human_Resources__Human_Resources_1_Role.html">1 Role</a></li><li><a class="" href="Human_Resources__Human_Resources_2_Influences.html">2 Influences</a></li><li><a class="" href="Human_Resources__Human_Resources_3_Processes.html">3 Processes</a></li><li><a class="" href="Human_Resources__Human_Resources_4_Strategies.html">4 Strategies</a></li><li><a class="" href="Human_Resources__Human_Resources_Syllabus_Summary.html">Syllabus Summary</a></li><li><a class="" href="Human_Resources__Human_Resources_FULL.html">FULL</a></li></ul><h3>Exam &amp; revision</h3><ul><li><a class="" href="MOC.html">Final Notes</a></li><li><a class="" href="Case_Study_Stats_Sheet.html">Business Studies Case Study Stats Sheet</a></li><li><a class="" href="Case_Studies.html">Case Studies — HSC Business Studies Final Notes</a></li><li><a class="" href="Confusing_Pairs.html">Confusing Pairs — MCQ Drill Sheet</a></li><li><a class="" href="Crichton_Office_Supplies_Report_and_Apple_Marketing_Essay.html">Crichton Office Supplies Report and Apple Marketing Essay</a></li><li><a class="" href="Trial_Practice_Killara_2022.html">Killara 2022 Trial — Marked Paper and Model Answers</a></li><li><a class="" href="McDonalds_Case_Study.html">McDonald's Case Study — Section IV Essay Resource</a></li><li><a class="" href="Section_III_Business_Report.html">Section III — How to Write the Business Report</a></li><li><a class="active" href="Section_IV_Extended_Response.html">Section IV — How to Write the Extended Response</a></li><li><a class="" href="Marketing_Universal_Essay.html">Universal Marketing Essay — McDonald's Case Study</a></li><li><a class="" href="Finance_Management.html">Finance (moved)</a></li><li><a class="" href="Human_Resources.html">Human Resources (moved)</a></li><li><a class="" href="Marketing.html">Marketing (moved)</a></li><li><a class="" href="Operations.html">Operations (moved)</a></li></ul><p class="side-note">Source: TheSashi HSC Business Studies Notes, Final folder. Cloned 25 Oct 2026. Plus one added McDonald's note (see Exam & revision).</p></nav><main><article class="prose"><h1>Section IV — How to Write the Extended Response</h1><p class="meta">Exam &amp; revision · Section_IV_Extended_Response.md</p><div class="toc"><b>On this page</b><ul><li><a href="#1-what-you-are-marked-on">1. What You Are Marked On</a></li><li><a href="#2-identify-the-verb-first">2. Identify the Verb First</a></li><li><a href="#3-assess-evaluate-explain-the-importance-of">3. Assess · Evaluate · Explain the importance of</a></li><li><a href="#4-analyse-explain-how-examine">4. Analyse · Explain how · Examine</a></li><li><a href="#5-worked-body-paragraph-2021-hsc-marketing">5. Worked Body Paragraph — 2021 HSC Marketing</a></li><li><a href="#6-short-answer-verb-scaffolds">6. Short-Answer Verb Scaffolds</a></li><li><a href="#7-the-marker-s-comments-what-full-marks-looks-like">7. The Marker's Comments — What Full Marks Looks Like</a></li><li><a href="#8-case-study-evidence-you-must-be-able-to-quote">8. Case Study Evidence You Must Be Able to Quote</a></li><li><a href="#9-timing-and-checklist">9. Timing and Checklist</a></li></ul></div><h1>📝 Section IV — The Extended Response</h1>
+<p><strong>20 marks · about 35 minutes · choose ONE of two questions · separate writing booklet</strong></p>
+<blockquote>
+<p>No stimulus. <strong>You bring the case study.</strong> The two questions cover different topics, so pick the one where your case study evidence is strongest.
+Scaffolds below follow your teacher&#39;s <em>Section IV Essay Structures</em> handout.
+Case study data: <a href="Case_Studies.html">Case Studies</a> · Theory: <a href="Operations__Operations_FULL.html">Operations</a> | <a href="Marketing__Marketing_FULL.html">Marketing</a> | <a href="Finance__Finance_FULL.html">Finance</a> | <a href="Human_Resources__Human_Resources_FULL.html">Human Resources</a></p>
+</blockquote>
+<hr>
+<h2 id="1-what-you-are-marked-on">1. What You Are Marked On</h2>
+<table>
+<thead>
+<tr>
+<th>Criterion</th>
+<th>What it actually means</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Demonstrate knowledge and understanding relevant to the question</strong></td>
+<td>Correct syllabus content, defined</td>
+</tr>
+<tr>
+<td><strong>Apply relevant business case study/studies and contemporary business issues</strong></td>
+<td><strong>Real businesses. Real figures. Real dates.</strong> This is where most marks are lost</td>
+</tr>
+<tr>
+<td><strong>Communicate using relevant business terminology and concepts</strong></td>
+<td>Syllabus terms, not everyday words</td>
+</tr>
+<tr>
+<td><strong>Present a sustained, logical and cohesive response</strong></td>
+<td>Judgement in the introduction, sustained through every paragraph, restated at the end</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>No headings here.</strong> Section III is a report. Section IV is an essay — continuous prose, paragraphed.</p>
+</blockquote>
+<hr>
+<h2 id="2-identify-the-verb-first">2. Identify the Verb First</h2>
+<p>The verb dictates the entire structure. Get it wrong and the content can&#39;t save you.</p>
+<table>
+<thead>
+<tr>
+<th>Verb</th>
+<th>What to do</th>
+<th>Structure</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Assess / Evaluate / Explain the importance of</strong></td>
+<td>Make a <strong>judgement</strong></td>
+<td>§3 scaffold</td>
+</tr>
+<tr>
+<td><strong>Analyse / Explain how</strong></td>
+<td>Show <strong>relationships</strong> and draw out implications</td>
+<td>§4 scaffold</td>
+</tr>
+<tr>
+<td><strong>Discuss</strong></td>
+<td>For <strong>and</strong> against, then judge</td>
+<td>§3 scaffold, balanced</td>
+</tr>
+<tr>
+<td><strong>Examine</strong></td>
+<td>Identify components <strong>and</strong> their relationships</td>
+<td>§4 scaffold</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="3-assess-evaluate-explain-the-importance-of">3. Assess · Evaluate · Explain the importance of</h2>
+<blockquote>
+<p><em>Judgement based on criteria — does it help the business achieve ________?</em></p>
+</blockquote>
+<h3 id="introduction">Introduction</h3>
+<pre><code>1. Start with the JUDGEMENT SENTENCE.
+2. State specifically what you are evaluating — use the syllabus dot points by name.
+3. Name every case study you will use.
+</code></pre>
+<p><strong>Your teacher&#39;s model:</strong></p>
+<blockquote>
+<p><em>&quot;This essay will evaluate how Apple effectively uses their operational strategies of <strong>Supply Chain Management, Inventory Management and Outsourcing</strong> to respond to the <strong>globalisation, ethical and legal influences</strong>.&quot;</em></p>
+</blockquote>
+<p>Notice: the dot points are named, not gestured at.</p>
+<h3 id="each-body-paragraph">Each body paragraph</h3>
+<pre><code>1  JUDGEMENT   Answer the question — a judgement with a brief overview of reasons.
+2  DEFINE      Define and describe the key concept(s).
+3  ADVANTAGES  Prove they ARE advantages by linking to a topic-specific goal.
+                 Use statistics as evidence.
+4  DISADVANT.  Prove they ARE disadvantages by linking to a topic-specific goal.
+5  RESTATE     Re-state the judgement, linked to long-term business goals.
+</code></pre>
+<blockquote>
+<p><strong>&quot;Prove they are advantages by linking to a topic-specific goal.&quot;</strong> An advantage isn&#39;t an advantage because you say so. It&#39;s an advantage because it helps achieve <strong>cost leadership</strong>, or <strong>market share</strong>, or <strong>liquidity</strong>, or <strong>staff retention</strong>. Name the goal.</p>
+</blockquote>
+<h3 id="conclusion">Conclusion</h3>
+<p>One to two summary sentences per body paragraph, <strong>each including the case study</strong>.</p>
+<hr>
+<h2 id="4-analyse-explain-how-examine">4. Analyse · Explain how · Examine</h2>
+<blockquote>
+<p><em>Show the relationship between things and draw out implications.</em></p>
+</blockquote>
+<h3 id="introduction-2">Introduction</h3>
+<pre><code>1. Start by LINKING THE TWO IDEAS TOGETHER — cause and effect in the first sentence.
+2. State specifically what you are analysing — name the syllabus dot points.
+3. Name every case study.
+</code></pre>
+<p><strong>Your teacher&#39;s model:</strong></p>
+<blockquote>
+<p><em>&quot;This essay will analyse the impacts for Apple of <strong>globalisation, ethical and legal influences</strong> on their operational strategies of <strong>Supply Chain Management, Inventory Management and Outsourcing</strong>.&quot;</em></p>
+</blockquote>
+<h3 id="each-body-paragraph-2">Each body paragraph</h3>
+<pre><code>1  LINK        Open by linking the two ideas — cause and effect — for the case study.
+2  CAUSE/EFFECT 1   HOW is the business impacted? (observable changes)
+                    WHY is it affected? (link to a topic-specific goal)
+3  CAUSE/EFFECT 2   HOW · WHY · and link back to cause #1.
+4  IMPLICATIONS     LONG TERM. Link to the strategic role and business goals.
+                    Positive, negative, or both — but detailed and tied to the case study.
+</code></pre>
+<blockquote>
+<p>You do not have to give both positive and negative implications. You <strong>do</strong> have to make them detailed and tied to the case study.</p>
+</blockquote>
+<hr>
+<h2 id="5-worked-body-paragraph-2021-hsc-marketing">5. Worked Body Paragraph — 2021 HSC Marketing</h2>
+<p><strong>Question:</strong> <em>Analyse how a situational analysis (SWOT, product life cycle) may affect marketing strategies.</em></p>
+<p><strong>Teacher&#39;s structural rule for this question:</strong></p>
+<blockquote>
+<p>To score above 12, you must have <strong>at least one paragraph on SWOT and one on Product Life Cycle</strong>.
+<strong>SWOT</strong> — 2 body paragraphs. Each takes ONE element and does at least <strong>two</strong> of it (2 strengths, or 2 threats, etc.).
+<strong>Product Life Cycle</strong> — 1 body paragraph showing how ONE marketing strategy changes across the cycle.</p>
+</blockquote>
+<p><strong>The paragraph, annotated:</strong></p>
+<blockquote>
+<p>Apple has numerous threats such as competition in its smartphone market which impacts on their marketing strategy such as their Product strategy. <strong>[LINK — cause and effect up front]</strong> Threats are external factors that could impact on the business that they have no control over <strong>[DEFINITION]</strong> and for Apple one of their major threats is the increased competition especially from low cost Asian providers such as Huawei, Xiaomi. The product strategy includes their branding, packaging and after sales services <strong>[DEFINITION]</strong>. For Apple to compete against low cost competitors they have positioned their product as a high quality, luxury smartphone. Apple&#39;s branding is easily recognizable with the apple with a bite out of it and they have linked the branding to their reputation of producing a high quality, innovative product <strong>[HOW]</strong>. However there has been some issues with whether they have been innovative over the last few years as their focus has been on improving the camera. This has impacted on their market share as it was lower than Samsung from Quarter 2 2023 <strong>(17% compared to 20%)</strong> until Quarter 4, 2024 when their market share improved to be higher than Samsung <strong>(23% compared to 16%) [EFFECT — with statistics]</strong>. … This meets the needs of the customers expectations when purchasing Apple products therefore their target market is more likely to purchase their products rather than their cheaper competitors <strong>[WHY/EFFECT]</strong>. Therefore by using their product strategy of branding and packaging Apple is able to maintain or increase the number of their customers and have been able to minimise the threat of competitors and improve their market share in the last quarter of 2024. <strong>[IMPLICATION]</strong></p>
+</blockquote>
+<p><strong>What makes it work:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Move</th>
+<th>Where</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Cause and effect in sentence 1</td>
+<td><em>&quot;threats… which impacts on their marketing strategy such as their Product strategy&quot;</em></td>
+</tr>
+<tr>
+<td>Both concepts defined</td>
+<td>threats, then product strategy</td>
+</tr>
+<tr>
+<td><strong>Named competitors</strong></td>
+<td>Huawei, Xiaomi, Samsung</td>
+</tr>
+<tr>
+<td><strong>Dated statistics</strong></td>
+<td>17% vs 20% Q2 2023 → 23% vs 16% Q4 2024</td>
+</tr>
+<tr>
+<td>Honest weakness</td>
+<td><em>&quot;issues with whether they have been innovative&quot;</em></td>
+</tr>
+<tr>
+<td>Implication closes</td>
+<td>market share improved, threat minimised</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>The dated statistic is the difference between Band 5 and Band 6.</strong> &quot;Apple has a large market share&quot; is worth nothing. &quot;23% compared to Samsung&#39;s 16% in Q4 2024&quot; is worth a mark.</p>
+</blockquote>
+<hr>
+<h2 id="6-short-answer-verb-scaffolds">6. Short-Answer Verb Scaffolds</h2>
+<blockquote>
+<p>Same logic, compressed. From your teacher&#39;s <em>2024 Operations Past Paper short answer structure</em>.</p>
+</blockquote>
+<p><strong>Assess</strong> — <em>&quot;Assess the impact of customised products on the operations process of the sports shoe store.&quot;</em></p>
+<pre><code>1  Judgement sentence: &quot;It has a large impact on the operational process of…&quot;
+2  Define the process
+3  How is it impacting the operational process
+4  Effect on the business
+5  What it means for the business (implication)
+6  Restate the judgement
+</code></pre>
+<p><strong>Analyse</strong> — <em>&quot;Analyse the use of outsourcing in achieving the strategic role of Operations Management.&quot;</em></p>
+<pre><code>1  Define outsourcing
+2  How does outsourcing impact operations
+3  Effect — link to the performance objective
+4  What it means for the business (implication) — linking to cost leadership
+</code></pre>
+<hr>
+<h2 id="7-the-marker-s-comments-what-full-marks-looks-like">7. The Marker&#39;s Comments — What Full Marks Looks Like</h2>
+<blockquote>
+<p>From your <em>Past HSC Finance Model Answer 2025</em> pack. These are the actual reasons marks were awarded.</p>
+</blockquote>
+<p><strong>A 2-mark answer scored 2/2 because the student:</strong></p>
+<ul>
+<li>showed <strong>all the working</strong> for the calculation</li>
+<li>stated <strong>what it means for the business</strong></li>
+<li><strong>compared it to the industry average</strong></li>
+<li><strong>related it to the scenario</strong></li>
+</ul>
+<p><strong>A 4-mark answer scored 4/4 because the student:</strong></p>
+<ul>
+<li><strong>linked it to the scenario</strong></li>
+<li>showed clear <strong>cause and effect relationships using relational verbs</strong></li>
+<li>provided <strong>implications</strong>, even if limited</li>
+</ul>
+<blockquote>
+<p>Marker&#39;s note on that response: <em>&quot;This is probably not the best 4 that a student will write but it does enough to reach the 4 in the HSC.&quot;</em>
+<strong>You do not need brilliance. You need the four moves, every time.</strong></p>
+</blockquote>
+<p><strong>Relational verbs</strong> are the ones that carry cause and effect:</p>
+<pre><code>causes · results in · leads to · means that · therefore · consequently
+impacts on · which in turn · thereby · so that · enabling
+</code></pre>
+<hr>
+<h2 id="8-case-study-evidence-you-must-be-able-to-quote">8. Case Study Evidence You Must Be Able to Quote</h2>
+<blockquote>
+<p>Full data: <a href="Case_Studies.html">Case Studies</a></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Case study</th>
+<th>Strongest for</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Apple</strong></td>
+<td>Operations (supply chain, outsourcing, new product design) · Marketing (positioning, global branding) · Finance (ratios 2024–25, services margin)</td>
+</tr>
+<tr>
+<td><strong>McDonald&#39;s</strong></td>
+<td>Marketing (standardisation vs customisation, global promotion) · Finance (comparative ratios 2022–23)</td>
+</tr>
+</tbody></table>
+<p><strong>Figures worth memorising:</strong></p>
+<pre><code>Apple    net profit ratio  23.97% (2024) → 26.92% (2025)
+         expense ratio      14.7%  (2024) → 14.93% (2025)
+         AR turnover        32 days → 35 days   (ideal 30)
+         services revenue   $96,169m → $109,158m
+         Samsung NPR        ~10%      — the benchmark
+         market share       17% vs Samsung 20% (Q2 2023)
+                            23% vs Samsung 16% (Q4 2024)
+
+McDonald&#39;s  current ratio   1.43:1 (2022) → 1.16:1 (2023)
+            net profit      27%    (2022) → 33%    (2023)
+            revenue         $25.92 billion (2024)
+            restaurants     40,000+ in 100+ countries
+            advertising     ~$4.5 billion annually
+</code></pre>
+<hr>
+<h2 id="9-timing-and-checklist">9. Timing and Checklist</h2>
+<table>
+<thead>
+<tr>
+<th>Phase</th>
+<th>Time</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Choose the question, identify the verb, plan 3 paragraphs</td>
+<td>5 min</td>
+</tr>
+<tr>
+<td>Introduction</td>
+<td>4 min</td>
+</tr>
+<tr>
+<td>Body ×3</td>
+<td>7 min each</td>
+</tr>
+<tr>
+<td>Conclusion</td>
+<td>3 min</td>
+</tr>
+</tbody></table>
+<p><strong>800–900 words</strong>, three body paragraphs.</p>
+<pre><code>□ Verb identified — judgement scaffold or relationship scaffold
+□ Introduction states the judgement or the link, in sentence 1
+□ Syllabus dot points named specifically in the introduction
+□ Case studies named in the introduction
+□ Every paragraph contains the case study
+□ At least one DATED STATISTIC per paragraph
+□ Every advantage/disadvantage linked to a topic-specific goal
+□ Implications are LONG TERM and tied to the strategic role
+□ Conclusion: 1–2 sentences per body paragraph, each naming the case study
+</code></pre>
+<p><strong>The three most common ways to lose marks here:</strong></p>
+<ol>
+<li><strong>Theory with no business.</strong> Every paragraph needs the case study, not just paragraph one.</li>
+<li><strong>Undated, unsourced figures.</strong> &quot;A large market share&quot; earns nothing.</li>
+<li><strong>Answering the wrong verb.</strong> Describing when asked to evaluate caps you at mid-band regardless of content.</li>
+</ol>
+<hr>
+<blockquote>
+<p><strong>See also:</strong> <a href="Section_III_Business_Report.html">Section III Business Report</a> | <a href="Case_Studies.html">Case Studies</a> | <a href="MOC.html">MOC</a> | <a href="Confusing_Pairs.html">Confusing Pairs</a> | <a href="Trial_Practice_Killara_2022.html">Trial Practice Killara 2022</a></p>
+</blockquote>
+</article></main></div><nav class="rail" aria-label="On this page"><div class="rail-title">On this page</div><ul><li><a href="#1-what-you-are-marked-on" data-target="1-what-you-are-marked-on">1. What You Are Marked On</a></li><li><a href="#2-identify-the-verb-first" data-target="2-identify-the-verb-first">2. Identify the Verb First</a></li><li><a href="#3-assess-evaluate-explain-the-importance-of" data-target="3-assess-evaluate-explain-the-importance-of">3. Assess · Evaluate · Explain the importance of</a><ul class="sub"><li><a href="#introduction" data-target="introduction" data-parent="3-assess-evaluate-explain-the-importance-of">Introduction</a></li><li><a href="#each-body-paragraph" data-target="each-body-paragraph" data-parent="3-assess-evaluate-explain-the-importance-of">Each body paragraph</a></li><li><a href="#conclusion" data-target="conclusion" data-parent="3-assess-evaluate-explain-the-importance-of">Conclusion</a></li></ul></li><li><a href="#4-analyse-explain-how-examine" data-target="4-analyse-explain-how-examine">4. Analyse · Explain how · Examine</a><ul class="sub"><li><a href="#introduction-2" data-target="introduction-2" data-parent="4-analyse-explain-how-examine">Introduction</a></li><li><a href="#each-body-paragraph-2" data-target="each-body-paragraph-2" data-parent="4-analyse-explain-how-examine">Each body paragraph</a></li></ul></li><li><a href="#5-worked-body-paragraph-2021-hsc-marketing" data-target="5-worked-body-paragraph-2021-hsc-marketing">5. Worked Body Paragraph — 2021 HSC Marketing</a></li><li><a href="#6-short-answer-verb-scaffolds" data-target="6-short-answer-verb-scaffolds">6. Short-Answer Verb Scaffolds</a></li><li><a href="#7-the-marker-s-comments-what-full-marks-looks-like" data-target="7-the-marker-s-comments-what-full-marks-looks-like">7. The Marker's Comments — What Full Marks Looks Like</a></li><li><a href="#8-case-study-evidence-you-must-be-able-to-quote" data-target="8-case-study-evidence-you-must-be-able-to-quote">8. Case Study Evidence You Must Be Able to Quote</a></li><li><a href="#9-timing-and-checklist" data-target="9-timing-and-checklist">9. Timing and Checklist</a></li></ul></nav><script>
+function toggleTheme(ev){
+var oldTheme=document.documentElement.getAttribute("data-theme")||"dark";
+var next=oldTheme==="light"?"dark":"light";
+function apply(){document.documentElement.setAttribute("data-theme",next);try{localStorage.setItem("vault-theme",next)}catch(e){}updateThemeIcons(next);}
+var reduced=false;try{reduced=window.matchMedia("(prefers-reduced-motion: reduce)").matches}catch(e){}
+if(reduced){apply();return;}
+if(window.__vaultThemeAnimating){return;}
+window.__vaultThemeAnimating=1;
+var newPaper=next==="light"?"#faf8f2":"#13151b";
+var W=window.innerWidth,H=window.innerHeight;
+var spacing=W<768?36:28;
+var maxR=spacing*0.78;
+var dpr=1;try{dpr=W<768?1:Math.min(window.devicePixelRatio||1,1.5);}catch(e){}
+var canvas=document.createElement("canvas");
+canvas.id="theme-wave";
+canvas.style.cssText="position:fixed;left:0;top:0;width:"+W+"px;height:"+H+"px;z-index:9999;pointer-events:none;";
+canvas.width=Math.round(W*dpr);canvas.height=Math.round(H*dpr);
+var ctx=canvas.getContext("2d");
+try{ctx.setTransform(dpr,0,0,dpr,0,0);}catch(e){}
+ctx.fillStyle=newPaper;
+var dots=[];
+for(var y=spacing/2;y<H+spacing;y+=spacing){for(var x=spacing/2;x<W+spacing;x+=spacing){dots.push({x:x,y:y,delay:(x+y)/(W+H)*450,done:0});}}
+var waveMs=450,growMs=300;
+var start=Date.now();
+function easeOutCubic(p){return 1-Math.pow(1-p,3);}
+function step(){
+var elapsed=Date.now()-start;
+var allDone=true;
+var any=false;
+ctx.beginPath();
+for(var i=0;i<dots.length;i++){
+var d=dots[i];
+if(d.done){continue;}
+var p=(elapsed-d.delay)/growMs;
+if(p<0){allDone=false;continue;}
+if(p<1){allDone=false;}
+else{d.done=1;}
+var r=maxR*easeOutCubic(p<1?p:1);
+if(r>0){ctx.moveTo(d.x+r,d.y);ctx.arc(d.x,d.y,r,0,Math.PI*2);any=true;}
+}
+if(any){ctx.fill();}
+if(!allDone){requestAnimationFrame(step);return;}
+apply();
+canvas.style.transition="opacity 0.15s ease";
+canvas.style.opacity="0";
+setTimeout(function(){window.__vaultThemeAnimating=0;if(canvas.parentNode)canvas.parentNode.removeChild(canvas);},180);
+}
+document.body.appendChild(canvas);
+requestAnimationFrame(step);
+}
+function updateThemeIcons(theme){var icon=theme==="dark"?"☀":"☾";document.querySelectorAll(".theme-btn").forEach(function(b){b.textContent=icon;});}
+try{updateThemeIcons(document.documentElement.getAttribute("data-theme")||"dark");}catch(e){}
+function toggleMenu(force){document.body.classList.toggle("menu-open",force)}
+document.addEventListener("keydown",function(e){if(e.key==="/"&&!/INPUT|TEXTAREA/.test(document.activeElement.tagName)){e.preventDefault();var s=document.querySelector(".side-search");if(s)s.focus()}});
+document.addEventListener("click",function(e){if(e.target.closest(".side a"))toggleMenu(false)});
+(function(){try{
+var links=Array.prototype.slice.call(document.querySelectorAll(".rail a"));
+if(!links.length||!window.IntersectionObserver)return;
+var map={};links.forEach(function(a){map[a.getAttribute("data-target")]=a});
+var obs=new IntersectionObserver(function(es){
+  es.forEach(function(e){
+    if(e.isIntersecting){
+      links.forEach(function(a){a.classList.remove("active");a.classList.remove("parent-active")});
+      var l=map[e.target.id];
+      if(l){l.classList.add("active");var p=l.getAttribute("data-parent");if(p&&map[p])map[p].classList.add("parent-active")}
+    }
+  });
+}, {rootMargin:"-20% 0px -70% 0px"});
+document.querySelectorAll(".prose h2[id], .prose h3[id]").forEach(function(h){obs.observe(h)});
+}catch(e){}})();
+(function(){try{
+var cv=document.getElementById("dotgrid");if(!cv)return;var ctx=cv.getContext("2d");if(!ctx)return;
+var reduced=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+var W=0,H=0,dpr=1,cols=0,rows=0,SP=28,px=0,py=0,pt=0,hasP=false;
+function dotRGB(){try{return getComputedStyle(document.documentElement).getPropertyValue("--dot-rgb").trim()||"233,231,225"}catch(e){return "233,231,225"}}
+function resize(){dpr=Math.min(window.devicePixelRatio||1,window.innerWidth<700?1.5:2);SP=window.innerWidth<700?36:28;W=window.innerWidth;H=window.innerHeight;cv.width=W*dpr;cv.height=H*dpr;cv.style.width=W+"px";cv.style.height=H+"px";ctx.setTransform(dpr,0,0,dpr,0,0);cols=Math.ceil(W/SP)+1;rows=Math.ceil(H/SP)+1}
+var R=Math.random()*Math.PI*2;
+var FORCES=[
+ {ax:.42,ay:.15,tx:26,ty:31,px:R,py:R+1.3,circ:false},
+ {ax:.38,ay:.42,tx:37,ty:23,px:R+2.1,py:R+0.7,circ:false},
+ {ax:.30,ay:.30,tx:41,ty:41,px:R+4.0,py:R+4.0,circ:true}
+];
+function draw(now){var t=now/1000;var rgb=dotRGB();
+var activeForces=W>=1280?FORCES:FORCES.slice(0,1);
+var pFade=hasP?Math.max(0,1-(now-pt)/4000):0;
+ctx.clearRect(0,0,W,H);
+for(var y=0;y<rows;y++)for(var x=0;x<cols;x++){var ox=x*SP+10,oy=y*SP+10,a=0.14,dispX=0,dispY=0;
+for(var fi=0;fi<activeForces.length;fi++){var F=activeForces[fi];
+var fx=F.circ?W*(0.5+F.ax*Math.cos(t*2*Math.PI/F.tx+F.px)):W*(0.5+F.ax*Math.sin(t*2*Math.PI/F.tx+F.px));
+var fy=F.circ?H*(0.5+F.ay*Math.sin(t*2*Math.PI/F.ty+F.py)):H*(0.5+F.ay*Math.sin(t*2*Math.PI/F.ty+F.py));
+var ddx=ox-fx,ddy=oy-fy,d=Math.sqrt(ddx*ddx+ddy*ddy);
+if(d<170&&d>0.01){var f=1-d/170;f=f*f;dispX+=(ddx/d)*6*f;dispY+=(ddy/d)*6*f;a+=0.20*f}}
+var dm=Math.sqrt(dispX*dispX+dispY*dispY);if(dm>9){dispX*=9/dm;dispY*=9/dm}
+var dx=ox+dispX,dy=oy+dispY;if(a>0.38)a=0.38;
+if(pFade>0){var pdx=ox-px,pdy=oy-py,pd=Math.sqrt(pdx*pdx+pdy*pdy);
+if(pd<150&&pd>0.01){var pf=1-pd/150;pf=pf*pf*pFade;dx+=(pdx/pd)*5*pf;dy+=(pdy/pd)*5*pf;a=Math.min(0.38,a+0.18*pf)}}
+ctx.beginPath();ctx.arc(dx,dy,1.3,0,Math.PI*2);ctx.fillStyle="rgba("+rgb+","+a.toFixed(3)+")";ctx.fill()}}
+function loop(now){if(!window.__vaultThemeAnimating)draw(now);if(!reduced)requestAnimationFrame(loop)}
+window.addEventListener("resize",resize);resize();
+window.addEventListener("pointermove",function(e){px=e.clientX;py=e.clientY;pt=performance.now();hasP=true},{passive:true});
+requestAnimationFrame(loop);
+}catch(e){}})();
+</script></body></html>

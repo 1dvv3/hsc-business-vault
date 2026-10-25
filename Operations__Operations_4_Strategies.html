@@ -1,0 +1,732 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Operations 4 · Operations Strategies — HSC Business Vault</title><style>
+:root{--paper:#faf8f2;--ink:#1e1b16;--muted:#6b655a;--line:#e3ddd0;--accent:#1d4ed8;--card:#fffdf8;--side:#f3efe6;--side-bg:rgba(243,239,230,.88);--active:#e8e0cd;--rail-tint:rgba(29,78,216,.14);--rail-tint-soft:rgba(29,78,216,.07);--code:#efe9db;--quote:#4a4438;--dot-rgb:30,27,22;--scheme:light}
+[data-theme="dark"]{--paper:#13151b;--ink:#e9e7e1;--muted:#9aa0ab;--line:#2b2f3a;--accent:#8ab4ff;--card:#1b1e27;--side:#101218;--side-bg:rgba(16,18,24,.88);--active:#262b38;--rail-tint:rgba(138,180,255,.18);--rail-tint-soft:rgba(138,180,255,.09);--code:#262a36;--quote:#c3c7cf;--dot-rgb:233,231,225;--scheme:dark}
+*{box-sizing:border-box}html{color-scheme:var(--scheme)}body{margin:0;background:var(--paper);color:var(--ink);font:16.5px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;overflow-x:hidden}
+a{color:var(--accent);text-decoration:none;transition:color .18s ease}a:hover{text-decoration:underline}
+#dotgrid{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:0}
+.wrap{position:relative;z-index:1;display:grid;grid-template-columns:280px 1fr;min-height:100vh}
+.side{position:sticky;top:0;height:100vh;overflow:auto;padding:22px 18px;border-right:1px solid var(--line);background:var(--side-bg)}
+.side h3{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:22px 0 6px}
+.side ul{list-style:none;margin:0;padding:0}.side li{margin:3px 0}
+.side a{display:block;padding:7px 10px;border-radius:8px;color:var(--ink);transition:background .18s ease,transform .18s ease}
+.side a.active{background:var(--active);font-weight:600}
+.side a:hover{background:var(--active);text-decoration:none;transform:translateX(3px)}
+.side-head{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.theme-btn{flex:none;width:40px;height:40px;border:1px solid var(--line);border-radius:50%;background:var(--card);color:var(--ink);font-size:18px;cursor:pointer;transition:background .18s ease}
+.theme-btn:hover{background:var(--active)}
+.home-link{font-weight:700;font-size:18px}.side-search{width:100%;margin:14px 0 4px;padding:10px 12px;border:1px solid var(--line);border-radius:8px;background:var(--card);color:var(--ink);font-size:16px}
+.side-note{font-size:12.5px;color:var(--muted);line-height:1.5;margin-top:24px}
+.topbar{display:none}.backdrop{display:none}
+main{padding:36px 44px;max-width:860px}.prose h1{font-size:32px;line-height:1.2;letter-spacing:-.02em;margin:0 0 6px}
+.prose h2{font-size:23px;margin:34px 0 8px;padding-top:14px;border-top:1px solid var(--line)}
+.prose h3{font-size:18px;margin:26px 0 6px}.prose p{margin:10px 0}
+.prose table{border-collapse:collapse;width:100%;margin:14px 0;font-size:14.5px;display:block;overflow-x:auto;-webkit-overflow-scrolling:touch}
+.prose th,.prose td{border:1px solid var(--line);padding:7px 10px;text-align:left;vertical-align:top}
+.prose th{background:var(--side)}.prose blockquote{border-left:3px solid var(--line);margin:14px 0;padding:2px 14px;color:var(--quote);background:var(--card)}
+.prose code{background:var(--code);padding:1px 5px;border-radius:4px;font-size:14px}.prose pre{background:#0d0f14;color:#f5f1e6;padding:14px;border-radius:8px;overflow:auto}
+.prose pre code{background:none;color:inherit;padding:0}.prose hr{border:none;border-top:1px solid var(--line);margin:24px 0}
+.meta{color:var(--muted);font-size:14px;margin-bottom:20px}.toc{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 18px;margin:18px 0}
+.toc b{font-size:13px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}.toc ul{margin:8px 0 0;padding-left:18px}.toc li{margin:3px 0}
+.cards{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:20px 0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 18px;transition:transform .2s ease,border-color .2s ease,box-shadow .2s ease}
+.card:hover{transform:translateY(-3px);border-color:var(--accent);box-shadow:0 8px 24px rgba(0,0,0,.18)}
+.card h3{margin:0 0 4px}.card p{margin:0;color:var(--muted);font-size:14.5px}
+#search{width:100%;padding:13px 14px;font-size:17px;border:1px solid var(--line);border-radius:10px;background:var(--card);color:var(--ink)}
+.result{border-bottom:1px solid var(--line);padding:14px 6px;border-radius:8px;transition:background .18s ease,transform .18s ease}
+.result:hover{background:var(--card);transform:translateX(3px)}
+.result h3{margin:0}.result p{margin:4px 0;color:var(--quote)}.result .path{font-size:13px;color:var(--muted)}
+mark{background:#fde68a;color:#1e1b16;padding:0 1px}
+html{scroll-behavior:smooth}
+.rail{display:none}
+@media(min-width:1280px){
+main{max-width:min(860px,calc(100vw - 692px))}
+.rail{display:block;position:fixed;right:24px;top:50%;transform:translateY(-50%);width:340px;max-height:76vh;overflow:auto;z-index:15;background:none;border:none;box-shadow:none;padding:18px 14px;-webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 36px,#000 calc(100% - 36px),transparent 100%);mask-image:linear-gradient(to bottom,transparent 0,#000 36px,#000 calc(100% - 36px),transparent 100%)}
+.rail-title{font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:2px 0 12px 12px}
+.rail ul{list-style:none;margin:0;padding:0}
+.rail li{margin:3px 0}
+.rail a{display:block;padding:11px 14px;border-radius:10px;color:var(--ink);font-size:17px;line-height:1.4;transition:transform .2s ease,background .2s ease}
+.rail a:hover,.rail a:focus-visible{background:var(--rail-tint-soft);transform:translateX(-4px) scale(1.02);text-decoration:none}
+.rail a.active{background:var(--rail-tint);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);font-weight:600;transform:translateX(-12px);width:calc(100% + 12px)}
+.rail a.parent-active{background:var(--rail-tint-soft)}
+.rail ul.sub{margin:3px 0 3px 14px;padding-left:14px;border-left:1px solid var(--line)}
+.rail ul.sub a{padding:9px 12px;font-size:15px;color:var(--muted)}
+.rail ul.sub a:hover{color:var(--ink)}
+.rail ul.sub a.active{color:var(--ink);transform:translateX(-8px);width:calc(100% + 8px)}
+}
+@media(max-width:900px){
+.topbar{display:flex;position:sticky;top:0;z-index:20;align-items:center;gap:10px;padding:12px 14px;background:var(--side);border-bottom:1px solid var(--line)}
+.topbar b{flex:1;font-size:17px}.menu-btn,.topbar .theme-btn{width:44px;height:44px;border:1px solid var(--line);border-radius:10px;background:var(--card);color:var(--ink);font-size:19px;cursor:pointer}
+.wrap{grid-template-columns:1fr}
+.wrap{z-index:auto}
+.side{background:var(--side)}
+.side a{padding:11px 12px}
+body.menu-open{overflow:hidden}
+.side{position:fixed;inset:0 auto 0 0;width:300px;max-width:86vw;height:100dvh;z-index:30;transform:translateX(-105%);transition:transform .25s ease;box-shadow:0 0 40px rgba(0,0,0,.4)}
+body.menu-open .side{transform:translateX(0)}
+.backdrop{display:none}body.menu-open .backdrop{display:block;position:fixed;inset:0;z-index:25;background:rgba(0,0,0,.45)}
+main{padding:22px 16px}.prose h1{font-size:26px}.prose h2{font-size:21px}.cards{grid-template-columns:1fr}
+.prose table{font-size:14px}.prose pre{font-size:13.5px}
+}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}html{scroll-behavior:auto}}
+</style><script>(function(){try{var t=localStorage.getItem("vault-theme")||"dark";document.documentElement.setAttribute("data-theme",t)}catch(e){document.documentElement.setAttribute("data-theme","dark")}})()</script></head><body><canvas id="dotgrid" aria-hidden="true"></canvas><header class="topbar"><button class="menu-btn" type="button" onclick="toggleMenu()" aria-label="Open notes menu">☰</button><b>Business Vault</b><button class="theme-btn" type="button" onclick="toggleTheme(event)" aria-label="Toggle dark / light mode">◐</button></header><div class="backdrop" onclick="toggleMenu(false)"></div><div class="wrap"><nav class="side" id="side"><div class="side-head"><a class="home-link" href="index.html">⌂ Vault home</a><button class="theme-btn" type="button" onclick="toggleTheme(event)" aria-label="Toggle dark / light mode">◐</button></div><input class="side-search" type="search" placeholder="Search notes…  ( / )" onkeydown="if(event.key==='Enter'){location.href='index.html?q='+encodeURIComponent(this.value)}"><h3>Operations</h3><ul><li><a class="" href="Operations__Operations_1_Role.html">1 Role</a></li><li><a class="" href="Operations__Operations_2_Influences.html">2 Influences</a></li><li><a class="" href="Operations__Operations_3_Processes.html">3 Processes</a></li><li><a class="active" href="Operations__Operations_4_Strategies.html">4 Strategies</a></li><li><a class="" href="Operations__Operations_Syllabus_Summary.html">Syllabus Summary</a></li><li><a class="" href="Operations__Operations_FULL.html">FULL</a></li></ul><h3>Marketing</h3><ul><li><a class="" href="Marketing__Marketing_1_Role.html">1 Role</a></li><li><a class="" href="Marketing__Marketing_2_Influences.html">2 Influences</a></li><li><a class="" href="Marketing__Marketing_3_Processes.html">3 Processes</a></li><li><a class="" href="Marketing__Marketing_4_Strategies.html">4 Strategies</a></li><li><a class="" href="Marketing__Marketing_Syllabus_Summary.html">Syllabus Summary</a></li><li><a class="" href="Marketing__Marketing_FULL.html">FULL</a></li></ul><h3>Finance</h3><ul><li><a class="" href="Finance__Finance_1_Role.html">1 Role</a></li><li><a class="" href="Finance__Finance_2_Influences.html">2 Influences</a></li><li><a class="" href="Finance__Finance_3_Processes.html">3 Processes</a></li><li><a class="" href="Finance__Finance_4_Strategies.html">4 Strategies</a></li><li><a class="" href="Finance__Finance_Syllabus_Summary.html">Syllabus Summary</a></li><li><a class="" href="Finance__Finance_FULL.html">FULL</a></li></ul><h3>Human Resources</h3><ul><li><a class="" href="Human_Resources__Human_Resources_1_Role.html">1 Role</a></li><li><a class="" href="Human_Resources__Human_Resources_2_Influences.html">2 Influences</a></li><li><a class="" href="Human_Resources__Human_Resources_3_Processes.html">3 Processes</a></li><li><a class="" href="Human_Resources__Human_Resources_4_Strategies.html">4 Strategies</a></li><li><a class="" href="Human_Resources__Human_Resources_Syllabus_Summary.html">Syllabus Summary</a></li><li><a class="" href="Human_Resources__Human_Resources_FULL.html">FULL</a></li></ul><h3>Exam &amp; revision</h3><ul><li><a class="" href="MOC.html">Final Notes</a></li><li><a class="" href="Case_Study_Stats_Sheet.html">Business Studies Case Study Stats Sheet</a></li><li><a class="" href="Case_Studies.html">Case Studies — HSC Business Studies Final Notes</a></li><li><a class="" href="Confusing_Pairs.html">Confusing Pairs — MCQ Drill Sheet</a></li><li><a class="" href="Crichton_Office_Supplies_Report_and_Apple_Marketing_Essay.html">Crichton Office Supplies Report and Apple Marketing Essay</a></li><li><a class="" href="Trial_Practice_Killara_2022.html">Killara 2022 Trial — Marked Paper and Model Answers</a></li><li><a class="" href="McDonalds_Case_Study.html">McDonald's Case Study — Section IV Essay Resource</a></li><li><a class="" href="Section_III_Business_Report.html">Section III — How to Write the Business Report</a></li><li><a class="" href="Section_IV_Extended_Response.html">Section IV — How to Write the Extended Response</a></li><li><a class="" href="Marketing_Universal_Essay.html">Universal Marketing Essay — McDonald's Case Study</a></li><li><a class="" href="Finance_Management.html">Finance (moved)</a></li><li><a class="" href="Human_Resources.html">Human Resources (moved)</a></li><li><a class="" href="Marketing.html">Marketing (moved)</a></li><li><a class="" href="Operations.html">Operations (moved)</a></li></ul><p class="side-note">Source: TheSashi HSC Business Studies Notes, Final folder. Cloned 25 Oct 2026. Plus one added McDonald's note (see Exam & revision).</p></nav><main><article class="prose"><h1>Operations 4 · Operations Strategies</h1><p class="meta">Operations · Operations/Operations_4_Strategies.md</p><div class="toc"><b>On this page</b><ul><li><a href="#1-performance-objectives">1. Performance Objectives</a></li><li><a href="#2-new-product-or-service-design-and-development">2. New Product or Service Design and Development</a></li><li><a href="#3-supply-chain-management">3. Supply Chain Management</a></li><li><a href="#4-outsourcing">4. Outsourcing</a></li><li><a href="#5-technology">5. Technology</a></li><li><a href="#6-inventory-management">6. Inventory Management</a></li><li><a href="#7-quality-management">7. Quality Management</a></li><li><a href="#8-overcoming-resistance-to-change">8. Overcoming Resistance to Change</a></li><li><a href="#9-global-factors">9. Global Factors</a></li><li><a href="#confusing-pairs-in-this-section">Confusing pairs in this section</a></li><li><a href="#exam-habits">Exam habits</a></li><li><a href="#definitions-to-quote">Definitions to quote</a></li></ul></div><h1>🎯 Operations 4 · Operations Strategies</h1>
+<blockquote>
+<p><strong>Operations</strong> · <a href="Operations__Operations_1_Role.html">① Role</a> · <a href="Operations__Operations_2_Influences.html">② Influences</a> · <a href="Operations__Operations_3_Processes.html">③ Processes</a> · <strong>④ Strategies</strong> ← you are here · <a href="Operations__Operations_FULL.html">📕 Full note</a></p>
+</blockquote>
+<blockquote>
+<p><strong>Scope:</strong> the full HSC Operations module is examinable. This file covers the <strong>Operations strategies</strong> dot points only.</p>
+<p>⭐ <strong>The highest-yield section in the module.</strong> Most 20-mark Operations questions are answered mainly out of this file.</p>
+</blockquote>
+<hr>
+<h2 id="1-performance-objectives">1. Performance Objectives</h2>
+<table>
+<thead>
+<tr>
+<th>Objective</th>
+<th>Definition</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Quality</strong></td>
+<td><strong>Design quality</strong> (how well it matches consumer understanding of what it should do) + <strong>conformance quality</strong> (how well it meets specifications) + <strong>quality of service</strong></td>
+</tr>
+<tr>
+<td><strong>Speed</strong></td>
+<td>Fast response to market changes; reduced <strong>lead times</strong> and waiting times</td>
+</tr>
+<tr>
+<td><strong>Dependability</strong></td>
+<td>Consistency and reliability — the product works as promised, and delivery arrives when promised</td>
+</tr>
+<tr>
+<td><strong>Flexibility</strong></td>
+<td>The ability to adjust production to change quickly — in volume, product or delivery</td>
+</tr>
+<tr>
+<td><strong>Customisation</strong></td>
+<td>Creating individualised products to meet specific customer needs; <strong>mass customisation</strong> delivers this at volume</td>
+</tr>
+<tr>
+<td><strong>Cost</strong></td>
+<td>Minimising expenses so the business can compete on price while remaining profitable</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="2-new-product-or-service-design-and-development">2. New Product or Service Design and Development</h2>
+<p><strong>Two approaches:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Approach</th>
+<th>Definition</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Consumer-driven</strong></td>
+<td>Customer preferences and market research determine the design</td>
+</tr>
+<tr>
+<td><strong>Technology-driven</strong></td>
+<td>Innovation and new technology enable products consumers had not asked for</td>
+</tr>
+</tbody></table>
+<p><strong>Steps</strong>: Market research → Design and prototype → Testing → Refinement → Production and launch</p>
+<p><strong>Key considerations</strong>: supply chain (do we need new suppliers?), quality (can standards be maintained?), capacity (do we need new resources or technology?), cost.</p>
+<p><strong>Service design</strong>:</p>
+<ul>
+<li><strong>Explicit service</strong> — the <strong>tangible</strong> parts: the time taken, the expertise applied</li>
+<li><strong>Implicit service</strong> — the <strong>intangible</strong> parts: the feeling of wellbeing, status, comfort</li>
+<li>Cost is determined <strong>after</strong> both elements are specified</li>
+</ul>
+<hr>
+<h2 id="3-supply-chain-management">3. Supply Chain Management</h2>
+<p><strong>SCM</strong> = the integration and management of the flow of supplies from inputs, through transformation, to outputs.</p>
+<p><strong>Sourcing</strong> = deciding which suppliers to use. Factors: consumer demand, quality of inputs, flexibility and timeliness, cost.</p>
+<p><strong>Trends in sourcing:</strong></p>
+<ul>
+<li><strong>Supplier rationalisation</strong> — reducing the number of suppliers to gain better terms and consistency</li>
+<li><strong>Backwards vertical integration</strong> — acquiring your own supplier</li>
+<li><strong>Cost minimisation</strong> — moving sourcing offshore</li>
+<li>Building <strong>flexible and responsive</strong> supply chains</li>
+</ul>
+<p><strong>Global sourcing</strong> = purchasing inputs without being constrained by location.</p>
+<table>
+<thead>
+<tr>
+<th>Advantages</th>
+<th>Disadvantages</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Lower costs</td>
+<td>Quality risk</td>
+</tr>
+<tr>
+<td>Reduced lead times (if well managed)</td>
+<td>Impact on domestic businesses and jobs</td>
+</tr>
+<tr>
+<td>Access to materials unavailable domestically</td>
+<td>Communication, cultural and time-zone barriers</td>
+</tr>
+<tr>
+<td>Access to specialist expertise</td>
+<td>Longer, more fragile supply lines</td>
+</tr>
+</tbody></table>
+<p><strong>E-commerce</strong> = using the internet in supply chain management. <strong>E-procurement</strong> systems automate ordering. <strong>B2B</strong> (business to business — automatic restocking between firms) and <strong>B2C</strong> (business to consumer — direct sales).</p>
+<p><strong>Logistics</strong> = distribution, transportation, storage (warehousing and distribution centres), materials handling and packaging.</p>
+<hr>
+<h2 id="4-outsourcing">4. Outsourcing</h2>
+<p><strong>Outsourcing</strong> = the use of external providers to perform business activities — either <strong>domestic</strong> or <strong>global</strong>.</p>
+<table>
+<thead>
+<tr>
+<th>Advantages</th>
+<th>Disadvantages</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Cost savings</td>
+<td>Communication and language barriers</td>
+</tr>
+<tr>
+<td>Improved efficiency</td>
+<td>Loss of direct quality control</td>
+</tr>
+<tr>
+<td>Access to specialist skills</td>
+<td>Security and confidentiality risks</td>
+</tr>
+<tr>
+<td>Focus on core business</td>
+<td>Dependency on the partner</td>
+</tr>
+<tr>
+<td>Increased accountability through contracts</td>
+<td>Loss of corporate memory and in-house skill</td>
+</tr>
+<tr>
+<td>Simplification of the business</td>
+<td>Reputation affected by the partner&#39;s conduct</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="5-technology">5. Technology</h2>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Detail</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Leading edge</strong></td>
+<td>Newest available; competitive advantage; expensive and untested</td>
+</tr>
+<tr>
+<td><strong>Established</strong></td>
+<td>Proven and widely used; reliable and cheaper; no differentiation</td>
+</tr>
+</tbody></table>
+<p>Key applications: <strong>CAD</strong> (computer-aided design), <strong>CAM</strong> (computer-aided manufacture), <strong>robotics</strong>, <strong>automation</strong>.</p>
+<hr>
+<h2 id="6-inventory-management">6. Inventory Management</h2>
+<blockquote>
+<p>⚠️ <strong>Critical exam distinction</strong>
+If the question asks about inventory <strong>MANAGEMENT</strong> → answer <strong>Holding stock (JIC)</strong> or <strong>Just in Time (JIT)</strong>.
+If the question asks about a strategy to <strong>VALUE</strong> inventory, or an inventory <strong>VALUATION</strong> method → answer <strong>FIFO</strong> or <strong>LIFO</strong>.
+Mixing these up is one of the most common ways students lose marks in this topic.</p>
+</blockquote>
+<h3 id="6-1-holding-stock-just-in-case-jic">6.1 Holding Stock — &quot;Just in Case&quot; (JIC)</h3>
+<table>
+<thead>
+<tr>
+<th>Advantages</th>
+<th>Disadvantages</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Can always meet customer demand</td>
+<td><strong>Holding costs</strong>: storage, insurance, theft, spoilage, security</td>
+</tr>
+<tr>
+<td>Alternatives available if an item is out of stock</td>
+<td>Capital tied up in stock that could be used elsewhere</td>
+</tr>
+<tr>
+<td>Reduced lead times for customers</td>
+<td>Risk of <strong>obsolescence</strong> (stock becoming outdated)</td>
+</tr>
+<tr>
+<td>Immediate revenue from available stock</td>
+<td>Damage and deterioration</td>
+</tr>
+<tr>
+<td>Bulk-buying cost savings</td>
+<td>Requires warehouse space</td>
+</tr>
+</tbody></table>
+<h3 id="6-2-just-in-time-jit">6.2 Just in Time (JIT)</h3>
+<p>Produce or order <strong>only</strong> what is needed, when it is needed.</p>
+<table>
+<thead>
+<tr>
+<th>Advantages</th>
+<th>Disadvantages</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Greatly reduced storage costs</td>
+<td>Lead time increases when demand varies unexpectedly</td>
+</tr>
+<tr>
+<td>No theft or damage risk from stored stock</td>
+<td>Total dependence on supplier reliability</td>
+</tr>
+<tr>
+<td>No obsolescence</td>
+<td>A single delivery failure can <strong>shut down production</strong></td>
+</tr>
+<tr>
+<td>Frees working capital</td>
+<td>Loses bulk-buying discounts</td>
+</tr>
+</tbody></table>
+<h3 id="6-3-inventory-valuation-fifo-lifo-and-weighted-average">6.3 Inventory Valuation — FIFO, LIFO and Weighted Average</h3>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Definition</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>FIFO</strong> (First In First Out)</td>
+<td>Assumes the <strong>oldest</strong> stock is sold first</td>
+</tr>
+<tr>
+<td><strong>LIFO</strong> (Last In First Out)</td>
+<td>Assumes the <strong>newest</strong> stock is sold first</td>
+</tr>
+<tr>
+<td><strong>Weighted average</strong></td>
+<td>Uses the average cost of all inventory; <strong>smooths</strong> price fluctuations</td>
+</tr>
+</tbody></table>
+<p><strong>The decision table — memorise this:</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th><strong>Understate / minimise profit</strong> (to reduce tax)</th>
+<th><strong>Overstate / maximise profit</strong> (for potential investors)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Cost of inventory is increasing</strong></td>
+<td><strong>LIFO</strong></td>
+<td><strong>FIFO</strong></td>
+</tr>
+<tr>
+<td><strong>Cost of inventory is decreasing</strong></td>
+<td><strong>FIFO</strong></td>
+<td><strong>LIFO</strong></td>
+</tr>
+</tbody></table>
+<p><strong>Worked example — FIFO vs LIFO with rising costs</strong></p>
+<p><strong>Purchases:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Date</th>
+<th>Units</th>
+<th>Cost per unit</th>
+<th>Total</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1 Jan</td>
+<td>100</td>
+<td>$10</td>
+<td>$1,000</td>
+</tr>
+<tr>
+<td>1 Feb</td>
+<td>100</td>
+<td>$12</td>
+<td>$1,200</td>
+</tr>
+<tr>
+<td>1 Mar</td>
+<td>100</td>
+<td>$14</td>
+<td>$1,400</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td><strong>300</strong></td>
+<td></td>
+<td><strong>$3,600</strong></td>
+</tr>
+</tbody></table>
+<p><strong>150 units are sold at $20 each → Sales revenue = $3,000</strong></p>
+<p><strong>FIFO</strong> (oldest sold first): COGS = (100 × $10) + (50 × $12) = 1,000 + 600 = <strong>$1,600</strong>
+Closing stock = (50 × $12) + (100 × $14) = 600 + 1,400 = <strong>$2,000</strong>
+<strong>Gross profit = 3,000 − 1,600 = $1,400</strong></p>
+<p><strong>LIFO</strong> (newest sold first): COGS = (100 × $14) + (50 × $12) = 1,400 + 600 = <strong>$2,000</strong>
+Closing stock = (50 × $12) + (100 × $10) = 600 + 1,000 = <strong>$1,600</strong>
+<strong>Gross profit = 3,000 − 2,000 = $1,000</strong></p>
+<p><strong>Weighted average</strong>: $3,600 ÷ 300 units = <strong>$12 per unit</strong>
+COGS = 150 × 12 = <strong>$1,800</strong> → <strong>Gross profit = $1,200</strong></p>
+<p><strong>Conclusion</strong>: With <strong>rising</strong> costs, <strong>FIFO reports the higher profit</strong> ($1,400) — chosen to impress investors. <strong>LIFO reports the lower profit</strong> ($1,000) — chosen to reduce tax. Weighted average sits between the two. Note COGS + closing stock = $3,600 in every method: the total cost is the same, only its <em>allocation</em> differs.</p>
+<p><strong>EOQ (Economic Order Quantity)</strong>: the optimal order quantity that <strong>minimises total inventory costs</strong> — balancing <strong>ordering costs</strong> (which fall as you order less often in bigger batches) against <strong>holding costs</strong> (which rise as you store more).</p>
+<p><strong>LIFO note</strong>: LIFO is permitted for HSC analysis but is <strong>not permitted under Australian Accounting Standards</strong> for external financial reporting. Answer the question as asked, using the table above.</p>
+<hr>
+<h2 id="7-quality-management">7. Quality Management</h2>
+<table>
+<thead>
+<tr>
+<th>Approach</th>
+<th>Key feature</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Quality control</strong></td>
+<td><strong>Inspection</strong> at various points in production. Define standards, test against them, take corrective action. <strong>Detects</strong> defects <em>after</em> they occur</td>
+</tr>
+<tr>
+<td><strong>Quality assurance</strong></td>
+<td>A <strong>system</strong> designed to <strong>prevent</strong> defects — &quot;right the first time.&quot; Certified against external standards such as <strong>ISO 9000</strong></td>
+</tr>
+<tr>
+<td><strong>Total Quality Management (TQM)</strong></td>
+<td>Holistic — <strong>every employee</strong> is responsible for quality; the total business is managed for quality. Elements: customer focus, continuous improvement, employee empowerment</td>
+</tr>
+<tr>
+<td><strong>Six Sigma</strong></td>
+<td>Data-driven; targets <strong>3.4 defects per million</strong> opportunities. Uses <strong>DMAIC</strong>: Define, Measure, Analyse, Improve, Control</td>
+</tr>
+<tr>
+<td><strong>Kaizen</strong></td>
+<td>Continuous <strong>incremental</strong> improvement involving all employees; eliminating waste (<strong>muda</strong>)</td>
+</tr>
+<tr>
+<td><strong>Quality circles</strong></td>
+<td>Small groups of employees who meet regularly to identify and solve quality problems</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>⭐ <strong>The three-way tell — this was 2025 HSC Q8 and you lost it.</strong></p>
+<table>
+<thead>
+<tr>
+<th>If the stem says…</th>
+<th>The answer is</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Inspecting, checking, testing, detecting faults</strong></td>
+<td><strong>Control</strong></td>
+</tr>
+<tr>
+<td><strong>A system, a standard, certification, preventing defects, &quot;right the first time&quot;, ISO 9000</strong></td>
+<td><strong>Assurance</strong></td>
+</tr>
+<tr>
+<td><strong>&quot;Ongoing commitment&quot;, continuous, never-ending, always getting better, Kaizen</strong></td>
+<td><strong>Improvement</strong></td>
+</tr>
+</tbody></table>
+<p>2025 HSC Q8 read <em>&quot;demonstrates an <strong>ongoing commitment</strong> to make its operations more efficient and effective&quot;</em> → <strong>Improvement</strong>. You answered Assurance. Assurance is something you <strong>install once and certify</strong>; improvement is something you <strong>keep doing</strong>.</p>
+</blockquote>
+<hr>
+<h2 id="8-overcoming-resistance-to-change">8. Overcoming Resistance to Change</h2>
+<p><strong>Two sources of resistance:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Source</th>
+<th>Detail</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Financial costs</strong></td>
+<td>Purchasing new equipment, <strong>redundancy payouts</strong>, retraining costs, reorganising plant layout</td>
+</tr>
+<tr>
+<td><strong>Psychological (inertia)</strong></td>
+<td>Fear and uncertainty → less motivated staff → lower productivity → quality issues → increased lead times and defects → lost customers</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>Inertia</strong> = the tendency of people and organisations to <strong>keep doing what they have always done</strong> and resist any change to it.</p>
+</blockquote>
+<p><strong>Managing change effectively:</strong></p>
+<ol>
+<li>Identify the sources of change and <strong>assess the need</strong> for it</li>
+<li><strong>Communicate</strong> with employees and build widespread support</li>
+<li>Use <strong>change agents</strong> — people who champion and drive the change</li>
+<li>Apply <strong>change models</strong> (e.g. Lewin&#39;s unfreeze → change → refreeze)</li>
+</ol>
+<hr>
+<h2 id="9-global-factors">9. Global Factors</h2>
+<table>
+<thead>
+<tr>
+<th>Factor</th>
+<th>Detail</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Global sourcing</strong></td>
+<td>Sourcing inputs anywhere in the world for cost or quality advantage</td>
+</tr>
+<tr>
+<td><strong>Economies of scale</strong></td>
+<td>Higher volumes → <strong>lower per-unit costs</strong>, through capital investment, technology, global branding and centralised training</td>
+</tr>
+<tr>
+<td><strong>Scanning and learning</strong></td>
+<td>Actively studying and adopting <strong>global best practice</strong> from other markets and competitors</td>
+</tr>
+<tr>
+<td><strong>Research and development</strong></td>
+<td>Investing in leading-edge technologies; global expertise increases the opportunity base</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="confusing-pairs-in-this-section">⚠️ Confusing pairs in this section</h2>
+<table>
+<thead>
+<tr>
+<th>Pair</th>
+<th>The tell</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Speed</strong> vs <strong>dependability</strong></td>
+<td>Speed = how <em>fast</em>. Dependability = how <em>reliably you deliver when you said you would</em>. You can be fast and undependable</td>
+</tr>
+<tr>
+<td><strong>Quality control</strong> vs <strong>quality assurance</strong></td>
+<td>Control <strong>inspects to find</strong> defects (reactive). Assurance <strong>designs the process</strong> so they don&#39;t happen (proactive)</td>
+</tr>
+<tr>
+<td><strong>JIT/JIC</strong> vs <strong>FIFO/LIFO</strong></td>
+<td>JIT/JIC = inventory <strong>management</strong>. FIFO/LIFO = inventory <strong>valuation</strong></td>
+</tr>
+<tr>
+<td><strong>Outsourcing</strong> vs <strong>offshoring</strong></td>
+<td>Outsourcing = an <strong>external provider</strong>. Offshoring = <strong>overseas</strong>, which may still be in-house</td>
+</tr>
+<tr>
+<td><strong>Global sourcing</strong> vs <strong>outsourcing</strong></td>
+<td>Global sourcing buys <strong>inputs</strong>. Outsourcing contracts out an <strong>activity</strong></td>
+</tr>
+<tr>
+<td><strong>Leading edge</strong> vs <strong>established technology</strong></td>
+<td>Leading edge = advantage but untested and dear. Established = reliable and cheap but no advantage</td>
+</tr>
+<tr>
+<td><strong>Economies of scale</strong></td>
+<td>Lower <strong>per-unit</strong> cost. Total cost still rises with volume</td>
+</tr>
+<tr>
+<td><strong>Design quality</strong> vs <strong>conformance quality</strong></td>
+<td>Design = matches what consumers <strong>think it should do</strong>. Conformance = meets the <strong>specification</strong></td>
+</tr>
+<tr>
+<td><strong>Explicit</strong> vs <strong>implicit service</strong></td>
+<td>Explicit = tangible (time, expertise). Implicit = intangible (comfort, status)</td>
+</tr>
+<tr>
+<td><strong>Obsolescence</strong> vs <strong>spoilage</strong></td>
+<td>Obsolescence = <strong>outdated</strong>. Spoilage = <strong>physically deteriorated</strong></td>
+</tr>
+<tr>
+<td><strong>EOQ</strong> vs <strong>reorder point</strong></td>
+<td>EOQ = <strong>how much</strong> to order. Reorder point = <strong>when</strong> to order</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="exam-habits">📝 Exam habits</h2>
+<blockquote>
+<p><strong>Every extended response ends at cost leadership or differentiation.</strong> That is the strategic role, and markers look for the link.</p>
+</blockquote>
+<blockquote>
+<p><strong>Don&#39;t list influences or strategies — explain the impact on the operations process.</strong> A list is a Band 3 answer.</p>
+</blockquote>
+<hr>
+<h2 id="definitions-to-quote">📖 Definitions to quote</h2>
+<table>
+<thead>
+<tr>
+<th>Term</th>
+<th>Definition</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Quality</strong></td>
+<td>Design quality + conformance quality + quality of service</td>
+</tr>
+<tr>
+<td><strong>Dependability</strong></td>
+<td>The consistency and reliability of the product and its delivery</td>
+</tr>
+<tr>
+<td><strong>Supply chain management</strong></td>
+<td>Integrating and managing the flow of supplies through the business</td>
+</tr>
+<tr>
+<td><strong>Global sourcing</strong></td>
+<td>Purchasing inputs without being constrained by location</td>
+</tr>
+<tr>
+<td><strong>Outsourcing</strong></td>
+<td>Using external providers to perform business activities</td>
+</tr>
+<tr>
+<td><strong>JIT</strong></td>
+<td>Producing or ordering only what is needed, when it is needed</td>
+</tr>
+<tr>
+<td><strong>FIFO</strong></td>
+<td>Valuing inventory on the assumption the oldest stock is sold first</td>
+</tr>
+<tr>
+<td><strong>EOQ</strong></td>
+<td>The order quantity that minimises total inventory costs</td>
+</tr>
+<tr>
+<td><strong>Quality assurance</strong></td>
+<td>A system designed to prevent defects, certified against standards such as ISO 9000</td>
+</tr>
+<tr>
+<td><strong>TQM</strong></td>
+<td>A holistic approach in which every employee is responsible for quality</td>
+</tr>
+<tr>
+<td><strong>Six Sigma</strong></td>
+<td>A data-driven method targeting 3.4 defects per million opportunities, using DMAIC</td>
+</tr>
+<tr>
+<td><strong>Kaizen</strong></td>
+<td>Continuous incremental improvement involving all employees</td>
+</tr>
+<tr>
+<td><strong>Inertia</strong></td>
+<td>The tendency to keep doing what has always been done and resist change</td>
+</tr>
+<tr>
+<td><strong>Economies of scale</strong></td>
+<td>Lower per-unit costs achieved through higher volume</td>
+</tr>
+</tbody></table>
+<hr>
+<blockquote>
+<p><strong>Back to:</strong> <a href="Operations__Operations_1_Role.html">① Role</a> · <a href="Operations__Operations_FULL.html">📕 Full note</a> · Drill sheet: <a href="Confusing_Pairs.html">Confusing Pairs</a> · <a href="MOC.html">MOC</a></p>
+</blockquote>
+</article></main></div><nav class="rail" aria-label="On this page"><div class="rail-title">On this page</div><ul><li><a href="#1-performance-objectives" data-target="1-performance-objectives">1. Performance Objectives</a></li><li><a href="#2-new-product-or-service-design-and-development" data-target="2-new-product-or-service-design-and-development">2. New Product or Service Design and Development</a></li><li><a href="#3-supply-chain-management" data-target="3-supply-chain-management">3. Supply Chain Management</a></li><li><a href="#4-outsourcing" data-target="4-outsourcing">4. Outsourcing</a></li><li><a href="#5-technology" data-target="5-technology">5. Technology</a></li><li><a href="#6-inventory-management" data-target="6-inventory-management">6. Inventory Management</a><ul class="sub"><li><a href="#6-1-holding-stock-just-in-case-jic" data-target="6-1-holding-stock-just-in-case-jic" data-parent="6-inventory-management">6.1 Holding Stock — &quot;Just in Case&quot; (JIC)</a></li><li><a href="#6-2-just-in-time-jit" data-target="6-2-just-in-time-jit" data-parent="6-inventory-management">6.2 Just in Time (JIT)</a></li><li><a href="#6-3-inventory-valuation-fifo-lifo-and-weighted-average" data-target="6-3-inventory-valuation-fifo-lifo-and-weighted-average" data-parent="6-inventory-management">6.3 Inventory Valuation — FIFO, LIFO and Weighted Average</a></li></ul></li><li><a href="#7-quality-management" data-target="7-quality-management">7. Quality Management</a></li><li><a href="#8-overcoming-resistance-to-change" data-target="8-overcoming-resistance-to-change">8. Overcoming Resistance to Change</a></li><li><a href="#9-global-factors" data-target="9-global-factors">9. Global Factors</a></li><li><a href="#confusing-pairs-in-this-section" data-target="confusing-pairs-in-this-section">Confusing pairs in this section</a></li><li><a href="#exam-habits" data-target="exam-habits">Exam habits</a></li><li><a href="#definitions-to-quote" data-target="definitions-to-quote">Definitions to quote</a></li></ul></nav><script>
+function toggleTheme(ev){
+var oldTheme=document.documentElement.getAttribute("data-theme")||"dark";
+var next=oldTheme==="light"?"dark":"light";
+function apply(){document.documentElement.setAttribute("data-theme",next);try{localStorage.setItem("vault-theme",next)}catch(e){}updateThemeIcons(next);}
+var reduced=false;try{reduced=window.matchMedia("(prefers-reduced-motion: reduce)").matches}catch(e){}
+if(reduced){apply();return;}
+if(window.__vaultThemeAnimating){return;}
+window.__vaultThemeAnimating=1;
+var newPaper=next==="light"?"#faf8f2":"#13151b";
+var W=window.innerWidth,H=window.innerHeight;
+var spacing=W<768?36:28;
+var maxR=spacing*0.78;
+var dpr=1;try{dpr=W<768?1:Math.min(window.devicePixelRatio||1,1.5);}catch(e){}
+var canvas=document.createElement("canvas");
+canvas.id="theme-wave";
+canvas.style.cssText="position:fixed;left:0;top:0;width:"+W+"px;height:"+H+"px;z-index:9999;pointer-events:none;";
+canvas.width=Math.round(W*dpr);canvas.height=Math.round(H*dpr);
+var ctx=canvas.getContext("2d");
+try{ctx.setTransform(dpr,0,0,dpr,0,0);}catch(e){}
+ctx.fillStyle=newPaper;
+var dots=[];
+for(var y=spacing/2;y<H+spacing;y+=spacing){for(var x=spacing/2;x<W+spacing;x+=spacing){dots.push({x:x,y:y,delay:(x+y)/(W+H)*450,done:0});}}
+var waveMs=450,growMs=300;
+var start=Date.now();
+function easeOutCubic(p){return 1-Math.pow(1-p,3);}
+function step(){
+var elapsed=Date.now()-start;
+var allDone=true;
+var any=false;
+ctx.beginPath();
+for(var i=0;i<dots.length;i++){
+var d=dots[i];
+if(d.done){continue;}
+var p=(elapsed-d.delay)/growMs;
+if(p<0){allDone=false;continue;}
+if(p<1){allDone=false;}
+else{d.done=1;}
+var r=maxR*easeOutCubic(p<1?p:1);
+if(r>0){ctx.moveTo(d.x+r,d.y);ctx.arc(d.x,d.y,r,0,Math.PI*2);any=true;}
+}
+if(any){ctx.fill();}
+if(!allDone){requestAnimationFrame(step);return;}
+apply();
+canvas.style.transition="opacity 0.15s ease";
+canvas.style.opacity="0";
+setTimeout(function(){window.__vaultThemeAnimating=0;if(canvas.parentNode)canvas.parentNode.removeChild(canvas);},180);
+}
+document.body.appendChild(canvas);
+requestAnimationFrame(step);
+}
+function updateThemeIcons(theme){var icon=theme==="dark"?"☀":"☾";document.querySelectorAll(".theme-btn").forEach(function(b){b.textContent=icon;});}
+try{updateThemeIcons(document.documentElement.getAttribute("data-theme")||"dark");}catch(e){}
+function toggleMenu(force){document.body.classList.toggle("menu-open",force)}
+document.addEventListener("keydown",function(e){if(e.key==="/"&&!/INPUT|TEXTAREA/.test(document.activeElement.tagName)){e.preventDefault();var s=document.querySelector(".side-search");if(s)s.focus()}});
+document.addEventListener("click",function(e){if(e.target.closest(".side a"))toggleMenu(false)});
+(function(){try{
+var links=Array.prototype.slice.call(document.querySelectorAll(".rail a"));
+if(!links.length||!window.IntersectionObserver)return;
+var map={};links.forEach(function(a){map[a.getAttribute("data-target")]=a});
+var obs=new IntersectionObserver(function(es){
+  es.forEach(function(e){
+    if(e.isIntersecting){
+      links.forEach(function(a){a.classList.remove("active");a.classList.remove("parent-active")});
+      var l=map[e.target.id];
+      if(l){l.classList.add("active");var p=l.getAttribute("data-parent");if(p&&map[p])map[p].classList.add("parent-active")}
+    }
+  });
+}, {rootMargin:"-20% 0px -70% 0px"});
+document.querySelectorAll(".prose h2[id], .prose h3[id]").forEach(function(h){obs.observe(h)});
+}catch(e){}})();
+(function(){try{
+var cv=document.getElementById("dotgrid");if(!cv)return;var ctx=cv.getContext("2d");if(!ctx)return;
+var reduced=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+var W=0,H=0,dpr=1,cols=0,rows=0,SP=28,px=0,py=0,pt=0,hasP=false;
+function dotRGB(){try{return getComputedStyle(document.documentElement).getPropertyValue("--dot-rgb").trim()||"233,231,225"}catch(e){return "233,231,225"}}
+function resize(){dpr=Math.min(window.devicePixelRatio||1,window.innerWidth<700?1.5:2);SP=window.innerWidth<700?36:28;W=window.innerWidth;H=window.innerHeight;cv.width=W*dpr;cv.height=H*dpr;cv.style.width=W+"px";cv.style.height=H+"px";ctx.setTransform(dpr,0,0,dpr,0,0);cols=Math.ceil(W/SP)+1;rows=Math.ceil(H/SP)+1}
+var R=Math.random()*Math.PI*2;
+var FORCES=[
+ {ax:.42,ay:.15,tx:26,ty:31,px:R,py:R+1.3,circ:false},
+ {ax:.38,ay:.42,tx:37,ty:23,px:R+2.1,py:R+0.7,circ:false},
+ {ax:.30,ay:.30,tx:41,ty:41,px:R+4.0,py:R+4.0,circ:true}
+];
+function draw(now){var t=now/1000;var rgb=dotRGB();
+var activeForces=W>=1280?FORCES:FORCES.slice(0,1);
+var pFade=hasP?Math.max(0,1-(now-pt)/4000):0;
+ctx.clearRect(0,0,W,H);
+for(var y=0;y<rows;y++)for(var x=0;x<cols;x++){var ox=x*SP+10,oy=y*SP+10,a=0.14,dispX=0,dispY=0;
+for(var fi=0;fi<activeForces.length;fi++){var F=activeForces[fi];
+var fx=F.circ?W*(0.5+F.ax*Math.cos(t*2*Math.PI/F.tx+F.px)):W*(0.5+F.ax*Math.sin(t*2*Math.PI/F.tx+F.px));
+var fy=F.circ?H*(0.5+F.ay*Math.sin(t*2*Math.PI/F.ty+F.py)):H*(0.5+F.ay*Math.sin(t*2*Math.PI/F.ty+F.py));
+var ddx=ox-fx,ddy=oy-fy,d=Math.sqrt(ddx*ddx+ddy*ddy);
+if(d<170&&d>0.01){var f=1-d/170;f=f*f;dispX+=(ddx/d)*6*f;dispY+=(ddy/d)*6*f;a+=0.20*f}}
+var dm=Math.sqrt(dispX*dispX+dispY*dispY);if(dm>9){dispX*=9/dm;dispY*=9/dm}
+var dx=ox+dispX,dy=oy+dispY;if(a>0.38)a=0.38;
+if(pFade>0){var pdx=ox-px,pdy=oy-py,pd=Math.sqrt(pdx*pdx+pdy*pdy);
+if(pd<150&&pd>0.01){var pf=1-pd/150;pf=pf*pf*pFade;dx+=(pdx/pd)*5*pf;dy+=(pdy/pd)*5*pf;a=Math.min(0.38,a+0.18*pf)}}
+ctx.beginPath();ctx.arc(dx,dy,1.3,0,Math.PI*2);ctx.fillStyle="rgba("+rgb+","+a.toFixed(3)+")";ctx.fill()}}
+function loop(now){if(!window.__vaultThemeAnimating)draw(now);if(!reduced)requestAnimationFrame(loop)}
+window.addEventListener("resize",resize);resize();
+window.addEventListener("pointermove",function(e){px=e.clientX;py=e.clientY;pt=performance.now();hasP=true},{passive:true});
+requestAnimationFrame(loop);
+}catch(e){}})();
+</script></body></html>

@@ -1,0 +1,664 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Finance 4 · Financial Management Strategies — HSC Business Vault</title><style>
+:root{--paper:#faf8f2;--ink:#1e1b16;--muted:#6b655a;--line:#e3ddd0;--accent:#1d4ed8;--card:#fffdf8;--side:#f3efe6;--side-bg:rgba(243,239,230,.88);--active:#e8e0cd;--rail-tint:rgba(29,78,216,.14);--rail-tint-soft:rgba(29,78,216,.07);--code:#efe9db;--quote:#4a4438;--dot-rgb:30,27,22;--scheme:light}
+[data-theme="dark"]{--paper:#13151b;--ink:#e9e7e1;--muted:#9aa0ab;--line:#2b2f3a;--accent:#8ab4ff;--card:#1b1e27;--side:#101218;--side-bg:rgba(16,18,24,.88);--active:#262b38;--rail-tint:rgba(138,180,255,.18);--rail-tint-soft:rgba(138,180,255,.09);--code:#262a36;--quote:#c3c7cf;--dot-rgb:233,231,225;--scheme:dark}
+*{box-sizing:border-box}html{color-scheme:var(--scheme)}body{margin:0;background:var(--paper);color:var(--ink);font:16.5px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;overflow-x:hidden}
+a{color:var(--accent);text-decoration:none;transition:color .18s ease}a:hover{text-decoration:underline}
+#dotgrid{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:0}
+.wrap{position:relative;z-index:1;display:grid;grid-template-columns:280px 1fr;min-height:100vh}
+.side{position:sticky;top:0;height:100vh;overflow:auto;padding:22px 18px;border-right:1px solid var(--line);background:var(--side-bg)}
+.side h3{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:22px 0 6px}
+.side ul{list-style:none;margin:0;padding:0}.side li{margin:3px 0}
+.side a{display:block;padding:7px 10px;border-radius:8px;color:var(--ink);transition:background .18s ease,transform .18s ease}
+.side a.active{background:var(--active);font-weight:600}
+.side a:hover{background:var(--active);text-decoration:none;transform:translateX(3px)}
+.side-head{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.theme-btn{flex:none;width:40px;height:40px;border:1px solid var(--line);border-radius:50%;background:var(--card);color:var(--ink);font-size:18px;cursor:pointer;transition:background .18s ease}
+.theme-btn:hover{background:var(--active)}
+.home-link{font-weight:700;font-size:18px}.side-search{width:100%;margin:14px 0 4px;padding:10px 12px;border:1px solid var(--line);border-radius:8px;background:var(--card);color:var(--ink);font-size:16px}
+.side-note{font-size:12.5px;color:var(--muted);line-height:1.5;margin-top:24px}
+.topbar{display:none}.backdrop{display:none}
+main{padding:36px 44px;max-width:860px}.prose h1{font-size:32px;line-height:1.2;letter-spacing:-.02em;margin:0 0 6px}
+.prose h2{font-size:23px;margin:34px 0 8px;padding-top:14px;border-top:1px solid var(--line)}
+.prose h3{font-size:18px;margin:26px 0 6px}.prose p{margin:10px 0}
+.prose table{border-collapse:collapse;width:100%;margin:14px 0;font-size:14.5px;display:block;overflow-x:auto;-webkit-overflow-scrolling:touch}
+.prose th,.prose td{border:1px solid var(--line);padding:7px 10px;text-align:left;vertical-align:top}
+.prose th{background:var(--side)}.prose blockquote{border-left:3px solid var(--line);margin:14px 0;padding:2px 14px;color:var(--quote);background:var(--card)}
+.prose code{background:var(--code);padding:1px 5px;border-radius:4px;font-size:14px}.prose pre{background:#0d0f14;color:#f5f1e6;padding:14px;border-radius:8px;overflow:auto}
+.prose pre code{background:none;color:inherit;padding:0}.prose hr{border:none;border-top:1px solid var(--line);margin:24px 0}
+.meta{color:var(--muted);font-size:14px;margin-bottom:20px}.toc{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 18px;margin:18px 0}
+.toc b{font-size:13px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}.toc ul{margin:8px 0 0;padding-left:18px}.toc li{margin:3px 0}
+.cards{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:20px 0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 18px;transition:transform .2s ease,border-color .2s ease,box-shadow .2s ease}
+.card:hover{transform:translateY(-3px);border-color:var(--accent);box-shadow:0 8px 24px rgba(0,0,0,.18)}
+.card h3{margin:0 0 4px}.card p{margin:0;color:var(--muted);font-size:14.5px}
+#search{width:100%;padding:13px 14px;font-size:17px;border:1px solid var(--line);border-radius:10px;background:var(--card);color:var(--ink)}
+.result{border-bottom:1px solid var(--line);padding:14px 6px;border-radius:8px;transition:background .18s ease,transform .18s ease}
+.result:hover{background:var(--card);transform:translateX(3px)}
+.result h3{margin:0}.result p{margin:4px 0;color:var(--quote)}.result .path{font-size:13px;color:var(--muted)}
+mark{background:#fde68a;color:#1e1b16;padding:0 1px}
+html{scroll-behavior:smooth}
+.rail{display:none}
+@media(min-width:1280px){
+main{max-width:min(860px,calc(100vw - 692px))}
+.rail{display:block;position:fixed;right:24px;top:50%;transform:translateY(-50%);width:340px;max-height:76vh;overflow:auto;z-index:15;background:none;border:none;box-shadow:none;padding:18px 14px;-webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 36px,#000 calc(100% - 36px),transparent 100%);mask-image:linear-gradient(to bottom,transparent 0,#000 36px,#000 calc(100% - 36px),transparent 100%)}
+.rail-title{font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:2px 0 12px 12px}
+.rail ul{list-style:none;margin:0;padding:0}
+.rail li{margin:3px 0}
+.rail a{display:block;padding:11px 14px;border-radius:10px;color:var(--ink);font-size:17px;line-height:1.4;transition:transform .2s ease,background .2s ease}
+.rail a:hover,.rail a:focus-visible{background:var(--rail-tint-soft);transform:translateX(-4px) scale(1.02);text-decoration:none}
+.rail a.active{background:var(--rail-tint);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);font-weight:600;transform:translateX(-12px);width:calc(100% + 12px)}
+.rail a.parent-active{background:var(--rail-tint-soft)}
+.rail ul.sub{margin:3px 0 3px 14px;padding-left:14px;border-left:1px solid var(--line)}
+.rail ul.sub a{padding:9px 12px;font-size:15px;color:var(--muted)}
+.rail ul.sub a:hover{color:var(--ink)}
+.rail ul.sub a.active{color:var(--ink);transform:translateX(-8px);width:calc(100% + 8px)}
+}
+@media(max-width:900px){
+.topbar{display:flex;position:sticky;top:0;z-index:20;align-items:center;gap:10px;padding:12px 14px;background:var(--side);border-bottom:1px solid var(--line)}
+.topbar b{flex:1;font-size:17px}.menu-btn,.topbar .theme-btn{width:44px;height:44px;border:1px solid var(--line);border-radius:10px;background:var(--card);color:var(--ink);font-size:19px;cursor:pointer}
+.wrap{grid-template-columns:1fr}
+.wrap{z-index:auto}
+.side{background:var(--side)}
+.side a{padding:11px 12px}
+body.menu-open{overflow:hidden}
+.side{position:fixed;inset:0 auto 0 0;width:300px;max-width:86vw;height:100dvh;z-index:30;transform:translateX(-105%);transition:transform .25s ease;box-shadow:0 0 40px rgba(0,0,0,.4)}
+body.menu-open .side{transform:translateX(0)}
+.backdrop{display:none}body.menu-open .backdrop{display:block;position:fixed;inset:0;z-index:25;background:rgba(0,0,0,.45)}
+main{padding:22px 16px}.prose h1{font-size:26px}.prose h2{font-size:21px}.cards{grid-template-columns:1fr}
+.prose table{font-size:14px}.prose pre{font-size:13.5px}
+}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}html{scroll-behavior:auto}}
+</style><script>(function(){try{var t=localStorage.getItem("vault-theme")||"dark";document.documentElement.setAttribute("data-theme",t)}catch(e){document.documentElement.setAttribute("data-theme","dark")}})()</script></head><body><canvas id="dotgrid" aria-hidden="true"></canvas><header class="topbar"><button class="menu-btn" type="button" onclick="toggleMenu()" aria-label="Open notes menu">☰</button><b>Business Vault</b><button class="theme-btn" type="button" onclick="toggleTheme(event)" aria-label="Toggle dark / light mode">◐</button></header><div class="backdrop" onclick="toggleMenu(false)"></div><div class="wrap"><nav class="side" id="side"><div class="side-head"><a class="home-link" href="index.html">⌂ Vault home</a><button class="theme-btn" type="button" onclick="toggleTheme(event)" aria-label="Toggle dark / light mode">◐</button></div><input class="side-search" type="search" placeholder="Search notes…  ( / )" onkeydown="if(event.key==='Enter'){location.href='index.html?q='+encodeURIComponent(this.value)}"><h3>Operations</h3><ul><li><a class="" href="Operations__Operations_1_Role.html">1 Role</a></li><li><a class="" href="Operations__Operations_2_Influences.html">2 Influences</a></li><li><a class="" href="Operations__Operations_3_Processes.html">3 Processes</a></li><li><a class="" href="Operations__Operations_4_Strategies.html">4 Strategies</a></li><li><a class="" href="Operations__Operations_Syllabus_Summary.html">Syllabus Summary</a></li><li><a class="" href="Operations__Operations_FULL.html">FULL</a></li></ul><h3>Marketing</h3><ul><li><a class="" href="Marketing__Marketing_1_Role.html">1 Role</a></li><li><a class="" href="Marketing__Marketing_2_Influences.html">2 Influences</a></li><li><a class="" href="Marketing__Marketing_3_Processes.html">3 Processes</a></li><li><a class="" href="Marketing__Marketing_4_Strategies.html">4 Strategies</a></li><li><a class="" href="Marketing__Marketing_Syllabus_Summary.html">Syllabus Summary</a></li><li><a class="" href="Marketing__Marketing_FULL.html">FULL</a></li></ul><h3>Finance</h3><ul><li><a class="" href="Finance__Finance_1_Role.html">1 Role</a></li><li><a class="" href="Finance__Finance_2_Influences.html">2 Influences</a></li><li><a class="" href="Finance__Finance_3_Processes.html">3 Processes</a></li><li><a class="active" href="Finance__Finance_4_Strategies.html">4 Strategies</a></li><li><a class="" href="Finance__Finance_Syllabus_Summary.html">Syllabus Summary</a></li><li><a class="" href="Finance__Finance_FULL.html">FULL</a></li></ul><h3>Human Resources</h3><ul><li><a class="" href="Human_Resources__Human_Resources_1_Role.html">1 Role</a></li><li><a class="" href="Human_Resources__Human_Resources_2_Influences.html">2 Influences</a></li><li><a class="" href="Human_Resources__Human_Resources_3_Processes.html">3 Processes</a></li><li><a class="" href="Human_Resources__Human_Resources_4_Strategies.html">4 Strategies</a></li><li><a class="" href="Human_Resources__Human_Resources_Syllabus_Summary.html">Syllabus Summary</a></li><li><a class="" href="Human_Resources__Human_Resources_FULL.html">FULL</a></li></ul><h3>Exam &amp; revision</h3><ul><li><a class="" href="MOC.html">Final Notes</a></li><li><a class="" href="Case_Study_Stats_Sheet.html">Business Studies Case Study Stats Sheet</a></li><li><a class="" href="Case_Studies.html">Case Studies — HSC Business Studies Final Notes</a></li><li><a class="" href="Confusing_Pairs.html">Confusing Pairs — MCQ Drill Sheet</a></li><li><a class="" href="Crichton_Office_Supplies_Report_and_Apple_Marketing_Essay.html">Crichton Office Supplies Report and Apple Marketing Essay</a></li><li><a class="" href="Trial_Practice_Killara_2022.html">Killara 2022 Trial — Marked Paper and Model Answers</a></li><li><a class="" href="McDonalds_Case_Study.html">McDonald's Case Study — Section IV Essay Resource</a></li><li><a class="" href="Section_III_Business_Report.html">Section III — How to Write the Business Report</a></li><li><a class="" href="Section_IV_Extended_Response.html">Section IV — How to Write the Extended Response</a></li><li><a class="" href="Marketing_Universal_Essay.html">Universal Marketing Essay — McDonald's Case Study</a></li><li><a class="" href="Finance_Management.html">Finance (moved)</a></li><li><a class="" href="Human_Resources.html">Human Resources (moved)</a></li><li><a class="" href="Marketing.html">Marketing (moved)</a></li><li><a class="" href="Operations.html">Operations (moved)</a></li></ul><p class="side-note">Source: TheSashi HSC Business Studies Notes, Final folder. Cloned 25 Oct 2026. Plus one added McDonald's note (see Exam & revision).</p></nav><main><article class="prose"><h1>Finance 4 · Financial Management Strategies</h1><p class="meta">Finance · Finance/Finance_4_Strategies.md</p><div class="toc"><b>On this page</b><ul><li><a href="#1-the-objective-strategy-map">1. The Objective → Strategy Map</a></li><li><a href="#2-cash-flow-management">2. Cash Flow Management</a></li><li><a href="#3-working-capital-management">3. Working Capital Management</a></li><li><a href="#4-profitability-management">4. Profitability Management</a></li><li><a href="#5-global-financial-management">5. Global Financial Management</a></li><li><a href="#confusing-pairs-in-this-section">Confusing pairs in this section</a></li><li><a href="#exam-habits">Exam habits</a></li><li><a href="#definitions-to-quote">Definitions to quote</a></li></ul></div><h1>🎯 Finance 4 · Financial Management Strategies</h1>
+<blockquote>
+<p><strong>Finance</strong> · <a href="Finance__Finance_1_Role.html">① Role</a> · <a href="Finance__Finance_2_Influences.html">② Influences</a> · <a href="Finance__Finance_3_Processes.html">③ Processes</a> · <strong>④ Strategies</strong> ← you are here · <a href="Finance__Finance_FULL.html">📕 Full note</a></p>
+</blockquote>
+<blockquote>
+<p><strong>Scope:</strong> the full HSC Finance module is examinable. This file covers the <strong>Financial management strategies</strong> dot points only.</p>
+</blockquote>
+<hr>
+<h2 id="1-the-objective-strategy-map">1. The Objective → Strategy Map</h2>
+<blockquote>
+<p>⭐ <strong>Each objective has its own strategy family.</strong> This mapping is the spine of most extended-response questions. If the question names an objective, this table tells you which strategies to write about.</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Objective</th>
+<th>Strategy family</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Profitability</strong></td>
+<td>Cost controls (fixed and variable, cost centres, expense minimisation); revenue controls (marketing objectives)</td>
+</tr>
+<tr>
+<td><strong>Liquidity</strong></td>
+<td>Working capital management — control of current assets and current liabilities; leasing; sale and lease-back</td>
+</tr>
+<tr>
+<td><strong>Efficiency</strong></td>
+<td>Cash flow management — cash flow statements, distribution of payments, discounts for early payment, factoring</td>
+</tr>
+<tr>
+<td><strong>Solvency</strong></td>
+<td>Choosing the best <strong>source of finance</strong> for the situation (debt vs equity)</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="2-cash-flow-management">2. Cash Flow Management</h2>
+<p><strong>Cash flow statements</strong> record inflows and outflows. Strategies:</p>
+<table>
+<thead>
+<tr>
+<th>Strategy</th>
+<th>How it works</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Distribution of payments</strong></td>
+<td>Spreading payments through the month/year so large outflows do not coincide, avoiding a cash shortfall</td>
+</tr>
+<tr>
+<td><strong>Discounts for early payment</strong></td>
+<td>Offering customers a discount (e.g. 2/10 net 30) to pay sooner — reduces debtor days and accelerates inflow</td>
+</tr>
+<tr>
+<td><strong>Factoring</strong></td>
+<td>Selling accounts receivable for immediate cash (at a cost)</td>
+</tr>
+</tbody></table>
+<p><strong>Other ways to increase inflows</strong>: tighten credit terms, increase sales revenue, sell unused non-current assets, lease rather than purchase.</p>
+<p><strong>Other ways to decrease outflows</strong>: negotiate longer supplier payment terms, reduce inventory (JIT), cut discretionary expenses, refinance at lower rates, delay non-essential capital expenditure.</p>
+<blockquote>
+<p><strong>Cash flow cycle</strong>: Cash → Inventory → Production → Sales → Debtors → Cash. The <strong>longer</strong> the cycle, the more working capital is needed. Businesses aim to <strong>shorten</strong> it.</p>
+</blockquote>
+<hr>
+<h2 id="3-working-capital-management">3. Working Capital Management</h2>
+<p><strong>Working Capital = Current Assets − Current Liabilities</strong></p>
+<h3 id="3-1-control-of-current-assets">3.1 Control of Current Assets</h3>
+<table>
+<thead>
+<tr>
+<th>Asset</th>
+<th>Management focus</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Cash</strong></td>
+<td>Maintain adequate levels — not so much that it sits idle, not so little that bills cannot be paid</td>
+</tr>
+<tr>
+<td><strong>Receivables</strong></td>
+<td>Minimise collection time; check creditworthiness; offer early payment discounts; enforce credit policies</td>
+</tr>
+<tr>
+<td><strong>Inventories</strong></td>
+<td>Balance too much (storage costs, obsolescence) against too little (stockouts, lost sales)</td>
+</tr>
+</tbody></table>
+<h3 id="3-2-control-of-current-liabilities">3.2 Control of Current Liabilities</h3>
+<table>
+<thead>
+<tr>
+<th>Liability</th>
+<th>Management focus</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Payables</strong></td>
+<td>Maximise payment time <strong>without</strong> damaging supplier relationships or credit terms</td>
+</tr>
+<tr>
+<td><strong>Loans</strong></td>
+<td>Seek the lowest-cost finance; monitor charges and interest</td>
+</tr>
+<tr>
+<td><strong>Overdrafts</strong></td>
+<td>Use for genuine short-term shortfalls; minimise interest paid</td>
+</tr>
+</tbody></table>
+<h3 id="3-3-named-working-capital-strategies">3.3 Named Working Capital Strategies</h3>
+<table>
+<thead>
+<tr>
+<th>Strategy</th>
+<th>Effect</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Leasing</strong></td>
+<td>Frees cash that would be tied up in purchasing assets outright; payments are tax deductible</td>
+</tr>
+<tr>
+<td><strong>Sale and lease-back</strong></td>
+<td>Selling an asset the business owns and <strong>leasing it straight back</strong>. Generates an immediate large cash inflow while retaining the use of the asset</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="4-profitability-management">4. Profitability Management</h2>
+<h3 id="4-1-cost-controls">4.1 Cost Controls</h3>
+<table>
+<thead>
+<tr>
+<th>Control</th>
+<th>Detail</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Fixed and variable costs</strong></td>
+<td><strong>Fixed costs</strong> do not change with output (rent, insurance, salaries). <strong>Variable costs</strong> change directly with output (raw materials, wages per unit). Managing the mix affects break-even</td>
+</tr>
+<tr>
+<td><strong>Cost centres</strong></td>
+<td>A <strong>cost centre</strong> is a department or area of the business to which costs can be directly attributed, so performance can be measured and controlled. <strong>Direct</strong> cost centres relate to production; <strong>indirect</strong> cost centres (HR, IT) support the whole business</td>
+</tr>
+<tr>
+<td><strong>Expense minimisation</strong></td>
+<td>Systematically reducing expenses — bulk buying, global sourcing, outsourcing, reducing overheads, automation</td>
+</tr>
+</tbody></table>
+<h3 id="4-2-revenue-controls">4.2 Revenue Controls</h3>
+<p>Setting <strong>marketing objectives</strong> and using the marketing mix to drive sales revenue: product differentiation, market development, product development, diversification, pricing strategies, improved promotion.</p>
+<blockquote>
+<p><strong>Profit formula</strong></p>
+<pre><code>Profit = Total Revenue − Total Costs
+Profit = (Price × Quantity Sold) − (Fixed Costs + Variable Costs)
+</code></pre>
+<p>To improve profit: <strong>increase revenue</strong> (price or quantity) OR <strong>decrease costs</strong> (fixed or variable).</p>
+</blockquote>
+<h3 id="4-3-break-even-analysis">4.3 Break-Even Analysis</h3>
+<table>
+<thead>
+<tr>
+<th>Concept</th>
+<th>Formula</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Break-Even Point (units)</strong></td>
+<td>Fixed Costs ÷ (Selling Price per unit − Variable Cost per unit)</td>
+</tr>
+<tr>
+<td><strong>Break-Even Point ($)</strong></td>
+<td>Break-even units × Selling Price per unit</td>
+</tr>
+<tr>
+<td><strong>Contribution per unit</strong></td>
+<td>Selling Price per unit − Variable Cost per unit</td>
+</tr>
+<tr>
+<td><strong>Margin of Safety</strong></td>
+<td>Actual (or expected) sales − Break-even sales</td>
+</tr>
+<tr>
+<td><strong>Target Profit (units)</strong></td>
+<td>(Fixed Costs + Target Profit) ÷ Contribution per unit</td>
+</tr>
+</tbody></table>
+<p><strong>Worked example</strong></p>
+<p>A café has fixed costs of <strong>$60,000/year</strong>. Each coffee sells for <strong>$5</strong> with a variable cost of <strong>$2</strong>.</p>
+<table>
+<thead>
+<tr>
+<th>Calculation</th>
+<th>Working</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Contribution per unit</td>
+<td>5 − 2</td>
+<td><strong>$3</strong></td>
+</tr>
+<tr>
+<td>Break-even (units)</td>
+<td>60,000 ÷ 3</td>
+<td><strong>20,000 coffees</strong></td>
+</tr>
+<tr>
+<td>Break-even ($)</td>
+<td>20,000 × 5</td>
+<td><strong>$100,000</strong></td>
+</tr>
+<tr>
+<td>Margin of safety (selling 25,000)</td>
+<td>25,000 − 20,000</td>
+<td><strong>5,000 coffees</strong></td>
+</tr>
+<tr>
+<td>Units for $15,000 target profit</td>
+<td>(60,000 + 15,000) ÷ 3</td>
+<td><strong>25,000 coffees</strong></td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th>Change</th>
+<th>Effect on Break-Even Point</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>↑ Selling price</td>
+<td><strong>Decreases</strong> (fewer units needed)</td>
+</tr>
+<tr>
+<td>↑ Variable costs</td>
+<td><strong>Increases</strong></td>
+</tr>
+<tr>
+<td>↑ Fixed costs</td>
+<td><strong>Increases</strong></td>
+</tr>
+<tr>
+<td>↓ Selling price</td>
+<td><strong>Increases</strong></td>
+</tr>
+<tr>
+<td>↓ Variable costs</td>
+<td><strong>Decreases</strong></td>
+</tr>
+<tr>
+<td>↓ Fixed costs</td>
+<td><strong>Decreases</strong></td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="5-global-financial-management">5. Global Financial Management</h2>
+<p>Four additional factors/risks when operating globally: <strong>exchange rates, interest rates, methods of international payment, hedging and derivatives</strong>.</p>
+<h3 id="5-1-exchange-rates">5.1 Exchange Rates</h3>
+<p><strong>Exchange rate</strong> = the value of a country&#39;s money calculated using another country&#39;s money.</p>
+<blockquote>
+<p><strong>Appreciation</strong> = the AUD <strong>rises</strong> in value against another currency.
+<strong>Depreciation</strong> = the AUD <strong>falls</strong> in value against another currency.</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Scenario</th>
+<th>Effect on the Australian business</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Business <strong>imports</strong> from China and the AUD <strong>depreciates</strong> against the Yuan</td>
+<td>Costs <strong>more</strong></td>
+</tr>
+<tr>
+<td>Business has <strong>borrowed</strong> from the US and the AUD <strong>appreciates</strong> against the USD</td>
+<td>Pays <strong>less</strong></td>
+</tr>
+<tr>
+<td>Business has <strong>lent</strong> money to a UK business and the AUD <strong>depreciates</strong> against the pound</td>
+<td>Receives <strong>less</strong></td>
+</tr>
+<tr>
+<td>Business <strong>exports</strong> to France and the AUD <strong>appreciates</strong> against the Euro</td>
+<td>Costs the Australian business <strong>less</strong></td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>⭐ <strong>Memory hook</strong>: A <strong>strong (appreciating)</strong> AUD makes <strong>imports cheaper</strong> and <strong>exports dearer</strong> (less competitive overseas). A <strong>weak (depreciating)</strong> AUD makes <strong>imports dearer</strong> and <strong>exports cheaper</strong> (more competitive overseas).</p>
+</blockquote>
+<h3 id="5-2-interest-rates">5.2 Interest Rates</h3>
+<p>It is important to find the <strong>lowest</strong> interest rates, as exchange rate fluctuations can make repayments more costly.</p>
+<p><strong>Advantages of borrowing overseas:</strong></p>
+<ol>
+<li>The interest rate can be <strong>cheaper</strong></li>
+<li>There are <strong>fewer restrictions</strong></li>
+<li>Finance may be acquired <strong>more quickly and easily</strong></li>
+</ol>
+<blockquote>
+<p><strong>The risk</strong>: If the AUD <strong>depreciates</strong>, the foreign loan becomes much more expensive to repay. If global interest rates rise, repayments increase beyond what was planned.</p>
+</blockquote>
+<h3 id="5-3-methods-of-international-payment">5.3 Methods of International Payment</h3>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>How it works</th>
+<th>Risk</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Payment in advance</strong></td>
+<td>Exporter receives payment, <strong>then</strong> sends the goods</td>
+<td><strong>No risk for the exporter</strong>; risk sits with the importer (goods may never arrive). Few importers accept this</td>
+</tr>
+<tr>
+<td><strong>Letter of credit</strong></td>
+<td>A document issued by a <strong>bank</strong> to the seller, with instructions from the buyer authorising the seller to draw a specified amount from the buyer&#39;s bank account under certain conditions. The bank ensures the exporter gets paid</td>
+<td>Existing risk for the importer</td>
+</tr>
+<tr>
+<td><strong>Bill of exchange</strong></td>
+<td>A <strong>written order from the seller</strong> requesting the buyer pay a specified amount at a specified time. The bank ensures the importer receives goods and the exporter is paid</td>
+<td>Existing risk for the exporter</td>
+</tr>
+<tr>
+<td><strong>Clean payment</strong></td>
+<td>Goods are <strong>shipped before</strong> payment is received</td>
+<td><strong>Significant risk for the exporter</strong> — used only with trusted long-standing partners</td>
+</tr>
+</tbody></table>
+<h3 id="5-4-hedging">5.4 Hedging</h3>
+<p><strong>Hedging</strong> = any strategy used by a business to <strong>reduce financial risks</strong>. It is like buying insurance to protect property — protection against unforeseen risks. Businesses hedge when <strong>uncertain of the future</strong>, to reduce <strong>foreign exchange</strong> and <strong>interest rate</strong> risks.</p>
+<p><strong>Natural hedging</strong> occurs when a business:</p>
+<ul>
+<li>Sets up <strong>subsidiaries</strong> in other countries and uses them to pay for expenses and goods purchased from that country</li>
+<li>Sets up <strong>bank accounts</strong> in a country where it buys or sells goods, and uses funds from that account to pay expenses in that country</li>
+</ul>
+<h3 id="5-5-derivatives">5.5 Derivatives</h3>
+<p>A <strong>derivative</strong> is a special contract between global businesses and suppliers. Three main types:</p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>How it works</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Forward exchange contract</strong></td>
+<td>An agreement with a FOREX business guaranteeing a <strong>certain exchange rate on a certain day</strong></td>
+</tr>
+<tr>
+<td><strong>Currency options contract</strong></td>
+<td>The business has the <strong>option</strong> (no obligation) to buy or sell foreign currency when the exchange rate movement is to its advantage. Allows use of the <strong>spot rate</strong></td>
+</tr>
+<tr>
+<td><strong>Swap contract</strong></td>
+<td>A written contract allowing an Australian business to pay an overseas supplier <strong>in another currency</strong> at a spot rate</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>Spot rate</strong> = the exchange rate at a specific time on a specific day.</p>
+</blockquote>
+<p><strong>Forward exchange contract — the trade-off:</strong></p>
+<ul>
+<li><strong>Advantage</strong>: If the spot rate turns out <strong>less favourable</strong> (e.g. the AUD has depreciated), the contracted rate is <strong>cheaper</strong> for the business. <em>Example</em>: contracted at AUD$1:USD$0.72, spot in 6 months is AUD$1:USD$0.63 → the contract is better.</li>
+<li><strong>Disadvantage</strong>: If the spot rate turns out <strong>more favourable</strong> (e.g. the AUD has appreciated), the contracted rate is <strong>more expensive</strong>. <em>Example</em>: spot in 6 months is AUD$1:USD$0.95 → the contract is worse than the spot rate.</li>
+</ul>
+<blockquote>
+<p><strong>Why choose an options contract over a forward contract?</strong> Options protect against unfavourable movements <strong>while retaining the opportunity to gain</strong> if movements are favourable — you simply don&#39;t exercise the option. The trade-off is that options cost a premium.</p>
+</blockquote>
+<blockquote>
+<p><strong>Swap contract example</strong>: An Australian business has excess USD and needs to pay a Chinese company for materials. The Chinese company may agree to accept USD, because it can then use those USD to pay an American supplier of its own.</p>
+</blockquote>
+<hr>
+<h2 id="confusing-pairs-in-this-section">⚠️ Confusing pairs in this section</h2>
+<table>
+<thead>
+<tr>
+<th>Pair</th>
+<th>The tell</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Hedging</strong> vs <strong>derivative</strong></td>
+<td>Hedging is <strong>any</strong> strategy to reduce financial risk. A derivative is one <strong>specific type</strong> of hedging contract</td>
+</tr>
+<tr>
+<td><strong>Spot rate</strong> vs <strong>forward rate</strong></td>
+<td>Spot = the rate <strong>today</strong>. Forward = locked in <strong>for a future date</strong></td>
+</tr>
+<tr>
+<td><strong>Forward contract</strong> vs <strong>options contract</strong></td>
+<td>A forward <strong>obliges</strong> you to transact at the agreed rate. An option gives you the <strong>right but not the obligation</strong></td>
+</tr>
+<tr>
+<td><strong>Letter of credit</strong> vs <strong>bill of exchange</strong></td>
+<td>Letter of credit is issued by the <strong>buyer&#39;s bank</strong>. Bill of exchange is a written order <strong>from the seller</strong></td>
+</tr>
+<tr>
+<td><strong>Appreciation</strong> vs <strong>depreciation (currency)</strong></td>
+<td>Strong AUD: imports <strong>cheaper</strong>, exports <strong>dearer</strong>. Weak AUD: the reverse</td>
+</tr>
+<tr>
+<td><strong>Cost centre</strong> vs <strong>profit centre</strong></td>
+<td>A cost centre only <strong>incurs</strong> costs. A profit centre also <strong>generates revenue</strong></td>
+</tr>
+<tr>
+<td><strong>Fixed</strong> vs <strong>variable costs</strong></td>
+<td>Fixed don&#39;t change with output (rent). Variable change <strong>directly</strong> with output (raw materials)</td>
+</tr>
+<tr>
+<td><strong>Leasing</strong> vs <strong>sale and lease-back</strong></td>
+<td>Leasing = you never owned it. Sale and lease-back = you <strong>sold something you owned</strong> and rented it back</td>
+</tr>
+<tr>
+<td><strong>Break-even units</strong> vs <strong>break-even dollars</strong></td>
+<td>Units = FC ÷ contribution. Dollars = units <strong>× selling price</strong>. Read which the question wants</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="exam-habits">📝 Exam habits</h2>
+<blockquote>
+<p><strong>Break-even: check whether the question wants units or dollars.</strong> They are different answers from the same calculation.</p>
+</blockquote>
+<blockquote>
+<p><strong>Sale and lease-back is a liquidity strategy</strong>, not a solvency one. It generates immediate cash. Your notes list it under liquidity for exactly this reason.</p>
+</blockquote>
+<blockquote>
+<p><strong>Top-band tip</strong>: Integrate strategies from <strong>other topics</strong> (e.g. JIT from Operations) and link them back to the <strong>finance</strong> impact.</p>
+</blockquote>
+<hr>
+<h2 id="definitions-to-quote">📖 Definitions to quote</h2>
+<table>
+<thead>
+<tr>
+<th>Term</th>
+<th>Definition</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Working capital</strong></td>
+<td>Current Assets − Current Liabilities</td>
+</tr>
+<tr>
+<td><strong>Sale and lease-back</strong></td>
+<td>Selling an asset the business owns and immediately leasing it back</td>
+</tr>
+<tr>
+<td><strong>Cost centre</strong></td>
+<td>An area of a business to which costs can be directly attributed</td>
+</tr>
+<tr>
+<td><strong>Break-even point</strong></td>
+<td>The level of sales at which total revenue equals total costs</td>
+</tr>
+<tr>
+<td><strong>Margin of safety</strong></td>
+<td>Actual or expected sales minus break-even sales</td>
+</tr>
+<tr>
+<td><strong>Exchange rate</strong></td>
+<td>The value of one country&#39;s currency expressed in another&#39;s</td>
+</tr>
+<tr>
+<td><strong>Hedging</strong></td>
+<td>Any strategy used by a business to reduce financial risk</td>
+</tr>
+<tr>
+<td><strong>Derivative</strong></td>
+<td>A contract used to hedge — a forward, option or swap</td>
+</tr>
+<tr>
+<td><strong>Spot rate</strong></td>
+<td>The exchange rate at a specific time on a specific day</td>
+</tr>
+<tr>
+<td><strong>Letter of credit</strong></td>
+<td>A bank document guaranteeing payment to the exporter</td>
+</tr>
+<tr>
+<td><strong>Bill of exchange</strong></td>
+<td>A written order from the seller requesting payment at a specified time</td>
+</tr>
+</tbody></table>
+<hr>
+<blockquote>
+<p><strong>Back to:</strong> <a href="Finance__Finance_1_Role.html">① Role</a> · <a href="Finance__Finance_FULL.html">📕 Full note</a> · Drill sheet: <a href="Confusing_Pairs.html">Confusing Pairs</a> · <a href="MOC.html">MOC</a></p>
+</blockquote>
+</article></main></div><nav class="rail" aria-label="On this page"><div class="rail-title">On this page</div><ul><li><a href="#1-the-objective-strategy-map" data-target="1-the-objective-strategy-map">1. The Objective → Strategy Map</a></li><li><a href="#2-cash-flow-management" data-target="2-cash-flow-management">2. Cash Flow Management</a></li><li><a href="#3-working-capital-management" data-target="3-working-capital-management">3. Working Capital Management</a><ul class="sub"><li><a href="#3-1-control-of-current-assets" data-target="3-1-control-of-current-assets" data-parent="3-working-capital-management">3.1 Control of Current Assets</a></li><li><a href="#3-2-control-of-current-liabilities" data-target="3-2-control-of-current-liabilities" data-parent="3-working-capital-management">3.2 Control of Current Liabilities</a></li><li><a href="#3-3-named-working-capital-strategies" data-target="3-3-named-working-capital-strategies" data-parent="3-working-capital-management">3.3 Named Working Capital Strategies</a></li></ul></li><li><a href="#4-profitability-management" data-target="4-profitability-management">4. Profitability Management</a><ul class="sub"><li><a href="#4-1-cost-controls" data-target="4-1-cost-controls" data-parent="4-profitability-management">4.1 Cost Controls</a></li><li><a href="#4-2-revenue-controls" data-target="4-2-revenue-controls" data-parent="4-profitability-management">4.2 Revenue Controls</a></li><li><a href="#4-3-break-even-analysis" data-target="4-3-break-even-analysis" data-parent="4-profitability-management">4.3 Break-Even Analysis</a></li></ul></li><li><a href="#5-global-financial-management" data-target="5-global-financial-management">5. Global Financial Management</a><ul class="sub"><li><a href="#5-1-exchange-rates" data-target="5-1-exchange-rates" data-parent="5-global-financial-management">5.1 Exchange Rates</a></li><li><a href="#5-2-interest-rates" data-target="5-2-interest-rates" data-parent="5-global-financial-management">5.2 Interest Rates</a></li><li><a href="#5-3-methods-of-international-payment" data-target="5-3-methods-of-international-payment" data-parent="5-global-financial-management">5.3 Methods of International Payment</a></li><li><a href="#5-4-hedging" data-target="5-4-hedging" data-parent="5-global-financial-management">5.4 Hedging</a></li><li><a href="#5-5-derivatives" data-target="5-5-derivatives" data-parent="5-global-financial-management">5.5 Derivatives</a></li></ul></li><li><a href="#confusing-pairs-in-this-section" data-target="confusing-pairs-in-this-section">Confusing pairs in this section</a></li><li><a href="#exam-habits" data-target="exam-habits">Exam habits</a></li><li><a href="#definitions-to-quote" data-target="definitions-to-quote">Definitions to quote</a></li></ul></nav><script>
+function toggleTheme(ev){
+var oldTheme=document.documentElement.getAttribute("data-theme")||"dark";
+var next=oldTheme==="light"?"dark":"light";
+function apply(){document.documentElement.setAttribute("data-theme",next);try{localStorage.setItem("vault-theme",next)}catch(e){}updateThemeIcons(next);}
+var reduced=false;try{reduced=window.matchMedia("(prefers-reduced-motion: reduce)").matches}catch(e){}
+if(reduced){apply();return;}
+if(window.__vaultThemeAnimating){return;}
+window.__vaultThemeAnimating=1;
+var newPaper=next==="light"?"#faf8f2":"#13151b";
+var W=window.innerWidth,H=window.innerHeight;
+var spacing=W<768?36:28;
+var maxR=spacing*0.78;
+var dpr=1;try{dpr=W<768?1:Math.min(window.devicePixelRatio||1,1.5);}catch(e){}
+var canvas=document.createElement("canvas");
+canvas.id="theme-wave";
+canvas.style.cssText="position:fixed;left:0;top:0;width:"+W+"px;height:"+H+"px;z-index:9999;pointer-events:none;";
+canvas.width=Math.round(W*dpr);canvas.height=Math.round(H*dpr);
+var ctx=canvas.getContext("2d");
+try{ctx.setTransform(dpr,0,0,dpr,0,0);}catch(e){}
+ctx.fillStyle=newPaper;
+var dots=[];
+for(var y=spacing/2;y<H+spacing;y+=spacing){for(var x=spacing/2;x<W+spacing;x+=spacing){dots.push({x:x,y:y,delay:(x+y)/(W+H)*450,done:0});}}
+var waveMs=450,growMs=300;
+var start=Date.now();
+function easeOutCubic(p){return 1-Math.pow(1-p,3);}
+function step(){
+var elapsed=Date.now()-start;
+var allDone=true;
+var any=false;
+ctx.beginPath();
+for(var i=0;i<dots.length;i++){
+var d=dots[i];
+if(d.done){continue;}
+var p=(elapsed-d.delay)/growMs;
+if(p<0){allDone=false;continue;}
+if(p<1){allDone=false;}
+else{d.done=1;}
+var r=maxR*easeOutCubic(p<1?p:1);
+if(r>0){ctx.moveTo(d.x+r,d.y);ctx.arc(d.x,d.y,r,0,Math.PI*2);any=true;}
+}
+if(any){ctx.fill();}
+if(!allDone){requestAnimationFrame(step);return;}
+apply();
+canvas.style.transition="opacity 0.15s ease";
+canvas.style.opacity="0";
+setTimeout(function(){window.__vaultThemeAnimating=0;if(canvas.parentNode)canvas.parentNode.removeChild(canvas);},180);
+}
+document.body.appendChild(canvas);
+requestAnimationFrame(step);
+}
+function updateThemeIcons(theme){var icon=theme==="dark"?"☀":"☾";document.querySelectorAll(".theme-btn").forEach(function(b){b.textContent=icon;});}
+try{updateThemeIcons(document.documentElement.getAttribute("data-theme")||"dark");}catch(e){}
+function toggleMenu(force){document.body.classList.toggle("menu-open",force)}
+document.addEventListener("keydown",function(e){if(e.key==="/"&&!/INPUT|TEXTAREA/.test(document.activeElement.tagName)){e.preventDefault();var s=document.querySelector(".side-search");if(s)s.focus()}});
+document.addEventListener("click",function(e){if(e.target.closest(".side a"))toggleMenu(false)});
+(function(){try{
+var links=Array.prototype.slice.call(document.querySelectorAll(".rail a"));
+if(!links.length||!window.IntersectionObserver)return;
+var map={};links.forEach(function(a){map[a.getAttribute("data-target")]=a});
+var obs=new IntersectionObserver(function(es){
+  es.forEach(function(e){
+    if(e.isIntersecting){
+      links.forEach(function(a){a.classList.remove("active");a.classList.remove("parent-active")});
+      var l=map[e.target.id];
+      if(l){l.classList.add("active");var p=l.getAttribute("data-parent");if(p&&map[p])map[p].classList.add("parent-active")}
+    }
+  });
+}, {rootMargin:"-20% 0px -70% 0px"});
+document.querySelectorAll(".prose h2[id], .prose h3[id]").forEach(function(h){obs.observe(h)});
+}catch(e){}})();
+(function(){try{
+var cv=document.getElementById("dotgrid");if(!cv)return;var ctx=cv.getContext("2d");if(!ctx)return;
+var reduced=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+var W=0,H=0,dpr=1,cols=0,rows=0,SP=28,px=0,py=0,pt=0,hasP=false;
+function dotRGB(){try{return getComputedStyle(document.documentElement).getPropertyValue("--dot-rgb").trim()||"233,231,225"}catch(e){return "233,231,225"}}
+function resize(){dpr=Math.min(window.devicePixelRatio||1,window.innerWidth<700?1.5:2);SP=window.innerWidth<700?36:28;W=window.innerWidth;H=window.innerHeight;cv.width=W*dpr;cv.height=H*dpr;cv.style.width=W+"px";cv.style.height=H+"px";ctx.setTransform(dpr,0,0,dpr,0,0);cols=Math.ceil(W/SP)+1;rows=Math.ceil(H/SP)+1}
+var R=Math.random()*Math.PI*2;
+var FORCES=[
+ {ax:.42,ay:.15,tx:26,ty:31,px:R,py:R+1.3,circ:false},
+ {ax:.38,ay:.42,tx:37,ty:23,px:R+2.1,py:R+0.7,circ:false},
+ {ax:.30,ay:.30,tx:41,ty:41,px:R+4.0,py:R+4.0,circ:true}
+];
+function draw(now){var t=now/1000;var rgb=dotRGB();
+var activeForces=W>=1280?FORCES:FORCES.slice(0,1);
+var pFade=hasP?Math.max(0,1-(now-pt)/4000):0;
+ctx.clearRect(0,0,W,H);
+for(var y=0;y<rows;y++)for(var x=0;x<cols;x++){var ox=x*SP+10,oy=y*SP+10,a=0.14,dispX=0,dispY=0;
+for(var fi=0;fi<activeForces.length;fi++){var F=activeForces[fi];
+var fx=F.circ?W*(0.5+F.ax*Math.cos(t*2*Math.PI/F.tx+F.px)):W*(0.5+F.ax*Math.sin(t*2*Math.PI/F.tx+F.px));
+var fy=F.circ?H*(0.5+F.ay*Math.sin(t*2*Math.PI/F.ty+F.py)):H*(0.5+F.ay*Math.sin(t*2*Math.PI/F.ty+F.py));
+var ddx=ox-fx,ddy=oy-fy,d=Math.sqrt(ddx*ddx+ddy*ddy);
+if(d<170&&d>0.01){var f=1-d/170;f=f*f;dispX+=(ddx/d)*6*f;dispY+=(ddy/d)*6*f;a+=0.20*f}}
+var dm=Math.sqrt(dispX*dispX+dispY*dispY);if(dm>9){dispX*=9/dm;dispY*=9/dm}
+var dx=ox+dispX,dy=oy+dispY;if(a>0.38)a=0.38;
+if(pFade>0){var pdx=ox-px,pdy=oy-py,pd=Math.sqrt(pdx*pdx+pdy*pdy);
+if(pd<150&&pd>0.01){var pf=1-pd/150;pf=pf*pf*pFade;dx+=(pdx/pd)*5*pf;dy+=(pdy/pd)*5*pf;a=Math.min(0.38,a+0.18*pf)}}
+ctx.beginPath();ctx.arc(dx,dy,1.3,0,Math.PI*2);ctx.fillStyle="rgba("+rgb+","+a.toFixed(3)+")";ctx.fill()}}
+function loop(now){if(!window.__vaultThemeAnimating)draw(now);if(!reduced)requestAnimationFrame(loop)}
+window.addEventListener("resize",resize);resize();
+window.addEventListener("pointermove",function(e){px=e.clientX;py=e.clientY;pt=performance.now();hasP=true},{passive:true});
+requestAnimationFrame(loop);
+}catch(e){}})();
+</script></body></html>

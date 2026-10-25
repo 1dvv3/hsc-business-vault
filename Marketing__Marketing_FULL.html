@@ -1,0 +1,1610 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Marketing — Full Module Note — HSC Business Vault</title><style>
+:root{--paper:#faf8f2;--ink:#1e1b16;--muted:#6b655a;--line:#e3ddd0;--accent:#1d4ed8;--card:#fffdf8;--side:#f3efe6;--side-bg:rgba(243,239,230,.88);--active:#e8e0cd;--rail-tint:rgba(29,78,216,.14);--rail-tint-soft:rgba(29,78,216,.07);--code:#efe9db;--quote:#4a4438;--dot-rgb:30,27,22;--scheme:light}
+[data-theme="dark"]{--paper:#13151b;--ink:#e9e7e1;--muted:#9aa0ab;--line:#2b2f3a;--accent:#8ab4ff;--card:#1b1e27;--side:#101218;--side-bg:rgba(16,18,24,.88);--active:#262b38;--rail-tint:rgba(138,180,255,.18);--rail-tint-soft:rgba(138,180,255,.09);--code:#262a36;--quote:#c3c7cf;--dot-rgb:233,231,225;--scheme:dark}
+*{box-sizing:border-box}html{color-scheme:var(--scheme)}body{margin:0;background:var(--paper);color:var(--ink);font:16.5px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;overflow-x:hidden}
+a{color:var(--accent);text-decoration:none;transition:color .18s ease}a:hover{text-decoration:underline}
+#dotgrid{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:0}
+.wrap{position:relative;z-index:1;display:grid;grid-template-columns:280px 1fr;min-height:100vh}
+.side{position:sticky;top:0;height:100vh;overflow:auto;padding:22px 18px;border-right:1px solid var(--line);background:var(--side-bg)}
+.side h3{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:22px 0 6px}
+.side ul{list-style:none;margin:0;padding:0}.side li{margin:3px 0}
+.side a{display:block;padding:7px 10px;border-radius:8px;color:var(--ink);transition:background .18s ease,transform .18s ease}
+.side a.active{background:var(--active);font-weight:600}
+.side a:hover{background:var(--active);text-decoration:none;transform:translateX(3px)}
+.side-head{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.theme-btn{flex:none;width:40px;height:40px;border:1px solid var(--line);border-radius:50%;background:var(--card);color:var(--ink);font-size:18px;cursor:pointer;transition:background .18s ease}
+.theme-btn:hover{background:var(--active)}
+.home-link{font-weight:700;font-size:18px}.side-search{width:100%;margin:14px 0 4px;padding:10px 12px;border:1px solid var(--line);border-radius:8px;background:var(--card);color:var(--ink);font-size:16px}
+.side-note{font-size:12.5px;color:var(--muted);line-height:1.5;margin-top:24px}
+.topbar{display:none}.backdrop{display:none}
+main{padding:36px 44px;max-width:860px}.prose h1{font-size:32px;line-height:1.2;letter-spacing:-.02em;margin:0 0 6px}
+.prose h2{font-size:23px;margin:34px 0 8px;padding-top:14px;border-top:1px solid var(--line)}
+.prose h3{font-size:18px;margin:26px 0 6px}.prose p{margin:10px 0}
+.prose table{border-collapse:collapse;width:100%;margin:14px 0;font-size:14.5px;display:block;overflow-x:auto;-webkit-overflow-scrolling:touch}
+.prose th,.prose td{border:1px solid var(--line);padding:7px 10px;text-align:left;vertical-align:top}
+.prose th{background:var(--side)}.prose blockquote{border-left:3px solid var(--line);margin:14px 0;padding:2px 14px;color:var(--quote);background:var(--card)}
+.prose code{background:var(--code);padding:1px 5px;border-radius:4px;font-size:14px}.prose pre{background:#0d0f14;color:#f5f1e6;padding:14px;border-radius:8px;overflow:auto}
+.prose pre code{background:none;color:inherit;padding:0}.prose hr{border:none;border-top:1px solid var(--line);margin:24px 0}
+.meta{color:var(--muted);font-size:14px;margin-bottom:20px}.toc{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 18px;margin:18px 0}
+.toc b{font-size:13px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}.toc ul{margin:8px 0 0;padding-left:18px}.toc li{margin:3px 0}
+.cards{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:20px 0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 18px;transition:transform .2s ease,border-color .2s ease,box-shadow .2s ease}
+.card:hover{transform:translateY(-3px);border-color:var(--accent);box-shadow:0 8px 24px rgba(0,0,0,.18)}
+.card h3{margin:0 0 4px}.card p{margin:0;color:var(--muted);font-size:14.5px}
+#search{width:100%;padding:13px 14px;font-size:17px;border:1px solid var(--line);border-radius:10px;background:var(--card);color:var(--ink)}
+.result{border-bottom:1px solid var(--line);padding:14px 6px;border-radius:8px;transition:background .18s ease,transform .18s ease}
+.result:hover{background:var(--card);transform:translateX(3px)}
+.result h3{margin:0}.result p{margin:4px 0;color:var(--quote)}.result .path{font-size:13px;color:var(--muted)}
+mark{background:#fde68a;color:#1e1b16;padding:0 1px}
+html{scroll-behavior:smooth}
+.rail{display:none}
+@media(min-width:1280px){
+main{max-width:min(860px,calc(100vw - 692px))}
+.rail{display:block;position:fixed;right:24px;top:50%;transform:translateY(-50%);width:340px;max-height:76vh;overflow:auto;z-index:15;background:none;border:none;box-shadow:none;padding:18px 14px;-webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 36px,#000 calc(100% - 36px),transparent 100%);mask-image:linear-gradient(to bottom,transparent 0,#000 36px,#000 calc(100% - 36px),transparent 100%)}
+.rail-title{font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:2px 0 12px 12px}
+.rail ul{list-style:none;margin:0;padding:0}
+.rail li{margin:3px 0}
+.rail a{display:block;padding:11px 14px;border-radius:10px;color:var(--ink);font-size:17px;line-height:1.4;transition:transform .2s ease,background .2s ease}
+.rail a:hover,.rail a:focus-visible{background:var(--rail-tint-soft);transform:translateX(-4px) scale(1.02);text-decoration:none}
+.rail a.active{background:var(--rail-tint);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);font-weight:600;transform:translateX(-12px);width:calc(100% + 12px)}
+.rail a.parent-active{background:var(--rail-tint-soft)}
+.rail ul.sub{margin:3px 0 3px 14px;padding-left:14px;border-left:1px solid var(--line)}
+.rail ul.sub a{padding:9px 12px;font-size:15px;color:var(--muted)}
+.rail ul.sub a:hover{color:var(--ink)}
+.rail ul.sub a.active{color:var(--ink);transform:translateX(-8px);width:calc(100% + 8px)}
+}
+@media(max-width:900px){
+.topbar{display:flex;position:sticky;top:0;z-index:20;align-items:center;gap:10px;padding:12px 14px;background:var(--side);border-bottom:1px solid var(--line)}
+.topbar b{flex:1;font-size:17px}.menu-btn,.topbar .theme-btn{width:44px;height:44px;border:1px solid var(--line);border-radius:10px;background:var(--card);color:var(--ink);font-size:19px;cursor:pointer}
+.wrap{grid-template-columns:1fr}
+.wrap{z-index:auto}
+.side{background:var(--side)}
+.side a{padding:11px 12px}
+body.menu-open{overflow:hidden}
+.side{position:fixed;inset:0 auto 0 0;width:300px;max-width:86vw;height:100dvh;z-index:30;transform:translateX(-105%);transition:transform .25s ease;box-shadow:0 0 40px rgba(0,0,0,.4)}
+body.menu-open .side{transform:translateX(0)}
+.backdrop{display:none}body.menu-open .backdrop{display:block;position:fixed;inset:0;z-index:25;background:rgba(0,0,0,.45)}
+main{padding:22px 16px}.prose h1{font-size:26px}.prose h2{font-size:21px}.cards{grid-template-columns:1fr}
+.prose table{font-size:14px}.prose pre{font-size:13.5px}
+}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}html{scroll-behavior:auto}}
+</style><script>(function(){try{var t=localStorage.getItem("vault-theme")||"dark";document.documentElement.setAttribute("data-theme",t)}catch(e){document.documentElement.setAttribute("data-theme","dark")}})()</script></head><body><canvas id="dotgrid" aria-hidden="true"></canvas><header class="topbar"><button class="menu-btn" type="button" onclick="toggleMenu()" aria-label="Open notes menu">☰</button><b>Business Vault</b><button class="theme-btn" type="button" onclick="toggleTheme(event)" aria-label="Toggle dark / light mode">◐</button></header><div class="backdrop" onclick="toggleMenu(false)"></div><div class="wrap"><nav class="side" id="side"><div class="side-head"><a class="home-link" href="index.html">⌂ Vault home</a><button class="theme-btn" type="button" onclick="toggleTheme(event)" aria-label="Toggle dark / light mode">◐</button></div><input class="side-search" type="search" placeholder="Search notes…  ( / )" onkeydown="if(event.key==='Enter'){location.href='index.html?q='+encodeURIComponent(this.value)}"><h3>Operations</h3><ul><li><a class="" href="Operations__Operations_1_Role.html">1 Role</a></li><li><a class="" href="Operations__Operations_2_Influences.html">2 Influences</a></li><li><a class="" href="Operations__Operations_3_Processes.html">3 Processes</a></li><li><a class="" href="Operations__Operations_4_Strategies.html">4 Strategies</a></li><li><a class="" href="Operations__Operations_Syllabus_Summary.html">Syllabus Summary</a></li><li><a class="" href="Operations__Operations_FULL.html">FULL</a></li></ul><h3>Marketing</h3><ul><li><a class="" href="Marketing__Marketing_1_Role.html">1 Role</a></li><li><a class="" href="Marketing__Marketing_2_Influences.html">2 Influences</a></li><li><a class="" href="Marketing__Marketing_3_Processes.html">3 Processes</a></li><li><a class="" href="Marketing__Marketing_4_Strategies.html">4 Strategies</a></li><li><a class="" href="Marketing__Marketing_Syllabus_Summary.html">Syllabus Summary</a></li><li><a class="active" href="Marketing__Marketing_FULL.html">FULL</a></li></ul><h3>Finance</h3><ul><li><a class="" href="Finance__Finance_1_Role.html">1 Role</a></li><li><a class="" href="Finance__Finance_2_Influences.html">2 Influences</a></li><li><a class="" href="Finance__Finance_3_Processes.html">3 Processes</a></li><li><a class="" href="Finance__Finance_4_Strategies.html">4 Strategies</a></li><li><a class="" href="Finance__Finance_Syllabus_Summary.html">Syllabus Summary</a></li><li><a class="" href="Finance__Finance_FULL.html">FULL</a></li></ul><h3>Human Resources</h3><ul><li><a class="" href="Human_Resources__Human_Resources_1_Role.html">1 Role</a></li><li><a class="" href="Human_Resources__Human_Resources_2_Influences.html">2 Influences</a></li><li><a class="" href="Human_Resources__Human_Resources_3_Processes.html">3 Processes</a></li><li><a class="" href="Human_Resources__Human_Resources_4_Strategies.html">4 Strategies</a></li><li><a class="" href="Human_Resources__Human_Resources_Syllabus_Summary.html">Syllabus Summary</a></li><li><a class="" href="Human_Resources__Human_Resources_FULL.html">FULL</a></li></ul><h3>Exam &amp; revision</h3><ul><li><a class="" href="MOC.html">Final Notes</a></li><li><a class="" href="Case_Study_Stats_Sheet.html">Business Studies Case Study Stats Sheet</a></li><li><a class="" href="Case_Studies.html">Case Studies — HSC Business Studies Final Notes</a></li><li><a class="" href="Confusing_Pairs.html">Confusing Pairs — MCQ Drill Sheet</a></li><li><a class="" href="Crichton_Office_Supplies_Report_and_Apple_Marketing_Essay.html">Crichton Office Supplies Report and Apple Marketing Essay</a></li><li><a class="" href="Trial_Practice_Killara_2022.html">Killara 2022 Trial — Marked Paper and Model Answers</a></li><li><a class="" href="McDonalds_Case_Study.html">McDonald's Case Study — Section IV Essay Resource</a></li><li><a class="" href="Section_III_Business_Report.html">Section III — How to Write the Business Report</a></li><li><a class="" href="Section_IV_Extended_Response.html">Section IV — How to Write the Extended Response</a></li><li><a class="" href="Marketing_Universal_Essay.html">Universal Marketing Essay — McDonald's Case Study</a></li><li><a class="" href="Finance_Management.html">Finance (moved)</a></li><li><a class="" href="Human_Resources.html">Human Resources (moved)</a></li><li><a class="" href="Marketing.html">Marketing (moved)</a></li><li><a class="" href="Operations.html">Operations (moved)</a></li></ul><p class="side-note">Source: TheSashi HSC Business Studies Notes, Final folder. Cloned 25 Oct 2026. Plus one added McDonald's note (see Exam & revision).</p></nav><main><article class="prose"><h1>Marketing — Full Module Note</h1><p class="meta">Marketing · Marketing/Marketing_FULL.md</p><div class="toc"><b>On this page</b><ul><li><a href="#1-role-of-marketing">1. Role of Marketing</a></li><li><a href="#2-influences-of-marketing">2. Influences of Marketing</a></li><li><a href="#3-marketing-processes">3. Marketing Processes</a></li><li><a href="#4-marketing-strategies">4. Marketing Strategies</a></li><li><a href="#5-mcdonald-s-marketing-detailed-case-study">5. McDonald's Marketing — Detailed Case Study</a></li><li><a href="#6-extended-response-scaffolds-worked-examples">6. Extended Response Scaffolds &amp; Worked Examples</a></li><li><a href="#7-hsc-exam-tips">7. HSC Exam Tips</a></li><li><a href="#8-key-definitions-quick-reference">8. Key Definitions Quick Reference</a></li></ul></div><h1>📕 Marketing — Full Module Note</h1>
+<blockquote>
+<p><strong>The whole module in one file.</strong> Split versions: <a href="Marketing__Marketing_1_Role.html">① Role</a> · <a href="Marketing__Marketing_2_Influences.html">② Influences</a> · <a href="Marketing__Marketing_3_Processes.html">③ Processes</a> · <a href="Marketing__Marketing_4_Strategies.html">④ Strategies</a></p>
+</blockquote>
+<blockquote>
+<p><strong>Scope:</strong> the full HSC Marketing module is examinable.</p>
+</blockquote>
+<blockquote>
+<p>🔧 <strong>Maintenance note:</strong> sections 1–4 below are mirrored in the four split files. <strong>If one is corrected, correct both.</strong> Sections 5–8 exist only here.</p>
+</blockquote>
+<hr>
+<h2 id="1-role-of-marketing">1. Role of Marketing</h2>
+<p><strong>Definition</strong>: Marketing is the total system of interacting activities designed to plan, promote, price and distribute products to present and potential customers.</p>
+<h3 id="1-1-strategic-role">1.1 Strategic Role</h3>
+<ul>
+<li>Translates the business goal of <strong>profit maximisation</strong> into reality</li>
+<li>Develops a <strong>marketing plan</strong> with actions and strategies to attain greater sales</li>
+<li>Modern emphasis: <strong>customer-oriented marketing</strong> — viewing the business through the customer&#39;s eyes</li>
+<li>Marketing today places strong emphasis on understanding consumer behaviour and satisfying customer needs/wants</li>
+</ul>
+<h3 id="1-2-marketing-plan">1.2 Marketing Plan</h3>
+<ul>
+<li>A <strong>marketing plan</strong> is where the business applies marketing strategies based on market research to understand what to sell, their SWOT, and how to position themselves</li>
+<li>It is the roadmap for how the business will attract and retain customers</li>
+<li>Aligns marketing activities with overall business goals</li>
+</ul>
+<h3 id="1-3-interdependence-with-other-functions">1.3 Interdependence with Other Functions</h3>
+<table>
+<thead>
+<tr>
+<th>Function</th>
+<th>Relationship with Marketing</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Operations</strong></td>
+<td>Marketing provides demand forecasts and customer preferences → operations modifies production. Operations produces goods → marketing sells them</td>
+</tr>
+<tr>
+<td><strong>Finance</strong></td>
+<td>Finance provides budgets and funds for marketing. Marketing generates revenue that flows to finance to cover expenses</td>
+</tr>
+<tr>
+<td><strong>Human Resources</strong></td>
+<td>HR recruits and trains employees for marketing roles. Untrained staff = wrong market assessments = lower conversion rates and profits</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>Case Study — BYD</strong>: Operations produces the &quot;Blade Battery&quot; → marketing promotes vehicle safety/reliability. Marketing provides customer feedback → operations modifies cars. When operations delivers quality, affordable EVs, marketing can sell them in more international markets. Profits are reinvested into factories and research, creating a cycle of continuous improvement.</p>
+</blockquote>
+<h3 id="1-4-marketing-approaches">1.4 Marketing Approaches</h3>
+<table>
+<thead>
+<tr>
+<th>Approach</th>
+<th>Core Idea</th>
+<th>Focus</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Production</strong></td>
+<td>Consumers buy based on product quality</td>
+<td>Taking orders and delivering products</td>
+</tr>
+<tr>
+<td><strong>Sales</strong></td>
+<td>Increased competition requires aggressive selling</td>
+<td>Advertising to stimulate demand</td>
+</tr>
+<tr>
+<td><strong>Marketing</strong></td>
+<td>Find what customers want, then satisfy that need</td>
+<td>Customer orientation, market research, integrated strategies</td>
+</tr>
+<tr>
+<td><strong>Societal</strong></td>
+<td>Balance company profits with societal well-being</td>
+<td>Environmental and social responsibility</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>Apple</strong>: Early iPhones used a <strong>sales approach</strong> (educating customers on features). As expectations grew, shifted to a <strong>marketing approach</strong> (persuasive, research-driven). Customer feedback led to larger screens, thinner builds, better cameras. 2014: larger iPhones released in response to consumer demand.</p>
+</blockquote>
+<h3 id="1-5-customer-orientation">1.5 Customer Orientation</h3>
+<ul>
+<li>Customer relationship <strong>begins with the sale</strong> (doesn&#39;t end there)</li>
+<li>After-sale service, warranties, fulfilling needs and wants</li>
+<li>Example: free car servicing, longer warranty periods</li>
+</ul>
+<h3 id="1-6-relationship-marketing">1.6 Relationship Marketing</h3>
+<ul>
+<li>Core: <strong>customer loyalty</strong> → repeat sales</li>
+<li>Achieved through reward programs, customer care, after-sales service</li>
+<li>Development of long-term cost-effective and strong relationships with customers</li>
+</ul>
+<h3 id="1-7-types-of-markets">1.7 Types of Markets</h3>
+<p>A <strong>market</strong> = group of individuals/organisations that need or want a product, have the money to purchase it, are willing to spend, and are socially and legally authorised to buy.</p>
+<table>
+<thead>
+<tr>
+<th>Market Type</th>
+<th>Description</th>
+<th>Examples</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Resource Market</strong></td>
+<td>Primary production (mining, agriculture, forestry, fishing)</td>
+<td>Farmers, miners</td>
+</tr>
+<tr>
+<td><strong>Industrial Market</strong></td>
+<td>Industries/businesses purchasing products for production or operations</td>
+<td>Factories buying raw materials</td>
+</tr>
+<tr>
+<td><strong>Intermediate Market</strong></td>
+<td>Wholesalers and retailers who purchase finished products and resell for profit</td>
+<td>Coles, Woolworths</td>
+</tr>
+<tr>
+<td><strong>Consumer Market</strong></td>
+<td>Individuals who plan to use/consume products</td>
+<td>End consumers</td>
+</tr>
+</tbody></table>
+<h4>Consumer Market Segments</h4>
+<table>
+<thead>
+<tr>
+<th>Segment</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Mass market</strong></td>
+<td>Appeals to all consumers</td>
+<td>Electricity, basic food</td>
+</tr>
+<tr>
+<td><strong>Market segment</strong></td>
+<td>Focus on one area of a market</td>
+<td>Sports cars</td>
+</tr>
+<tr>
+<td><strong>Niche market</strong></td>
+<td>Smaller section of a segment</td>
+<td>Teenage girl magazines</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="2-influences-of-marketing">2. Influences of Marketing</h2>
+<h3 id="2-1-factors-influencing-customer-choice">2.1 Factors Influencing Customer Choice</h3>
+<p><strong>Why marketers study customer choice</strong>: To understand what motivates an individual to purchase a particular product. Market researchers ask: Who are our customers? What do they buy? When do they buy? How often do they buy? Why do they buy?</p>
+<h4>Psychological (within the individual)</h4>
+<table>
+<thead>
+<tr>
+<th>Factor</th>
+<th>Key Point</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Perception</strong></td>
+<td>How consumers view/interpret products</td>
+</tr>
+<tr>
+<td><strong>Motives</strong></td>
+<td>Internal drives to purchase</td>
+</tr>
+<tr>
+<td><strong>Attitudes</strong></td>
+<td>Learned predisposition towards a product</td>
+</tr>
+<tr>
+<td><strong>Personality</strong></td>
+<td>Unique psychological characteristics</td>
+</tr>
+<tr>
+<td><strong>Self-image</strong></td>
+<td>Buy products matching self-concept</td>
+</tr>
+<tr>
+<td><strong>Learning</strong></td>
+<td>Behaviour changes from experience</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>Apple</strong>: iPhone 5c (colours) failed — quality expectations (psychological) were stronger than colour preference. iPhone 5s (metallic colours) succeeded — associated with quality/innovation. &quot;Colour reveals your personality&quot; — but consumers prioritised quality over colour.</p>
+</blockquote>
+<h4>Sociocultural (other people and groups)</h4>
+<table>
+<thead>
+<tr>
+<th>Factor</th>
+<th>Key Point</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Social class</strong></td>
+<td>Grouping by income, occupation, education</td>
+</tr>
+<tr>
+<td><strong>Culture/subculture</strong></td>
+<td>Shared values, multicultural considerations — businesses cater for different cultural groups as Australia becomes more multicultural</td>
+</tr>
+<tr>
+<td><strong>Family and roles</strong></td>
+<td>Family members influence decisions</td>
+</tr>
+<tr>
+<td><strong>Reference groups</strong></td>
+<td>Peer influence on purchases</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>Apple</strong>: Social media/gaming/streaming popularity → marketing promotes camera, screen, processing specs to differentiate from competitors.</p>
+</blockquote>
+<h4>Economic</h4>
+<table>
+<thead>
+<tr>
+<th>Condition</th>
+<th>Effect</th>
+<th>Marketing Response</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Boom</strong></td>
+<td>Low unemployment, rising income, optimism</td>
+<td>Emphasise premium products; businesses expand production</td>
+</tr>
+<tr>
+<td><strong>Recession</strong></td>
+<td>High unemployment, falling income, caution</td>
+<td>Stress value and usefulness; customers seek functional, long-lasting products</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>Apple</strong>: GFC → declining iPhone sales → developed low-cost iPhone 5c and continued selling older models. COVID-19 → released iPhone SE (2020) and &quot;Mini&quot; versions for price-conscious customers.</p>
+</blockquote>
+<h4>Government</h4>
+<p><strong>Four types of government influence:</strong></p>
+<ol>
+<li><p><strong>Fiscal Policy</strong>: The government budget showing revenue sources (taxes) and spending. Used to expand or contract economic activity. Example: introduction of the GST or increases in income tax.</p>
+</li>
+<li><p><strong>Monetary Policy</strong>: Government through the Reserve Bank uses interest rates to control money supply and inflation. RBA adjusts the cash rate → affects bank interest rates → encourages or discourages consumer spending.</p>
+</li>
+<li><p><strong>Regulations</strong>: Laws that directly impact marketing activities. Breaches may result in financial penalties.</p>
+</li>
+<li><p><strong>Government Regulations (direct impact)</strong>: Laws regulating marketing concerns — product contents, health/safety, pricing strategies, distribution channels, ethical promotion.</p>
+</li>
+</ol>
+<blockquote>
+<p><strong>Apple</strong>: iPhone 6 launch delayed in China (privacy concerns). India regulations prevented store expansion for years, eased in 2020. India&#39;s $6.6B incentive program boosted local smartphone manufacturing.</p>
+</blockquote>
+<h3 id="2-2-ethical-influences">2.2 Ethical Influences</h3>
+<h4>Unethical Practices</h4>
+<table>
+<thead>
+<tr>
+<th>Practice</th>
+<th>Definition</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Concealed facts</strong></td>
+<td>Omitting information that could harm trust</td>
+</tr>
+<tr>
+<td><strong>Puffery</strong></td>
+<td>Exaggerated claims no reasonable person would take as factual</td>
+</tr>
+<tr>
+<td><strong>Vague statements</strong></td>
+<td>Ambiguous words consumers misinterpret</td>
+</tr>
+<tr>
+<td><strong>Invasion of privacy</strong></td>
+<td>Tracking web users for targeted advertising</td>
+</tr>
+<tr>
+<td><strong>SUGGING</strong></td>
+<td>Selling Under the Guise of a Survey — sales disguised as market research</td>
+</tr>
+</tbody></table>
+<h4>Other Ethical Issues</h4>
+<ul>
+<li><strong>Good taste</strong>: Subjective, depends on community sensitivities</li>
+<li><strong>Health-damaging products</strong>: Self-regulatory codes (children&#39;s advertising, alcohol, smoking)</li>
+<li><strong>Fair competition</strong>: False promises, exaggerated descriptions, high-pressure selling</li>
+</ul>
+<h3 id="2-3-consumer-law-legal-influences">2.3 Consumer Law (Legal Influences)</h3>
+<h4>Competition and Consumer Act 2010 — Two Purposes</h4>
+<ol>
+<li>Protect consumers from misleading practices (misrepresenting products, deceptive advertising)</li>
+<li>Regulate trade practices that restrict competition</li>
+</ol>
+<p><strong>Enforced by</strong>: ACCC (Australian Competition and Consumer Commission) and ASIC (Australian Securities and Investment Commission)</p>
+<h4>Deceptive &amp; Misleading Conduct</h4>
+<table>
+<thead>
+<tr>
+<th>Tactic</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Fine print</td>
+<td>Important conditions too small to read</td>
+</tr>
+<tr>
+<td>Before/after ads</td>
+<td>Misleading comparisons</td>
+</tr>
+<tr>
+<td>Tests and surveys</td>
+<td>Unsubstantiated claims</td>
+</tr>
+<tr>
+<td>False country of origin</td>
+<td>&quot;Made in Australia&quot; when made overseas</td>
+</tr>
+<tr>
+<td>Misleading packaging</td>
+<td>Size/shape gives wrong impression of contents</td>
+</tr>
+<tr>
+<td>Fake special offers</td>
+<td>&quot;Limited time&quot; when offer is permanent</td>
+</tr>
+<tr>
+<td>Bait and switch</td>
+<td>Advertise cheap items, sell expensive ones when they run out</td>
+</tr>
+<tr>
+<td>Dishonest advertising</td>
+<td>Deceptive words, false quality claims, fake price reductions</td>
+</tr>
+</tbody></table>
+<h4>Consumer Rights</h4>
+<table>
+<thead>
+<tr>
+<th>Right</th>
+<th>Details</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Implied conditions</strong></td>
+<td>Unspoken/unwritten terms of contract — product must be fit for purpose; cannot claim false characteristics</td>
+</tr>
+<tr>
+<td><strong>Warranties</strong></td>
+<td>Promise to repair/replace faulty products — also a marketing tool if it includes superior options vs competitors</td>
+</tr>
+<tr>
+<td><strong>Refunds</strong></td>
+<td>Legally required if: faulty, doesn&#39;t match description, fails to work. NOT required if: customer changes mind, finds cheaper option, damages after purchase</td>
+</tr>
+</tbody></table>
+<h4>Price Discrimination</h4>
+<ul>
+<li>Different prices in different markets</li>
+<li>Possible because markets are geographically spread or product differentiation exists</li>
+<li><strong>Prohibited</strong> if it substantially reduces competition</li>
+<li>Also applies to discounts, credits, rebates, services and payment arrangements</li>
+</ul>
+<h4>ACCC Case Studies</h4>
+<p><strong>Apple:</strong></p>
+<ul>
+<li>iPhone/iPad misrepresentations — <strong>$9 million penalty</strong></li>
+<li>Error 53 — staff misled customers about repair rights</li>
+<li>Consumer guarantee representations — ACCC took action</li>
+<li>Apple gave undertaking to improve policies</li>
+</ul>
+<p><strong>Woolworths:</strong></p>
+<ul>
+<li>ACCC court case over misleading grocery pricing/discount practices</li>
+</ul>
+<hr>
+<h2 id="3-marketing-processes">3. Marketing Processes</h2>
+<h3 id="3-1-steps-in-developing-a-marketing-plan">3.1 Steps in Developing a Marketing Plan</h3>
+<ol>
+<li>Situational Analysis</li>
+<li>Market Research</li>
+<li>Establish marketing objectives</li>
+<li>Identify target markets</li>
+<li>Develop marketing strategies</li>
+<li>Implementation, monitoring and controlling</li>
+</ol>
+<h3 id="3-2-situational-analysis">3.2 Situational Analysis</h3>
+<h4>SWOT</h4>
+<p><strong>The most crucial step</strong> — management must understand current position and where heading. Must be based on <strong>meaningful market research</strong>.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th><strong>Internal</strong> (controllable)</th>
+<th><strong>External</strong> (monitor constantly)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Positive</strong></td>
+<td>Strengths</td>
+<td>Opportunities</td>
+</tr>
+<tr>
+<td><strong>Negative</strong></td>
+<td>Weaknesses</td>
+<td>Threats</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>Apple SWOT</strong>: Strength = brand reputation | Weakness = high price | Opportunity = AI partnerships | Threat = Asian competitors (Xiaomi, OPPO)</p>
+</blockquote>
+<h4>Product Life Cycle</h4>
+<table>
+<thead>
+<tr>
+<th>Stage</th>
+<th>Strategy</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Introduction</strong></td>
+<td>Build awareness, heavy promotion, limited range, high costs, low/negative profits</td>
+</tr>
+<tr>
+<td><strong>Growth</strong></td>
+<td>Differentiate brand, expand product line, competition increases, shift from &quot;what it is&quot; to &quot;why ours is best&quot;</td>
+</tr>
+<tr>
+<td><strong>Maturity</strong></td>
+<td>Defend market share, stress value, modify product, sales peak, market saturated</td>
+</tr>
+<tr>
+<td><strong>Decline</strong></td>
+<td>Reduce spending, consider product deletion, product becomes outdated</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>CD = decline | PCs = maturity | EVs = growth | Tablets = maturity | Driverless cars = introduction</p>
+</blockquote>
+<blockquote>
+<p><strong>McDonald&#39;s French fries</strong>: Introduction (1940s) → Growth (1940s–1990) → Maturity (1990, recipe change due to health campaign, share price fell) → Renewal (Loaded, Twisted, Waffle, Cheesy Bacon fries)</p>
+</blockquote>
+<p><strong>Marketing strategies change through each stage</strong> — promotion emphasis, pricing approach, distribution channels, and product features all adapt to the current lifecycle position.</p>
+<h3 id="3-4-market-research">3.4 Market Research</h3>
+<p><strong>Definition</strong>: Systematic collection, recording and analysis of information concerning a specific marketing problem.</p>
+<h4>Steps</h4>
+<ol>
+<li>Determine information needs</li>
+<li>Collect data (primary &amp; secondary)</li>
+<li>Analyse and interpret data</li>
+</ol>
+<h4>Primary vs Secondary</h4>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Primary</th>
+<th>Secondary</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Source</strong></td>
+<td>Business conducts own research</td>
+<td>Others&#39; research</td>
+</tr>
+<tr>
+<td><strong>Methods</strong></td>
+<td>Surveys, observations, focus groups</td>
+<td>Internet, Census, industry reports</td>
+</tr>
+<tr>
+<td><strong>Pros</strong></td>
+<td>Specific, current, controlled</td>
+<td>Cheap, available, broader context</td>
+</tr>
+<tr>
+<td><strong>Cons</strong></td>
+<td>Expensive, time-consuming</td>
+<td>May be outdated, not specific enough</td>
+</tr>
+</tbody></table>
+<h4>What Market Research Reveals</h4>
+<ul>
+<li>Consumer needs/wants and preferences</li>
+<li>Target market income → assists <strong>pricing</strong> decisions</li>
+<li>Feedback for product/service improvements</li>
+<li>Competitor analysis (prices, features, service) → assists <strong>product differentiation</strong></li>
+<li>Census data → existing and potential customer characteristics</li>
+</ul>
+<blockquote>
+<p><strong>Apple</strong>: Emails post-purchase feedback surveys. Monthly country-by-country surveys reveal: purchase drivers vs competitors, most-used features, demographics, satisfaction levels. &quot;Every month, Apple surveys iPhone buyers&quot; — reveals what drives customers to buy iPhone vs Android. Drives continuous improvement and competitive differentiation.</p>
+</blockquote>
+<h3 id="3-5-marketing-objectives">3.5 Marketing Objectives</h3>
+<p><strong>Definition</strong>: Realistic and measurable goals achieved through the marketing plan. Must be aligned to business goals but more <strong>customer oriented</strong>.</p>
+<h4>Three Common Objectives</h4>
+<table>
+<thead>
+<tr>
+<th>Objective</th>
+<th>Strategy</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Increase market share</strong></td>
+<td>Promotional campaigns, competitive pricing, product differentiation</td>
+</tr>
+<tr>
+<td><strong>Expand product mix</strong></td>
+<td>New product development, product line extensions</td>
+</tr>
+<tr>
+<td><strong>Maximise customer service</strong></td>
+<td>Feedback forms, after-sales service, staff training</td>
+</tr>
+</tbody></table>
+<h4>Market Share Formula</h4>
+<pre><code>Market Share (%) = (Company Sales / Total Industry Sales) × 100
+</code></pre>
+<p><strong>Why businesses want to increase market share</strong>: More customers → more sales → competitive advantage → customer satisfaction → repeat purchases → profit maximisation.</p>
+<p><strong>Relationship between customer satisfaction and profits</strong>: Satisfied customers purchase again and recommend to peers → increased sales → increased profits. Extra cash reinvested back into the business for growth.</p>
+<h3 id="3-6-target-markets-segmentation">3.6 Target Markets &amp; Segmentation</h3>
+<blockquote>
+<p>⚠️ <strong>Syllabus placement.</strong> Only <em>&quot;identifying target markets&quot;</em> is a <strong>marketing process</strong> dot point (step 4). <em>&quot;Market segmentation, product/service differentiation and positioning&quot;</em> is the <strong>first dot point under marketing strategies</strong> (§4). They are grouped here for teaching, but in an exam a <strong>&quot;marketing strategies&quot;</strong> question expects segmentation and positioning.</p>
+</blockquote>
+<p><strong>Target market</strong>: Group of present and potential customers a business intends to sell to.</p>
+<ul>
+<li><strong>Primary</strong>: Most resources directed here</li>
+<li><strong>Secondary</strong>: Smaller, less important segment</li>
+</ul>
+<p><strong>Why identify target markets</strong>: To identify appropriate promotional strategies, improve ability to increase sales, ensure products meet customer needs/expectations.</p>
+<h4>Segmentation Bases</h4>
+<table>
+<thead>
+<tr>
+<th>Base</th>
+<th>Criteria</th>
+<th>Apple Example</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Geographic</strong></td>
+<td>Location, region, climate</td>
+<td>Strong in Americas, Europe, Greater China</td>
+</tr>
+<tr>
+<td><strong>Demographic</strong></td>
+<td>Age, income, occupation, education</td>
+<td>Young to middle-aged, middle to high income, professionals/students</td>
+</tr>
+<tr>
+<td><strong>Psychographic</strong></td>
+<td>Lifestyle, values, attitudes, personality, socioeconomic groups</td>
+<td>Innovation-seekers, quality-focused, early adopters, brand-loyal</td>
+</tr>
+<tr>
+<td><strong>Behavioural</strong></td>
+<td>Buying patterns, brand loyalty, usage, benefits sought</td>
+<td>Apple ecosystem loyalty, repeat purchasers</td>
+</tr>
+</tbody></table>
+<h4>Apple&#39;s Product-Segment Targets</h4>
+<ul>
+<li><strong>iPhone</strong>: Broad audience — young adults, professionals, tech enthusiasts</li>
+<li><strong>iPad</strong>: Creative professionals, students</li>
+<li><strong>Mac</strong>: Developers, creative professionals</li>
+<li><strong>Apple Watch</strong>: Fitness enthusiasts, professionals</li>
+</ul>
+<h3 id="3-7-product-positioning">3.7 Product Positioning</h3>
+<blockquote>
+<p>⚠️ <strong>Positioning is a marketing STRATEGY in the syllabus</strong>, not a process. See the note at §3.6. <strong>Product/service differentiation</strong> belongs with it: making a similar product <em>appear different from and better than</em> competitors&#39;, which gives the seller control over price.</p>
+</blockquote>
+<ul>
+<li><strong>Definition</strong>: How potential buyers from the target market perceive the product</li>
+<li>The business decides on the image it wishes to create for a product/service</li>
+<li>Brand names evoke certain images — e.g. No Frills (budget), Rolex (luxury)</li>
+<li>This image gives the product its <strong>position in the market</strong></li>
+<li>Positioning is linked to the marketing mix — all 4Ps must reinforce the desired position</li>
+</ul>
+<h3 id="3-8-implementation-monitoring-controlling">3.8 Implementation, Monitoring &amp; Controlling</h3>
+<h4>Definitions</h4>
+<ul>
+<li><strong>Implementation</strong>: Putting strategies into operation — the how, where and when</li>
+<li><strong>Monitoring</strong>: Checking and observing actual progress of the marketing plan</li>
+<li><strong>Controlling</strong>: Comparing planned vs actual performance, taking <strong>corrective action</strong> to ensure objectives are attained</li>
+</ul>
+<h4>Financial Forecasts</h4>
+<ul>
+<li><strong>Cost estimate</strong> + <strong>Revenue estimate</strong></li>
+<li>Compare sales potential and revenue forecasts with anticipated expenditures</li>
+<li>Easier to forecast <strong>costs</strong> than revenue (costs are more controllable)</li>
+</ul>
+<h4>Key Performance Indicators (KPIs)</h4>
+<table>
+<thead>
+<tr>
+<th>KPI</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Sales analysis</strong></td>
+<td>Evaluate current performance and strategy effectiveness using sales data</td>
+</tr>
+<tr>
+<td><strong>Market share analysis</strong></td>
+<td>Compare performance against competitors</td>
+</tr>
+<tr>
+<td><strong>Marketing profitability analysis</strong></td>
+<td>Break down total marketing costs into specific marketing activities</td>
+</tr>
+</tbody></table>
+<h4>Revising the Marketing Strategy</h4>
+<p>If objectives not met, changes include:</p>
+<ol>
+<li><strong>Modify the 4Ps</strong> (marketing mix adjustments)</li>
+<li><strong>New product development</strong> (add products)</li>
+<li><strong>Product deletion</strong> (remove underperforming products)</li>
+</ol>
+<hr>
+<h2 id="4-marketing-strategies">4. Marketing Strategies</h2>
+<h3 id="4-1-marketing-mix-4ps">4.1 Marketing Mix — 4Ps</h3>
+<h4>Product</h4>
+<p>Decisions about: quality, packaging/labelling, design, brand name, guarantee. Strategies change with product life cycle stage.</p>
+<p><strong>Total Product Concepts — Tangible and Intangible:</strong></p>
+<ul>
+<li>Most products are a combination of tangible and intangible components</li>
+<li>Customers buy both tangible and intangible benefits</li>
+<li>A product includes: the package, brand name, warranty, after-sale service</li>
+</ul>
+<p><strong>Product Branding:</strong></p>
+<ul>
+<li>A <strong>brand</strong> is a name, term, symbol, design or combination that identifies a specific product and distinguishes it from competitors</li>
+<li><strong>Brand symbol and logo</strong>: Graphic representation that identifies a business or product</li>
+<li><strong>Branding strategies</strong> (by ownership):<ol>
+<li><strong>Manufacturer&#39;s/national brand</strong>: Manufacturer owns the brand name — high appeal, recognised across the country</li>
+<li><strong>Private/household brand</strong>: Owned by a retailer or wholesaler</li>
+<li><strong>Generic brands</strong>: Products with no brand name — normally used for supermarket products</li>
+</ol>
+</li>
+<li>Branding must be linked to the <strong>reputation</strong> of the business</li>
+</ul>
+<p><strong>Packaging:</strong></p>
+<ul>
+<li>Development of container and graphic design for a product</li>
+<li>How easily is the package recognised — colours, branding, logo</li>
+<li>Packaging reinforces brand messaging and consumer perception</li>
+</ul>
+<h4>Price</h4>
+<p><strong>Pricing Methods:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Cost-plus pricing</strong></td>
+<td>Formula: Cost + (Cost × Markup %) = Price. Disadvantage: doesn&#39;t consider market conditions or other parts of the marketing mix</td>
+</tr>
+<tr>
+<td><strong>Market-based pricing</strong></td>
+<td>Sets prices according to supply and demand interaction — whatever the market is willing to pay. Prices constantly change with market fluctuations</td>
+</tr>
+<tr>
+<td><strong>Competitive pricing</strong></td>
+<td>Price covers costs and is comparable to competitor&#39;s price. Used in highly competitive markets — price below, equal to, or above competitors</td>
+</tr>
+</tbody></table>
+<p><strong>Pricing Strategies:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Strategy</th>
+<th>When Used</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Price skimming</strong></td>
+<td>New/innovative products — charge high initial price before competitors enter, then lower over time. E.g. iPhone launch ($2,199 Pro Max)</td>
+</tr>
+<tr>
+<td><strong>Penetration pricing</strong></td>
+<td>Entering competitive markets — lowest possible price that still covers cost. Quick market share gain (&quot;mass market pricing&quot;). Not long-term as it impacts revenue</td>
+</tr>
+<tr>
+<td><strong>Competitive pricing</strong></td>
+<td>Established markets with many competitors — match or slightly vary from price leader</td>
+</tr>
+<tr>
+<td><strong>Loss leader</strong></td>
+<td>Sell some products below cost to attract customers who also buy higher-margin items. E.g. supermarket specials at start of aisles</td>
+</tr>
+<tr>
+<td><strong>Price points</strong></td>
+<td>Psychological pricing at predetermined levels — e.g. watches at $55, $75, $95. Common in retail</td>
+</tr>
+<tr>
+<td><strong>Prestige pricing</strong></td>
+<td>Deliberately high price to signal quality/exclusivity — e.g. Rolex, Apple</td>
+</tr>
+<tr>
+<td><strong>Price discrimination</strong></td>
+<td>Different prices in different markets (prohibited if reduces competition)</td>
+</tr>
+<tr>
+<td><strong>Price bundling</strong></td>
+<td>Combining products at a lower total price — e.g. McValue Meals</td>
+</tr>
+<tr>
+<td><strong>Dynamic pricing</strong></td>
+<td>AI-powered adjustments based on real-time demand — e.g. McDonald&#39;s</td>
+</tr>
+</tbody></table>
+<p><strong>Apple pricing:</strong> Price skimming at launches, prestige pricing reinforces luxury image, selective price reductions on older models.</p>
+<h4>Promotion</h4>
+<p><strong>Definition</strong>: The methods used to communicate information about a product to persuade and remind the target market about its products.</p>
+<p><strong>Elements of the Promotional Communication Process:</strong></p>
+<ul>
+<li><strong>Sender</strong> (business) → <strong>Message</strong> (advertisement) → <strong>Channel</strong> (medium) → <strong>Receiver</strong> (customer)</li>
+<li><strong>Noise</strong>: Any interference or distraction that affects any stage in the promotional communication process</li>
+</ul>
+<p><strong>Elements of the Promotion Mix:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Details</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Advertising</strong></td>
+<td>Paid, non-personal communication. Six main media: (1) Mass marketing (TV, radio), (2) Direct marketing catalogues, (3) Telemarketing, (4) Internet, (5) Social media advertising, (6) Billboards</td>
+</tr>
+<tr>
+<td><strong>Personal selling</strong></td>
+<td>Activities of a sales consultant directed to a customer — involves the human aspect of promotion. More persuasive than advertising because of direct interaction</td>
+</tr>
+<tr>
+<td><strong>Sales promotion</strong></td>
+<td>Short-term incentives: coupons, contests, samples, loyalty/rewards programs, free gifts, price discounts, two-for-one deals</td>
+</tr>
+<tr>
+<td><strong>Publicity</strong></td>
+<td>Free news about a business&#39;s products — NOT paid for</td>
+</tr>
+<tr>
+<td><strong>Public Relations (PR)</strong></td>
+<td>Activities aimed at creating and maintaining favourable relationships with stakeholders — planned, not free</td>
+</tr>
+<tr>
+<td><strong>Direct marketing</strong></td>
+<td>Direct communication with individual customers — email, mail, catalogues</td>
+</tr>
+</tbody></table>
+<p><strong>Distinction: Publicity vs Public Relations</strong></p>
+<ul>
+<li>Publicity = free, unplanned media coverage</li>
+<li>PR = planned, strategic management of relationships</li>
+</ul>
+<h4>Place (Distribution)</h4>
+<p><strong>Definition</strong>: Not about location — about distribution channels and channel choices. How to get the product from factory to customer.</p>
+<p><strong>Distribution Channels:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Level</th>
+<th>Path</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Direct</td>
+<td>Manufacturer → Consumer (e.g. Apple website, Apple stores)</td>
+</tr>
+<tr>
+<td>One-level</td>
+<td>Manufacturer → Retailer → Consumer (e.g. Apple via JB Hi-Fi, Optus, Telstra)</td>
+</tr>
+<tr>
+<td>Two-level</td>
+<td>Manufacturer → Wholesaler → Retailer → Consumer</td>
+</tr>
+<tr>
+<td>Three-level</td>
+<td>Manufacturer → Agent → Wholesaler → Retailer → Consumer</td>
+</tr>
+</tbody></table>
+<p>Most large businesses use <strong>at least 2 methods</strong> for flexibility.</p>
+<p><strong>Channel Choice — Distribution Intensity:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Intensive</strong></td>
+<td>Saturate the market — product available everywhere</td>
+<td>Coca-Cola, Pepsi (supermarkets, vending machines, restaurants)</td>
+</tr>
+<tr>
+<td><strong>Selective</strong></td>
+<td>Moderate proportion of all possible outlets</td>
+<td>Apple (Apple stores + selected retailers like JB Hi-Fi)</td>
+</tr>
+<tr>
+<td><strong>Exclusive</strong></td>
+<td>Only one retail outlet in a large geographic area</td>
+<td>Ferrari, Tiffany jewellery (specific outlets only)</td>
+</tr>
+</tbody></table>
+<p><strong>Innovative Distribution Methods:</strong></p>
+<ul>
+<li>Retailing activity conducted away from the traditional store</li>
+<li>Includes online retailing, pop-up stores, vending machines, direct-to-consumer platforms</li>
+</ul>
+<p><strong>Physical Distribution Issues:</strong></p>
+<ul>
+<li>All activities concerned with the efficient movement of products</li>
+<li>Includes warehousing, transport, inventory management, order processing</li>
+</ul>
+<h3 id="4-2-extended-marketing-mix-people-processes-physical-evidence">4.2 Extended Marketing Mix — People, Processes, Physical Evidence</h3>
+<p>The traditional 4Ps focus on goods. The extra 3 Ps address <strong>services</strong>, which are intangible, inseparable, variable, and perishable.</p>
+<table>
+<thead>
+<tr>
+<th>P</th>
+<th>Definition</th>
+<th>Apple Example</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>People</strong></td>
+<td>Quality of customer-employee interaction</td>
+<td>&quot;Genius&quot; and &quot;Specialist&quot; job titles; strong sales/customer service training; in-store, online, phone support</td>
+</tr>
+<tr>
+<td><strong>Processes</strong></td>
+<td>Flow of activities in service delivery</td>
+<td>Online ordering; free iOS upgrades; pre-ordering; roaming payment systems in stores</td>
+</tr>
+<tr>
+<td><strong>Physical evidence</strong></td>
+<td>Environment where service is delivered + tangible brand materials</td>
+<td>Stores designed for innovation/quality; hands-on &quot;test-drive&quot; approach; prime city locations; sleek packaging; professional website</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>Apple</strong>: The extra 3 Ps strengthen premium brand image, increase customer satisfaction and loyalty, and maintain competitive advantage.</p>
+</blockquote>
+<h3 id="4-3-e-marketing">4.3 E-Marketing</h3>
+<p><strong>Definition</strong>: Internet marketing — allows a business with online operations to reach a global audience.</p>
+<h4>E-Marketing Technologies</h4>
+<table>
+<thead>
+<tr>
+<th>Technology</th>
+<th>Description</th>
+<th>Marketing Use</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Web pages</strong></td>
+<td>Combination of text, graphics, animation and video</td>
+<td>Physical evidence (branding/packaging), process (ordering/communication), place (distribution), promotion (advertising on other sites)</td>
+</tr>
+<tr>
+<td><strong>Podcasts</strong></td>
+<td>Distribution of digital audio/video files over internet</td>
+<td>Publicity — promoting companies through talking/showcasing. Effective if aimed at same audience as target market</td>
+</tr>
+<tr>
+<td><strong>SMS</strong></td>
+<td>Short message service — text messages between mobile phones</td>
+<td>Direct promotion — cannot be ignored unless blocked. Used for sales notifications, tracking info, status updates, incentives</td>
+</tr>
+<tr>
+<td><strong>Blogs</strong></td>
+<td>Online diary allowing communication between business and customers</td>
+<td>Building relationships, feedback, product information</td>
+</tr>
+<tr>
+<td><strong>Social media advertising</strong></td>
+<td>Use of Facebook and Twitter to promote business</td>
+<td>Cost efficiency, vast global reach, higher market share. Disadvantage: anyone can comment (even without trying product) — can worsen brand reputation</td>
+</tr>
+</tbody></table>
+<h4>Apple&#39;s E-Marketing Impact on 4Ps</h4>
+<table>
+<thead>
+<tr>
+<th>P</th>
+<th>How E-Marketing Influences It</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Product</strong></td>
+<td>Detailed specifications online; displayed alongside accessories; FAQs and technical specs reduce customer service costs</td>
+</tr>
+<tr>
+<td><strong>Price</strong></td>
+<td>Price transparency — comparison with competitors; price comparison websites; increased profit margins by selling online (no retail store costs)</td>
+</tr>
+<tr>
+<td><strong>Place</strong></td>
+<td>Global platform without retail costs; sell directly to customers; tailor websites for languages/cultures. Limitation: some customers prefer viewing before purchasing</td>
+</tr>
+<tr>
+<td><strong>Promotion</strong></td>
+<td>Images, audio, video, detailed info on website; new product launches published online; social media ads; database of existing/potential customers for email/social media promotion</td>
+</tr>
+</tbody></table>
+<h3 id="4-4-global-marketing-strategies">4.4 Global Marketing Strategies</h3>
+<p><strong>Why businesses go global</strong>: TNCs (Transnational Corporations) operate beyond domestic operations to increase sales, further brand awareness, and establish markets in new countries.</p>
+<h4>Global Branding</h4>
+<ul>
+<li>Worldwide use of a name, logo, term or symbol</li>
+<li>More effective and efficient to promote a brand rather than individual products</li>
+<li>A brand has the same meaning in any language</li>
+<li><strong>Apple</strong>: Logo changed three times since 1979 — simple, globally recognisable. Competitive advantage due to global brand recognition.</li>
+</ul>
+<h4>Standardisation vs Customisation</h4>
+<table>
+<thead>
+<tr>
+<th>Approach</th>
+<th>Description</th>
+<th>Apple Example</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Standardisation</strong></td>
+<td>Same marketing strategies worldwide — minor adjustments (language, actors) but overall script is the same</td>
+<td>Same iPhone in every country; iPhone 5c ad featured people of various nationalities speaking their own language</td>
+</tr>
+<tr>
+<td><strong>Customisation</strong></td>
+<td>Entirely different strategies for each country — changes based on culture, religion, tastes</td>
+<td>iPhone 6 Plus designed for Asian market (large screen); different pricing by market</td>
+</tr>
+<tr>
+<td><strong>Combination</strong></td>
+<td>Most businesses use both — standardise core elements, customise for local markets</td>
+<td>Apple changes language/actors (standardised) but adapts pricing and some features (customised)</td>
+</tr>
+</tbody></table>
+<p><strong>Why research the market</strong>: Differences in language, religion, tastes, and ethics require understanding before entering new markets.</p>
+<h4>Global Pricing Strategies</h4>
+<table>
+<thead>
+<tr>
+<th>Strategy</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Customised pricing</strong></td>
+<td>Different prices for the same product in different markets. Uses cost-plus method covering: transportation, taxes, warehousing, tariffs</td>
+</tr>
+<tr>
+<td><strong>Market customised pricing</strong></td>
+<td>Prices set according to local market conditions and exchange rate fluctuations</td>
+</tr>
+<tr>
+<td><strong>Standardised pricing</strong></td>
+<td>Same price anywhere in the world — risky due to different purchasing powers</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>iPhone X prices around the world (64GB $US)</strong>: Russia $1,390 | EU $1,377 | UK $1,330 | China $1,280 | Australia $1,259 | USA $999</p>
+</blockquote>
+<p><strong>Factors affecting global pricing</strong>: Currency exchange rates, transportation costs, local taxes, tariffs, competition in overseas markets.</p>
+<h4>Global Promotional Strategies</h4>
+<ul>
+<li>Use variety of mediums: TV, Internet, radio</li>
+<li>Must consider language, religion, culture</li>
+</ul>
+<h4>Competitive Positioning</h4>
+<ul>
+<li>Formal process of determining how to differentiate from competitors</li>
+<li><strong>Value proposition</strong> includes:<ol>
+<li>Operational excellence</li>
+<li>Customer intimacy</li>
+<li>Product Leadership</li>
+</ol>
+</li>
+</ul>
+<blockquote>
+<p><strong>Apple</strong>: Historically positioned at high end (quality/design). As developed markets saturated, turned to high-growth emerging economies (China, India). 2014: secured contract with China Mobile (largest carrier) — significant sales increase. Huawei has since overtaken Apple in market share.</p>
+</blockquote>
+<h3 id="4-5-section-iv-essay-structures">4.5 Section IV Essay Structures</h3>
+<h4>Assess/Evaluate/Explain the Importance of (Judgement-Based)</h4>
+<p><strong>Introduction</strong>: Start with judgement sentence → state what you&#39;re evaluating (use syllabus dot points) → include all case studies.</p>
+<table>
+<thead>
+<tr>
+<th>Body Paragraph</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Paragraph 1</strong></td>
+<td>Answer the question — judgement with brief overview. Define key concepts. Include case study.</td>
+</tr>
+<tr>
+<td><strong>Paragraph 2</strong></td>
+<td><strong>Advantages</strong> — prove they are advantages by linking to a topic-specific goal. Use stats.</td>
+</tr>
+<tr>
+<td><strong>Paragraph 3</strong></td>
+<td><strong>Disadvantages</strong> — prove they are disadvantages by linking to a topic-specific goal.</td>
+</tr>
+<tr>
+<td><strong>Paragraph 4</strong></td>
+<td>Re-state judgement, link to long-term business goals.</td>
+</tr>
+</tbody></table>
+<p><strong>Conclusion</strong>: 1-2 summary sentences per body paragraph (including case study).</p>
+<h4>Analyse/Explain How (Cause-and-Effect)</h4>
+<p><strong>Introduction</strong>: Link two ideas together (cause and effect) → state what you&#39;re analysing (syllabus dot points) → include all case studies.</p>
+<table>
+<thead>
+<tr>
+<th>Body Paragraph</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Paragraph 1</strong></td>
+<td><strong>Cause/effect #1</strong> — How is the business impacted? Why? Show cause and effect with case study.</td>
+</tr>
+<tr>
+<td><strong>Paragraph 2</strong></td>
+<td><strong>Cause/effect #2</strong> — Same structure. Link to cause #1.</td>
+</tr>
+<tr>
+<td><strong>Paragraph 3</strong></td>
+<td><strong>Positive Implications (LONG TERM)</strong> — Link to strategic role and business goals.</td>
+</tr>
+<tr>
+<td><strong>Paragraph 4</strong></td>
+<td><strong>Negative Implications</strong> — Point out an issue.</td>
+</tr>
+</tbody></table>
+<p><strong>Conclusion</strong>: 1-2 summary sentences per body paragraph (including case study).</p>
+<h4>To Get 12+ Marks (20-mark questions)</h4>
+<ul>
+<li>At least ONE paragraph on SWOT AND one on Product Life Cycle</li>
+<li>SWOT: 2 body paragraphs — choose ONE part, do at least 2 examples</li>
+<li>Product Life Cycle: 1 body paragraph — show how ONE strategy changes through PLC</li>
+</ul>
+<hr>
+<h2 id="5-mcdonald-s-marketing-detailed-case-study">5. McDonald&#39;s Marketing — Detailed Case Study</h2>
+<blockquote>
+<p><strong>Source</strong>: &quot;BUSINESS CASE STUDY — McDonald&#39;s&quot; by A.J. Stanshall (2024)</p>
+</blockquote>
+<h3 id="strategic-role">Strategic Role</h3>
+<ul>
+<li><strong>&quot;Accelerating the Arches&quot;</strong> (2020) → <strong>&quot;Accelerating the Arches 2.0&quot;</strong> (2023)</li>
+<li>Focus: maximise marketing, brand and affordability</li>
+<li>Goal: shift from <strong>brand engagement</strong> to <strong>brand advocacy</strong> (customers recommending the brand)</li>
+</ul>
+<h3 id="factors-influencing-customer-choice">Factors Influencing Customer Choice</h3>
+<table>
+<thead>
+<tr>
+<th>Factor</th>
+<th>McDonald&#39;s Example</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Psychological</strong></td>
+<td>Crocs collab (2023) — nostalgia, belonging; &quot;Health halo&quot; effect (fries next to salad = perceived healthier)</td>
+</tr>
+<tr>
+<td><strong>Sociocultural</strong></td>
+<td>China middle class expansion: 80M (2002) → 500M+ (2024) = more disposable income</td>
+</tr>
+<tr>
+<td><strong>Economic</strong></td>
+<td>Rising inflation increases input costs; efficiency gains to offset (can&#39;t always raise prices)</td>
+</tr>
+<tr>
+<td><strong>Government</strong></td>
+<td>UK Calorie Labelling Regulations (2022) — mandatory calorie info at all touchpoints</td>
+</tr>
+</tbody></table>
+<h3 id="consumer-laws">Consumer Laws</h3>
+<ul>
+<li><strong>Labelling</strong>: Australia NZ Food Standards Code; NSW Food Act 2003; mandatory kilojoule labelling. 2015 breach: animated menu boards hid kilojoule info. 2018 Cancer Council study: labelling had limited impact on consumer behaviour</li>
+<li><strong>Advertising</strong>: Quebec forbids advertising to children under 13. 2013 class action — Happy Meal toys timed with films. Settled 2020: $1M donation + changed practices</li>
+</ul>
+<h3 id="ethical-considerations">Ethical Considerations</h3>
+<ul>
+<li><strong>1997 McLibel case</strong>: McDonald&#39;s UK guilty of exploiting children with advertising</li>
+<li><strong>2020 breach</strong>: TV ad &quot;naughty girl&quot; rewarded with McDonald&#39;s — aimed at children, only unhealthy options</li>
+<li><strong>2023 breach</strong>: &quot;Player of the Week&quot; awards gave children occasional food products (violated voluntary code)</li>
+<li>Part of <strong>Australian Association of National Advertisers</strong> (self-regulatory)</li>
+</ul>
+<h3 id="swot">SWOT</h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Strengths</strong></td>
+<td>Diversified income; global brand; high-quality standards; growth plan; ~uniform menu; access to capital; large market share; technology</td>
+</tr>
+<tr>
+<td><strong>Weaknesses</strong></td>
+<td>Lack of central control over franchises (2023 IT glitch); perception of unhealthiness; multiple jurisdictions</td>
+</tr>
+<tr>
+<td><strong>Opportunities</strong></td>
+<td>Innovation/differentiation; reinvest in restaurants; digital media; social/environmental performance; new products</td>
+</tr>
+<tr>
+<td><strong>Threats</strong></td>
+<td>Negative publicity; environmental regulations; supply chain interruptions; inflation; competition (BK, Domino&#39;s, Starbucks, Wendy&#39;s); wage costs; legal complexity</td>
+</tr>
+</tbody></table>
+<h3 id="product-life-cycle">Product Life Cycle</h3>
+<ul>
+<li><strong>Burgers</strong> = mature; <strong>Chicken &amp; coffee</strong> = growth</li>
+<li><strong>French fries</strong>: Introduction (1940s) → Growth (1940s–1990) → Maturity (1990, recipe change due to health campaign, share price fell) → Renewal (Loaded, Twisted, Waffle, Cheesy Bacon fries)</li>
+</ul>
+<h3 id="market-research">Market Research</h3>
+<ul>
+<li>Traditional: surveys, questionnaires, sales data</li>
+<li>Modern: apps provide <strong>real-time data</strong> (what sells, when, where, to whom)</li>
+<li><strong>AI-powered dynamic pricing</strong>: adjusts menu prices, tests consumer price resistance</li>
+<li>Moving towards <strong>hyper-personalised segmentation</strong> using loyalty data — &quot;thousands of customer cohorts, where we used to have less than ten&quot;</li>
+</ul>
+<h3 id="market-segmentation">Market Segmentation</h3>
+<table>
+<thead>
+<tr>
+<th>Base</th>
+<th>Examples</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Demographic</strong></td>
+<td>Happy Meals (age); McCafé (older); campaigns for Black/Hispanic/Asian consumers (US); Halal/Kosher/No beef in India (religion); Family Bundles (family size)</td>
+</tr>
+<tr>
+<td><strong>Psychographic</strong></td>
+<td>Interests, attitudes, values, lifestyles; data-driven personalised segmentation</td>
+</tr>
+<tr>
+<td><strong>Behavioural</strong></td>
+<td>Loyalty, purchase frequency, transaction value; paper cards → app-only loyalty (2019); rewards points; predict future patterns</td>
+</tr>
+<tr>
+<td><strong>Geographic</strong></td>
+<td>Malaysian soup, McAloo Tikki (India), Teriyaki Mac (Japan), Prosperity Burger (Chinese New Year)</td>
+</tr>
+</tbody></table>
+<h3 id="product-strategies">Product Strategies</h3>
+<ul>
+<li>COVID simplified menu → <strong>core products = ~70% of sales</strong> in top 6 markets</li>
+<li><strong>Branding</strong>: Golden arches more recognisable than the Christian cross; 17 &quot;billion-dollar brands&quot;; Big Mac alone &gt;US$1B</li>
+<li><strong>Packaging</strong>: Reinforces brand messaging; new worldwide packaging launched late 2020</li>
+</ul>
+<h3 id="pricing-strategies">Pricing Strategies</h3>
+<table>
+<thead>
+<tr>
+<th>Strategy</th>
+<th>McDonald&#39;s Example</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Loss leaders</strong></td>
+<td>Loose Change Menu (AU$1+) — attracts customers who also buy higher-margin items</td>
+</tr>
+<tr>
+<td><strong>Price points</strong></td>
+<td>&quot;Value ladder&quot; from Loose Change → Standard → Gourmet (Chicken Deluxe)</td>
+</tr>
+<tr>
+<td><strong>Price bundling</strong></td>
+<td>McValue Meals — Big Mac meal $13.35 = 14% saving vs individual items</td>
+</tr>
+<tr>
+<td><strong>AI pricing</strong></td>
+<td>Dynamic pricing models test consumer price resistance at different stores</td>
+</tr>
+</tbody></table>
+<h3 id="promotion">Promotion</h3>
+<ul>
+<li><strong>US$4 billion/year</strong> on promotion worldwide; 3rd largest ad spender in Australia</li>
+<li>Regional &quot;co-ops&quot; for local advertising; shift from advertising to <strong>engaging</strong></li>
+<li><strong>2022 FIFA World Cup</strong>: Largest global campaign — McDelivery in 75 countries, 10 languages; double-digit delivery sales increases</li>
+<li><strong>Publicity</strong>: Negative — Super Size Me, McLibel, China meat scandal, McMillion$, Israeli soldiers (2024)</li>
+<li><strong>Sales promotions</strong>: FIFA World Cup — yellow/red card = free items in Canada</li>
+</ul>
+<h3 id="place-distribution">Place/Distribution</h3>
+<ul>
+<li><strong>Producer → Retailer → Customer</strong> channel; ~42,000 restaurants; selective distribution</li>
+<li><strong>Delivery</strong>: 55,000 orders at any moment; US$16B delivery sales (2023)</li>
+<li>Focus on <strong>Drive-Thru</strong> expansion</li>
+</ul>
+<h3 id="global-marketing">Global Marketing</h3>
+<ul>
+<li><strong>&quot;One McDonald&#39;s Way&quot;</strong>: Best innovations rolled out across multiple markets</li>
+<li><strong>Standardisation</strong>: ~2.5M Big Macs/day; ~15 core global items; economies of scale; McCafé becoming exclusive global coffee brand (100+ equipment types → 5 suppliers)</li>
+<li><strong>Customisation</strong>: Adapted to local tastes and cultures in different markets</li>
+</ul>
+<hr>
+<h2 id="6-extended-response-scaffolds-worked-examples">6. Extended Response Scaffolds &amp; Worked Examples</h2>
+<h3 id="2021-hsc-analyse-how-a-situational-analysis-swot-product-life-cycle-may-affect-marketing-strategies">2021 HSC — &quot;Analyse how a situational analysis (SWOT, product life cycle) may affect marketing strategies&quot;</h3>
+<p><strong>Model body paragraph (Threats → Product Strategy):</strong>
+Apple has threats such as competition from low-cost Asian providers (Huawei, Xiaomi). Threats are external factors the business cannot control. This has impacted Apple&#39;s product strategy — they position as high-quality/luxury with recognisable branding (bitten apple logo) and minimalist white/silver packaging. However, focus on camera improvements raised questions about innovation, affecting market share (17% vs Samsung&#39;s 20% in Q2 2023, though improved to 23% vs 16% by Q4 2024). This meets customer expectations, minimising impact of low-cost competitors.</p>
+<h3 id="answering-assess-on-promotional-mix">Answering &quot;Assess&quot; on Promotional Mix</h3>
+<p><strong>&quot;Assess why a promotional mix is important in marketing goods and services&quot;</strong></p>
+<ul>
+<li><strong>Assess</strong> = judgement of value and importance</li>
+<li>Structure: Intro (define + case studies) → 3 body paragraphs (one per strategy) → Conclusion (restate judgement + link to business goal)</li>
+</ul>
+<h3 id="2025-past-hsc-explain-how-target-market-impacts-on-people-processes-and-physical-evidence-strategies">2025 Past HSC — &quot;Explain how target market impacts on people, processes and physical evidence strategies&quot;</h3>
+<p>Must cover ALL 3 strategies for top marks. Use PEEL structure.</p>
+<p><strong>PEEL example (Processes):</strong></p>
+<ul>
+<li><strong>P:</strong> Processes are influenced by the target market because businesses design processes to meet target market needs. Apple&#39;s target market values convenience, speed, and innovation.</li>
+<li><strong>E:</strong> Apple uses online ordering, pre-orders, roaming payment systems, free iOS upgrades.</li>
+<li><strong>E:</strong> These processes reduce waiting times, improve convenience, and reflect Apple&#39;s innovative brand image. Efficient processes help Apple provide seamless customer experience.</li>
+<li><strong>L:</strong> Therefore, Apple&#39;s target market strongly influences its processes, maintaining customer satisfaction, loyalty, and competitive advantage.</li>
+</ul>
+<h3 id="2025-past-hsc-q26">2025 Past HSC — Q26</h3>
+<ul>
+<li><strong>Q26 (20 marks)</strong>: &quot;Analyse the relationship between market segmentation and marketing strategies&quot;</li>
+<li><strong>2012 Section IV</strong>: &quot;Why are ethical behaviour and government regulation important in marketing?&quot; (analyse question)</li>
+</ul>
+<hr>
+<h2 id="7-hsc-exam-tips">7. HSC Exam Tips</h2>
+<h3 id="key-verb-requirements">Key Verb Requirements</h3>
+<table>
+<thead>
+<tr>
+<th>Verb</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Identify/State</strong></td>
+<td>Name it — no explanation needed</td>
+</tr>
+<tr>
+<td><strong>Define</strong></td>
+<td>One clear meaning</td>
+</tr>
+<tr>
+<td><strong>Describe</strong></td>
+<td>Characteristics and features</td>
+</tr>
+<tr>
+<td><strong>Explain</strong></td>
+<td>How/why — cause and effect</td>
+</tr>
+<tr>
+<td><strong>Discuss</strong></td>
+<td>For AND against, then judgement</td>
+</tr>
+<tr>
+<td><strong>Analyse</strong></td>
+<td>Break down, examine relationships</td>
+</tr>
+<tr>
+<td><strong>Evaluate/Assess</strong></td>
+<td>Weighed judgement with evidence</td>
+</tr>
+<tr>
+<td><strong>Justify</strong></td>
+<td>Support a decision with evidence</td>
+</tr>
+</tbody></table>
+<h3 id="peel-structure">PEEL Structure</h3>
+<ul>
+<li><strong>P</strong>oint → <strong>E</strong>xplain → <strong>E</strong>vidence (case study) → <strong>L</strong>ink back to question</li>
+</ul>
+<h3 id="explain-scaffold">&quot;Explain&quot; Scaffold</h3>
+<pre><code>Define → Relationship/impact → Implications → Link (Therefore...)
+</code></pre>
+<h3 id="describe-scaffold">&quot;Describe&quot; Scaffold</h3>
+<pre><code>Definition → Characteristics and features → Relationship between components → Implications → Link
+</code></pre>
+<h3 id="always-include">Always Include</h3>
+<ul>
+<li>Specific case study examples (Apple, McDonald&#39;s, BYD, etc.)</li>
+<li>Business terminology from the syllabus</li>
+<li>Cause-and-effect reasoning (how → therefore → which leads to)</li>
+<li>Links to business goals (profit maximisation, growth, competitive advantage)</li>
+</ul>
+<hr>
+<h2 id="8-key-definitions-quick-reference">8. Key Definitions Quick Reference</h2>
+<table>
+<thead>
+<tr>
+<th>Term</th>
+<th>One-Line Definition</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Marketing</td>
+<td>Total system to plan, promote, price and distribute products</td>
+</tr>
+<tr>
+<td>Marketing plan</td>
+<td>Actions and strategies to attain greater sales</td>
+</tr>
+<tr>
+<td>Marketing objectives</td>
+<td>Realistic, measurable goals from the marketing plan</td>
+</tr>
+<tr>
+<td>Target market</td>
+<td>Group of customers a business intends to sell to</td>
+</tr>
+<tr>
+<td>Market segmentation</td>
+<td>Dividing a market into distinct similar-characteristic groups</td>
+</tr>
+<tr>
+<td>Marketing mix</td>
+<td>Combination of Product, Price, Promotion, Place</td>
+</tr>
+<tr>
+<td>SWOT</td>
+<td>Internal strengths/weaknesses + external opportunities/threats</td>
+</tr>
+<tr>
+<td>Market research</td>
+<td>Systematic collection and analysis of marketing information</td>
+</tr>
+<tr>
+<td>Primary data</td>
+<td>First-hand data collected by the business</td>
+</tr>
+<tr>
+<td>Secondary data</td>
+<td>Others&#39; research (Census, industry reports)</td>
+</tr>
+<tr>
+<td>Market share</td>
+<td>Company sales ÷ total industry sales × 100</td>
+</tr>
+<tr>
+<td>Product life cycle</td>
+<td>Introduction → Growth → Maturity → Decline</td>
+</tr>
+<tr>
+<td>Customer orientation</td>
+<td>Relationship begins with the sale</td>
+</tr>
+<tr>
+<td>Relationship marketing</td>
+<td>Focus on loyalty and repeat sales</td>
+</tr>
+<tr>
+<td>E-marketing</td>
+<td>Internet marketing using digital technologies</td>
+</tr>
+<tr>
+<td>Global branding</td>
+<td>Worldwide use of name, logo, term or symbol</td>
+</tr>
+<tr>
+<td>Standardisation</td>
+<td>Same marketing strategies worldwide</td>
+</tr>
+<tr>
+<td>Customisation</td>
+<td>Different strategies for each country/market</td>
+</tr>
+<tr>
+<td>Puffery</td>
+<td>Exaggerated claims no reasonable person believes</td>
+</tr>
+<tr>
+<td>SUGGING</td>
+<td>Selling disguised as market research</td>
+</tr>
+<tr>
+<td>Price discrimination</td>
+<td>Different prices in different markets</td>
+</tr>
+<tr>
+<td>ACCC</td>
+<td>Enforces Competition and Consumer Act 2010</td>
+</tr>
+<tr>
+<td>TNC</td>
+<td>Transnational Corporation — operates beyond domestic market</td>
+</tr>
+<tr>
+<td>Fiscal policy</td>
+<td>Government budget showing revenue (taxes) and spending</td>
+</tr>
+<tr>
+<td>Monetary policy</td>
+<td>RBA adjusts interest rates to control money supply and inflation</td>
+</tr>
+<tr>
+<td>Product positioning</td>
+<td>How potential buyers perceive the product in the market</td>
+</tr>
+<tr>
+<td>Intensive distribution</td>
+<td>Product available everywhere (saturate market)</td>
+</tr>
+<tr>
+<td>Selective distribution</td>
+<td>Moderate proportion of outlets</td>
+</tr>
+<tr>
+<td>Exclusive distribution</td>
+<td>One retail outlet in large geographic area</td>
+</tr>
+</tbody></table>
+<hr>
+<blockquote>
+<p><strong>See also:</strong> <a href="Finance__Finance_FULL.html">Finance</a> | <a href="Operations__Operations_FULL.html">Operations</a> | <a href="Human_Resources__Human_Resources_FULL.html">Human Resources</a> | <a href="Case_Studies.html">Case Studies</a> | <a href="MOC.html">MOC</a></p>
+</blockquote>
+</article></main></div><nav class="rail" aria-label="On this page"><div class="rail-title">On this page</div><ul><li><a href="#1-role-of-marketing" data-target="1-role-of-marketing">1. Role of Marketing</a><ul class="sub"><li><a href="#1-1-strategic-role" data-target="1-1-strategic-role" data-parent="1-role-of-marketing">1.1 Strategic Role</a></li><li><a href="#1-2-marketing-plan" data-target="1-2-marketing-plan" data-parent="1-role-of-marketing">1.2 Marketing Plan</a></li><li><a href="#1-3-interdependence-with-other-functions" data-target="1-3-interdependence-with-other-functions" data-parent="1-role-of-marketing">1.3 Interdependence with Other Functions</a></li><li><a href="#1-4-marketing-approaches" data-target="1-4-marketing-approaches" data-parent="1-role-of-marketing">1.4 Marketing Approaches</a></li><li><a href="#1-5-customer-orientation" data-target="1-5-customer-orientation" data-parent="1-role-of-marketing">1.5 Customer Orientation</a></li><li><a href="#1-6-relationship-marketing" data-target="1-6-relationship-marketing" data-parent="1-role-of-marketing">1.6 Relationship Marketing</a></li><li><a href="#1-7-types-of-markets" data-target="1-7-types-of-markets" data-parent="1-role-of-marketing">1.7 Types of Markets</a></li></ul></li><li><a href="#2-influences-of-marketing" data-target="2-influences-of-marketing">2. Influences of Marketing</a><ul class="sub"><li><a href="#2-1-factors-influencing-customer-choice" data-target="2-1-factors-influencing-customer-choice" data-parent="2-influences-of-marketing">2.1 Factors Influencing Customer Choice</a></li><li><a href="#2-2-ethical-influences" data-target="2-2-ethical-influences" data-parent="2-influences-of-marketing">2.2 Ethical Influences</a></li><li><a href="#2-3-consumer-law-legal-influences" data-target="2-3-consumer-law-legal-influences" data-parent="2-influences-of-marketing">2.3 Consumer Law (Legal Influences)</a></li></ul></li><li><a href="#3-marketing-processes" data-target="3-marketing-processes">3. Marketing Processes</a><ul class="sub"><li><a href="#3-1-steps-in-developing-a-marketing-plan" data-target="3-1-steps-in-developing-a-marketing-plan" data-parent="3-marketing-processes">3.1 Steps in Developing a Marketing Plan</a></li><li><a href="#3-2-situational-analysis" data-target="3-2-situational-analysis" data-parent="3-marketing-processes">3.2 Situational Analysis</a></li><li><a href="#3-4-market-research" data-target="3-4-market-research" data-parent="3-marketing-processes">3.4 Market Research</a></li><li><a href="#3-5-marketing-objectives" data-target="3-5-marketing-objectives" data-parent="3-marketing-processes">3.5 Marketing Objectives</a></li><li><a href="#3-6-target-markets-segmentation" data-target="3-6-target-markets-segmentation" data-parent="3-marketing-processes">3.6 Target Markets &amp; Segmentation</a></li><li><a href="#3-7-product-positioning" data-target="3-7-product-positioning" data-parent="3-marketing-processes">3.7 Product Positioning</a></li><li><a href="#3-8-implementation-monitoring-controlling" data-target="3-8-implementation-monitoring-controlling" data-parent="3-marketing-processes">3.8 Implementation, Monitoring &amp; Controlling</a></li></ul></li><li><a href="#4-marketing-strategies" data-target="4-marketing-strategies">4. Marketing Strategies</a><ul class="sub"><li><a href="#4-1-marketing-mix-4ps" data-target="4-1-marketing-mix-4ps" data-parent="4-marketing-strategies">4.1 Marketing Mix — 4Ps</a></li><li><a href="#4-2-extended-marketing-mix-people-processes-physical-evidence" data-target="4-2-extended-marketing-mix-people-processes-physical-evidence" data-parent="4-marketing-strategies">4.2 Extended Marketing Mix — People, Processes, Physical Evidence</a></li><li><a href="#4-3-e-marketing" data-target="4-3-e-marketing" data-parent="4-marketing-strategies">4.3 E-Marketing</a></li><li><a href="#4-4-global-marketing-strategies" data-target="4-4-global-marketing-strategies" data-parent="4-marketing-strategies">4.4 Global Marketing Strategies</a></li><li><a href="#4-5-section-iv-essay-structures" data-target="4-5-section-iv-essay-structures" data-parent="4-marketing-strategies">4.5 Section IV Essay Structures</a></li></ul></li><li><a href="#5-mcdonald-s-marketing-detailed-case-study" data-target="5-mcdonald-s-marketing-detailed-case-study">5. McDonald's Marketing — Detailed Case Study</a><ul class="sub"><li><a href="#strategic-role" data-target="strategic-role" data-parent="5-mcdonald-s-marketing-detailed-case-study">Strategic Role</a></li><li><a href="#factors-influencing-customer-choice" data-target="factors-influencing-customer-choice" data-parent="5-mcdonald-s-marketing-detailed-case-study">Factors Influencing Customer Choice</a></li><li><a href="#consumer-laws" data-target="consumer-laws" data-parent="5-mcdonald-s-marketing-detailed-case-study">Consumer Laws</a></li><li><a href="#ethical-considerations" data-target="ethical-considerations" data-parent="5-mcdonald-s-marketing-detailed-case-study">Ethical Considerations</a></li><li><a href="#swot" data-target="swot" data-parent="5-mcdonald-s-marketing-detailed-case-study">SWOT</a></li><li><a href="#product-life-cycle" data-target="product-life-cycle" data-parent="5-mcdonald-s-marketing-detailed-case-study">Product Life Cycle</a></li><li><a href="#market-research" data-target="market-research" data-parent="5-mcdonald-s-marketing-detailed-case-study">Market Research</a></li><li><a href="#market-segmentation" data-target="market-segmentation" data-parent="5-mcdonald-s-marketing-detailed-case-study">Market Segmentation</a></li><li><a href="#product-strategies" data-target="product-strategies" data-parent="5-mcdonald-s-marketing-detailed-case-study">Product Strategies</a></li><li><a href="#pricing-strategies" data-target="pricing-strategies" data-parent="5-mcdonald-s-marketing-detailed-case-study">Pricing Strategies</a></li><li><a href="#promotion" data-target="promotion" data-parent="5-mcdonald-s-marketing-detailed-case-study">Promotion</a></li><li><a href="#place-distribution" data-target="place-distribution" data-parent="5-mcdonald-s-marketing-detailed-case-study">Place/Distribution</a></li><li><a href="#global-marketing" data-target="global-marketing" data-parent="5-mcdonald-s-marketing-detailed-case-study">Global Marketing</a></li></ul></li><li><a href="#6-extended-response-scaffolds-worked-examples" data-target="6-extended-response-scaffolds-worked-examples">6. Extended Response Scaffolds &amp; Worked Examples</a><ul class="sub"><li><a href="#2021-hsc-analyse-how-a-situational-analysis-swot-product-life-cycle-may-affect-marketing-strategies" data-target="2021-hsc-analyse-how-a-situational-analysis-swot-product-life-cycle-may-affect-marketing-strategies" data-parent="6-extended-response-scaffolds-worked-examples">2021 HSC — &quot;Analyse how a situational analysis (SWOT, product life cycle) may affect marketing strategies&quot;</a></li><li><a href="#answering-assess-on-promotional-mix" data-target="answering-assess-on-promotional-mix" data-parent="6-extended-response-scaffolds-worked-examples">Answering &quot;Assess&quot; on Promotional Mix</a></li><li><a href="#2025-past-hsc-explain-how-target-market-impacts-on-people-processes-and-physical-evidence-strategies" data-target="2025-past-hsc-explain-how-target-market-impacts-on-people-processes-and-physical-evidence-strategies" data-parent="6-extended-response-scaffolds-worked-examples">2025 Past HSC — &quot;Explain how target market impacts on people, processes and physical evidence strategies&quot;</a></li><li><a href="#2025-past-hsc-q26" data-target="2025-past-hsc-q26" data-parent="6-extended-response-scaffolds-worked-examples">2025 Past HSC — Q26</a></li></ul></li><li><a href="#7-hsc-exam-tips" data-target="7-hsc-exam-tips">7. HSC Exam Tips</a><ul class="sub"><li><a href="#key-verb-requirements" data-target="key-verb-requirements" data-parent="7-hsc-exam-tips">Key Verb Requirements</a></li><li><a href="#peel-structure" data-target="peel-structure" data-parent="7-hsc-exam-tips">PEEL Structure</a></li><li><a href="#explain-scaffold" data-target="explain-scaffold" data-parent="7-hsc-exam-tips">Explain&quot; Scaffold</a></li><li><a href="#describe-scaffold" data-target="describe-scaffold" data-parent="7-hsc-exam-tips">Describe&quot; Scaffold</a></li><li><a href="#always-include" data-target="always-include" data-parent="7-hsc-exam-tips">Always Include</a></li></ul></li><li><a href="#8-key-definitions-quick-reference" data-target="8-key-definitions-quick-reference">8. Key Definitions Quick Reference</a></li></ul></nav><script>
+function toggleTheme(ev){
+var oldTheme=document.documentElement.getAttribute("data-theme")||"dark";
+var next=oldTheme==="light"?"dark":"light";
+function apply(){document.documentElement.setAttribute("data-theme",next);try{localStorage.setItem("vault-theme",next)}catch(e){}updateThemeIcons(next);}
+var reduced=false;try{reduced=window.matchMedia("(prefers-reduced-motion: reduce)").matches}catch(e){}
+if(reduced){apply();return;}
+if(window.__vaultThemeAnimating){return;}
+window.__vaultThemeAnimating=1;
+var newPaper=next==="light"?"#faf8f2":"#13151b";
+var W=window.innerWidth,H=window.innerHeight;
+var spacing=W<768?36:28;
+var maxR=spacing*0.78;
+var dpr=1;try{dpr=W<768?1:Math.min(window.devicePixelRatio||1,1.5);}catch(e){}
+var canvas=document.createElement("canvas");
+canvas.id="theme-wave";
+canvas.style.cssText="position:fixed;left:0;top:0;width:"+W+"px;height:"+H+"px;z-index:9999;pointer-events:none;";
+canvas.width=Math.round(W*dpr);canvas.height=Math.round(H*dpr);
+var ctx=canvas.getContext("2d");
+try{ctx.setTransform(dpr,0,0,dpr,0,0);}catch(e){}
+ctx.fillStyle=newPaper;
+var dots=[];
+for(var y=spacing/2;y<H+spacing;y+=spacing){for(var x=spacing/2;x<W+spacing;x+=spacing){dots.push({x:x,y:y,delay:(x+y)/(W+H)*450,done:0});}}
+var waveMs=450,growMs=300;
+var start=Date.now();
+function easeOutCubic(p){return 1-Math.pow(1-p,3);}
+function step(){
+var elapsed=Date.now()-start;
+var allDone=true;
+var any=false;
+ctx.beginPath();
+for(var i=0;i<dots.length;i++){
+var d=dots[i];
+if(d.done){continue;}
+var p=(elapsed-d.delay)/growMs;
+if(p<0){allDone=false;continue;}
+if(p<1){allDone=false;}
+else{d.done=1;}
+var r=maxR*easeOutCubic(p<1?p:1);
+if(r>0){ctx.moveTo(d.x+r,d.y);ctx.arc(d.x,d.y,r,0,Math.PI*2);any=true;}
+}
+if(any){ctx.fill();}
+if(!allDone){requestAnimationFrame(step);return;}
+apply();
+canvas.style.transition="opacity 0.15s ease";
+canvas.style.opacity="0";
+setTimeout(function(){window.__vaultThemeAnimating=0;if(canvas.parentNode)canvas.parentNode.removeChild(canvas);},180);
+}
+document.body.appendChild(canvas);
+requestAnimationFrame(step);
+}
+function updateThemeIcons(theme){var icon=theme==="dark"?"☀":"☾";document.querySelectorAll(".theme-btn").forEach(function(b){b.textContent=icon;});}
+try{updateThemeIcons(document.documentElement.getAttribute("data-theme")||"dark");}catch(e){}
+function toggleMenu(force){document.body.classList.toggle("menu-open",force)}
+document.addEventListener("keydown",function(e){if(e.key==="/"&&!/INPUT|TEXTAREA/.test(document.activeElement.tagName)){e.preventDefault();var s=document.querySelector(".side-search");if(s)s.focus()}});
+document.addEventListener("click",function(e){if(e.target.closest(".side a"))toggleMenu(false)});
+(function(){try{
+var links=Array.prototype.slice.call(document.querySelectorAll(".rail a"));
+if(!links.length||!window.IntersectionObserver)return;
+var map={};links.forEach(function(a){map[a.getAttribute("data-target")]=a});
+var obs=new IntersectionObserver(function(es){
+  es.forEach(function(e){
+    if(e.isIntersecting){
+      links.forEach(function(a){a.classList.remove("active");a.classList.remove("parent-active")});
+      var l=map[e.target.id];
+      if(l){l.classList.add("active");var p=l.getAttribute("data-parent");if(p&&map[p])map[p].classList.add("parent-active")}
+    }
+  });
+}, {rootMargin:"-20% 0px -70% 0px"});
+document.querySelectorAll(".prose h2[id], .prose h3[id]").forEach(function(h){obs.observe(h)});
+}catch(e){}})();
+(function(){try{
+var cv=document.getElementById("dotgrid");if(!cv)return;var ctx=cv.getContext("2d");if(!ctx)return;
+var reduced=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+var W=0,H=0,dpr=1,cols=0,rows=0,SP=28,px=0,py=0,pt=0,hasP=false;
+function dotRGB(){try{return getComputedStyle(document.documentElement).getPropertyValue("--dot-rgb").trim()||"233,231,225"}catch(e){return "233,231,225"}}
+function resize(){dpr=Math.min(window.devicePixelRatio||1,window.innerWidth<700?1.5:2);SP=window.innerWidth<700?36:28;W=window.innerWidth;H=window.innerHeight;cv.width=W*dpr;cv.height=H*dpr;cv.style.width=W+"px";cv.style.height=H+"px";ctx.setTransform(dpr,0,0,dpr,0,0);cols=Math.ceil(W/SP)+1;rows=Math.ceil(H/SP)+1}
+var R=Math.random()*Math.PI*2;
+var FORCES=[
+ {ax:.42,ay:.15,tx:26,ty:31,px:R,py:R+1.3,circ:false},
+ {ax:.38,ay:.42,tx:37,ty:23,px:R+2.1,py:R+0.7,circ:false},
+ {ax:.30,ay:.30,tx:41,ty:41,px:R+4.0,py:R+4.0,circ:true}
+];
+function draw(now){var t=now/1000;var rgb=dotRGB();
+var activeForces=W>=1280?FORCES:FORCES.slice(0,1);
+var pFade=hasP?Math.max(0,1-(now-pt)/4000):0;
+ctx.clearRect(0,0,W,H);
+for(var y=0;y<rows;y++)for(var x=0;x<cols;x++){var ox=x*SP+10,oy=y*SP+10,a=0.14,dispX=0,dispY=0;
+for(var fi=0;fi<activeForces.length;fi++){var F=activeForces[fi];
+var fx=F.circ?W*(0.5+F.ax*Math.cos(t*2*Math.PI/F.tx+F.px)):W*(0.5+F.ax*Math.sin(t*2*Math.PI/F.tx+F.px));
+var fy=F.circ?H*(0.5+F.ay*Math.sin(t*2*Math.PI/F.ty+F.py)):H*(0.5+F.ay*Math.sin(t*2*Math.PI/F.ty+F.py));
+var ddx=ox-fx,ddy=oy-fy,d=Math.sqrt(ddx*ddx+ddy*ddy);
+if(d<170&&d>0.01){var f=1-d/170;f=f*f;dispX+=(ddx/d)*6*f;dispY+=(ddy/d)*6*f;a+=0.20*f}}
+var dm=Math.sqrt(dispX*dispX+dispY*dispY);if(dm>9){dispX*=9/dm;dispY*=9/dm}
+var dx=ox+dispX,dy=oy+dispY;if(a>0.38)a=0.38;
+if(pFade>0){var pdx=ox-px,pdy=oy-py,pd=Math.sqrt(pdx*pdx+pdy*pdy);
+if(pd<150&&pd>0.01){var pf=1-pd/150;pf=pf*pf*pFade;dx+=(pdx/pd)*5*pf;dy+=(pdy/pd)*5*pf;a=Math.min(0.38,a+0.18*pf)}}
+ctx.beginPath();ctx.arc(dx,dy,1.3,0,Math.PI*2);ctx.fillStyle="rgba("+rgb+","+a.toFixed(3)+")";ctx.fill()}}
+function loop(now){if(!window.__vaultThemeAnimating)draw(now);if(!reduced)requestAnimationFrame(loop)}
+window.addEventListener("resize",resize);resize();
+window.addEventListener("pointermove",function(e){px=e.clientX;py=e.clientY;pt=performance.now();hasP=true},{passive:true});
+requestAnimationFrame(loop);
+}catch(e){}})();
+</script></body></html>

@@ -1,0 +1,195 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Universal Marketing Essay — McDonald's Case Study — HSC Business Vault</title><style>
+:root{--paper:#faf8f2;--ink:#1e1b16;--muted:#6b655a;--line:#e3ddd0;--accent:#1d4ed8;--card:#fffdf8;--side:#f3efe6;--side-bg:rgba(243,239,230,.88);--active:#e8e0cd;--rail-tint:rgba(29,78,216,.14);--rail-tint-soft:rgba(29,78,216,.07);--code:#efe9db;--quote:#4a4438;--dot-rgb:30,27,22;--scheme:light}
+[data-theme="dark"]{--paper:#13151b;--ink:#e9e7e1;--muted:#9aa0ab;--line:#2b2f3a;--accent:#8ab4ff;--card:#1b1e27;--side:#101218;--side-bg:rgba(16,18,24,.88);--active:#262b38;--rail-tint:rgba(138,180,255,.18);--rail-tint-soft:rgba(138,180,255,.09);--code:#262a36;--quote:#c3c7cf;--dot-rgb:233,231,225;--scheme:dark}
+*{box-sizing:border-box}html{color-scheme:var(--scheme)}body{margin:0;background:var(--paper);color:var(--ink);font:16.5px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;overflow-x:hidden}
+a{color:var(--accent);text-decoration:none;transition:color .18s ease}a:hover{text-decoration:underline}
+#dotgrid{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:0}
+.wrap{position:relative;z-index:1;display:grid;grid-template-columns:280px 1fr;min-height:100vh}
+.side{position:sticky;top:0;height:100vh;overflow:auto;padding:22px 18px;border-right:1px solid var(--line);background:var(--side-bg)}
+.side h3{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:22px 0 6px}
+.side ul{list-style:none;margin:0;padding:0}.side li{margin:3px 0}
+.side a{display:block;padding:7px 10px;border-radius:8px;color:var(--ink);transition:background .18s ease,transform .18s ease}
+.side a.active{background:var(--active);font-weight:600}
+.side a:hover{background:var(--active);text-decoration:none;transform:translateX(3px)}
+.side-head{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.theme-btn{flex:none;width:40px;height:40px;border:1px solid var(--line);border-radius:50%;background:var(--card);color:var(--ink);font-size:18px;cursor:pointer;transition:background .18s ease}
+.theme-btn:hover{background:var(--active)}
+.home-link{font-weight:700;font-size:18px}.side-search{width:100%;margin:14px 0 4px;padding:10px 12px;border:1px solid var(--line);border-radius:8px;background:var(--card);color:var(--ink);font-size:16px}
+.side-note{font-size:12.5px;color:var(--muted);line-height:1.5;margin-top:24px}
+.topbar{display:none}.backdrop{display:none}
+main{padding:36px 44px;max-width:860px}.prose h1{font-size:32px;line-height:1.2;letter-spacing:-.02em;margin:0 0 6px}
+.prose h2{font-size:23px;margin:34px 0 8px;padding-top:14px;border-top:1px solid var(--line)}
+.prose h3{font-size:18px;margin:26px 0 6px}.prose p{margin:10px 0}
+.prose table{border-collapse:collapse;width:100%;margin:14px 0;font-size:14.5px;display:block;overflow-x:auto;-webkit-overflow-scrolling:touch}
+.prose th,.prose td{border:1px solid var(--line);padding:7px 10px;text-align:left;vertical-align:top}
+.prose th{background:var(--side)}.prose blockquote{border-left:3px solid var(--line);margin:14px 0;padding:2px 14px;color:var(--quote);background:var(--card)}
+.prose code{background:var(--code);padding:1px 5px;border-radius:4px;font-size:14px}.prose pre{background:#0d0f14;color:#f5f1e6;padding:14px;border-radius:8px;overflow:auto}
+.prose pre code{background:none;color:inherit;padding:0}.prose hr{border:none;border-top:1px solid var(--line);margin:24px 0}
+.meta{color:var(--muted);font-size:14px;margin-bottom:20px}.toc{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 18px;margin:18px 0}
+.toc b{font-size:13px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}.toc ul{margin:8px 0 0;padding-left:18px}.toc li{margin:3px 0}
+.cards{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:20px 0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 18px;transition:transform .2s ease,border-color .2s ease,box-shadow .2s ease}
+.card:hover{transform:translateY(-3px);border-color:var(--accent);box-shadow:0 8px 24px rgba(0,0,0,.18)}
+.card h3{margin:0 0 4px}.card p{margin:0;color:var(--muted);font-size:14.5px}
+#search{width:100%;padding:13px 14px;font-size:17px;border:1px solid var(--line);border-radius:10px;background:var(--card);color:var(--ink)}
+.result{border-bottom:1px solid var(--line);padding:14px 6px;border-radius:8px;transition:background .18s ease,transform .18s ease}
+.result:hover{background:var(--card);transform:translateX(3px)}
+.result h3{margin:0}.result p{margin:4px 0;color:var(--quote)}.result .path{font-size:13px;color:var(--muted)}
+mark{background:#fde68a;color:#1e1b16;padding:0 1px}
+html{scroll-behavior:smooth}
+.rail{display:none}
+@media(min-width:1280px){
+main{max-width:min(860px,calc(100vw - 692px))}
+.rail{display:block;position:fixed;right:24px;top:50%;transform:translateY(-50%);width:340px;max-height:76vh;overflow:auto;z-index:15;background:none;border:none;box-shadow:none;padding:18px 14px;-webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 36px,#000 calc(100% - 36px),transparent 100%);mask-image:linear-gradient(to bottom,transparent 0,#000 36px,#000 calc(100% - 36px),transparent 100%)}
+.rail-title{font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:2px 0 12px 12px}
+.rail ul{list-style:none;margin:0;padding:0}
+.rail li{margin:3px 0}
+.rail a{display:block;padding:11px 14px;border-radius:10px;color:var(--ink);font-size:17px;line-height:1.4;transition:transform .2s ease,background .2s ease}
+.rail a:hover,.rail a:focus-visible{background:var(--rail-tint-soft);transform:translateX(-4px) scale(1.02);text-decoration:none}
+.rail a.active{background:var(--rail-tint);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);font-weight:600;transform:translateX(-12px);width:calc(100% + 12px)}
+.rail a.parent-active{background:var(--rail-tint-soft)}
+.rail ul.sub{margin:3px 0 3px 14px;padding-left:14px;border-left:1px solid var(--line)}
+.rail ul.sub a{padding:9px 12px;font-size:15px;color:var(--muted)}
+.rail ul.sub a:hover{color:var(--ink)}
+.rail ul.sub a.active{color:var(--ink);transform:translateX(-8px);width:calc(100% + 8px)}
+}
+@media(max-width:900px){
+.topbar{display:flex;position:sticky;top:0;z-index:20;align-items:center;gap:10px;padding:12px 14px;background:var(--side);border-bottom:1px solid var(--line)}
+.topbar b{flex:1;font-size:17px}.menu-btn,.topbar .theme-btn{width:44px;height:44px;border:1px solid var(--line);border-radius:10px;background:var(--card);color:var(--ink);font-size:19px;cursor:pointer}
+.wrap{grid-template-columns:1fr}
+.wrap{z-index:auto}
+.side{background:var(--side)}
+.side a{padding:11px 12px}
+body.menu-open{overflow:hidden}
+.side{position:fixed;inset:0 auto 0 0;width:300px;max-width:86vw;height:100dvh;z-index:30;transform:translateX(-105%);transition:transform .25s ease;box-shadow:0 0 40px rgba(0,0,0,.4)}
+body.menu-open .side{transform:translateX(0)}
+.backdrop{display:none}body.menu-open .backdrop{display:block;position:fixed;inset:0;z-index:25;background:rgba(0,0,0,.45)}
+main{padding:22px 16px}.prose h1{font-size:26px}.prose h2{font-size:21px}.cards{grid-template-columns:1fr}
+.prose table{font-size:14px}.prose pre{font-size:13.5px}
+}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}html{scroll-behavior:auto}}
+</style><script>(function(){try{var t=localStorage.getItem("vault-theme")||"dark";document.documentElement.setAttribute("data-theme",t)}catch(e){document.documentElement.setAttribute("data-theme","dark")}})()</script></head><body><canvas id="dotgrid" aria-hidden="true"></canvas><header class="topbar"><button class="menu-btn" type="button" onclick="toggleMenu()" aria-label="Open notes menu">☰</button><b>Business Vault</b><button class="theme-btn" type="button" onclick="toggleTheme(event)" aria-label="Toggle dark / light mode">◐</button></header><div class="backdrop" onclick="toggleMenu(false)"></div><div class="wrap"><nav class="side" id="side"><div class="side-head"><a class="home-link" href="index.html">⌂ Vault home</a><button class="theme-btn" type="button" onclick="toggleTheme(event)" aria-label="Toggle dark / light mode">◐</button></div><input class="side-search" type="search" placeholder="Search notes…  ( / )" onkeydown="if(event.key==='Enter'){location.href='index.html?q='+encodeURIComponent(this.value)}"><h3>Operations</h3><ul><li><a class="" href="Operations__Operations_1_Role.html">1 Role</a></li><li><a class="" href="Operations__Operations_2_Influences.html">2 Influences</a></li><li><a class="" href="Operations__Operations_3_Processes.html">3 Processes</a></li><li><a class="" href="Operations__Operations_4_Strategies.html">4 Strategies</a></li><li><a class="" href="Operations__Operations_Syllabus_Summary.html">Syllabus Summary</a></li><li><a class="" href="Operations__Operations_FULL.html">FULL</a></li></ul><h3>Marketing</h3><ul><li><a class="" href="Marketing__Marketing_1_Role.html">1 Role</a></li><li><a class="" href="Marketing__Marketing_2_Influences.html">2 Influences</a></li><li><a class="" href="Marketing__Marketing_3_Processes.html">3 Processes</a></li><li><a class="" href="Marketing__Marketing_4_Strategies.html">4 Strategies</a></li><li><a class="" href="Marketing__Marketing_Syllabus_Summary.html">Syllabus Summary</a></li><li><a class="" href="Marketing__Marketing_FULL.html">FULL</a></li></ul><h3>Finance</h3><ul><li><a class="" href="Finance__Finance_1_Role.html">1 Role</a></li><li><a class="" href="Finance__Finance_2_Influences.html">2 Influences</a></li><li><a class="" href="Finance__Finance_3_Processes.html">3 Processes</a></li><li><a class="" href="Finance__Finance_4_Strategies.html">4 Strategies</a></li><li><a class="" href="Finance__Finance_Syllabus_Summary.html">Syllabus Summary</a></li><li><a class="" href="Finance__Finance_FULL.html">FULL</a></li></ul><h3>Human Resources</h3><ul><li><a class="" href="Human_Resources__Human_Resources_1_Role.html">1 Role</a></li><li><a class="" href="Human_Resources__Human_Resources_2_Influences.html">2 Influences</a></li><li><a class="" href="Human_Resources__Human_Resources_3_Processes.html">3 Processes</a></li><li><a class="" href="Human_Resources__Human_Resources_4_Strategies.html">4 Strategies</a></li><li><a class="" href="Human_Resources__Human_Resources_Syllabus_Summary.html">Syllabus Summary</a></li><li><a class="" href="Human_Resources__Human_Resources_FULL.html">FULL</a></li></ul><h3>Exam &amp; revision</h3><ul><li><a class="" href="MOC.html">Final Notes</a></li><li><a class="" href="Case_Study_Stats_Sheet.html">Business Studies Case Study Stats Sheet</a></li><li><a class="" href="Case_Studies.html">Case Studies — HSC Business Studies Final Notes</a></li><li><a class="" href="Confusing_Pairs.html">Confusing Pairs — MCQ Drill Sheet</a></li><li><a class="" href="Crichton_Office_Supplies_Report_and_Apple_Marketing_Essay.html">Crichton Office Supplies Report and Apple Marketing Essay</a></li><li><a class="" href="Trial_Practice_Killara_2022.html">Killara 2022 Trial — Marked Paper and Model Answers</a></li><li><a class="" href="McDonalds_Case_Study.html">McDonald's Case Study — Section IV Essay Resource</a></li><li><a class="" href="Section_III_Business_Report.html">Section III — How to Write the Business Report</a></li><li><a class="" href="Section_IV_Extended_Response.html">Section IV — How to Write the Extended Response</a></li><li><a class="active" href="Marketing_Universal_Essay.html">Universal Marketing Essay — McDonald's Case Study</a></li><li><a class="" href="Finance_Management.html">Finance (moved)</a></li><li><a class="" href="Human_Resources.html">Human Resources (moved)</a></li><li><a class="" href="Marketing.html">Marketing (moved)</a></li><li><a class="" href="Operations.html">Operations (moved)</a></li></ul><p class="side-note">Source: TheSashi HSC Business Studies Notes, Final folder. Cloned 25 Oct 2026. Plus one added McDonald's note (see Exam & revision).</p></nav><main><article class="prose"><h1>Universal Marketing Essay — McDonald's Case Study</h1><p class="meta">Exam &amp; revision · Marketing_Universal_Essay.md</p><p class="meta">Original file also available: <a href="Marketing_Universal_Essay.docx">Download Marketing_Universal_Essay.docx</a></p><div class="toc"><b>On this page</b><ul><li><a href="#introduction">Introduction</a></li><li><a href="#body-1-role-of-marketing">Body 1 — Role of Marketing</a></li><li><a href="#body-2-influences-on-marketing">Body 2 — Influences on Marketing</a></li><li><a href="#body-3-marketing-processes">Body 3 — Marketing Processes</a></li><li><a href="#body-4-marketing-strategies">Body 4 — Marketing Strategies</a></li><li><a href="#body-5-evaluation-and-challenges">Body 5 — Evaluation and Challenges</a></li><li><a href="#conclusion">Conclusion</a></li></ul></div><h1>Universal Marketing Essay — McDonald&#39;s Case Study</h1>
+<p>Replace [BRACKETED TEXT] with question-specific content. Covers influences, processes, and strategies.</p>
+<h2 id="introduction">Introduction</h2>
+<p>[TERM 1] refers to the [formal definition from syllabus]. [TERM 2] refers to [formal definition]. In the context of McDonald&#39;s, the world&#39;s largest Quick Service Restaurant (QSR) chain operating 45,356 locations across 100+ countries with global systemwide sales of $139 billion in 2025, these concepts are critical to sustaining competitive advantage. McDonald&#39;s has effectively implemented [APPROACH/STRATEGY] to address [CHALLENGE/OPPORTUNITY]. This essay will evaluate [TOPIC FROM QUESTION] by examining [POINT 1], [POINT 2], and the interdependence with [POINT 3], demonstrating that McDonald&#39;s approach has been [EFFECTIVENESS JUDGEMENT].</p>
+<h2 id="body-1-role-of-marketing">Body 1 — Role of Marketing</h2>
+<p>The strategic role of marketing at McDonald&#39;s extends beyond promotion to encompass the entire process of identifying, anticipating, and satisfying customer requirements profitably. McDonald&#39;s generated $25.9 billion in consolidated revenue in 2024, growing to $26.9 billion in 2025, while serving over 70 million customers daily worldwide and 1.7 million in Australia alone. In the Australian market, McDonald&#39;s holds approximately 23.2% market share of fast food revenue, operating 1,092 restaurants with over 110,000 employees, making it the largest employer of youth in the country.</p>
+<p>Marketing is interdependent with other business functions at McDonald&#39;s. Human Resources supports marketing through the &#39;Mates Make It Maccas&#39; employer branding campaign, which recruits staff while simultaneously reinforcing the brand&#39;s community-oriented image. Finance supports marketing decisions through the allocation of approximately $1.4 billion in global annual advertising expenditure. Operations ensures consistent product quality across 45,000+ locations, which underpins the brand promise communicated through marketing. This interdependence ensures that marketing strategies are both financially viable and operationally deliverable, creating a cohesive approach to achieving McDonald&#39;s organisational objectives.</p>
+<h2 id="body-2-influences-on-marketing">Body 2 — Influences on Marketing</h2>
+<p>McDonald&#39;s operates within a complex environment of ethical, legal, economic, and social influences that shape its marketing approach. Under the Australian Consumer Law (Schedule 2 of the Competition and Consumer Act 2010), McDonald&#39;s must ensure all products meet consumer guarantees of acceptable quality, fitness for purpose, and accurate description. The ACCC actively monitors McDonald&#39;s for misleading conduct, requiring transparent nutritional labelling including kilojoule counts on all menu items, which directly influences how products are promoted.</p>
+<p>Ethical influences significantly affect McDonald&#39;s marketing decisions. The company avoids SUGGING (suggestive selling that pressures customers) by training staff in consultative approaches rather than aggressive upselling. Marketing communications avoid vague or exaggerated health claims, instead providing specific nutritional information. McDonald&#39;s must balance the invasion of privacy concerns arising from its MyMcDonald&#39;s Rewards app, which collects purchase data from 150 million+ global loyalty members, requiring compliance with the Australian Privacy Act 1988. Furthermore, economic conditions heavily influence marketing strategy — during the current cost-of-living crisis, McDonald&#39;s Loose Change Menu (items priced from $1 to $5 AUD) has become a critical tool for maintaining customer traffic, demonstrating how fiscal policy, monetary policy, and consumer confidence directly shape pricing and promotional decisions.</p>
+<h2 id="body-3-marketing-processes">Body 3 — Marketing Processes</h2>
+<p>McDonald&#39;s marketing process begins with clearly defined organisational objectives: increasing global systemwide sales (achieved 7% growth to $139 billion in 2025), growing digital revenue to 40% of total sales by 2027, and expanding to 50,000 restaurants worldwide. These objectives inform target market identification — McDonald&#39;s primary target is families with children (served through Happy Meals and playground facilities), secondary targets include youth aged 16-24 reached through social media marketing and McCafé positioning, and tertiary targets encompass working adults seeking convenience through drive-thru (60-70% of Australian sales) and delivery services.</p>
+<p>Market research underpins all marketing decisions. McDonald&#39;s employs primary research including customer satisfaction surveys, taste tests for new product development (such as the &#39;Menu Heist&#39; campaign bringing international items to Australia in 2025), and focus groups. Secondary research from IBISWorld, ABS data, and competitor financial reports informs strategic planning. The SWOT analysis reveals McDonald&#39;s strengths (brand recognition, scale, digital infrastructure) against threats (health-conscious consumer trends, rising input costs, competitor innovation such as KFC&#39;s &#39;Saucy&#39; rebranding). Market segmentation further refines the approach — geographic segmentation drives localised menus (McOz in Australia, McArabia in the Middle East), demographic segmentation targets different age groups, and psychographic segmentation addresses lifestyle preferences from budget-conscious to premium McCafé consumers.</p>
+<h2 id="body-4-marketing-strategies">Body 4 — Marketing Strategies</h2>
+<p>McDonald&#39;s employs a comprehensive 7Ps marketing mix to achieve its objectives. The pricing strategy combines loss leaders (Loose Change Menu items like $2 Cheeseburgers and $1.50 Soft Serve cones that drive foot traffic) with psychological pricing ($9.95 meals) and competitive pricing benchmarked against KFC and Hungry Jack&#39;s. The product strategy centres on 17 billion-dollar brands, continuous innovation (McPlant, McSpicy), and menu localisation — demonstrated by the VEGEMITE McShaker Fries exclusive to Australia launched in January 2025.</p>
+<p>Promotional strategies represent a $1.4 billion global investment encompassing digital marketing through the McDonald&#39;s App (personalised offers and loyalty rewards driving $40 billion in loyalty-member sales), traditional advertising maintaining the iconic &#39;I&#39;m Lovin&#39; It&#39; global campaign, and sales promotions such as the McDonald&#39;s Monopoly six-week prize giveaway in September 2024. Distribution strategies leverage the franchise model (95% franchise-owned globally, 80%+ in Australia) to minimise capital risk while maximising market coverage, complemented by drive-thru innovation including AI-powered ordering and delivery partnerships with Uber Eats. The digital transformation — with $10 billion in digital sales in 2025 representing 20% of system revenue — positions McDonald&#39;s to meet its 2027 target of 40% digital revenue, demonstrating effective integration of e-marketing strategies within the broader marketing framework.</p>
+<h2 id="body-5-evaluation-and-challenges">Body 5 — Evaluation and Challenges</h2>
+<p>While McDonald&#39;s marketing approach has delivered consistent growth — evidenced by 3.1% global comparable sales growth in 2025 and 23.2% Australian market share — significant challenges remain. Health-conscious consumer trends continue to threaten the core fast-food positioning, requiring ongoing investment in healthier menu options and transparent nutritional communication. The competitive landscape intensifies as KFC invests in rebranding (&#39;Saucy&#39; campaign), Hungry Jack&#39;s pursues aggressive flame-grilled differentiation, and new entrants like Wendy&#39;s (opening its first Australian store in January 2025) increase market fragmentation.</p>
+<p>Economic headwinds including inflation, rising food costs, and fluctuating consumer confidence directly impact marketing effectiveness. However, McDonald&#39;s demonstrates strategic agility — the Loose Change Menu was specifically developed to address cost-of-living pressures, while the MyMcDonald&#39;s Rewards loyalty program (150 million+ active members generating $40 billion in sales) creates switching costs that insulate against competitive threats. The interdependence between marketing and operations ensures that strategic decisions are implementable across 45,000+ locations, while the franchise model distributes marketing costs while maintaining brand consistency. Overall, McDonald&#39;s marketing approach has been [EFFECTIVE/INEFFECTIVE] in achieving [OBJECTIVE FROM QUESTION], though continued adaptation to health trends, digital transformation, and economic conditions will determine long-term success.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>In conclusion, McDonald&#39;s comprehensive approach to marketing — encompassing the strategic role of marketing, response to ethical, legal, and economic influences, systematic marketing processes, and integrated 7Ps strategies — has enabled the company to maintain its position as the world&#39;s largest QSR chain. Through value-based pricing strategies, digital transformation generating $10 billion in 2025, and market segmentation targeting families, youth, and budget-conscious consumers, McDonald&#39;s has achieved 7% systemwide sales growth to $139 billion. While challenges persist regarding health perceptions, competitive intensity, and economic uncertainty, the evidence demonstrates that McDonald&#39;s marketing strategy remains [OVERALL JUDGEMENT]. The company&#39;s ability to balance global brand consistency with local market adaptation — exemplified by Australian innovations such as the Loose Change Menu and &#39;Mates Make It Maccas&#39; campaign — positions McDonald&#39;s to achieve its ambitious 2027 targets of 50,000 locations and 40% digital revenue.</p>
+</article></main></div><nav class="rail" aria-label="On this page"><div class="rail-title">On this page</div><ul><li><a href="#introduction" data-target="introduction">Introduction</a></li><li><a href="#body-1-role-of-marketing" data-target="body-1-role-of-marketing">Body 1 — Role of Marketing</a></li><li><a href="#body-2-influences-on-marketing" data-target="body-2-influences-on-marketing">Body 2 — Influences on Marketing</a></li><li><a href="#body-3-marketing-processes" data-target="body-3-marketing-processes">Body 3 — Marketing Processes</a></li><li><a href="#body-4-marketing-strategies" data-target="body-4-marketing-strategies">Body 4 — Marketing Strategies</a></li><li><a href="#body-5-evaluation-and-challenges" data-target="body-5-evaluation-and-challenges">Body 5 — Evaluation and Challenges</a></li><li><a href="#conclusion" data-target="conclusion">Conclusion</a></li></ul></nav><script>
+function toggleTheme(ev){
+var oldTheme=document.documentElement.getAttribute("data-theme")||"dark";
+var next=oldTheme==="light"?"dark":"light";
+function apply(){document.documentElement.setAttribute("data-theme",next);try{localStorage.setItem("vault-theme",next)}catch(e){}updateThemeIcons(next);}
+var reduced=false;try{reduced=window.matchMedia("(prefers-reduced-motion: reduce)").matches}catch(e){}
+if(reduced){apply();return;}
+if(window.__vaultThemeAnimating){return;}
+window.__vaultThemeAnimating=1;
+var newPaper=next==="light"?"#faf8f2":"#13151b";
+var W=window.innerWidth,H=window.innerHeight;
+var spacing=W<768?36:28;
+var maxR=spacing*0.78;
+var dpr=1;try{dpr=W<768?1:Math.min(window.devicePixelRatio||1,1.5);}catch(e){}
+var canvas=document.createElement("canvas");
+canvas.id="theme-wave";
+canvas.style.cssText="position:fixed;left:0;top:0;width:"+W+"px;height:"+H+"px;z-index:9999;pointer-events:none;";
+canvas.width=Math.round(W*dpr);canvas.height=Math.round(H*dpr);
+var ctx=canvas.getContext("2d");
+try{ctx.setTransform(dpr,0,0,dpr,0,0);}catch(e){}
+ctx.fillStyle=newPaper;
+var dots=[];
+for(var y=spacing/2;y<H+spacing;y+=spacing){for(var x=spacing/2;x<W+spacing;x+=spacing){dots.push({x:x,y:y,delay:(x+y)/(W+H)*450,done:0});}}
+var waveMs=450,growMs=300;
+var start=Date.now();
+function easeOutCubic(p){return 1-Math.pow(1-p,3);}
+function step(){
+var elapsed=Date.now()-start;
+var allDone=true;
+var any=false;
+ctx.beginPath();
+for(var i=0;i<dots.length;i++){
+var d=dots[i];
+if(d.done){continue;}
+var p=(elapsed-d.delay)/growMs;
+if(p<0){allDone=false;continue;}
+if(p<1){allDone=false;}
+else{d.done=1;}
+var r=maxR*easeOutCubic(p<1?p:1);
+if(r>0){ctx.moveTo(d.x+r,d.y);ctx.arc(d.x,d.y,r,0,Math.PI*2);any=true;}
+}
+if(any){ctx.fill();}
+if(!allDone){requestAnimationFrame(step);return;}
+apply();
+canvas.style.transition="opacity 0.15s ease";
+canvas.style.opacity="0";
+setTimeout(function(){window.__vaultThemeAnimating=0;if(canvas.parentNode)canvas.parentNode.removeChild(canvas);},180);
+}
+document.body.appendChild(canvas);
+requestAnimationFrame(step);
+}
+function updateThemeIcons(theme){var icon=theme==="dark"?"☀":"☾";document.querySelectorAll(".theme-btn").forEach(function(b){b.textContent=icon;});}
+try{updateThemeIcons(document.documentElement.getAttribute("data-theme")||"dark");}catch(e){}
+function toggleMenu(force){document.body.classList.toggle("menu-open",force)}
+document.addEventListener("keydown",function(e){if(e.key==="/"&&!/INPUT|TEXTAREA/.test(document.activeElement.tagName)){e.preventDefault();var s=document.querySelector(".side-search");if(s)s.focus()}});
+document.addEventListener("click",function(e){if(e.target.closest(".side a"))toggleMenu(false)});
+(function(){try{
+var links=Array.prototype.slice.call(document.querySelectorAll(".rail a"));
+if(!links.length||!window.IntersectionObserver)return;
+var map={};links.forEach(function(a){map[a.getAttribute("data-target")]=a});
+var obs=new IntersectionObserver(function(es){
+  es.forEach(function(e){
+    if(e.isIntersecting){
+      links.forEach(function(a){a.classList.remove("active");a.classList.remove("parent-active")});
+      var l=map[e.target.id];
+      if(l){l.classList.add("active");var p=l.getAttribute("data-parent");if(p&&map[p])map[p].classList.add("parent-active")}
+    }
+  });
+}, {rootMargin:"-20% 0px -70% 0px"});
+document.querySelectorAll(".prose h2[id], .prose h3[id]").forEach(function(h){obs.observe(h)});
+}catch(e){}})();
+(function(){try{
+var cv=document.getElementById("dotgrid");if(!cv)return;var ctx=cv.getContext("2d");if(!ctx)return;
+var reduced=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+var W=0,H=0,dpr=1,cols=0,rows=0,SP=28,px=0,py=0,pt=0,hasP=false;
+function dotRGB(){try{return getComputedStyle(document.documentElement).getPropertyValue("--dot-rgb").trim()||"233,231,225"}catch(e){return "233,231,225"}}
+function resize(){dpr=Math.min(window.devicePixelRatio||1,window.innerWidth<700?1.5:2);SP=window.innerWidth<700?36:28;W=window.innerWidth;H=window.innerHeight;cv.width=W*dpr;cv.height=H*dpr;cv.style.width=W+"px";cv.style.height=H+"px";ctx.setTransform(dpr,0,0,dpr,0,0);cols=Math.ceil(W/SP)+1;rows=Math.ceil(H/SP)+1}
+var R=Math.random()*Math.PI*2;
+var FORCES=[
+ {ax:.42,ay:.15,tx:26,ty:31,px:R,py:R+1.3,circ:false},
+ {ax:.38,ay:.42,tx:37,ty:23,px:R+2.1,py:R+0.7,circ:false},
+ {ax:.30,ay:.30,tx:41,ty:41,px:R+4.0,py:R+4.0,circ:true}
+];
+function draw(now){var t=now/1000;var rgb=dotRGB();
+var activeForces=W>=1280?FORCES:FORCES.slice(0,1);
+var pFade=hasP?Math.max(0,1-(now-pt)/4000):0;
+ctx.clearRect(0,0,W,H);
+for(var y=0;y<rows;y++)for(var x=0;x<cols;x++){var ox=x*SP+10,oy=y*SP+10,a=0.14,dispX=0,dispY=0;
+for(var fi=0;fi<activeForces.length;fi++){var F=activeForces[fi];
+var fx=F.circ?W*(0.5+F.ax*Math.cos(t*2*Math.PI/F.tx+F.px)):W*(0.5+F.ax*Math.sin(t*2*Math.PI/F.tx+F.px));
+var fy=F.circ?H*(0.5+F.ay*Math.sin(t*2*Math.PI/F.ty+F.py)):H*(0.5+F.ay*Math.sin(t*2*Math.PI/F.ty+F.py));
+var ddx=ox-fx,ddy=oy-fy,d=Math.sqrt(ddx*ddx+ddy*ddy);
+if(d<170&&d>0.01){var f=1-d/170;f=f*f;dispX+=(ddx/d)*6*f;dispY+=(ddy/d)*6*f;a+=0.20*f}}
+var dm=Math.sqrt(dispX*dispX+dispY*dispY);if(dm>9){dispX*=9/dm;dispY*=9/dm}
+var dx=ox+dispX,dy=oy+dispY;if(a>0.38)a=0.38;
+if(pFade>0){var pdx=ox-px,pdy=oy-py,pd=Math.sqrt(pdx*pdx+pdy*pdy);
+if(pd<150&&pd>0.01){var pf=1-pd/150;pf=pf*pf*pFade;dx+=(pdx/pd)*5*pf;dy+=(pdy/pd)*5*pf;a=Math.min(0.38,a+0.18*pf)}}
+ctx.beginPath();ctx.arc(dx,dy,1.3,0,Math.PI*2);ctx.fillStyle="rgba("+rgb+","+a.toFixed(3)+")";ctx.fill()}}
+function loop(now){if(!window.__vaultThemeAnimating)draw(now);if(!reduced)requestAnimationFrame(loop)}
+window.addEventListener("resize",resize);resize();
+window.addEventListener("pointermove",function(e){px=e.clientX;py=e.clientY;pt=performance.now();hasP=true},{passive:true});
+requestAnimationFrame(loop);
+}catch(e){}})();
+</script></body></html>

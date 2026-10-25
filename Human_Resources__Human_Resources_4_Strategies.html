@@ -1,0 +1,942 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Human Resources 4 · Strategies and Effectiveness Indicators — HSC Business Vault</title><style>
+:root{--paper:#faf8f2;--ink:#1e1b16;--muted:#6b655a;--line:#e3ddd0;--accent:#1d4ed8;--card:#fffdf8;--side:#f3efe6;--side-bg:rgba(243,239,230,.88);--active:#e8e0cd;--rail-tint:rgba(29,78,216,.14);--rail-tint-soft:rgba(29,78,216,.07);--code:#efe9db;--quote:#4a4438;--dot-rgb:30,27,22;--scheme:light}
+[data-theme="dark"]{--paper:#13151b;--ink:#e9e7e1;--muted:#9aa0ab;--line:#2b2f3a;--accent:#8ab4ff;--card:#1b1e27;--side:#101218;--side-bg:rgba(16,18,24,.88);--active:#262b38;--rail-tint:rgba(138,180,255,.18);--rail-tint-soft:rgba(138,180,255,.09);--code:#262a36;--quote:#c3c7cf;--dot-rgb:233,231,225;--scheme:dark}
+*{box-sizing:border-box}html{color-scheme:var(--scheme)}body{margin:0;background:var(--paper);color:var(--ink);font:16.5px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;overflow-x:hidden}
+a{color:var(--accent);text-decoration:none;transition:color .18s ease}a:hover{text-decoration:underline}
+#dotgrid{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:0}
+.wrap{position:relative;z-index:1;display:grid;grid-template-columns:280px 1fr;min-height:100vh}
+.side{position:sticky;top:0;height:100vh;overflow:auto;padding:22px 18px;border-right:1px solid var(--line);background:var(--side-bg)}
+.side h3{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:22px 0 6px}
+.side ul{list-style:none;margin:0;padding:0}.side li{margin:3px 0}
+.side a{display:block;padding:7px 10px;border-radius:8px;color:var(--ink);transition:background .18s ease,transform .18s ease}
+.side a.active{background:var(--active);font-weight:600}
+.side a:hover{background:var(--active);text-decoration:none;transform:translateX(3px)}
+.side-head{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.theme-btn{flex:none;width:40px;height:40px;border:1px solid var(--line);border-radius:50%;background:var(--card);color:var(--ink);font-size:18px;cursor:pointer;transition:background .18s ease}
+.theme-btn:hover{background:var(--active)}
+.home-link{font-weight:700;font-size:18px}.side-search{width:100%;margin:14px 0 4px;padding:10px 12px;border:1px solid var(--line);border-radius:8px;background:var(--card);color:var(--ink);font-size:16px}
+.side-note{font-size:12.5px;color:var(--muted);line-height:1.5;margin-top:24px}
+.topbar{display:none}.backdrop{display:none}
+main{padding:36px 44px;max-width:860px}.prose h1{font-size:32px;line-height:1.2;letter-spacing:-.02em;margin:0 0 6px}
+.prose h2{font-size:23px;margin:34px 0 8px;padding-top:14px;border-top:1px solid var(--line)}
+.prose h3{font-size:18px;margin:26px 0 6px}.prose p{margin:10px 0}
+.prose table{border-collapse:collapse;width:100%;margin:14px 0;font-size:14.5px;display:block;overflow-x:auto;-webkit-overflow-scrolling:touch}
+.prose th,.prose td{border:1px solid var(--line);padding:7px 10px;text-align:left;vertical-align:top}
+.prose th{background:var(--side)}.prose blockquote{border-left:3px solid var(--line);margin:14px 0;padding:2px 14px;color:var(--quote);background:var(--card)}
+.prose code{background:var(--code);padding:1px 5px;border-radius:4px;font-size:14px}.prose pre{background:#0d0f14;color:#f5f1e6;padding:14px;border-radius:8px;overflow:auto}
+.prose pre code{background:none;color:inherit;padding:0}.prose hr{border:none;border-top:1px solid var(--line);margin:24px 0}
+.meta{color:var(--muted);font-size:14px;margin-bottom:20px}.toc{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 18px;margin:18px 0}
+.toc b{font-size:13px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}.toc ul{margin:8px 0 0;padding-left:18px}.toc li{margin:3px 0}
+.cards{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:20px 0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 18px;transition:transform .2s ease,border-color .2s ease,box-shadow .2s ease}
+.card:hover{transform:translateY(-3px);border-color:var(--accent);box-shadow:0 8px 24px rgba(0,0,0,.18)}
+.card h3{margin:0 0 4px}.card p{margin:0;color:var(--muted);font-size:14.5px}
+#search{width:100%;padding:13px 14px;font-size:17px;border:1px solid var(--line);border-radius:10px;background:var(--card);color:var(--ink)}
+.result{border-bottom:1px solid var(--line);padding:14px 6px;border-radius:8px;transition:background .18s ease,transform .18s ease}
+.result:hover{background:var(--card);transform:translateX(3px)}
+.result h3{margin:0}.result p{margin:4px 0;color:var(--quote)}.result .path{font-size:13px;color:var(--muted)}
+mark{background:#fde68a;color:#1e1b16;padding:0 1px}
+html{scroll-behavior:smooth}
+.rail{display:none}
+@media(min-width:1280px){
+main{max-width:min(860px,calc(100vw - 692px))}
+.rail{display:block;position:fixed;right:24px;top:50%;transform:translateY(-50%);width:340px;max-height:76vh;overflow:auto;z-index:15;background:none;border:none;box-shadow:none;padding:18px 14px;-webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 36px,#000 calc(100% - 36px),transparent 100%);mask-image:linear-gradient(to bottom,transparent 0,#000 36px,#000 calc(100% - 36px),transparent 100%)}
+.rail-title{font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:2px 0 12px 12px}
+.rail ul{list-style:none;margin:0;padding:0}
+.rail li{margin:3px 0}
+.rail a{display:block;padding:11px 14px;border-radius:10px;color:var(--ink);font-size:17px;line-height:1.4;transition:transform .2s ease,background .2s ease}
+.rail a:hover,.rail a:focus-visible{background:var(--rail-tint-soft);transform:translateX(-4px) scale(1.02);text-decoration:none}
+.rail a.active{background:var(--rail-tint);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);font-weight:600;transform:translateX(-12px);width:calc(100% + 12px)}
+.rail a.parent-active{background:var(--rail-tint-soft)}
+.rail ul.sub{margin:3px 0 3px 14px;padding-left:14px;border-left:1px solid var(--line)}
+.rail ul.sub a{padding:9px 12px;font-size:15px;color:var(--muted)}
+.rail ul.sub a:hover{color:var(--ink)}
+.rail ul.sub a.active{color:var(--ink);transform:translateX(-8px);width:calc(100% + 8px)}
+}
+@media(max-width:900px){
+.topbar{display:flex;position:sticky;top:0;z-index:20;align-items:center;gap:10px;padding:12px 14px;background:var(--side);border-bottom:1px solid var(--line)}
+.topbar b{flex:1;font-size:17px}.menu-btn,.topbar .theme-btn{width:44px;height:44px;border:1px solid var(--line);border-radius:10px;background:var(--card);color:var(--ink);font-size:19px;cursor:pointer}
+.wrap{grid-template-columns:1fr}
+.wrap{z-index:auto}
+.side{background:var(--side)}
+.side a{padding:11px 12px}
+body.menu-open{overflow:hidden}
+.side{position:fixed;inset:0 auto 0 0;width:300px;max-width:86vw;height:100dvh;z-index:30;transform:translateX(-105%);transition:transform .25s ease;box-shadow:0 0 40px rgba(0,0,0,.4)}
+body.menu-open .side{transform:translateX(0)}
+.backdrop{display:none}body.menu-open .backdrop{display:block;position:fixed;inset:0;z-index:25;background:rgba(0,0,0,.45)}
+main{padding:22px 16px}.prose h1{font-size:26px}.prose h2{font-size:21px}.cards{grid-template-columns:1fr}
+.prose table{font-size:14px}.prose pre{font-size:13.5px}
+}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}html{scroll-behavior:auto}}
+</style><script>(function(){try{var t=localStorage.getItem("vault-theme")||"dark";document.documentElement.setAttribute("data-theme",t)}catch(e){document.documentElement.setAttribute("data-theme","dark")}})()</script></head><body><canvas id="dotgrid" aria-hidden="true"></canvas><header class="topbar"><button class="menu-btn" type="button" onclick="toggleMenu()" aria-label="Open notes menu">☰</button><b>Business Vault</b><button class="theme-btn" type="button" onclick="toggleTheme(event)" aria-label="Toggle dark / light mode">◐</button></header><div class="backdrop" onclick="toggleMenu(false)"></div><div class="wrap"><nav class="side" id="side"><div class="side-head"><a class="home-link" href="index.html">⌂ Vault home</a><button class="theme-btn" type="button" onclick="toggleTheme(event)" aria-label="Toggle dark / light mode">◐</button></div><input class="side-search" type="search" placeholder="Search notes…  ( / )" onkeydown="if(event.key==='Enter'){location.href='index.html?q='+encodeURIComponent(this.value)}"><h3>Operations</h3><ul><li><a class="" href="Operations__Operations_1_Role.html">1 Role</a></li><li><a class="" href="Operations__Operations_2_Influences.html">2 Influences</a></li><li><a class="" href="Operations__Operations_3_Processes.html">3 Processes</a></li><li><a class="" href="Operations__Operations_4_Strategies.html">4 Strategies</a></li><li><a class="" href="Operations__Operations_Syllabus_Summary.html">Syllabus Summary</a></li><li><a class="" href="Operations__Operations_FULL.html">FULL</a></li></ul><h3>Marketing</h3><ul><li><a class="" href="Marketing__Marketing_1_Role.html">1 Role</a></li><li><a class="" href="Marketing__Marketing_2_Influences.html">2 Influences</a></li><li><a class="" href="Marketing__Marketing_3_Processes.html">3 Processes</a></li><li><a class="" href="Marketing__Marketing_4_Strategies.html">4 Strategies</a></li><li><a class="" href="Marketing__Marketing_Syllabus_Summary.html">Syllabus Summary</a></li><li><a class="" href="Marketing__Marketing_FULL.html">FULL</a></li></ul><h3>Finance</h3><ul><li><a class="" href="Finance__Finance_1_Role.html">1 Role</a></li><li><a class="" href="Finance__Finance_2_Influences.html">2 Influences</a></li><li><a class="" href="Finance__Finance_3_Processes.html">3 Processes</a></li><li><a class="" href="Finance__Finance_4_Strategies.html">4 Strategies</a></li><li><a class="" href="Finance__Finance_Syllabus_Summary.html">Syllabus Summary</a></li><li><a class="" href="Finance__Finance_FULL.html">FULL</a></li></ul><h3>Human Resources</h3><ul><li><a class="" href="Human_Resources__Human_Resources_1_Role.html">1 Role</a></li><li><a class="" href="Human_Resources__Human_Resources_2_Influences.html">2 Influences</a></li><li><a class="" href="Human_Resources__Human_Resources_3_Processes.html">3 Processes</a></li><li><a class="active" href="Human_Resources__Human_Resources_4_Strategies.html">4 Strategies</a></li><li><a class="" href="Human_Resources__Human_Resources_Syllabus_Summary.html">Syllabus Summary</a></li><li><a class="" href="Human_Resources__Human_Resources_FULL.html">FULL</a></li></ul><h3>Exam &amp; revision</h3><ul><li><a class="" href="MOC.html">Final Notes</a></li><li><a class="" href="Case_Study_Stats_Sheet.html">Business Studies Case Study Stats Sheet</a></li><li><a class="" href="Case_Studies.html">Case Studies — HSC Business Studies Final Notes</a></li><li><a class="" href="Confusing_Pairs.html">Confusing Pairs — MCQ Drill Sheet</a></li><li><a class="" href="Crichton_Office_Supplies_Report_and_Apple_Marketing_Essay.html">Crichton Office Supplies Report and Apple Marketing Essay</a></li><li><a class="" href="Trial_Practice_Killara_2022.html">Killara 2022 Trial — Marked Paper and Model Answers</a></li><li><a class="" href="McDonalds_Case_Study.html">McDonald's Case Study — Section IV Essay Resource</a></li><li><a class="" href="Section_III_Business_Report.html">Section III — How to Write the Business Report</a></li><li><a class="" href="Section_IV_Extended_Response.html">Section IV — How to Write the Extended Response</a></li><li><a class="" href="Marketing_Universal_Essay.html">Universal Marketing Essay — McDonald's Case Study</a></li><li><a class="" href="Finance_Management.html">Finance (moved)</a></li><li><a class="" href="Human_Resources.html">Human Resources (moved)</a></li><li><a class="" href="Marketing.html">Marketing (moved)</a></li><li><a class="" href="Operations.html">Operations (moved)</a></li></ul><p class="side-note">Source: TheSashi HSC Business Studies Notes, Final folder. Cloned 25 Oct 2026. Plus one added McDonald's note (see Exam & revision).</p></nav><main><article class="prose"><h1>Human Resources 4 · Strategies and Effectiveness Indicators</h1><p class="meta">Human Resources · Human_Resources/Human_Resources_4_Strategies.md</p><div class="toc"><b>On this page</b><ul><li><a href="#1-leadership-style">1. Leadership Style</a></li><li><a href="#2-job-design">2. Job Design</a></li><li><a href="#3-recruitment">3. Recruitment</a></li><li><a href="#4-training-and-development">4. Training and Development</a></li><li><a href="#5-performance-management">5. Performance Management</a></li><li><a href="#6-rewards">6. Rewards</a></li><li><a href="#7-global-hr-strategies">7. Global HR Strategies</a></li><li><a href="#8-workplace-disputes">8. Workplace Disputes</a></li><li><a href="#9-organisational-structures">9. Organisational Structures</a></li><li><a href="#10-motivation-theories">10. Motivation Theories</a></li><li><a href="#11-effectiveness-indicators-of-human-resource-management">11. Effectiveness Indicators of Human Resource Management</a></li><li><a href="#confusing-pairs-in-this-section">Confusing pairs in this section</a></li><li><a href="#exam-habits">Exam habits</a></li><li><a href="#definitions-to-quote">Definitions to quote</a></li></ul></div><h1>🎯 Human Resources 4 · Strategies and Effectiveness Indicators</h1>
+<blockquote>
+<p><strong>Human Resources</strong> · <a href="Human_Resources__Human_Resources_1_Role.html">① Role</a> · <a href="Human_Resources__Human_Resources_2_Influences.html">② Influences</a> · <a href="Human_Resources__Human_Resources_3_Processes.html">③ Processes</a> · <strong>④ Strategies</strong> ← you are here · <a href="Human_Resources__Human_Resources_FULL.html">📕 Full note</a></p>
+</blockquote>
+<blockquote>
+<p>✅ <strong>HSC SCOPE — everything is examinable.</strong> The <strong>trial</strong> (5 Aug 2026) excluded HR Strategies and Effectiveness Indicators. <strong>That exclusion has expired.</strong> The HSC on <strong>Monday 26 October</strong> covers the full module.</p>
+<p>This file was rewritten from the three teacher documents added <strong>2 September 2026</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>Document</th>
+<th>Feeds</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><em>HR Strategies — Leadership Style, Job Design, Recruitment</em></td>
+<td>§1–3</td>
+</tr>
+<tr>
+<td><em>HR Strategies — Training and Development, Performance Management, Workplace Disputes and Global HR</em></td>
+<td>§4–8</td>
+</tr>
+<tr>
+<td><em>Strategies and Indicators Summary</em></td>
+<td>§11.2 — the strategy → indicator map</td>
+</tr>
+</tbody></table>
+</blockquote>
+<blockquote>
+<p>⚠️ <strong>Your teacher defines administrative vs developmental performance management differently from the standard textbook.</strong> See §5. <strong>Use your teacher&#39;s version.</strong></p>
+</blockquote>
+<hr>
+<h2 id="1-leadership-style">1. Leadership Style</h2>
+<blockquote>
+<p><strong>Leadership style is the manner and approach in which leaders of a business interact with staff.</strong> Leaders make decisions, develop strategies for the development of the business, and interact with employees.</p>
+</blockquote>
+<p><strong>Built on three factors:</strong></p>
+<pre><code>1. Providing staff with DIRECTION
+2. Implementing plans and ORGANISING staff
+3. MOTIVATING staff
+</code></pre>
+<p><strong>The eight styles:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Style</th>
+<th>How it works</th>
+<th>Key feature</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Authoritarian</strong> <em>(transactional / autocratic)</em></td>
+<td>Managers are responsible for <strong>telling employees what they want done and how</strong> to accomplish the task</td>
+<td>Employees <strong>cannot contribute</strong> to decision-making · decisions made <strong>quickly</strong></td>
+</tr>
+<tr>
+<td><strong>Participative / democratic</strong></td>
+<td>The leader <strong>includes one or more employees</strong> in the decision-making process</td>
+<td>Employees consulted on <strong>what</strong> to do and <strong>how</strong>; encouraged to become <strong>empowered</strong>. <strong>The final decision is still the leader&#39;s</strong></td>
+</tr>
+<tr>
+<td><strong>Delegative / laissez-faire</strong></td>
+<td>The leader <strong>allows employees to make decisions</strong></td>
+<td>Requires employees with the <strong>relevant knowledge and skills</strong>, and a manager who <strong>trusts</strong> their ability</td>
+</tr>
+<tr>
+<td><strong>Pacesetting</strong></td>
+<td>The leader <strong>sets an example</strong> of high performance, high pace and high quality; the team is expected to follow</td>
+<td><strong>Values results above all.</strong> Good for short-term results, but <strong>detrimental to engagement and motivation long term</strong></td>
+</tr>
+<tr>
+<td><strong>Affiliative</strong></td>
+<td>Puts <strong>people first</strong> — creating a harmonious environment and building emotional bonds</td>
+<td>Requires <strong>empathy</strong> and the ability to build relationships across communication styles</td>
+</tr>
+<tr>
+<td><strong>Coaching</strong></td>
+<td>Characterised by <strong>collaboration, support and guidance</strong></td>
+<td>Focused on <strong>bringing out the best</strong> in the team by guiding them through goals and obstacles</td>
+</tr>
+<tr>
+<td><strong>Coercive</strong></td>
+<td>A <strong>command and control</strong> style</td>
+<td>Relies on <strong>forcing</strong> people to do what they are told, whether they want it or not</td>
+</tr>
+<tr>
+<td><strong>Transformational</strong></td>
+<td>Works with followers <strong>beyond their immediate self-interest</strong> to identify needed change</td>
+<td>Creates a <strong>vision</strong>, guides change through <strong>influence and inspiration</strong>, and executes it alongside committed members</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="2-job-design">2. Job Design</h2>
+<blockquote>
+<p><strong>Job design is where managers develop and specify the work activities of individuals or groups.</strong> It is the process of determining the types of tasks an employee needs to complete, and of identifying the <strong>skills, knowledge, personal traits, duties and responsibilities</strong> required to perform a position.</p>
+</blockquote>
+<p><strong>Effective job design seeks to meet the needs of both the business and the employee</strong> — the task must allow the employee to work toward the objectives.</p>
+<p><strong>Job design involves:</strong></p>
+<ul>
+<li>Creating a <strong>job description</strong></li>
+<li><strong>Personal specifications</strong></li>
+<li>Strategies that improve employee <strong>motivation and productivity</strong></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Concept</th>
+<th>Definition</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Job satisfaction</strong></td>
+<td>The extent to which employees are <strong>satisfied working in their current position</strong></td>
+</tr>
+<tr>
+<td><strong>Job enrichment</strong></td>
+<td>The extent a business <strong>develops tasks with the abilities of existing staff in mind</strong> — reducing the boredom associated with many types of work</td>
+</tr>
+</tbody></table>
+<p><strong>The six job design strategies:</strong></p>
+<pre><code>1. Job rotation                   4. Semi-autonomous work groups
+2. Job enlargement                5. Team structures
+3. Job enrichment                 6. Flexible work structures
+</code></pre>
+<blockquote>
+<p><strong>General vs specific job design:</strong> <strong>general</strong> design gives employees a variety of tasks, increasing motivation and flexibility. <strong>Specific</strong> design gives a narrow, repetitive set, increasing efficiency and speed but risking boredom and turnover — which is why <strong>specialised job design often reduces job satisfaction</strong>.</p>
+</blockquote>
+<hr>
+<h2 id="3-recruitment">3. Recruitment</h2>
+<blockquote>
+<p>An effective recruitment strategy ensures <strong>the right people are hired to do the right job.</strong></p>
+</blockquote>
+<p><strong>The seven consequences of a poor selection process:</strong></p>
+<pre><code>1. Increased training costs
+2. Increased job dissatisfaction
+3. Lower performance
+4. Increased labour turnover
+5. Increased absenteeism, if the staff member feels inadequate for the job
+6. Increased accidents / defect rates
+7. Increased claims of discrimination
+</code></pre>
+<blockquote>
+<p>⭐ That list is the answer to <em>&quot;What is the likely outcome of a poor recruitment decision?&quot;</em> and to <em>&quot;How does selecting the wrong employee increase costs and reduce productivity?&quot;</em></p>
+</blockquote>
+<p><strong>Internal vs external:</strong> the choice depends on the <strong>type of skills and qualifications needed</strong>, whether current staff already have them, and whether <strong>recruiting is cheaper than training an existing employee</strong>.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>General skills</th>
+<th>Specific skills</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>What</strong></td>
+<td>Skills, attitudes and behaviours that are a good <strong>cultural fit</strong></td>
+<td>Skills <strong>required for particular jobs</strong></td>
+</tr>
+<tr>
+<td><strong>Includes</strong></td>
+<td>Flexibility and versatility · social confidence · positive attitude · motivation · ability to work in a team <strong>or</strong> independently · leadership and decision-making · willingness to learn · ability to work under pressure</td>
+<td>Technical and role-specific capability</td>
+</tr>
+<tr>
+<td><strong>Why businesses target them</strong></td>
+<td>Cultural fit and adaptability</td>
+<td><strong>Skill shortages</strong> — filling identified gaps</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="4-training-and-development">4. Training and Development</h2>
+<blockquote>
+<p><strong>Crucial to ensuring staff stay motivated, performance goals are met, the possibility of accidents decreases, skill shortages are filled, and staff retention increases.</strong></p>
+</blockquote>
+<p><strong>When deciding between developing staff and recruiting, a business considers:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Invest further in <strong>in-house training and development</strong></td>
+<td>Retain <strong>experts who retire</strong>, on a part-time basis</td>
+</tr>
+<tr>
+<td><strong>Recruit</strong> staff for specific skills</td>
+<td>Retain <strong>women through flexible work structures</strong></td>
+</tr>
+<tr>
+<td><strong>Share staff</strong> with other firms</td>
+<td><strong>Outsource</strong> functions to specialist firms</td>
+</tr>
+<tr>
+<td><strong>Sponsor overseas migrants</strong></td>
+<td>Build <strong>networks or alliances</strong> with firms holding specialist skills</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="5-performance-management">5. Performance Management</h2>
+<blockquote>
+<p><strong>The process of recognising the efforts and contributions of employees to their work.</strong> It is an <strong>ongoing process of communication</strong> between the direct manager and the employee.</p>
+</blockquote>
+<p><strong>It involves:</strong></p>
+<pre><code>1. Clarification of expectations
+2. Setting employee workplace objectives
+3. Providing feedback
+4. Evaluating employee performance
+</code></pre>
+<p><strong>The three stages of the cycle:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Stage</th>
+<th>What happens</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>1. Planning</strong></td>
+<td>Expectations and goals developed <strong>by both the employer and the employee</strong></td>
+</tr>
+<tr>
+<td><strong>2. Checking in</strong></td>
+<td>Managers <strong>regularly observe</strong> performance to provide feedback</td>
+</tr>
+<tr>
+<td><strong>3. Assessment</strong></td>
+<td><strong>Measuring performance against the objectives</strong></td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>Why it is ongoing:</strong> after assessment, <strong>new goals are established, beginning the cycle again.</strong> Performance needs to be continuously monitored, reviewed and improved.</p>
+</blockquote>
+<p><strong>The four benefits:</strong></p>
+<ul>
+<li>The employee has an <strong>improved understanding of their role</strong> and what needs to be done</li>
+<li>The employer can <strong>identify problems earlier</strong></li>
+<li>Reviews make the employee <strong>aware of their personal goals</strong></li>
+<li><strong>Identifies areas of development</strong> either needed or requested by the employee</li>
+</ul>
+<h3 id="5-1-administrative-vs-developmental-use-your-teacher-s-definition">⚠️ 5.1 Administrative vs Developmental — use your teacher&#39;s definition</h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th><strong>Administrative</strong></th>
+<th><strong>Developmental</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Your teacher&#39;s document</strong></td>
+<td>HR completes <strong>skills audits</strong> of all staff and identifies <strong>training needs</strong>. Assists with <strong>HR planning</strong>. Information kept in an <strong>employee database</strong></td>
+<td>HR <strong>plans and implements training</strong> for staff — both <strong>on the job and off the job</strong></td>
+</tr>
+<tr>
+<td>The generic textbook version</td>
+<td>Evaluating output to decide <strong>pay, promotion, retention, termination</strong></td>
+<td>Feedback used to <strong>build skills</strong></td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>Use your teacher&#39;s version.</strong> It&#39;s what your school marks against, and it also fits the exam answers better — the Knox trial&#39;s Q10 (a business <em>keeping data</em> on time spent online, meetings and client feedback) is <strong>administrative</strong> precisely because it is data collection for HR planning.</p>
+<p><strong>The tell:</strong> administrative <strong>records and audits</strong>; developmental <strong>plans and delivers</strong>.</p>
+</blockquote>
+<hr>
+<h2 id="6-rewards">6. Rewards</h2>
+<blockquote>
+<p><strong>Used to motivate employees and encourage them to work together as a team to achieve common goals.</strong></p>
+</blockquote>
+<p><strong>Two axes:</strong></p>
+<pre><code>MONETARY  or  NON-MONETARY
+INDIVIDUAL or  GROUP
+</code></pre>
+<p><strong>Designing a reward program — for the business:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Consideration</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Business strategy</td>
+</tr>
+<tr>
+<td>Economic conditions</td>
+</tr>
+<tr>
+<td>Organisational objectives of rewards</td>
+</tr>
+<tr>
+<td>Rewards and benefits offered by <strong>competitors</strong></td>
+</tr>
+<tr>
+<td>Relevant <strong>awards and agreements</strong>, minimum employment standards</td>
+</tr>
+<tr>
+<td><strong>Union power</strong></td>
+</tr>
+<tr>
+<td><strong>Profitability / viability</strong> of the business</td>
+</tr>
+</tbody></table>
+<p><strong>Designing a reward program — for the individual</strong> <em>(often called <strong>performance pay</strong>: remuneration distributed according to individual employee performance)</em></p>
+<table>
+<thead>
+<tr>
+<th>Basis</th>
+<th>What it covers</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Performance related</strong></td>
+<td>Incentive plans for performance <strong>above standards or criteria</strong>, bonuses, production-related criteria</td>
+</tr>
+<tr>
+<td><strong>Job related</strong></td>
+<td>Role and level of <strong>responsibility</strong>, scope of supervision, base pay, interpersonal skills, knowledge and skills, experience, <strong>value to company</strong></td>
+</tr>
+<tr>
+<td><strong>Other</strong></td>
+<td>Group incentives</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>Individual or team performance pay?</strong> Both, depending on the nature of the work. <strong>Team-based</strong> pay encourages cooperation and communication toward common objectives; <strong>individual</strong> pay recognises outstanding contribution. Using both <strong>prevents excessive competition</strong> while still rewarding individual effort.</p>
+</blockquote>
+<blockquote>
+<p><strong>Why provide both monetary and non-monetary rewards?</strong> Because <strong>employees are motivated by different factors.</strong> Monetary rewards — bonuses, commissions, pay increases — provide financial motivation. Non-monetary rewards — recognition, promotion, flexible working, career development — improve <strong>job satisfaction and loyalty</strong>. <em>McDonald&#39;s provides rewards and recognition programs, discounted meals and retail discounts, plus flexible working and career development opportunities.</em></p>
+</blockquote>
+<hr>
+<h2 id="7-global-hr-strategies">7. Global HR Strategies</h2>
+<blockquote>
+<p><strong>Globalisation, technological development and HR applications have increased the complexity of managing HR.</strong> High labour costs and skill shortages in Australia have led businesses to operate globally.</p>
+</blockquote>
+<p><strong>Seven factors to consider before outsourcing globally:</strong></p>
+<pre><code>1. Labour costs                        5. Political stability
+2. Service / product quality           6. Language and cultural differences
+3. Infrastructure requirements         7. Skills and supply of labour overseas
+4. Overseas labour market regulations
+</code></pre>
+<p><strong>The China example:</strong> countries such as China have factories producing goods at a competitive price, so Australian companies have moved production there because it is cheaper.</p>
+<table>
+<thead>
+<tr>
+<th>Impact</th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>✅</td>
+<td><strong>Reduced costs</strong> for the business</td>
+</tr>
+<tr>
+<td>❌</td>
+<td><strong>Loss of jobs and factory closures</strong> in Australia</td>
+</tr>
+</tbody></table>
+<p><strong>Australia&#39;s skills shortage</strong> is major and will increase. Two strategies used to overcome it:</p>
+<ul>
+<li>The <strong>Temporary Skills Shortage Visa</strong>, allowing businesses to bring people from overseas to fill the shortage</li>
+<li><strong>Outsourcing functions overseas</strong> to access people with those skills</li>
+</ul>
+<hr>
+<h2 id="8-workplace-disputes">8. Workplace Disputes</h2>
+<blockquote>
+<p><strong>Disputes occur between employers and employees where their interests are in conflict.</strong> Every business should have a <strong>grievance procedure</strong> to guide employees, employers and unions in resolving one.</p>
+</blockquote>
+<p><strong>A grievance procedure policy:</strong></p>
+<ul>
+<li>Provides a <strong>clear outline of the issues</strong></li>
+<li>Illustrates the <strong>correct and appropriate processes</strong> when raising a complaint</li>
+<li>Provides a mechanism for <strong>quick resolution</strong></li>
+</ul>
+<p><strong>The four resolution steps, in order:</strong></p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Method</th>
+<th>Who decides</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>1</strong></td>
+<td><strong>Negotiation</strong> — discussion between both parties to resolve the dispute. Unions and employer associations may be involved</td>
+<td><strong>The parties</strong></td>
+</tr>
+<tr>
+<td><strong>2</strong></td>
+<td><strong>Mediation</strong> — an <strong>independent party with no ties to either side</strong> assists the parties to reach a settlement</td>
+<td><strong>The parties</strong></td>
+</tr>
+<tr>
+<td><strong>3</strong></td>
+<td><strong>Conciliation</strong> — <strong>Fair Work Australia acts as a mediator and offers suggestions</strong> to resolve the problem</td>
+<td><strong>The parties</strong></td>
+</tr>
+<tr>
+<td><strong>4</strong></td>
+<td><strong>Arbitration</strong> — the final stage. A <strong>commissioner hears both cases and makes a decision that is legally binding</strong> on both parties</td>
+<td><strong>The commissioner</strong></td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>Overt vs covert industrial action:</strong> <strong>overt</strong> action is visible and deliberate — strikes, work bans, work-to-rule (refusing tasks outside normal duties), lockouts, picket lines. <strong>Covert</strong> action is concealed — <strong>absenteeism</strong>, high turnover, sabotage, deliberate under-performance. Absenteeism appearing as an <em>indicator</em> in §11 and as <em>covert action</em> here is the same phenomenon read two ways.</p>
+</blockquote>
+<hr>
+<h2 id="9-organisational-structures">9. Organisational Structures</h2>
+<blockquote>
+<p>📎 <strong>Not a syllabus dot point.</strong> Organisational structure is Preliminary (Year 11) content. Useful background for leadership and job design answers, but <strong>don&#39;t spend HSC revision time here</strong> — §1–§8 and §11 are what&#39;s examined.</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Structure</th>
+<th>Description</th>
+<th>Pros</th>
+<th>Cons</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Flat</strong></td>
+<td>Few management layers, <strong>wide span of control</strong></td>
+<td>Faster communication, empowerment</td>
+<td>Manager overload, unclear reporting</td>
+</tr>
+<tr>
+<td><strong>Tall</strong></td>
+<td>Many management layers, <strong>narrow span of control</strong></td>
+<td>Clear career path, close supervision</td>
+<td>Slow communication, bureaucracy</td>
+</tr>
+<tr>
+<td><strong>Centralised</strong></td>
+<td>Decisions made at the top</td>
+<td>Consistency, control</td>
+<td>Slow response, disempowerment</td>
+</tr>
+<tr>
+<td><strong>Decentralised</strong></td>
+<td>Decisions pushed to lower levels</td>
+<td>Faster response, empowerment</td>
+<td>Inconsistency, coordination challenges</td>
+</tr>
+<tr>
+<td><strong>Functional</strong></td>
+<td>Grouped by function</td>
+<td>Specialisation, efficiency</td>
+<td>Silos, poor cross-functional communication</td>
+</tr>
+<tr>
+<td><strong>Matrix</strong></td>
+<td>Dual reporting (function + project)</td>
+<td>Flexible, cross-functional</td>
+<td>Conflicting priorities, complex reporting</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>Span of control</strong> = the number of employees a manager directly supervises. Flat structures have a <strong>wide</strong> span; tall structures a <strong>narrow</strong> one.</p>
+</blockquote>
+<hr>
+<h2 id="10-motivation-theories">10. Motivation Theories</h2>
+<blockquote>
+<p>📎 <strong>Not syllabus dot points.</strong> Maslow, Herzberg, McGregor and Locke &amp; Latham do <strong>not</strong> appear anywhere in the HSC Business Studies syllabus. They are textbook extension.</p>
+<p><strong>Worth knowing anyway</strong>, because they explain <em>why</em> rewards and job design work — a sentence of Herzberg inside a rewards answer reads as sophistication. But learn them <strong>last</strong>, after §1–§8 and §11.</p>
+</blockquote>
+<h3 id="10-1-maslow-s-hierarchy-of-needs">10.1 Maslow&#39;s Hierarchy of Needs</h3>
+<pre><code>        Self-Actualisation
+       (reach full potential)
+      ────────────────────
+         Esteem Needs
+      (recognition, status)
+     ────────────────────
+      Social/Belonging Needs
+       (teamwork, friendship)
+      ────────────────────
+          Safety Needs
+    (job security, safe workplace)
+   ────────────────────
+      Physiological Needs
+     (salary, basic conditions)
+</code></pre>
+<p><strong>Application</strong>: Lower-level needs must be met before higher-level rewards will motivate. Pay and safety first, then belonging, then recognition, then growth opportunities.</p>
+<h3 id="10-2-herzberg-s-two-factor-theory">10.2 Herzberg&#39;s Two-Factor Theory</h3>
+<table>
+<thead>
+<tr>
+<th>Factor</th>
+<th>Description</th>
+<th>Examples</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Hygiene factors</strong></td>
+<td>Cause <strong>dissatisfaction</strong> if absent, but do <strong>not motivate</strong> when present</td>
+<td>Salary, working conditions, job security, company policy, supervision</td>
+</tr>
+<tr>
+<td><strong>Motivators</strong></td>
+<td>Actually <strong>motivate</strong> and satisfy</td>
+<td>Achievement, recognition, responsibility, advancement, personal growth</td>
+</tr>
+</tbody></table>
+<p><strong>Application</strong>: Fix hygiene factors to prevent dissatisfaction, <strong>then</strong> use motivators to engage employees. Raising pay alone removes dissatisfaction but does not create motivation.</p>
+<h3 id="10-3-mcgregor-s-theory-x-and-theory-y">10.3 McGregor&#39;s Theory X and Theory Y</h3>
+<table>
+<thead>
+<tr>
+<th>Theory X (authoritarian)</th>
+<th>Theory Y (participative)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Workers are lazy and avoid work</td>
+<td>Workers are self-motivated and enjoy work</td>
+</tr>
+<tr>
+<td>Need close supervision and control</td>
+<td>Need autonomy and responsibility</td>
+</tr>
+<tr>
+<td>Motivated by punishment and reward</td>
+<td>Motivated by intrinsic factors</td>
+</tr>
+<tr>
+<td>Management style: command and control</td>
+<td>Management style: empowerment and trust</td>
+</tr>
+</tbody></table>
+<h3 id="10-4-locke-and-latham-s-goal-setting-theory">10.4 Locke and Latham&#39;s Goal Setting Theory</h3>
+<p>Motivation increases when goals are <strong>specific</strong>, <strong>challenging but achievable</strong>, <strong>accepted by the employee</strong>, and accompanied by <strong>feedback</strong> on progress.</p>
+<hr>
+<h2 id="11-effectiveness-indicators-of-human-resource-management">11. Effectiveness Indicators of Human Resource Management</h2>
+<blockquote>
+<p>✅ <strong>This is its own syllabus heading — a FIFTH section, not part of strategies.</strong> The HR topic runs: role → key influences → processes → strategies → <strong>effectiveness of human resource management</strong>. It&#39;s kept in this file because §11.2 maps each strategy to the indicators that measure it, and you can&#39;t evaluate a strategy without them.</p>
+<p>The syllabus lists exactly seven indicators: <em>corporate culture, benchmarking key variables, changes in staff turnover, absenteeism, accidents, levels of disputation, worker satisfaction.</em></p>
+</blockquote>
+<blockquote>
+<p><strong>An effective HR function is one where management and employees work well together in their efforts to achieve the goals of the business.</strong> The effectiveness of that relationship is examined through seven indicators.</p>
+</blockquote>
+<h3 id="11-1-the-seven-indicators">11.1 The Seven Indicators</h3>
+<table>
+<thead>
+<tr>
+<th>Indicator</th>
+<th>Definition</th>
+<th>What a poor result signals</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Corporate culture</strong></td>
+<td><strong>The culture within an organisation — the values and beliefs within a business.</strong> An effective culture is one that is <em>believed, demonstrated and acted upon</em> by both management and employees</td>
+<td>A <strong>positive</strong> culture produces happier workers → lower turnover, higher productivity, better customer service, lower absenteeism. A <strong>negative</strong> culture produces less satisfied workers</td>
+</tr>
+<tr>
+<td><strong>Benchmarking key variables</strong></td>
+<td><strong>The process of measuring an employee&#39;s performance against established standards</strong></td>
+<td>If employees repeatedly fail to meet performance goals, management must examine why. Employees are more likely to meet goals where there are effective <strong>appraisal systems, training and development, and reward systems</strong></td>
+</tr>
+<tr>
+<td><strong>Changes in staff turnover</strong></td>
+<td><strong>The rate at which employees leave a business</strong></td>
+<td>A high level caused by <strong>voluntary separation</strong> — mainly resignations — indicates <strong>poor employment relations</strong></td>
+</tr>
+<tr>
+<td><strong>Absenteeism</strong></td>
+<td><strong>Employees being unable to attend work</strong> for reasons such as illness or family responsibilities</td>
+<td>Costly, because the work isn&#39;t done — it places additional demands on remaining staff and can cause <strong>greater hostility</strong>. A sharp rise over a short period signals unhappy, unsatisfied workers</td>
+</tr>
+<tr>
+<td><strong>Level of disputation</strong></td>
+<td>The number and severity of disputes in a workplace</td>
+<td><strong>The more disputes, the less effective management is</strong> at the employment relations function. Employers must examine why and rectify the practices causing them</td>
+</tr>
+<tr>
+<td><strong>Accidents</strong></td>
+<td>The <strong>number of accidents per year</strong></td>
+<td>Increases may be due to <strong>lack of training</strong>, or poor workplace health and safety procedures and policies</td>
+</tr>
+<tr>
+<td><strong>Worker satisfaction</strong></td>
+<td><strong>Whether employees are happy and contented and fulfilling their desires and needs at work</strong></td>
+<td>Satisfied employees work more efficiently and value the organisation they work for</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>Turnover isn&#39;t automatically bad</strong> — some brings in fresh skills and removes poor performers. What matters is <strong>who</strong> is leaving, and whether the separation was <strong>voluntary</strong>. Losing high performers voluntarily is the warning sign.</p>
+</blockquote>
+<h3 id="11-2-which-indicator-measures-which-strategy">11.2 Which Indicator Measures Which Strategy</h3>
+<blockquote>
+<p>⭐ <strong>Straight from your teacher&#39;s <em>Strategies and Indicators Summary</em>.</strong> This is the table that answers &quot;evaluate the effectiveness of [strategy]&quot; — it tells you which evidence to cite.</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Strategy</th>
+<th>Indicators used to measure it</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Leadership style</strong></td>
+<td>Corporate culture · Benchmarks · Staff turnover · Absenteeism · Worker satisfaction</td>
+</tr>
+<tr>
+<td><strong>Job design</strong></td>
+<td>Staff turnover · Absenteeism · <strong>Number of accidents</strong> · Worker satisfaction</td>
+</tr>
+<tr>
+<td><strong>Recruitment</strong></td>
+<td>Corporate culture · Benchmarks · Staff turnover · Absenteeism</td>
+</tr>
+<tr>
+<td><strong>Training and development</strong></td>
+<td>Staff turnover · Absenteeism · <strong>Number of accidents</strong> · Corporate culture · Worker satisfaction</td>
+</tr>
+<tr>
+<td><strong>Performance management</strong></td>
+<td>Staff turnover · Absenteeism · Number of accidents · Worker satisfaction</td>
+</tr>
+<tr>
+<td><strong>Rewards</strong></td>
+<td>Staff turnover · Absenteeism · Number of accidents · Worker satisfaction</td>
+</tr>
+<tr>
+<td><strong>Workplace disputes</strong></td>
+<td>Staff turnover · Absenteeism · Worker satisfaction</td>
+</tr>
+</tbody></table>
+<p><strong>The patterns worth noticing:</strong></p>
+<ul>
+<li><strong>Staff turnover and absenteeism measure everything.</strong> If you can only remember two, remember these — they appear against all seven strategies.</li>
+<li><strong>Accidents</strong> attach to the strategies that change <em>how work is done</em> — job design, training, performance management, rewards. Not to recruitment or leadership.</li>
+<li><strong>Corporate culture and benchmarks</strong> attach to the strategies that shape <em>who is in the business and how they are led</em> — leadership, recruitment, training.</li>
+<li><strong>Workplace disputes is the narrowest</strong> — three indicators, and notably <strong>not</strong> accidents or benchmarks.</li>
+</ul>
+<blockquote>
+<p><strong>How to use it in an answer:</strong> <em>&quot;The effectiveness of the training and development strategy can be measured through <strong>changes in staff turnover</strong> and the <strong>number of accidents</strong>. A reduction in both would indicate the strategy has improved employee capability and workplace safety…&quot;</em></p>
+</blockquote>
+<hr>
+<h2 id="confusing-pairs-in-this-section">⚠️ Confusing pairs in this section</h2>
+<table>
+<thead>
+<tr>
+<th>Pair</th>
+<th>The tell</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Authoritarian</strong> vs <strong>coercive</strong></td>
+<td>Authoritarian = the leader <strong>decides and directs</strong>; employees don&#39;t participate but aren&#39;t compelled. Coercive = the leader <strong>forces compliance</strong>, &quot;whether they want it or not.&quot; Autocratic is about <em>who decides</em>; coercive is about <em>how compliance is obtained</em></td>
+</tr>
+<tr>
+<td><strong>Pacesetting</strong> vs <strong>transformational</strong></td>
+<td>Pacesetting models high performance and expects imitation — <strong>values results more than anything</strong>, and burns people out. Transformational creates a <strong>shared vision</strong>. One drives <em>through</em> people, the other <em>with</em> them</td>
+</tr>
+<tr>
+<td><strong>Rotation</strong> vs <strong>enlargement</strong> vs <strong>enrichment</strong></td>
+<td>Rotation = moving <strong>between</strong> jobs (variety across time). Enlargement = <strong>more tasks at the same level</strong> (horizontal). Enrichment = <strong>more responsibility and autonomy</strong> (vertical). Rotation changes <em>where</em>, enlargement <em>how many</em>, enrichment <em>how demanding</em></td>
+</tr>
+<tr>
+<td><strong>Training</strong> vs <strong>development</strong></td>
+<td>Training = perform the <strong>current</strong> role better. Development = prepare for <strong>future</strong> responsibilities. Now vs next</td>
+</tr>
+<tr>
+<td><strong>Administrative</strong> vs <strong>developmental</strong> performance management</td>
+<td><strong>Teacher&#39;s version</strong>: administrative <strong>records and audits</strong> (skills audits, employee database). Developmental <strong>plans and delivers</strong> training</td>
+</tr>
+<tr>
+<td><strong>Mediation / conciliation / arbitration</strong></td>
+<td>Mediation — the third party <strong>facilitates only</strong>, no suggestions. Conciliation — the third party <strong>suggests solutions</strong>; the parties still decide. Arbitration — the third party <strong>imposes a binding decision</strong>. Escalating: facilitates → suggests → decides</td>
+</tr>
+<tr>
+<td><strong>Overt</strong> vs <strong>covert</strong> industrial action</td>
+<td>Overt = <strong>visible</strong> (strikes, bans, lockouts, pickets). Covert = <strong>concealed</strong> (absenteeism, turnover, sabotage, deliberate under-performance)</td>
+</tr>
+<tr>
+<td><strong>Strike</strong> vs <strong>lockout</strong></td>
+<td>Strike = <strong>employees</strong> stop work. Lockout = <strong>employer</strong> shuts them out</td>
+</tr>
+<tr>
+<td><strong>Hygiene factors</strong> vs <strong>motivators</strong></td>
+<td>Hygiene <strong>prevents dissatisfaction</strong> but doesn&#39;t motivate. Motivators <strong>actively create satisfaction</strong></td>
+</tr>
+<tr>
+<td><strong>Turnover</strong> vs <strong>absenteeism</strong></td>
+<td>Turnover = the rate staff <strong>leave and are replaced</strong>. Absenteeism = <strong>unplanned days off</strong></td>
+</tr>
+<tr>
+<td><strong>Flat</strong> vs <strong>tall</strong> structure</td>
+<td>Flat = few layers, <strong>wide</strong> span of control. Tall = many layers, <strong>narrow</strong> span</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="exam-habits">📝 Exam habits</h2>
+<blockquote>
+<p><strong>Don&#39;t just list strategies — link each to an effectiveness indicator.</strong> The difference between a mid-band and top-band HR answer is almost always §11. Quantify where you can: &quot;staff turnover fell from 22% to 14%.&quot;</p>
+</blockquote>
+<hr>
+<h2 id="definitions-to-quote">📖 Definitions to quote</h2>
+<table>
+<thead>
+<tr>
+<th>Term</th>
+<th>Definition</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Leadership style</strong></td>
+<td>The manner and approach in which leaders of a business interact with staff</td>
+</tr>
+<tr>
+<td><strong>Job design</strong></td>
+<td>The process by which managers develop and specify the work activities of individuals or groups</td>
+</tr>
+<tr>
+<td><strong>Job satisfaction</strong></td>
+<td>The extent to which employees are satisfied working in their current position</td>
+</tr>
+<tr>
+<td><strong>Job enrichment</strong></td>
+<td>Developing tasks with the abilities of existing staff in mind, reducing boredom</td>
+</tr>
+<tr>
+<td><strong>Performance management</strong></td>
+<td>The ongoing process of recognising the efforts and contributions of employees to their work</td>
+</tr>
+<tr>
+<td><strong>Performance pay</strong></td>
+<td>Remuneration distributed according to individual employee performance</td>
+</tr>
+<tr>
+<td><strong>Grievance procedure</strong></td>
+<td>A policy guiding employees, employers and unions in resolving a dispute</td>
+</tr>
+<tr>
+<td><strong>Mediation</strong></td>
+<td>A third party facilitates discussion without imposing a decision</td>
+</tr>
+<tr>
+<td><strong>Conciliation</strong></td>
+<td>A third party suggests solutions; the parties decide</td>
+</tr>
+<tr>
+<td><strong>Arbitration</strong></td>
+<td>A third party imposes a binding decision</td>
+</tr>
+<tr>
+<td><strong>Span of control</strong></td>
+<td>The number of employees a manager directly supervises</td>
+</tr>
+<tr>
+<td><strong>Benchmarking</strong></td>
+<td>The process of measuring an employee&#39;s performance against established standards</td>
+</tr>
+<tr>
+<td><strong>Staff turnover</strong></td>
+<td>The rate at which employees leave a business</td>
+</tr>
+<tr>
+<td><strong>Absenteeism</strong></td>
+<td>Employees being unable to attend work</td>
+</tr>
+</tbody></table>
+<hr>
+<blockquote>
+<p><strong>Back to:</strong> <a href="Human_Resources__Human_Resources_1_Role.html">① Role</a> · <a href="Human_Resources__Human_Resources_FULL.html">📕 Full note</a> · Drill sheet: <a href="Confusing_Pairs.html">Confusing Pairs</a> · <a href="MOC.html">MOC</a></p>
+</blockquote>
+</article></main></div><nav class="rail" aria-label="On this page"><div class="rail-title">On this page</div><ul><li><a href="#1-leadership-style" data-target="1-leadership-style">1. Leadership Style</a></li><li><a href="#2-job-design" data-target="2-job-design">2. Job Design</a></li><li><a href="#3-recruitment" data-target="3-recruitment">3. Recruitment</a></li><li><a href="#4-training-and-development" data-target="4-training-and-development">4. Training and Development</a></li><li><a href="#5-performance-management" data-target="5-performance-management">5. Performance Management</a><ul class="sub"><li><a href="#5-1-administrative-vs-developmental-use-your-teacher-s-definition" data-target="5-1-administrative-vs-developmental-use-your-teacher-s-definition" data-parent="5-performance-management">5.1 Administrative vs Developmental — use your teacher's definition</a></li></ul></li><li><a href="#6-rewards" data-target="6-rewards">6. Rewards</a></li><li><a href="#7-global-hr-strategies" data-target="7-global-hr-strategies">7. Global HR Strategies</a></li><li><a href="#8-workplace-disputes" data-target="8-workplace-disputes">8. Workplace Disputes</a></li><li><a href="#9-organisational-structures" data-target="9-organisational-structures">9. Organisational Structures</a></li><li><a href="#10-motivation-theories" data-target="10-motivation-theories">10. Motivation Theories</a><ul class="sub"><li><a href="#10-1-maslow-s-hierarchy-of-needs" data-target="10-1-maslow-s-hierarchy-of-needs" data-parent="10-motivation-theories">10.1 Maslow's Hierarchy of Needs</a></li><li><a href="#10-2-herzberg-s-two-factor-theory" data-target="10-2-herzberg-s-two-factor-theory" data-parent="10-motivation-theories">10.2 Herzberg's Two-Factor Theory</a></li><li><a href="#10-3-mcgregor-s-theory-x-and-theory-y" data-target="10-3-mcgregor-s-theory-x-and-theory-y" data-parent="10-motivation-theories">10.3 McGregor's Theory X and Theory Y</a></li><li><a href="#10-4-locke-and-latham-s-goal-setting-theory" data-target="10-4-locke-and-latham-s-goal-setting-theory" data-parent="10-motivation-theories">10.4 Locke and Latham's Goal Setting Theory</a></li></ul></li><li><a href="#11-effectiveness-indicators-of-human-resource-management" data-target="11-effectiveness-indicators-of-human-resource-management">11. Effectiveness Indicators of Human Resource Management</a><ul class="sub"><li><a href="#11-1-the-seven-indicators" data-target="11-1-the-seven-indicators" data-parent="11-effectiveness-indicators-of-human-resource-management">11.1 The Seven Indicators</a></li><li><a href="#11-2-which-indicator-measures-which-strategy" data-target="11-2-which-indicator-measures-which-strategy" data-parent="11-effectiveness-indicators-of-human-resource-management">11.2 Which Indicator Measures Which Strategy</a></li></ul></li><li><a href="#confusing-pairs-in-this-section" data-target="confusing-pairs-in-this-section">Confusing pairs in this section</a></li><li><a href="#exam-habits" data-target="exam-habits">Exam habits</a></li><li><a href="#definitions-to-quote" data-target="definitions-to-quote">Definitions to quote</a></li></ul></nav><script>
+function toggleTheme(ev){
+var oldTheme=document.documentElement.getAttribute("data-theme")||"dark";
+var next=oldTheme==="light"?"dark":"light";
+function apply(){document.documentElement.setAttribute("data-theme",next);try{localStorage.setItem("vault-theme",next)}catch(e){}updateThemeIcons(next);}
+var reduced=false;try{reduced=window.matchMedia("(prefers-reduced-motion: reduce)").matches}catch(e){}
+if(reduced){apply();return;}
+if(window.__vaultThemeAnimating){return;}
+window.__vaultThemeAnimating=1;
+var newPaper=next==="light"?"#faf8f2":"#13151b";
+var W=window.innerWidth,H=window.innerHeight;
+var spacing=W<768?36:28;
+var maxR=spacing*0.78;
+var dpr=1;try{dpr=W<768?1:Math.min(window.devicePixelRatio||1,1.5);}catch(e){}
+var canvas=document.createElement("canvas");
+canvas.id="theme-wave";
+canvas.style.cssText="position:fixed;left:0;top:0;width:"+W+"px;height:"+H+"px;z-index:9999;pointer-events:none;";
+canvas.width=Math.round(W*dpr);canvas.height=Math.round(H*dpr);
+var ctx=canvas.getContext("2d");
+try{ctx.setTransform(dpr,0,0,dpr,0,0);}catch(e){}
+ctx.fillStyle=newPaper;
+var dots=[];
+for(var y=spacing/2;y<H+spacing;y+=spacing){for(var x=spacing/2;x<W+spacing;x+=spacing){dots.push({x:x,y:y,delay:(x+y)/(W+H)*450,done:0});}}
+var waveMs=450,growMs=300;
+var start=Date.now();
+function easeOutCubic(p){return 1-Math.pow(1-p,3);}
+function step(){
+var elapsed=Date.now()-start;
+var allDone=true;
+var any=false;
+ctx.beginPath();
+for(var i=0;i<dots.length;i++){
+var d=dots[i];
+if(d.done){continue;}
+var p=(elapsed-d.delay)/growMs;
+if(p<0){allDone=false;continue;}
+if(p<1){allDone=false;}
+else{d.done=1;}
+var r=maxR*easeOutCubic(p<1?p:1);
+if(r>0){ctx.moveTo(d.x+r,d.y);ctx.arc(d.x,d.y,r,0,Math.PI*2);any=true;}
+}
+if(any){ctx.fill();}
+if(!allDone){requestAnimationFrame(step);return;}
+apply();
+canvas.style.transition="opacity 0.15s ease";
+canvas.style.opacity="0";
+setTimeout(function(){window.__vaultThemeAnimating=0;if(canvas.parentNode)canvas.parentNode.removeChild(canvas);},180);
+}
+document.body.appendChild(canvas);
+requestAnimationFrame(step);
+}
+function updateThemeIcons(theme){var icon=theme==="dark"?"☀":"☾";document.querySelectorAll(".theme-btn").forEach(function(b){b.textContent=icon;});}
+try{updateThemeIcons(document.documentElement.getAttribute("data-theme")||"dark");}catch(e){}
+function toggleMenu(force){document.body.classList.toggle("menu-open",force)}
+document.addEventListener("keydown",function(e){if(e.key==="/"&&!/INPUT|TEXTAREA/.test(document.activeElement.tagName)){e.preventDefault();var s=document.querySelector(".side-search");if(s)s.focus()}});
+document.addEventListener("click",function(e){if(e.target.closest(".side a"))toggleMenu(false)});
+(function(){try{
+var links=Array.prototype.slice.call(document.querySelectorAll(".rail a"));
+if(!links.length||!window.IntersectionObserver)return;
+var map={};links.forEach(function(a){map[a.getAttribute("data-target")]=a});
+var obs=new IntersectionObserver(function(es){
+  es.forEach(function(e){
+    if(e.isIntersecting){
+      links.forEach(function(a){a.classList.remove("active");a.classList.remove("parent-active")});
+      var l=map[e.target.id];
+      if(l){l.classList.add("active");var p=l.getAttribute("data-parent");if(p&&map[p])map[p].classList.add("parent-active")}
+    }
+  });
+}, {rootMargin:"-20% 0px -70% 0px"});
+document.querySelectorAll(".prose h2[id], .prose h3[id]").forEach(function(h){obs.observe(h)});
+}catch(e){}})();
+(function(){try{
+var cv=document.getElementById("dotgrid");if(!cv)return;var ctx=cv.getContext("2d");if(!ctx)return;
+var reduced=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+var W=0,H=0,dpr=1,cols=0,rows=0,SP=28,px=0,py=0,pt=0,hasP=false;
+function dotRGB(){try{return getComputedStyle(document.documentElement).getPropertyValue("--dot-rgb").trim()||"233,231,225"}catch(e){return "233,231,225"}}
+function resize(){dpr=Math.min(window.devicePixelRatio||1,window.innerWidth<700?1.5:2);SP=window.innerWidth<700?36:28;W=window.innerWidth;H=window.innerHeight;cv.width=W*dpr;cv.height=H*dpr;cv.style.width=W+"px";cv.style.height=H+"px";ctx.setTransform(dpr,0,0,dpr,0,0);cols=Math.ceil(W/SP)+1;rows=Math.ceil(H/SP)+1}
+var R=Math.random()*Math.PI*2;
+var FORCES=[
+ {ax:.42,ay:.15,tx:26,ty:31,px:R,py:R+1.3,circ:false},
+ {ax:.38,ay:.42,tx:37,ty:23,px:R+2.1,py:R+0.7,circ:false},
+ {ax:.30,ay:.30,tx:41,ty:41,px:R+4.0,py:R+4.0,circ:true}
+];
+function draw(now){var t=now/1000;var rgb=dotRGB();
+var activeForces=W>=1280?FORCES:FORCES.slice(0,1);
+var pFade=hasP?Math.max(0,1-(now-pt)/4000):0;
+ctx.clearRect(0,0,W,H);
+for(var y=0;y<rows;y++)for(var x=0;x<cols;x++){var ox=x*SP+10,oy=y*SP+10,a=0.14,dispX=0,dispY=0;
+for(var fi=0;fi<activeForces.length;fi++){var F=activeForces[fi];
+var fx=F.circ?W*(0.5+F.ax*Math.cos(t*2*Math.PI/F.tx+F.px)):W*(0.5+F.ax*Math.sin(t*2*Math.PI/F.tx+F.px));
+var fy=F.circ?H*(0.5+F.ay*Math.sin(t*2*Math.PI/F.ty+F.py)):H*(0.5+F.ay*Math.sin(t*2*Math.PI/F.ty+F.py));
+var ddx=ox-fx,ddy=oy-fy,d=Math.sqrt(ddx*ddx+ddy*ddy);
+if(d<170&&d>0.01){var f=1-d/170;f=f*f;dispX+=(ddx/d)*6*f;dispY+=(ddy/d)*6*f;a+=0.20*f}}
+var dm=Math.sqrt(dispX*dispX+dispY*dispY);if(dm>9){dispX*=9/dm;dispY*=9/dm}
+var dx=ox+dispX,dy=oy+dispY;if(a>0.38)a=0.38;
+if(pFade>0){var pdx=ox-px,pdy=oy-py,pd=Math.sqrt(pdx*pdx+pdy*pdy);
+if(pd<150&&pd>0.01){var pf=1-pd/150;pf=pf*pf*pFade;dx+=(pdx/pd)*5*pf;dy+=(pdy/pd)*5*pf;a=Math.min(0.38,a+0.18*pf)}}
+ctx.beginPath();ctx.arc(dx,dy,1.3,0,Math.PI*2);ctx.fillStyle="rgba("+rgb+","+a.toFixed(3)+")";ctx.fill()}}
+function loop(now){if(!window.__vaultThemeAnimating)draw(now);if(!reduced)requestAnimationFrame(loop)}
+window.addEventListener("resize",resize);resize();
+window.addEventListener("pointermove",function(e){px=e.clientX;py=e.clientY;pt=performance.now();hasP=true},{passive:true});
+requestAnimationFrame(loop);
+}catch(e){}})();
+</script></body></html>

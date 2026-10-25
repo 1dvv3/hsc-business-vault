@@ -1,0 +1,970 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Confusing Pairs — MCQ Drill Sheet — HSC Business Vault</title><style>
+:root{--paper:#faf8f2;--ink:#1e1b16;--muted:#6b655a;--line:#e3ddd0;--accent:#1d4ed8;--card:#fffdf8;--side:#f3efe6;--side-bg:rgba(243,239,230,.88);--active:#e8e0cd;--rail-tint:rgba(29,78,216,.14);--rail-tint-soft:rgba(29,78,216,.07);--code:#efe9db;--quote:#4a4438;--dot-rgb:30,27,22;--scheme:light}
+[data-theme="dark"]{--paper:#13151b;--ink:#e9e7e1;--muted:#9aa0ab;--line:#2b2f3a;--accent:#8ab4ff;--card:#1b1e27;--side:#101218;--side-bg:rgba(16,18,24,.88);--active:#262b38;--rail-tint:rgba(138,180,255,.18);--rail-tint-soft:rgba(138,180,255,.09);--code:#262a36;--quote:#c3c7cf;--dot-rgb:233,231,225;--scheme:dark}
+*{box-sizing:border-box}html{color-scheme:var(--scheme)}body{margin:0;background:var(--paper);color:var(--ink);font:16.5px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;overflow-x:hidden}
+a{color:var(--accent);text-decoration:none;transition:color .18s ease}a:hover{text-decoration:underline}
+#dotgrid{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:0}
+.wrap{position:relative;z-index:1;display:grid;grid-template-columns:280px 1fr;min-height:100vh}
+.side{position:sticky;top:0;height:100vh;overflow:auto;padding:22px 18px;border-right:1px solid var(--line);background:var(--side-bg)}
+.side h3{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:22px 0 6px}
+.side ul{list-style:none;margin:0;padding:0}.side li{margin:3px 0}
+.side a{display:block;padding:7px 10px;border-radius:8px;color:var(--ink);transition:background .18s ease,transform .18s ease}
+.side a.active{background:var(--active);font-weight:600}
+.side a:hover{background:var(--active);text-decoration:none;transform:translateX(3px)}
+.side-head{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.theme-btn{flex:none;width:40px;height:40px;border:1px solid var(--line);border-radius:50%;background:var(--card);color:var(--ink);font-size:18px;cursor:pointer;transition:background .18s ease}
+.theme-btn:hover{background:var(--active)}
+.home-link{font-weight:700;font-size:18px}.side-search{width:100%;margin:14px 0 4px;padding:10px 12px;border:1px solid var(--line);border-radius:8px;background:var(--card);color:var(--ink);font-size:16px}
+.side-note{font-size:12.5px;color:var(--muted);line-height:1.5;margin-top:24px}
+.topbar{display:none}.backdrop{display:none}
+main{padding:36px 44px;max-width:860px}.prose h1{font-size:32px;line-height:1.2;letter-spacing:-.02em;margin:0 0 6px}
+.prose h2{font-size:23px;margin:34px 0 8px;padding-top:14px;border-top:1px solid var(--line)}
+.prose h3{font-size:18px;margin:26px 0 6px}.prose p{margin:10px 0}
+.prose table{border-collapse:collapse;width:100%;margin:14px 0;font-size:14.5px;display:block;overflow-x:auto;-webkit-overflow-scrolling:touch}
+.prose th,.prose td{border:1px solid var(--line);padding:7px 10px;text-align:left;vertical-align:top}
+.prose th{background:var(--side)}.prose blockquote{border-left:3px solid var(--line);margin:14px 0;padding:2px 14px;color:var(--quote);background:var(--card)}
+.prose code{background:var(--code);padding:1px 5px;border-radius:4px;font-size:14px}.prose pre{background:#0d0f14;color:#f5f1e6;padding:14px;border-radius:8px;overflow:auto}
+.prose pre code{background:none;color:inherit;padding:0}.prose hr{border:none;border-top:1px solid var(--line);margin:24px 0}
+.meta{color:var(--muted);font-size:14px;margin-bottom:20px}.toc{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 18px;margin:18px 0}
+.toc b{font-size:13px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}.toc ul{margin:8px 0 0;padding-left:18px}.toc li{margin:3px 0}
+.cards{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:20px 0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 18px;transition:transform .2s ease,border-color .2s ease,box-shadow .2s ease}
+.card:hover{transform:translateY(-3px);border-color:var(--accent);box-shadow:0 8px 24px rgba(0,0,0,.18)}
+.card h3{margin:0 0 4px}.card p{margin:0;color:var(--muted);font-size:14.5px}
+#search{width:100%;padding:13px 14px;font-size:17px;border:1px solid var(--line);border-radius:10px;background:var(--card);color:var(--ink)}
+.result{border-bottom:1px solid var(--line);padding:14px 6px;border-radius:8px;transition:background .18s ease,transform .18s ease}
+.result:hover{background:var(--card);transform:translateX(3px)}
+.result h3{margin:0}.result p{margin:4px 0;color:var(--quote)}.result .path{font-size:13px;color:var(--muted)}
+mark{background:#fde68a;color:#1e1b16;padding:0 1px}
+html{scroll-behavior:smooth}
+.rail{display:none}
+@media(min-width:1280px){
+main{max-width:min(860px,calc(100vw - 692px))}
+.rail{display:block;position:fixed;right:24px;top:50%;transform:translateY(-50%);width:340px;max-height:76vh;overflow:auto;z-index:15;background:none;border:none;box-shadow:none;padding:18px 14px;-webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 36px,#000 calc(100% - 36px),transparent 100%);mask-image:linear-gradient(to bottom,transparent 0,#000 36px,#000 calc(100% - 36px),transparent 100%)}
+.rail-title{font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:2px 0 12px 12px}
+.rail ul{list-style:none;margin:0;padding:0}
+.rail li{margin:3px 0}
+.rail a{display:block;padding:11px 14px;border-radius:10px;color:var(--ink);font-size:17px;line-height:1.4;transition:transform .2s ease,background .2s ease}
+.rail a:hover,.rail a:focus-visible{background:var(--rail-tint-soft);transform:translateX(-4px) scale(1.02);text-decoration:none}
+.rail a.active{background:var(--rail-tint);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);font-weight:600;transform:translateX(-12px);width:calc(100% + 12px)}
+.rail a.parent-active{background:var(--rail-tint-soft)}
+.rail ul.sub{margin:3px 0 3px 14px;padding-left:14px;border-left:1px solid var(--line)}
+.rail ul.sub a{padding:9px 12px;font-size:15px;color:var(--muted)}
+.rail ul.sub a:hover{color:var(--ink)}
+.rail ul.sub a.active{color:var(--ink);transform:translateX(-8px);width:calc(100% + 8px)}
+}
+@media(max-width:900px){
+.topbar{display:flex;position:sticky;top:0;z-index:20;align-items:center;gap:10px;padding:12px 14px;background:var(--side);border-bottom:1px solid var(--line)}
+.topbar b{flex:1;font-size:17px}.menu-btn,.topbar .theme-btn{width:44px;height:44px;border:1px solid var(--line);border-radius:10px;background:var(--card);color:var(--ink);font-size:19px;cursor:pointer}
+.wrap{grid-template-columns:1fr}
+.wrap{z-index:auto}
+.side{background:var(--side)}
+.side a{padding:11px 12px}
+body.menu-open{overflow:hidden}
+.side{position:fixed;inset:0 auto 0 0;width:300px;max-width:86vw;height:100dvh;z-index:30;transform:translateX(-105%);transition:transform .25s ease;box-shadow:0 0 40px rgba(0,0,0,.4)}
+body.menu-open .side{transform:translateX(0)}
+.backdrop{display:none}body.menu-open .backdrop{display:block;position:fixed;inset:0;z-index:25;background:rgba(0,0,0,.45)}
+main{padding:22px 16px}.prose h1{font-size:26px}.prose h2{font-size:21px}.cards{grid-template-columns:1fr}
+.prose table{font-size:14px}.prose pre{font-size:13.5px}
+}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}html{scroll-behavior:auto}}
+</style><script>(function(){try{var t=localStorage.getItem("vault-theme")||"dark";document.documentElement.setAttribute("data-theme",t)}catch(e){document.documentElement.setAttribute("data-theme","dark")}})()</script></head><body><canvas id="dotgrid" aria-hidden="true"></canvas><header class="topbar"><button class="menu-btn" type="button" onclick="toggleMenu()" aria-label="Open notes menu">☰</button><b>Business Vault</b><button class="theme-btn" type="button" onclick="toggleTheme(event)" aria-label="Toggle dark / light mode">◐</button></header><div class="backdrop" onclick="toggleMenu(false)"></div><div class="wrap"><nav class="side" id="side"><div class="side-head"><a class="home-link" href="index.html">⌂ Vault home</a><button class="theme-btn" type="button" onclick="toggleTheme(event)" aria-label="Toggle dark / light mode">◐</button></div><input class="side-search" type="search" placeholder="Search notes…  ( / )" onkeydown="if(event.key==='Enter'){location.href='index.html?q='+encodeURIComponent(this.value)}"><h3>Operations</h3><ul><li><a class="" href="Operations__Operations_1_Role.html">1 Role</a></li><li><a class="" href="Operations__Operations_2_Influences.html">2 Influences</a></li><li><a class="" href="Operations__Operations_3_Processes.html">3 Processes</a></li><li><a class="" href="Operations__Operations_4_Strategies.html">4 Strategies</a></li><li><a class="" href="Operations__Operations_Syllabus_Summary.html">Syllabus Summary</a></li><li><a class="" href="Operations__Operations_FULL.html">FULL</a></li></ul><h3>Marketing</h3><ul><li><a class="" href="Marketing__Marketing_1_Role.html">1 Role</a></li><li><a class="" href="Marketing__Marketing_2_Influences.html">2 Influences</a></li><li><a class="" href="Marketing__Marketing_3_Processes.html">3 Processes</a></li><li><a class="" href="Marketing__Marketing_4_Strategies.html">4 Strategies</a></li><li><a class="" href="Marketing__Marketing_Syllabus_Summary.html">Syllabus Summary</a></li><li><a class="" href="Marketing__Marketing_FULL.html">FULL</a></li></ul><h3>Finance</h3><ul><li><a class="" href="Finance__Finance_1_Role.html">1 Role</a></li><li><a class="" href="Finance__Finance_2_Influences.html">2 Influences</a></li><li><a class="" href="Finance__Finance_3_Processes.html">3 Processes</a></li><li><a class="" href="Finance__Finance_4_Strategies.html">4 Strategies</a></li><li><a class="" href="Finance__Finance_Syllabus_Summary.html">Syllabus Summary</a></li><li><a class="" href="Finance__Finance_FULL.html">FULL</a></li></ul><h3>Human Resources</h3><ul><li><a class="" href="Human_Resources__Human_Resources_1_Role.html">1 Role</a></li><li><a class="" href="Human_Resources__Human_Resources_2_Influences.html">2 Influences</a></li><li><a class="" href="Human_Resources__Human_Resources_3_Processes.html">3 Processes</a></li><li><a class="" href="Human_Resources__Human_Resources_4_Strategies.html">4 Strategies</a></li><li><a class="" href="Human_Resources__Human_Resources_Syllabus_Summary.html">Syllabus Summary</a></li><li><a class="" href="Human_Resources__Human_Resources_FULL.html">FULL</a></li></ul><h3>Exam &amp; revision</h3><ul><li><a class="" href="MOC.html">Final Notes</a></li><li><a class="" href="Case_Study_Stats_Sheet.html">Business Studies Case Study Stats Sheet</a></li><li><a class="" href="Case_Studies.html">Case Studies — HSC Business Studies Final Notes</a></li><li><a class="active" href="Confusing_Pairs.html">Confusing Pairs — MCQ Drill Sheet</a></li><li><a class="" href="Crichton_Office_Supplies_Report_and_Apple_Marketing_Essay.html">Crichton Office Supplies Report and Apple Marketing Essay</a></li><li><a class="" href="Trial_Practice_Killara_2022.html">Killara 2022 Trial — Marked Paper and Model Answers</a></li><li><a class="" href="McDonalds_Case_Study.html">McDonald's Case Study — Section IV Essay Resource</a></li><li><a class="" href="Section_III_Business_Report.html">Section III — How to Write the Business Report</a></li><li><a class="" href="Section_IV_Extended_Response.html">Section IV — How to Write the Extended Response</a></li><li><a class="" href="Marketing_Universal_Essay.html">Universal Marketing Essay — McDonald's Case Study</a></li><li><a class="" href="Finance_Management.html">Finance (moved)</a></li><li><a class="" href="Human_Resources.html">Human Resources (moved)</a></li><li><a class="" href="Marketing.html">Marketing (moved)</a></li><li><a class="" href="Operations.html">Operations (moved)</a></li></ul><p class="side-note">Source: TheSashi HSC Business Studies Notes, Final folder. Cloned 25 Oct 2026. Plus one added McDonald's note (see Exam & revision).</p></nav><main><article class="prose"><h1>Confusing Pairs — MCQ Drill Sheet</h1><p class="meta">Exam &amp; revision · Confusing_Pairs.md</p><div class="toc"><b>On this page</b><ul><li><a href="#1-the-ten-you-have-actually-got-wrong">1. ⚠️ The Ten You Have Actually Got Wrong</a></li><li><a href="#2-operations">2. Operations</a></li><li><a href="#3-marketing">3. Marketing</a></li><li><a href="#4-finance">4. Finance</a></li><li><a href="#5-human-resources">5. Human Resources</a></li><li><a href="#6-same-word-different-topic">6. Same Word, Different Topic</a></li><li><a href="#7-self-test">7. Self-Test</a></li><li><a href="#8-mcq-method">8. MCQ Method</a></li></ul></div><h1>Confusing Pairs — MCQ Drill Sheet</h1>
+<blockquote>
+<p><strong>Why this file exists.</strong> Across two trials (Killara and Knox), seven of eight MCQ errors were the <strong>right syllabus dot point, wrong member of the pair</strong>. You aren&#39;t missing content — you&#39;re picking the neighbour.</p>
+<p><strong>How to use it.</strong> Cover the right column. Say the tell out loud. Anything you hesitate on, star it. Twenty minutes beats re-reading a module.</p>
+<p>Theory: <a href="Operations__Operations_FULL.html">Operations</a> | <a href="Marketing__Marketing_FULL.html">Marketing</a> | <a href="Finance__Finance_FULL.html">Finance</a> | <a href="Human_Resources__Human_Resources_FULL.html">Human Resources</a> · Marked papers: <a href="Trial_Practice_Killara_2022.html">Trial Practice Killara 2022</a></p>
+</blockquote>
+<hr>
+<h2 id="1-the-ten-you-have-actually-got-wrong">1. ⚠️ The Ten You Have Actually Got Wrong</h2>
+<blockquote>
+<p>Drill these first. Every one cost a real mark.</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Paper</th>
+<th>Pair</th>
+<th>The tell</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>2025 HSC 8</strong></td>
+<td><strong>Assurance / Improvement</strong></td>
+<td>⭐ <strong>&quot;Ongoing commitment&quot; = IMPROVEMENT.</strong> Assurance is a <strong>system that prevents</strong> defects, certified against a standard (ISO 9000) — it&#39;s a <em>thing you set up</em>. Improvement is a <strong>continuous effort to get better</strong> — it never finishes. If the stem says <em>ongoing</em>, <em>continuous</em>, <em>always looking to</em>, it is <strong>improvement</strong></td>
+</tr>
+<tr>
+<td><strong>2025 HSC 19</strong></td>
+<td><strong>Operations sequence — which end is the input</strong></td>
+<td>⭐ Every sequence option must read <strong>INPUT → TRANSFORMATION → OUTPUT</strong>. Label each of the three terms before choosing. <em>Product</em> and <em>customer service</em> are <strong>outputs</strong>; <em>materials, information, facilities, human resources, customers</em> are <strong>inputs</strong>; <em>task design, control, improvement</em> are <strong>transformation</strong></td>
+</tr>
+<tr>
+<td>Killara 4</td>
+<td>Resource / Industrial market</td>
+<td><strong>Resource</strong> = where raw materials are <strong>sold</strong> (farmers, miners). <strong>Industrial</strong> = businesses that <strong>buy</strong> inputs to make other goods. Farmers <em>operate in</em> resource, <em>sell to</em> industrial</td>
+</tr>
+<tr>
+<td>Killara 6</td>
+<td>Unfair dismissal / Performance appraisal</td>
+<td><strong>Dismissal</strong> ends employment. <strong>Appraisal</strong> evaluates it. An appraisal is not a termination</td>
+</tr>
+<tr>
+<td>Killara 10</td>
+<td>Common law contract / Enterprise agreement</td>
+<td><strong>Common law</strong> = individually negotiated, one person. <strong>Enterprise agreement</strong> = collective, must pass the <strong>BOOT</strong></td>
+</tr>
+<tr>
+<td>Killara 17</td>
+<td>Key business function / anything else</td>
+<td>There are exactly <strong>four</strong>: operations, marketing, finance, HR. &quot;Employees&quot;, &quot;customers&quot;, &quot;outsourcing&quot; are <strong>not</strong> functions</td>
+</tr>
+<tr>
+<td>Knox 5</td>
+<td>Financial cost of change / Inertia</td>
+<td>The syllabus lists them <strong>separately</strong>. <strong>Financial</strong> = redundancy payments, retraining, new equipment, plant layout. <strong>Inertia</strong> = behavioural resistance, costs nothing directly</td>
+</tr>
+<tr>
+<td>Knox 10</td>
+<td>Administrative / Developmental performance management</td>
+<td><strong>Administrative</strong> = measuring output to decide pay, promotion, retention. <strong>Developmental</strong> = feedback used to build skills. Data collection with no training attached is <strong>administrative</strong></td>
+</tr>
+<tr>
+<td>Knox 16</td>
+<td>Market share analysis / Marketing profitability analysis</td>
+<td>Only <strong>profitability</strong> involves <strong>cost</strong>. Market share compares your sales to <strong>industry</strong> sales</td>
+</tr>
+<tr>
+<td>Knox 17</td>
+<td>FIFO / LIFO</td>
+<td>When prices rise, <strong>FIFO</strong> leaves the <strong>fresh, expensive</strong> stock on the balance sheet → higher inventory, higher profit</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="2-operations">2. Operations</h2>
+<h3 id="processes">Processes</h3>
+<table>
+<thead>
+<tr>
+<th>Pair</th>
+<th>The tell</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Transformed / Transforming resources</td>
+<td><strong>Transformed</strong> = what gets <strong>changed</strong> (materials, information, customers). <strong>Transforming</strong> = what <strong>does</strong> the changing (human resources, facilities)</td>
+</tr>
+<tr>
+<td>Sequencing / Scheduling</td>
+<td><strong>Order</strong> vs <strong>duration</strong></td>
+</tr>
+<tr>
+<td>Gantt chart / Critical path analysis</td>
+<td><strong>Gantt</strong> shows what and how long, including <strong>concurrent</strong> tasks. <strong>CPA</strong> shows what must finish before something else can start, giving the <strong>critical path</strong> and <strong>float</strong></td>
+</tr>
+<tr>
+<td>Critical path / Longest task list</td>
+<td>It&#39;s the longest path by <strong>time</strong>, not by number of tasks</td>
+</tr>
+<tr>
+<td>Float / Critical activity</td>
+<td>Float is spare time. Critical activities have <strong>zero</strong> float</td>
+</tr>
+<tr>
+<td>Lead time / Cycle time</td>
+<td><strong>Lead</strong> = order to receipt. <strong>Cycle</strong> = time to produce <strong>one unit</strong></td>
+</tr>
+<tr>
+<td>Bottleneck / Defect</td>
+<td><strong>Bottleneck</strong> = lowest-capacity point limiting total output. A defect is a quality failure. <strong>Not the same thing</strong></td>
+</tr>
+</tbody></table>
+<h3 id="quality-and-layout">Quality and layout</h3>
+<table>
+<thead>
+<tr>
+<th>Pair</th>
+<th>The tell</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Quality control / Quality assurance</td>
+<td><strong>Control</strong> finds defects after the fact. <strong>Assurance</strong> designs the process so they don&#39;t occur</td>
+</tr>
+<tr>
+<td>Quality assurance / TQM</td>
+<td><strong>Assurance</strong> = a system (ISO 9000). <strong>TQM</strong> = a whole-of-business philosophy, everyone responsible</td>
+</tr>
+<tr>
+<td>Design quality / Conformance quality</td>
+<td><strong>Design</strong> = does it match what consumers understand the product to be. <strong>Conformance</strong> = does it meet the specification</td>
+</tr>
+<tr>
+<td>Process layout / Product layout</td>
+<td><strong>Process</strong> groups machines by <strong>function</strong> (job shop). <strong>Product</strong> arranges them in the <strong>sequence of production</strong> (assembly line)</td>
+</tr>
+<tr>
+<td>Fixed position layout</td>
+<td>The product <strong>doesn&#39;t move</strong> — shipbuilding, construction</td>
+</tr>
+</tbody></table>
+<h3 id="inventory">Inventory</h3>
+<table>
+<thead>
+<tr>
+<th>Pair</th>
+<th>The tell</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>JIT / FIFO and LIFO</td>
+<td><strong>JIT</strong> is inventory <strong>management</strong> (when stock arrives). <strong>FIFO/LIFO</strong> are inventory <strong>valuation</strong> (what it&#39;s worth on the balance sheet)</td>
+</tr>
+<tr>
+<td>FIFO / LIFO — rising prices</td>
+<td><strong>FIFO</strong>: higher closing inventory, lower COGS, <strong>higher profit</strong>. <strong>LIFO</strong>: lower closing inventory, higher COGS, <strong>lower profit</strong></td>
+</tr>
+<tr>
+<td>EOQ / Reorder point</td>
+<td><strong>EOQ</strong> = how <strong>much</strong> to order. <strong>Reorder point</strong> = <strong>when</strong> to order</td>
+</tr>
+<tr>
+<td>Obsolescence / Spoilage</td>
+<td><strong>Obsolescence</strong> = outdated. <strong>Spoilage</strong> = physically deteriorated</td>
+</tr>
+</tbody></table>
+<h3 id="strategy-and-influences">Strategy and influences</h3>
+<table>
+<thead>
+<tr>
+<th>Pair</th>
+<th>The tell</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Speed / Dependability</td>
+<td><strong>Speed</strong> = how fast. <strong>Dependability</strong> = how reliably, <strong>when you said you would</strong></td>
+</tr>
+<tr>
+<td>Cost leadership / Lowest price</td>
+<td>A low-cost producer may still charge a <strong>premium</strong>. Cost leadership is about your <strong>costs</strong>, not your prices</td>
+</tr>
+<tr>
+<td>Outsourcing / Offshoring</td>
+<td><strong>Outsourcing</strong> = external provider. <strong>Offshoring</strong> = moved overseas, possibly still in-house</td>
+</tr>
+<tr>
+<td>Outsourcing / Global sourcing</td>
+<td><strong>Outsourcing</strong> contracts out an <strong>activity</strong>. <strong>Global sourcing</strong> buys <strong>inputs</strong> from anywhere</td>
+</tr>
+<tr>
+<td>Legal compliance / Ethical responsibility</td>
+<td><strong>Compliance</strong> = letter of the law, the minimum. <strong>Ethics/CSR</strong> = spirit of the law, voluntary. You can be fully compliant and still unethical</td>
+</tr>
+<tr>
+<td>Compliance cost / Penalty</td>
+<td><strong>Compliance cost</strong> = the expense of <strong>meeting</strong> the law. A penalty is what you pay for <strong>breaching</strong> it</td>
+</tr>
+<tr>
+<td>Economies of scale</td>
+<td>Lower cost <strong>per unit</strong>, not lower total cost. Total cost still rises</td>
+</tr>
+<tr>
+<td>Explicit / Implicit service</td>
+<td><strong>Explicit</strong> = tangible elements (time, expertise). <strong>Implicit</strong> = intangible feelings (atmosphere, status)</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="3-marketing">3. Marketing</h2>
+<h3 id="markets-and-segmentation">Markets and segmentation</h3>
+<table>
+<thead>
+<tr>
+<th>Pair</th>
+<th>The tell</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Resource / Industrial / Intermediate / Consumer market</td>
+<td><strong>Resource</strong> = raw materials sold (primary producers). <strong>Industrial</strong> = buy inputs to produce other goods. <strong>Intermediate</strong> = retailers and wholesalers buying to <strong>resell</strong>. <strong>Consumer</strong> = individuals for personal use</td>
+</tr>
+<tr>
+<td>Mass / Niche market</td>
+<td><strong>Mass</strong> = one product for everyone. <strong>Niche</strong> = one narrow segment</td>
+</tr>
+<tr>
+<td>Market segment / Target market</td>
+<td>A <strong>segment</strong> is a group with shared characteristics. The <strong>target market</strong> is the segment you decide to pursue</td>
+</tr>
+<tr>
+<td>Demographic / Psychographic / Geographic / Behavioural</td>
+<td><strong>Demographic</strong> = who they are (age, income, gender). <strong>Psychographic</strong> = how they think (lifestyle, values, personality). <strong>Geographic</strong> = where they are. <strong>Behavioural</strong> = what they do (usage rate, loyalty, benefits sought)</td>
+</tr>
+<tr>
+<td>Positioning / Branding / Differentiation</td>
+<td><strong>Differentiation</strong> = making the product distinct. <strong>Branding</strong> = the name and identity. <strong>Positioning</strong> = the <strong>image relative to competitors</strong> in the consumer&#39;s mind</td>
+</tr>
+</tbody></table>
+<h3 id="influences-on-consumer-choice">Influences on consumer choice</h3>
+<table>
+<thead>
+<tr>
+<th>Pair</th>
+<th>The tell</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Psychological / Sociocultural</td>
+<td><strong>Psychological</strong> = inside the individual (perception, motives, attitudes, personality, learning). <strong>Sociocultural</strong> = other people (family, peers, reference groups, social class, culture)</td>
+</tr>
+<tr>
+<td>Influences on choice / Marketing strategies</td>
+<td><strong>Influences</strong> = why the customer buys. <strong>Strategies</strong> = what the business does. Branding and price are <strong>strategies</strong>, not influences</td>
+</tr>
+</tbody></table>
+<h3 id="process-and-kpis">Process and KPIs</h3>
+<table>
+<thead>
+<tr>
+<th>Pair</th>
+<th>The tell</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Situational analysis / Market research</td>
+<td><strong>Situational</strong> = SWOT and product life cycle, where the business stands <strong>now</strong>. <strong>Research</strong> = collecting data about customers and the market</td>
+</tr>
+<tr>
+<td>Primary / Secondary data</td>
+<td><strong>Primary</strong> = you collect it (surveys, observation, focus groups) — specific, current, expensive. <strong>Secondary</strong> = someone else did (census, industry reports, internet) — cheap, fast, possibly outdated</td>
+</tr>
+<tr>
+<td>Sales analysis / Market share analysis / Marketing profitability analysis</td>
+<td><strong>Sales</strong> = your sales against objectives. <strong>Market share</strong> = your sales against <strong>industry</strong> sales. <strong>Profitability</strong> = <strong>cost</strong> of a marketing activity against the revenue it generated</td>
+</tr>
+<tr>
+<td>Monitoring / Controlling</td>
+<td><strong>Monitoring</strong> measures. <strong>Controlling</strong> compares to planned, investigates the <strong>variance</strong>, and takes <strong>corrective action</strong></td>
+</tr>
+</tbody></table>
+<h3 id="strategies">Strategies</h3>
+<table>
+<thead>
+<tr>
+<th>Pair</th>
+<th>The tell</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Price skimming / Price penetration</td>
+<td><strong>Skimming</strong> = launch <strong>high</strong>, lower over time (new tech). <strong>Penetration</strong> = launch <strong>low</strong> to gain share, then raise</td>
+</tr>
+<tr>
+<td>Cost-plus / Market / Competition-based pricing</td>
+<td><strong>Cost-plus</strong> = cost + mark-up. <strong>Market</strong> = what the market will bear. <strong>Competition-based</strong> = at, below or above rivals</td>
+</tr>
+<tr>
+<td>Above the line / Below the line promotion</td>
+<td><strong>Above</strong> = mass media the business <strong>pays</strong> for (TV, radio, print). <strong>Below</strong> = everything else (personal selling, sales promotion, PR, direct mail)</td>
+</tr>
+<tr>
+<td>Publicity / Public relations</td>
+<td><strong>Publicity</strong> = free media coverage, <strong>not controlled</strong> by the business. <strong>PR</strong> = deliberate activity the business <strong>plans</strong> to build image</td>
+</tr>
+<tr>
+<td>Push / Pull strategy</td>
+<td><strong>Push</strong> = promote to the <strong>retailer</strong> so they stock it. <strong>Pull</strong> = promote to the <strong>consumer</strong> so they demand it</td>
+</tr>
+<tr>
+<td>Standardisation / Customisation</td>
+<td><strong>Standardisation</strong> = same product everywhere (economies of scale). <strong>Customisation</strong> = adapted to local tastes</td>
+</tr>
+<tr>
+<td>Global branding / Global pricing</td>
+<td><strong>Branding</strong> = one identity worldwide. <strong>Pricing</strong> = one price strategy worldwide</td>
+</tr>
+</tbody></table>
+<h3 id="consumer-law-the-five">Consumer law — the five</h3>
+<table>
+<thead>
+<tr>
+<th>Law</th>
+<th>The tell</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Deceptive and misleading advertising</strong></td>
+<td>Claims that mislead — false comparisons, fine print, altered product demonstrations</td>
+</tr>
+<tr>
+<td><strong>Price discrimination</strong></td>
+<td>Charging <strong>different prices to different buyers</strong> for the same good without justification</td>
+</tr>
+<tr>
+<td><strong>Implied conditions</strong></td>
+<td>Unstated but legally assumed — the good is fit for purpose and matches its description</td>
+</tr>
+<tr>
+<td><strong>Warranties</strong></td>
+<td>A promise to repair or replace. Cannot be fake or misleading</td>
+</tr>
+<tr>
+<td><strong>Resale price maintenance</strong></td>
+<td>A supplier <strong>forcing</strong> a retailer to sell at a set minimum price. <strong>Illegal</strong></td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>Citation: <strong>Competition and Consumer Act 2010 (Cth)</strong>, containing the <strong>Australian Consumer Law</strong>, enforced by the <strong>ACCC</strong>.</p>
+</blockquote>
+<hr>
+<h2 id="4-finance">4. Finance</h2>
+<table>
+<thead>
+<tr>
+<th>Pair</th>
+<th>The tell</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Liquidity / Solvency</td>
+<td><strong>Time frame only.</strong> Liquidity = short term (current ratio). Solvency = long term (gearing ratio)</td>
+</tr>
+<tr>
+<td>Gearing / Leverage</td>
+<td><strong>The same thing</strong> — proportion funded by debt rather than equity</td>
+</tr>
+<tr>
+<td>Control of current assets / current liabilities</td>
+<td><strong>Assets</strong> = cash, receivables, inventory (JIT, credit checks, cash budgets). <strong>Liabilities</strong> = payables, loans, overdrafts (paying on time, seeking discounts, minimising overdraft)</td>
+</tr>
+<tr>
+<td>Debenture / Mortgage</td>
+<td><strong>Debenture</strong> = long-term debt to the public, <strong>unsecured</strong>. <strong>Mortgage</strong> = secured against property</td>
+</tr>
+<tr>
+<td>Factoring / Leasing</td>
+<td><strong>Factoring</strong> = selling receivables for cash now. <strong>Leasing</strong> = renting the use of an asset</td>
+</tr>
+<tr>
+<td>Primary / Secondary market</td>
+<td><strong>Primary</strong> = new shares, the <strong>company</strong> gets the money. <strong>Secondary</strong> = existing shares traded, company gets <strong>nothing</strong></td>
+</tr>
+<tr>
+<td>Overdraft / Bank loan</td>
+<td><strong>Overdraft</strong> = flexible, short term, on a current account. <strong>Loan</strong> = fixed amount, fixed term</td>
+</tr>
+<tr>
+<td>Operating / Financial lease</td>
+<td><strong>Operating</strong> = short term, <strong>owner maintains</strong>. <strong>Financial</strong> = runs for the asset&#39;s useful life, lessee maintains</td>
+</tr>
+<tr>
+<td>Income statement / Balance sheet</td>
+<td><strong>Income statement</strong> = performance <strong>over a period</strong>. <strong>Balance sheet</strong> = position at a <strong>point in time</strong></td>
+</tr>
+<tr>
+<td>Cash flow statement / Cash flow budget</td>
+<td><strong>Statement</strong> = record of the <strong>past</strong>. <strong>Budget</strong> = forecast of the <strong>future</strong></td>
+</tr>
+<tr>
+<td>Capitalising an expense / Expensing it</td>
+<td><strong>Capitalising</strong> puts the cost on the balance sheet as an asset, written off later as <strong>depreciation</strong>. This <strong>understates expenses and overstates profit</strong> now</td>
+</tr>
+<tr>
+<td>Normalised earnings / Window dressing</td>
+<td><strong>Normalised</strong> = one-off items removed to show underlying performance, but <strong>management decides what&#39;s unusual</strong>. <strong>Window dressing</strong> = legal techniques to make the position look better at reporting date</td>
+</tr>
+<tr>
+<td>Window dressing / Fraud</td>
+<td><strong>Window dressing is legal.</strong> Fraud is not</td>
+</tr>
+<tr>
+<td>Hedging / Derivative</td>
+<td><strong>Hedging</strong> = any strategy reducing financial risk. A <strong>derivative</strong> is a specific type of hedging contract (futures, options, swaps, forwards)</td>
+</tr>
+<tr>
+<td>Spot rate / Forward rate</td>
+<td><strong>Spot</strong> = today&#39;s exchange rate. <strong>Forward</strong> = locked in now for a future date</td>
+</tr>
+<tr>
+<td>Merger / Takeover</td>
+<td><strong>Merger</strong> = both agree to combine. <strong>Takeover</strong> = one buys the other, which ceases to exist</td>
+</tr>
+<tr>
+<td>Cost centre / Profit centre</td>
+<td><strong>Cost centre</strong> only incurs costs. <strong>Profit centre</strong> also generates revenue</td>
+</tr>
+<tr>
+<td>Appreciation / Depreciation (currency)</td>
+<td><strong>Appreciation</strong> = AUD rises → exports dearer, imports cheaper. <strong>Depreciation</strong> = AUD falls → exports cheaper, imports dearer</td>
+</tr>
+</tbody></table>
+<h3 id="the-seven-ratios">The seven ratios</h3>
+<pre><code>LIQUIDITY      Current Ratio     = Current Assets / Current Liabilities      ideal 2:1
+SOLVENCY       Gearing Ratio     = Total Liabilities / Owners&#39; Equity        ideal 0.5:1 to 1:1
+PROFITABILITY  Gross Profit      = (Gross Profit / Sales) x 100
+               Net Profit        = (Net Profit / Sales) x 100
+               Return on Equity  = (Net Profit / Owners&#39; Equity) x 100
+EFFICIENCY     Expense Ratio     = (Total Expenses / Sales) x 100            lowest possible
+               Accounts Receivable  Step 1: Sales / AR   Step 2: 365 / answer   ideal 30 days
+</code></pre>
+<blockquote>
+<p><strong>A ratio without a comparison is a number, not analysis.</strong> Always answer <em>compared to what?</em> — over time, industry average, or target. <strong>If the paper gives you an industry average, use it.</strong></p>
+</blockquote>
+<hr>
+<h2 id="5-human-resources">5. Human Resources</h2>
+<h3 id="acquisition">Acquisition</h3>
+<table>
+<thead>
+<tr>
+<th>Pair</th>
+<th>The tell</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Job description / Job specification</td>
+<td><strong>De-S-cription</strong> = the po-<strong>S</strong>-ition. <strong>Spec</strong>-ification = the <strong>spec</strong>-ial qualities of the <strong>person</strong></td>
+</tr>
+<tr>
+<td>Recruitment / Selection</td>
+<td><strong>Recruitment</strong> builds the <strong>pool</strong>. <strong>Selection</strong> chooses from it</td>
+</tr>
+<tr>
+<td>Internal / External recruitment</td>
+<td><strong>Internal</strong> = cheaper, faster, known quantity, but no fresh ideas. <strong>External</strong> = new skills and perspectives, but costly and slower to settle</td>
+</tr>
+<tr>
+<td>Employee / Contractor</td>
+<td><strong>Employee</strong> = contract <strong>of</strong> service, business controls how and when, owes leave and super. <strong>Contractor</strong> = contract <strong>for</strong> service, controls own methods, invoices for a result</td>
+</tr>
+</tbody></table>
+<h3 id="leadership-and-job-design">Leadership and job design</h3>
+<table>
+<thead>
+<tr>
+<th>Pair</th>
+<th>The tell</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Authoritarian / Coercive leadership</td>
+<td><strong>Authoritarian</strong> = the leader <strong>decides and directs</strong>; employees don&#39;t participate. <strong>Coercive</strong> = the leader <strong>forces</strong> compliance, &quot;whether they want it or not.&quot; <em>Who decides</em> vs <em>how compliance is obtained</em></td>
+</tr>
+<tr>
+<td>Participative / Delegative</td>
+<td><strong>Participative</strong> = employees are <strong>consulted</strong>, but <strong>the final decision is still the leader&#39;s</strong>. <strong>Delegative (laissez-faire)</strong> = <strong>employees make the decision</strong></td>
+</tr>
+<tr>
+<td>Pacesetting / Transformational</td>
+<td><strong>Pacesetting</strong> models high performance and expects imitation — <strong>values results more than anything</strong>, burns people out. <strong>Transformational</strong> creates a <strong>shared vision</strong> and moves people beyond self-interest</td>
+</tr>
+<tr>
+<td>Job rotation / enlargement / enrichment</td>
+<td><strong>Rotation</strong> = moving <strong>between</strong> jobs. <strong>Enlargement</strong> = <strong>more tasks at the same level</strong> (horizontal). <strong>Enrichment</strong> = <strong>more responsibility and autonomy</strong> (vertical)</td>
+</tr>
+<tr>
+<td>Job satisfaction / Job enrichment</td>
+<td><strong>Satisfaction</strong> is the <strong>outcome</strong> — how content employees are. <strong>Enrichment</strong> is the <strong>strategy</strong> — designing tasks around existing abilities to reduce boredom</td>
+</tr>
+<tr>
+<td>General / Specific skills (recruitment)</td>
+<td><strong>General</strong> = attitudes and behaviours that are a good <strong>cultural fit</strong>. <strong>Specific</strong> = skills <strong>required for particular jobs</strong>, targeted at <strong>skill shortages</strong></td>
+</tr>
+</tbody></table>
+<h3 id="development-and-maintenance">Development and maintenance</h3>
+<table>
+<thead>
+<tr>
+<th>Pair</th>
+<th>The tell</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Induction / Training</td>
+<td><strong>Induction</strong> introduces to the <strong>business</strong>. <strong>Training</strong> improves <strong>job performance</strong></td>
+</tr>
+<tr>
+<td>Training / Development</td>
+<td><strong>Training</strong> = the <strong>current</strong> role. <strong>Development</strong> = <strong>future</strong> responsibilities and promotion</td>
+</tr>
+<tr>
+<td><strong>Administrative / Developmental performance management</strong></td>
+<td>⚠️ <strong>Use your teacher&#39;s definition.</strong> <strong>Administrative</strong> = HR completes <strong>skills audits</strong>, identifies training needs, keeps an <strong>employee database</strong> — it <strong>records and audits</strong>. <strong>Developmental</strong> = HR <strong>plans and implements training</strong>, on and off the job — it <strong>plans and delivers</strong></td>
+</tr>
+<tr>
+<td>Monetary / Non-monetary rewards</td>
+<td><strong>Monetary</strong> = bonuses, commissions, pay increases — <strong>financial</strong> motivation. <strong>Non-monetary</strong> = recognition, promotion, flexible working, career development — <strong>satisfaction and loyalty</strong>. Provide both, because <strong>employees are motivated by different factors</strong></td>
+</tr>
+<tr>
+<td>Individual / Group performance pay</td>
+<td><strong>Individual</strong> recognises <strong>outstanding contribution</strong>. <strong>Team-based</strong> encourages <strong>cooperation toward common objectives</strong>. Using both <strong>prevents excessive competition</strong> while still rewarding effort</td>
+</tr>
+<tr>
+<td>Monetary / Non-monetary rewards</td>
+<td><strong>Monetary</strong> = cash or cash-equivalent (salary, bonus, performance pay). <strong>Non-monetary</strong> = flexible hours, recognition, leave, career development</td>
+</tr>
+<tr>
+<td>Intrinsic / Extrinsic rewards</td>
+<td><strong>Intrinsic</strong> comes from <strong>within</strong> the person (satisfaction). <strong>Extrinsic</strong> is <strong>given</strong> by the business</td>
+</tr>
+<tr>
+<td>Piece rate / Commission</td>
+<td><strong>Piece rate</strong> = pay per <strong>unit produced</strong>. <strong>Commission</strong> = pay per <strong>sale</strong></td>
+</tr>
+<tr>
+<td>Hygiene factors / Motivators</td>
+<td><strong>Hygiene</strong> prevents dissatisfaction but doesn&#39;t motivate (pay, conditions). <strong>Motivators</strong> actively create satisfaction (achievement, recognition, responsibility)</td>
+</tr>
+</tbody></table>
+<h3 id="separation">Separation</h3>
+<table>
+<thead>
+<tr>
+<th>Pair</th>
+<th>The tell</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Voluntary / Involuntary separation</td>
+<td><strong>Voluntary</strong> = the employee chooses (resignation, retirement, voluntary redundancy). <strong>Involuntary</strong> = the business decides (retrenchment, dismissal, forced redundancy)</td>
+</tr>
+<tr>
+<td>Redundancy / Dismissal</td>
+<td><strong>Redundancy</strong> = the <strong>JOB</strong> no longer exists. <strong>Dismissal</strong> = the <strong>PERSON</strong> is removed. Redundancy attracts severance; dismissal for misconduct does not</td>
+</tr>
+<tr>
+<td>Retrenchment / Retirement</td>
+<td><strong>Retrenchment</strong> is involuntary — the business no longer needs the role. <strong>Retirement</strong> is voluntary</td>
+</tr>
+<tr>
+<td>Summary / Unfair dismissal</td>
+<td><strong>Summary</strong> = immediate, for serious misconduct. <strong>Unfair</strong> = harsh, unjust or unreasonable</td>
+</tr>
+<tr>
+<td>Unfair dismissal / Unlawful termination</td>
+<td><strong>Unfair</strong> = harsh, unjust or unreasonable. <strong>Unlawful</strong> = for a <strong>prohibited reason</strong> (pregnancy, race, union membership, illness)</td>
+</tr>
+<tr>
+<td>Constructive dismissal</td>
+<td>Employee <strong>resigns</strong> because the employer&#39;s conduct left them no choice. Still counts as dismissal</td>
+</tr>
+</tbody></table>
+<h3 id="legal-and-disputes">Legal and disputes</h3>
+<table>
+<thead>
+<tr>
+<th>Pair</th>
+<th>The tell</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Award / Enterprise agreement</td>
+<td><strong>Award</strong> = industry-wide safety net, applies by default. <strong>Enterprise agreement</strong> = workplace-negotiated, must pass the <strong>BOOT</strong></td>
+</tr>
+<tr>
+<td>Enterprise agreement / Common law contract</td>
+<td><strong>Agreement</strong> = collective. <strong>Common law</strong> = individual</td>
+</tr>
+<tr>
+<td>NES / Awards</td>
+<td><strong>NES</strong> = 11 legislated minimums for <strong>all</strong> employees. <strong>Awards</strong> = industry-specific, on top</td>
+</tr>
+<tr>
+<td>Negotiation / Mediation / Conciliation / Arbitration</td>
+<td>Escalating intervention: <strong>Negotiation</strong> = the parties alone. <strong>Mediation</strong> = a third party <strong>facilitates only</strong>. <strong>Conciliation</strong> = <strong>Fair Work Australia suggests</strong> solutions. <strong>Arbitration</strong> = a commissioner <strong>imposes a legally binding</strong> decision</td>
+</tr>
+<tr>
+<td>Overt / Covert industrial action</td>
+<td><strong>Overt</strong> is visible and deliberate — strikes, work bans, work-to-rule, lockouts, picket lines. <strong>Covert</strong> is concealed — <strong>absenteeism</strong>, turnover, sabotage, deliberate under-performance</td>
+</tr>
+<tr>
+<td>Work to rule / Work ban</td>
+<td><strong>Work to rule</strong> = workers refuse tasks <strong>outside their normal duties</strong> (e.g. overtime). <strong>Work ban</strong> = workers turn up but <strong>don&#39;t perform their normal duties</strong></td>
+</tr>
+<tr>
+<td>Strike / Lockout</td>
+<td><strong>Strike</strong> = employees stop work. <strong>Lockout</strong> = employer shuts them out</td>
+</tr>
+<tr>
+<td>EEO / Anti-discrimination</td>
+<td><strong>EEO</strong> requires decisions on <strong>merit</strong> and removal of barriers. <strong>Anti-discrimination</strong> <strong>prohibits</strong> specified conduct</td>
+</tr>
+<tr>
+<td>Turnover / Absenteeism</td>
+<td><strong>Turnover</strong> = staff leaving and being replaced. <strong>Absenteeism</strong> = unplanned days off</td>
+</tr>
+<tr>
+<td>Span of control / Chain of command</td>
+<td><strong>Span</strong> = how many people a manager supervises. <strong>Chain</strong> = the reporting lines</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="6-same-word-different-topic">6. Same Word, Different Topic</h2>
+<blockquote>
+<p>These catch people because the word is genuinely used twice with different meanings. <strong>Check which module the question is in.</strong></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Word</th>
+<th>In Operations</th>
+<th>In Finance</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Control</strong></td>
+<td>Compare actual to planned, investigate the <strong>variance</strong>, take <strong>corrective action</strong></td>
+<td>Manage the <strong>level</strong> you hold of current assets and current liabilities</td>
+</tr>
+<tr>
+<td><strong>Quality control</strong></td>
+<td>Inspecting output to find defects</td>
+<td>—</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th>Word</th>
+<th>Meaning A</th>
+<th>Meaning B</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Depreciation</strong></td>
+<td>Writing off an asset&#39;s cost over its useful life (Finance)</td>
+<td>The AUD falling in value (Global)</td>
+</tr>
+<tr>
+<td><strong>Matching principle</strong></td>
+<td>Match the <strong>term of finance</strong> to the <strong>use</strong> of funds</td>
+<td>Match revenue to the expenses incurred earning it</td>
+</tr>
+<tr>
+<td><strong>Differentiation</strong></td>
+<td>Operations: distinguishing the good or service itself</td>
+<td>Marketing: the strategy of making the product distinct from competitors</td>
+</tr>
+<tr>
+<td><strong>Efficiency</strong></td>
+<td>Operations: productivity, output per input</td>
+<td>Finance: the <strong>expense ratio</strong> and <strong>accounts receivable turnover</strong></td>
+</tr>
+</tbody></table>
+<h3 id="6-1-same-words-two-syllabus-sections">6.1 ⭐ Same words, two syllabus sections</h3>
+<blockquote>
+<p><strong>The nastiest version of this: the same words appear twice <em>within one module</em>, under different headings.</strong> Checked against the NSW syllabus (2010) §10.1–10.4.</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>The words</th>
+<th>Section A</th>
+<th>Section B</th>
+<th>Which one the question wants</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Control · improvement</strong></td>
+<td><strong>Operations PROCESSES</strong> → &quot;monitoring, control and improvement&quot;</td>
+<td><strong>Operations STRATEGIES</strong> → &quot;quality management: control, assurance, improvement&quot;</td>
+<td>KPIs, variance, corrective action → <strong>process</strong>. Defects, inspection, ISO 9000, TQM → <strong>strategy</strong></td>
+</tr>
+<tr>
+<td><strong>Target market · segmentation</strong></td>
+<td><strong>Marketing PROCESS</strong> → &quot;identifying target markets&quot; (step 4)</td>
+<td><strong>Marketing STRATEGIES</strong> → &quot;market segmentation, product/service differentiation and positioning&quot;</td>
+<td><em>Which group do we sell to</em> → <strong>process</strong>. <em>How do we divide the market and position in it</em> → <strong>strategy</strong></td>
+</tr>
+<tr>
+<td><strong>Monitoring · controlling</strong></td>
+<td><strong>Marketing PROCESS</strong> → step 6, &quot;implementation, monitoring and controlling&quot;</td>
+<td><strong>Finance PROCESSES</strong> → &quot;monitoring and controlling — cash flow statement, income statement, balance sheet&quot;</td>
+<td>Marketing: compare actual to planned <strong>sales</strong>, revise the mix. Finance: the <strong>three statements</strong></td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>Placement traps worth memorising:</strong></p>
+<ul>
+<li><strong>Stakeholders</strong> are an <strong>HR influence</strong>, not part of the role of HRM.</li>
+<li><strong>Comparative ratio analysis</strong> is a named <strong>Finance process</strong> dot point — the comparison <em>is</em> the syllabus content, not just good technique.</li>
+<li><strong>Motivation theories</strong> (Maslow, Herzberg, McGregor) and <strong>organisational structures</strong> are <strong>not in the HSC syllabus</strong> at all.</li>
+</ul>
+</blockquote>
+<hr>
+<h2 id="7-self-test">7. Self-Test</h2>
+<blockquote>
+<p>Cover the tells above. Write the distinguishing feature for each. Anything you hesitate on for more than three seconds, star and redo tomorrow.</p>
+</blockquote>
+<p><strong>Round 1 — the eight you&#39;ve missed</strong></p>
+<pre><code>1.  Resource market vs Industrial market
+2.  Unfair dismissal vs Performance appraisal
+3.  Common law contract vs Enterprise agreement
+4.  Name the four key business functions
+5.  Financial cost of change vs Inertia
+6.  Administrative vs Developmental performance management
+7.  Market share analysis vs Marketing profitability analysis
+8.  FIFO vs LIFO when prices are rising
+</code></pre>
+<p><strong>Round 2 — highest-frequency in past papers</strong></p>
+<pre><code> 9.  Sequencing vs Scheduling
+10.  Quality control vs Quality assurance
+11.  Transformed vs Transforming resources
+12.  Lead time vs Cycle time
+13.  Liquidity vs Solvency
+14.  Income statement vs Balance sheet
+15.  Cash flow statement vs Cash flow budget
+16.  Primary vs Secondary market
+17.  Job description vs Job specification
+18.  Recruitment vs Selection
+19.  Training vs Development
+20.  Redundancy vs Dismissal
+21.  Mediation vs Conciliation vs Arbitration
+22.  Award vs Enterprise agreement
+23.  Primary vs Secondary data
+24.  Price skimming vs Price penetration
+25.  Publicity vs Public relations
+</code></pre>
+<p><strong>Round 3 — the trickier ones</strong></p>
+<pre><code>26.  Outsourcing vs Offshoring vs Global sourcing
+27.  Capitalising an expense vs Expensing it
+28.  Normalised earnings vs Window dressing
+29.  Window dressing vs Fraud
+30.  Hedging vs Derivative
+31.  Spot rate vs Forward rate
+32.  Operating lease vs Financial lease
+33.  Cost leadership vs Lowest price
+34.  Design quality vs Conformance quality
+35.  Process layout vs Product layout
+36.  Hygiene factors vs Motivators
+37.  Intrinsic vs Extrinsic rewards
+38.  Piece rate vs Commission
+39.  Voluntary vs Involuntary separation
+40.  Control in Operations vs Control in Finance
+</code></pre>
+<hr>
+<h2 id="8-mcq-method">8. MCQ Method</h2>
+<blockquote>
+<p>Four minutes lost to careless reading is four marks. Same as a full extended-response paragraph.</p>
+</blockquote>
+<pre><code>1. UNDERLINE the exact noun the question asks for.
+   &quot;which key business FUNCTION&quot;  →  only four options qualify
+   &quot;control of current ASSETS&quot;    →  liabilities options are out
+   &quot;FINANCIAL cost&quot;               →  behavioural options are out
+
+2. Check for a directional word that flips the answer.
+   SEEKING a discount (you pay)  vs  OFFERING a discount (you&#39;re paid)
+   sell IN a market              vs  sell TO a market
+   an INCREASE in economic activity (boom only)
+
+3. If two options are from the same pair, ONE of them is the trap.
+   Ask which member the question actually named.
+
+4. On calculations, compare the given figures before deciding.
+   Inventory $15 000 sold for $15 000 = no profit = no change.
+</code></pre>
+<hr>
+<blockquote>
+<p><strong>See also:</strong> <a href="MOC.html">MOC</a> | <a href="Trial_Practice_Killara_2022.html">Trial Practice Killara 2022</a> | <a href="Operations__Operations_FULL.html">Operations</a> | <a href="Marketing__Marketing_FULL.html">Marketing</a> | <a href="Finance__Finance_FULL.html">Finance</a> | <a href="Human_Resources__Human_Resources_FULL.html">Human Resources</a></p>
+</blockquote>
+</article></main></div><nav class="rail" aria-label="On this page"><div class="rail-title">On this page</div><ul><li><a href="#1-the-ten-you-have-actually-got-wrong" data-target="1-the-ten-you-have-actually-got-wrong">1. ⚠️ The Ten You Have Actually Got Wrong</a></li><li><a href="#2-operations" data-target="2-operations">2. Operations</a><ul class="sub"><li><a href="#processes" data-target="processes" data-parent="2-operations">Processes</a></li><li><a href="#quality-and-layout" data-target="quality-and-layout" data-parent="2-operations">Quality and layout</a></li><li><a href="#inventory" data-target="inventory" data-parent="2-operations">Inventory</a></li><li><a href="#strategy-and-influences" data-target="strategy-and-influences" data-parent="2-operations">Strategy and influences</a></li></ul></li><li><a href="#3-marketing" data-target="3-marketing">3. Marketing</a><ul class="sub"><li><a href="#markets-and-segmentation" data-target="markets-and-segmentation" data-parent="3-marketing">Markets and segmentation</a></li><li><a href="#influences-on-consumer-choice" data-target="influences-on-consumer-choice" data-parent="3-marketing">Influences on consumer choice</a></li><li><a href="#process-and-kpis" data-target="process-and-kpis" data-parent="3-marketing">Process and KPIs</a></li><li><a href="#strategies" data-target="strategies" data-parent="3-marketing">Strategies</a></li><li><a href="#consumer-law-the-five" data-target="consumer-law-the-five" data-parent="3-marketing">Consumer law — the five</a></li></ul></li><li><a href="#4-finance" data-target="4-finance">4. Finance</a><ul class="sub"><li><a href="#the-seven-ratios" data-target="the-seven-ratios" data-parent="4-finance">The seven ratios</a></li></ul></li><li><a href="#5-human-resources" data-target="5-human-resources">5. Human Resources</a><ul class="sub"><li><a href="#acquisition" data-target="acquisition" data-parent="5-human-resources">Acquisition</a></li><li><a href="#leadership-and-job-design" data-target="leadership-and-job-design" data-parent="5-human-resources">Leadership and job design</a></li><li><a href="#development-and-maintenance" data-target="development-and-maintenance" data-parent="5-human-resources">Development and maintenance</a></li><li><a href="#separation" data-target="separation" data-parent="5-human-resources">Separation</a></li><li><a href="#legal-and-disputes" data-target="legal-and-disputes" data-parent="5-human-resources">Legal and disputes</a></li></ul></li><li><a href="#6-same-word-different-topic" data-target="6-same-word-different-topic">6. Same Word, Different Topic</a><ul class="sub"><li><a href="#6-1-same-words-two-syllabus-sections" data-target="6-1-same-words-two-syllabus-sections" data-parent="6-same-word-different-topic">6.1 ⭐ Same words, two syllabus sections</a></li></ul></li><li><a href="#7-self-test" data-target="7-self-test">7. Self-Test</a></li><li><a href="#8-mcq-method" data-target="8-mcq-method">8. MCQ Method</a></li></ul></nav><script>
+function toggleTheme(ev){
+var oldTheme=document.documentElement.getAttribute("data-theme")||"dark";
+var next=oldTheme==="light"?"dark":"light";
+function apply(){document.documentElement.setAttribute("data-theme",next);try{localStorage.setItem("vault-theme",next)}catch(e){}updateThemeIcons(next);}
+var reduced=false;try{reduced=window.matchMedia("(prefers-reduced-motion: reduce)").matches}catch(e){}
+if(reduced){apply();return;}
+if(window.__vaultThemeAnimating){return;}
+window.__vaultThemeAnimating=1;
+var newPaper=next==="light"?"#faf8f2":"#13151b";
+var W=window.innerWidth,H=window.innerHeight;
+var spacing=W<768?36:28;
+var maxR=spacing*0.78;
+var dpr=1;try{dpr=W<768?1:Math.min(window.devicePixelRatio||1,1.5);}catch(e){}
+var canvas=document.createElement("canvas");
+canvas.id="theme-wave";
+canvas.style.cssText="position:fixed;left:0;top:0;width:"+W+"px;height:"+H+"px;z-index:9999;pointer-events:none;";
+canvas.width=Math.round(W*dpr);canvas.height=Math.round(H*dpr);
+var ctx=canvas.getContext("2d");
+try{ctx.setTransform(dpr,0,0,dpr,0,0);}catch(e){}
+ctx.fillStyle=newPaper;
+var dots=[];
+for(var y=spacing/2;y<H+spacing;y+=spacing){for(var x=spacing/2;x<W+spacing;x+=spacing){dots.push({x:x,y:y,delay:(x+y)/(W+H)*450,done:0});}}
+var waveMs=450,growMs=300;
+var start=Date.now();
+function easeOutCubic(p){return 1-Math.pow(1-p,3);}
+function step(){
+var elapsed=Date.now()-start;
+var allDone=true;
+var any=false;
+ctx.beginPath();
+for(var i=0;i<dots.length;i++){
+var d=dots[i];
+if(d.done){continue;}
+var p=(elapsed-d.delay)/growMs;
+if(p<0){allDone=false;continue;}
+if(p<1){allDone=false;}
+else{d.done=1;}
+var r=maxR*easeOutCubic(p<1?p:1);
+if(r>0){ctx.moveTo(d.x+r,d.y);ctx.arc(d.x,d.y,r,0,Math.PI*2);any=true;}
+}
+if(any){ctx.fill();}
+if(!allDone){requestAnimationFrame(step);return;}
+apply();
+canvas.style.transition="opacity 0.15s ease";
+canvas.style.opacity="0";
+setTimeout(function(){window.__vaultThemeAnimating=0;if(canvas.parentNode)canvas.parentNode.removeChild(canvas);},180);
+}
+document.body.appendChild(canvas);
+requestAnimationFrame(step);
+}
+function updateThemeIcons(theme){var icon=theme==="dark"?"☀":"☾";document.querySelectorAll(".theme-btn").forEach(function(b){b.textContent=icon;});}
+try{updateThemeIcons(document.documentElement.getAttribute("data-theme")||"dark");}catch(e){}
+function toggleMenu(force){document.body.classList.toggle("menu-open",force)}
+document.addEventListener("keydown",function(e){if(e.key==="/"&&!/INPUT|TEXTAREA/.test(document.activeElement.tagName)){e.preventDefault();var s=document.querySelector(".side-search");if(s)s.focus()}});
+document.addEventListener("click",function(e){if(e.target.closest(".side a"))toggleMenu(false)});
+(function(){try{
+var links=Array.prototype.slice.call(document.querySelectorAll(".rail a"));
+if(!links.length||!window.IntersectionObserver)return;
+var map={};links.forEach(function(a){map[a.getAttribute("data-target")]=a});
+var obs=new IntersectionObserver(function(es){
+  es.forEach(function(e){
+    if(e.isIntersecting){
+      links.forEach(function(a){a.classList.remove("active");a.classList.remove("parent-active")});
+      var l=map[e.target.id];
+      if(l){l.classList.add("active");var p=l.getAttribute("data-parent");if(p&&map[p])map[p].classList.add("parent-active")}
+    }
+  });
+}, {rootMargin:"-20% 0px -70% 0px"});
+document.querySelectorAll(".prose h2[id], .prose h3[id]").forEach(function(h){obs.observe(h)});
+}catch(e){}})();
+(function(){try{
+var cv=document.getElementById("dotgrid");if(!cv)return;var ctx=cv.getContext("2d");if(!ctx)return;
+var reduced=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+var W=0,H=0,dpr=1,cols=0,rows=0,SP=28,px=0,py=0,pt=0,hasP=false;
+function dotRGB(){try{return getComputedStyle(document.documentElement).getPropertyValue("--dot-rgb").trim()||"233,231,225"}catch(e){return "233,231,225"}}
+function resize(){dpr=Math.min(window.devicePixelRatio||1,window.innerWidth<700?1.5:2);SP=window.innerWidth<700?36:28;W=window.innerWidth;H=window.innerHeight;cv.width=W*dpr;cv.height=H*dpr;cv.style.width=W+"px";cv.style.height=H+"px";ctx.setTransform(dpr,0,0,dpr,0,0);cols=Math.ceil(W/SP)+1;rows=Math.ceil(H/SP)+1}
+var R=Math.random()*Math.PI*2;
+var FORCES=[
+ {ax:.42,ay:.15,tx:26,ty:31,px:R,py:R+1.3,circ:false},
+ {ax:.38,ay:.42,tx:37,ty:23,px:R+2.1,py:R+0.7,circ:false},
+ {ax:.30,ay:.30,tx:41,ty:41,px:R+4.0,py:R+4.0,circ:true}
+];
+function draw(now){var t=now/1000;var rgb=dotRGB();
+var activeForces=W>=1280?FORCES:FORCES.slice(0,1);
+var pFade=hasP?Math.max(0,1-(now-pt)/4000):0;
+ctx.clearRect(0,0,W,H);
+for(var y=0;y<rows;y++)for(var x=0;x<cols;x++){var ox=x*SP+10,oy=y*SP+10,a=0.14,dispX=0,dispY=0;
+for(var fi=0;fi<activeForces.length;fi++){var F=activeForces[fi];
+var fx=F.circ?W*(0.5+F.ax*Math.cos(t*2*Math.PI/F.tx+F.px)):W*(0.5+F.ax*Math.sin(t*2*Math.PI/F.tx+F.px));
+var fy=F.circ?H*(0.5+F.ay*Math.sin(t*2*Math.PI/F.ty+F.py)):H*(0.5+F.ay*Math.sin(t*2*Math.PI/F.ty+F.py));
+var ddx=ox-fx,ddy=oy-fy,d=Math.sqrt(ddx*ddx+ddy*ddy);
+if(d<170&&d>0.01){var f=1-d/170;f=f*f;dispX+=(ddx/d)*6*f;dispY+=(ddy/d)*6*f;a+=0.20*f}}
+var dm=Math.sqrt(dispX*dispX+dispY*dispY);if(dm>9){dispX*=9/dm;dispY*=9/dm}
+var dx=ox+dispX,dy=oy+dispY;if(a>0.38)a=0.38;
+if(pFade>0){var pdx=ox-px,pdy=oy-py,pd=Math.sqrt(pdx*pdx+pdy*pdy);
+if(pd<150&&pd>0.01){var pf=1-pd/150;pf=pf*pf*pFade;dx+=(pdx/pd)*5*pf;dy+=(pdy/pd)*5*pf;a=Math.min(0.38,a+0.18*pf)}}
+ctx.beginPath();ctx.arc(dx,dy,1.3,0,Math.PI*2);ctx.fillStyle="rgba("+rgb+","+a.toFixed(3)+")";ctx.fill()}}
+function loop(now){if(!window.__vaultThemeAnimating)draw(now);if(!reduced)requestAnimationFrame(loop)}
+window.addEventListener("resize",resize);resize();
+window.addEventListener("pointermove",function(e){px=e.clientX;py=e.clientY;pt=performance.now();hasP=true},{passive:true});
+requestAnimationFrame(loop);
+}catch(e){}})();
+</script></body></html>

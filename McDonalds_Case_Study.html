@@ -1,0 +1,431 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>McDonald's Case Study — Section IV Essay Resource — HSC Business Vault</title><style>
+:root{--paper:#faf8f2;--ink:#1e1b16;--muted:#6b655a;--line:#e3ddd0;--accent:#1d4ed8;--card:#fffdf8;--side:#f3efe6;--side-bg:rgba(243,239,230,.88);--active:#e8e0cd;--rail-tint:rgba(29,78,216,.14);--rail-tint-soft:rgba(29,78,216,.07);--code:#efe9db;--quote:#4a4438;--dot-rgb:30,27,22;--scheme:light}
+[data-theme="dark"]{--paper:#13151b;--ink:#e9e7e1;--muted:#9aa0ab;--line:#2b2f3a;--accent:#8ab4ff;--card:#1b1e27;--side:#101218;--side-bg:rgba(16,18,24,.88);--active:#262b38;--rail-tint:rgba(138,180,255,.18);--rail-tint-soft:rgba(138,180,255,.09);--code:#262a36;--quote:#c3c7cf;--dot-rgb:233,231,225;--scheme:dark}
+*{box-sizing:border-box}html{color-scheme:var(--scheme)}body{margin:0;background:var(--paper);color:var(--ink);font:16.5px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;overflow-x:hidden}
+a{color:var(--accent);text-decoration:none;transition:color .18s ease}a:hover{text-decoration:underline}
+#dotgrid{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:0}
+.wrap{position:relative;z-index:1;display:grid;grid-template-columns:280px 1fr;min-height:100vh}
+.side{position:sticky;top:0;height:100vh;overflow:auto;padding:22px 18px;border-right:1px solid var(--line);background:var(--side-bg)}
+.side h3{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:22px 0 6px}
+.side ul{list-style:none;margin:0;padding:0}.side li{margin:3px 0}
+.side a{display:block;padding:7px 10px;border-radius:8px;color:var(--ink);transition:background .18s ease,transform .18s ease}
+.side a.active{background:var(--active);font-weight:600}
+.side a:hover{background:var(--active);text-decoration:none;transform:translateX(3px)}
+.side-head{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.theme-btn{flex:none;width:40px;height:40px;border:1px solid var(--line);border-radius:50%;background:var(--card);color:var(--ink);font-size:18px;cursor:pointer;transition:background .18s ease}
+.theme-btn:hover{background:var(--active)}
+.home-link{font-weight:700;font-size:18px}.side-search{width:100%;margin:14px 0 4px;padding:10px 12px;border:1px solid var(--line);border-radius:8px;background:var(--card);color:var(--ink);font-size:16px}
+.side-note{font-size:12.5px;color:var(--muted);line-height:1.5;margin-top:24px}
+.topbar{display:none}.backdrop{display:none}
+main{padding:36px 44px;max-width:860px}.prose h1{font-size:32px;line-height:1.2;letter-spacing:-.02em;margin:0 0 6px}
+.prose h2{font-size:23px;margin:34px 0 8px;padding-top:14px;border-top:1px solid var(--line)}
+.prose h3{font-size:18px;margin:26px 0 6px}.prose p{margin:10px 0}
+.prose table{border-collapse:collapse;width:100%;margin:14px 0;font-size:14.5px;display:block;overflow-x:auto;-webkit-overflow-scrolling:touch}
+.prose th,.prose td{border:1px solid var(--line);padding:7px 10px;text-align:left;vertical-align:top}
+.prose th{background:var(--side)}.prose blockquote{border-left:3px solid var(--line);margin:14px 0;padding:2px 14px;color:var(--quote);background:var(--card)}
+.prose code{background:var(--code);padding:1px 5px;border-radius:4px;font-size:14px}.prose pre{background:#0d0f14;color:#f5f1e6;padding:14px;border-radius:8px;overflow:auto}
+.prose pre code{background:none;color:inherit;padding:0}.prose hr{border:none;border-top:1px solid var(--line);margin:24px 0}
+.meta{color:var(--muted);font-size:14px;margin-bottom:20px}.toc{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 18px;margin:18px 0}
+.toc b{font-size:13px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}.toc ul{margin:8px 0 0;padding-left:18px}.toc li{margin:3px 0}
+.cards{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:20px 0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 18px;transition:transform .2s ease,border-color .2s ease,box-shadow .2s ease}
+.card:hover{transform:translateY(-3px);border-color:var(--accent);box-shadow:0 8px 24px rgba(0,0,0,.18)}
+.card h3{margin:0 0 4px}.card p{margin:0;color:var(--muted);font-size:14.5px}
+#search{width:100%;padding:13px 14px;font-size:17px;border:1px solid var(--line);border-radius:10px;background:var(--card);color:var(--ink)}
+.result{border-bottom:1px solid var(--line);padding:14px 6px;border-radius:8px;transition:background .18s ease,transform .18s ease}
+.result:hover{background:var(--card);transform:translateX(3px)}
+.result h3{margin:0}.result p{margin:4px 0;color:var(--quote)}.result .path{font-size:13px;color:var(--muted)}
+mark{background:#fde68a;color:#1e1b16;padding:0 1px}
+html{scroll-behavior:smooth}
+.rail{display:none}
+@media(min-width:1280px){
+main{max-width:min(860px,calc(100vw - 692px))}
+.rail{display:block;position:fixed;right:24px;top:50%;transform:translateY(-50%);width:340px;max-height:76vh;overflow:auto;z-index:15;background:none;border:none;box-shadow:none;padding:18px 14px;-webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 36px,#000 calc(100% - 36px),transparent 100%);mask-image:linear-gradient(to bottom,transparent 0,#000 36px,#000 calc(100% - 36px),transparent 100%)}
+.rail-title{font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:2px 0 12px 12px}
+.rail ul{list-style:none;margin:0;padding:0}
+.rail li{margin:3px 0}
+.rail a{display:block;padding:11px 14px;border-radius:10px;color:var(--ink);font-size:17px;line-height:1.4;transition:transform .2s ease,background .2s ease}
+.rail a:hover,.rail a:focus-visible{background:var(--rail-tint-soft);transform:translateX(-4px) scale(1.02);text-decoration:none}
+.rail a.active{background:var(--rail-tint);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);font-weight:600;transform:translateX(-12px);width:calc(100% + 12px)}
+.rail a.parent-active{background:var(--rail-tint-soft)}
+.rail ul.sub{margin:3px 0 3px 14px;padding-left:14px;border-left:1px solid var(--line)}
+.rail ul.sub a{padding:9px 12px;font-size:15px;color:var(--muted)}
+.rail ul.sub a:hover{color:var(--ink)}
+.rail ul.sub a.active{color:var(--ink);transform:translateX(-8px);width:calc(100% + 8px)}
+}
+@media(max-width:900px){
+.topbar{display:flex;position:sticky;top:0;z-index:20;align-items:center;gap:10px;padding:12px 14px;background:var(--side);border-bottom:1px solid var(--line)}
+.topbar b{flex:1;font-size:17px}.menu-btn,.topbar .theme-btn{width:44px;height:44px;border:1px solid var(--line);border-radius:10px;background:var(--card);color:var(--ink);font-size:19px;cursor:pointer}
+.wrap{grid-template-columns:1fr}
+.wrap{z-index:auto}
+.side{background:var(--side)}
+.side a{padding:11px 12px}
+body.menu-open{overflow:hidden}
+.side{position:fixed;inset:0 auto 0 0;width:300px;max-width:86vw;height:100dvh;z-index:30;transform:translateX(-105%);transition:transform .25s ease;box-shadow:0 0 40px rgba(0,0,0,.4)}
+body.menu-open .side{transform:translateX(0)}
+.backdrop{display:none}body.menu-open .backdrop{display:block;position:fixed;inset:0;z-index:25;background:rgba(0,0,0,.45)}
+main{padding:22px 16px}.prose h1{font-size:26px}.prose h2{font-size:21px}.cards{grid-template-columns:1fr}
+.prose table{font-size:14px}.prose pre{font-size:13.5px}
+}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}html{scroll-behavior:auto}}
+</style><script>(function(){try{var t=localStorage.getItem("vault-theme")||"dark";document.documentElement.setAttribute("data-theme",t)}catch(e){document.documentElement.setAttribute("data-theme","dark")}})()</script></head><body><canvas id="dotgrid" aria-hidden="true"></canvas><header class="topbar"><button class="menu-btn" type="button" onclick="toggleMenu()" aria-label="Open notes menu">☰</button><b>Business Vault</b><button class="theme-btn" type="button" onclick="toggleTheme(event)" aria-label="Toggle dark / light mode">◐</button></header><div class="backdrop" onclick="toggleMenu(false)"></div><div class="wrap"><nav class="side" id="side"><div class="side-head"><a class="home-link" href="index.html">⌂ Vault home</a><button class="theme-btn" type="button" onclick="toggleTheme(event)" aria-label="Toggle dark / light mode">◐</button></div><input class="side-search" type="search" placeholder="Search notes…  ( / )" onkeydown="if(event.key==='Enter'){location.href='index.html?q='+encodeURIComponent(this.value)}"><h3>Operations</h3><ul><li><a class="" href="Operations__Operations_1_Role.html">1 Role</a></li><li><a class="" href="Operations__Operations_2_Influences.html">2 Influences</a></li><li><a class="" href="Operations__Operations_3_Processes.html">3 Processes</a></li><li><a class="" href="Operations__Operations_4_Strategies.html">4 Strategies</a></li><li><a class="" href="Operations__Operations_Syllabus_Summary.html">Syllabus Summary</a></li><li><a class="" href="Operations__Operations_FULL.html">FULL</a></li></ul><h3>Marketing</h3><ul><li><a class="" href="Marketing__Marketing_1_Role.html">1 Role</a></li><li><a class="" href="Marketing__Marketing_2_Influences.html">2 Influences</a></li><li><a class="" href="Marketing__Marketing_3_Processes.html">3 Processes</a></li><li><a class="" href="Marketing__Marketing_4_Strategies.html">4 Strategies</a></li><li><a class="" href="Marketing__Marketing_Syllabus_Summary.html">Syllabus Summary</a></li><li><a class="" href="Marketing__Marketing_FULL.html">FULL</a></li></ul><h3>Finance</h3><ul><li><a class="" href="Finance__Finance_1_Role.html">1 Role</a></li><li><a class="" href="Finance__Finance_2_Influences.html">2 Influences</a></li><li><a class="" href="Finance__Finance_3_Processes.html">3 Processes</a></li><li><a class="" href="Finance__Finance_4_Strategies.html">4 Strategies</a></li><li><a class="" href="Finance__Finance_Syllabus_Summary.html">Syllabus Summary</a></li><li><a class="" href="Finance__Finance_FULL.html">FULL</a></li></ul><h3>Human Resources</h3><ul><li><a class="" href="Human_Resources__Human_Resources_1_Role.html">1 Role</a></li><li><a class="" href="Human_Resources__Human_Resources_2_Influences.html">2 Influences</a></li><li><a class="" href="Human_Resources__Human_Resources_3_Processes.html">3 Processes</a></li><li><a class="" href="Human_Resources__Human_Resources_4_Strategies.html">4 Strategies</a></li><li><a class="" href="Human_Resources__Human_Resources_Syllabus_Summary.html">Syllabus Summary</a></li><li><a class="" href="Human_Resources__Human_Resources_FULL.html">FULL</a></li></ul><h3>Exam &amp; revision</h3><ul><li><a class="" href="MOC.html">Final Notes</a></li><li><a class="" href="Case_Study_Stats_Sheet.html">Business Studies Case Study Stats Sheet</a></li><li><a class="" href="Case_Studies.html">Case Studies — HSC Business Studies Final Notes</a></li><li><a class="" href="Confusing_Pairs.html">Confusing Pairs — MCQ Drill Sheet</a></li><li><a class="" href="Crichton_Office_Supplies_Report_and_Apple_Marketing_Essay.html">Crichton Office Supplies Report and Apple Marketing Essay</a></li><li><a class="" href="Trial_Practice_Killara_2022.html">Killara 2022 Trial — Marked Paper and Model Answers</a></li><li><a class="active" href="McDonalds_Case_Study.html">McDonald's Case Study — Section IV Essay Resource</a></li><li><a class="" href="Section_III_Business_Report.html">Section III — How to Write the Business Report</a></li><li><a class="" href="Section_IV_Extended_Response.html">Section IV — How to Write the Extended Response</a></li><li><a class="" href="Marketing_Universal_Essay.html">Universal Marketing Essay — McDonald's Case Study</a></li><li><a class="" href="Finance_Management.html">Finance (moved)</a></li><li><a class="" href="Human_Resources.html">Human Resources (moved)</a></li><li><a class="" href="Marketing.html">Marketing (moved)</a></li><li><a class="" href="Operations.html">Operations (moved)</a></li></ul><p class="side-note">Source: TheSashi HSC Business Studies Notes, Final folder. Cloned 25 Oct 2026. Plus one added McDonald's note (see Exam & revision).</p></nav><main><article class="prose"><h1>McDonald's Case Study — Section IV Essay Resource</h1><p class="meta">Exam &amp; revision · McDonalds_Case_Study.md</p><div class="toc"><b>On this page</b><ul><li><a href="#quick-jump">Quick Jump</a></li><li><a href="#1-company-profile-key-statistics">1. Company Profile &amp; Key Statistics</a></li><li><a href="#2-operations-strategies-policies-data">2. Operations — Strategies, Policies &amp; Data</a></li><li><a href="#3-marketing-strategies-policies-data">3. Marketing — Strategies, Policies &amp; Data</a></li><li><a href="#4-finance-ratios-strategies-analysis">4. Finance — Ratios, Strategies &amp; Analysis</a></li><li><a href="#5-hr-policies-legal-compliance-case-law">5. HR — Policies, Legal Compliance &amp; Case Law</a></li></ul></div><h1>McDonald&#39;s Case Study — Section IV Essay Resource</h1>
+<blockquote>
+<p><strong>Added note — not from the TheSashi notes.</strong> Added 25 Oct 2026 from your McDonald&#39;s Section IV resource screenshot. For Section IV (Case Study Essay) — Trial Aug 5, 2026. Complete data pack: company profile, key stats, strategies, policies, financial ratios, and essay-ready paragraphs.</p>
+<p>Sections 6 (Strategy → Objective Matrix) and 7 (Essay-Ready Paragraph Templates) were listed in the resource&#39;s Quick Jump but were cut off at the bottom of your screenshot, so they are not included here. Send the rest and they can be added.</p>
+</blockquote>
+<h2 id="quick-jump">Quick Jump</h2>
+<ul>
+<li><ol>
+<li>Company Profile &amp; Key Statistics</li>
+</ol>
+</li>
+<li><ol start="2">
+<li>Operations — Strategies, Policies &amp; Data</li>
+</ol>
+</li>
+<li><ol start="3">
+<li>Marketing — Strategies, Policies &amp; Data</li>
+</ol>
+</li>
+<li><ol start="4">
+<li>Finance — Ratios, Strategies &amp; Analysis</li>
+</ol>
+</li>
+<li><ol start="5">
+<li>HR — Policies, Legal Compliance &amp; Case Law</li>
+</ol>
+</li>
+<li><ol start="6">
+<li>Strategy → Objective Matrix — <em>not shown in screenshot</em></li>
+</ol>
+</li>
+<li><ol start="7">
+<li>Essay-Ready Paragraph Templates — <em>not shown in screenshot</em></li>
+</ol>
+</li>
+</ul>
+<h2 id="1-company-profile-key-statistics">1. Company Profile &amp; Key Statistics</h2>
+<h3 id="mcdonald-s-corporation">McDonald&#39;s Corporation</h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Founded</td>
+<td>1940 (franchise model since 1955)</td>
+</tr>
+<tr>
+<td>HQ</td>
+<td>Chicago, USA</td>
+</tr>
+<tr>
+<td>Global Stores</td>
+<td>&gt;40,000 in 100+ countries</td>
+</tr>
+<tr>
+<td>Australian Stores</td>
+<td>&gt;1,000 (80% franchised)</td>
+</tr>
+<tr>
+<td>Employees (Aus)</td>
+<td>&gt;100,000</td>
+</tr>
+<tr>
+<td>Revenue 2023</td>
+<td>$25.49 billion USD</td>
+</tr>
+<tr>
+<td>Revenue 2022</td>
+<td>$23.18 billion USD</td>
+</tr>
+<tr>
+<td>Business Model</td>
+<td>Franchise (~93% franchised globally)</td>
+</tr>
+</tbody></table>
+<h3 id="key-essay-statistics-2023">Key Essay Statistics (2023)</h3>
+<table>
+<thead>
+<tr>
+<th>Statistic</th>
+<th>Value</th>
+<th>Note</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>NP Ratio</td>
+<td>33%</td>
+<td>+6pp from 2022</td>
+</tr>
+<tr>
+<td>Current Ratio</td>
+<td>1.16:1</td>
+<td>Down from 1.43:1</td>
+</tr>
+<tr>
+<td>Gearing (D/E)</td>
+<td>(869)%</td>
+<td>Negative (share buyback)</td>
+</tr>
+<tr>
+<td>AR Turnover</td>
+<td>32.88 days</td>
+<td>Stable</td>
+</tr>
+<tr>
+<td>Operating Costs</td>
+<td>$13.85B</td>
+<td>Only 0.3% increase</td>
+</tr>
+<tr>
+<td>Inventory</td>
+<td>~$52M</td>
+<td>Stable across 2022–23</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>How to use these stats in an essay:</strong> &quot;McDonald&#39;s improved its Net Profit ratio from 27% in 2022 to 33% in 2023, outpacing competitor Yum Brands (23%), demonstrating the effectiveness of its integrated marketing and cost control strategies in achieving the financial objective of profitability.&quot;</p>
+</blockquote>
+<h2 id="2-operations-strategies-policies-data">2. Operations — Strategies, Policies &amp; Data</h2>
+<h3 id="supply-chain-management-global-sourcing">Supply Chain Management — Global Sourcing</h3>
+<p><strong>Tags:</strong> Cost, Dependability, Quality</p>
+<p>McDonald&#39;s sources ingredients from approved suppliers in multiple countries. In Australia, &gt;90% of ingredients are locally sourced. The global supply chain uses regional distribution centres to minimise lead times.</p>
+<p><strong>Data point:</strong> McDonald&#39;s Australia works with &gt;150 Australian farmers and suppliers, reducing transport costs and supporting the cost performance objective while ensuring dependability of supply.</p>
+<h3 id="quality-management-tqm">Quality Management — TQM</h3>
+<p><strong>Tags:</strong> Quality, Cost</p>
+<p>McDonald&#39;s uses a Total Quality Management (TQM) approach: quality assurance systems at every stage from supplier audits to in-store cooking protocols. The &quot;Made For You&quot; system ensures burgers are assembled to order, reducing waste.</p>
+<p><strong>Data point:</strong> Standardised cooking times and temperatures across all 40,000+ stores ensure consistency — a core element of quality assurance.</p>
+<h3 id="technology-automation">Technology — Automation</h3>
+<p><strong>Tags:</strong> Cost, Speed</p>
+<p>Self-service kiosks installed in the majority of Australian stores. Mobile app ordering with geofencing for pickup timing. Automated inventory tracking systems link POS data to supply orders.</p>
+<p><strong>Data point:</strong> Kiosks reduce front-counter labour costs by ~15–20% per store while increasing average order value by 20% (upselling prompts).</p>
+<h3 id="inventory-management-jit">Inventory Management — JIT</h3>
+<p><strong>Tags:</strong> Cost, Quality</p>
+<p>Just-In-Time (JIT) inventory: perishable ingredients (lettuce, buns, meat patties) delivered multiple times per week. Reduces holding costs and spoilage.</p>
+<p><strong>Data point:</strong> Inventory held at a stable ~$52M despite revenue growth from $23.2B to $25.5B — JIT improving efficiency.</p>
+<h3 id="global-factors-economies-of-scale">Global Factors — Economies of Scale</h3>
+<p><strong>Tags:</strong> Cost, Flexibility</p>
+<p>With &gt;40,000 stores, McDonald&#39;s achieves massive economies of scale in purchasing (bulk buying packaging, ingredients). Global R&amp;D centres develop menu innovations that roll out across markets.</p>
+<h3 id="environmental-sustainability-csr">Environmental Sustainability — CSR</h3>
+<p><strong>Tags:</strong> Customisation, Cost</p>
+<p>Australian stores: recycled building cladding, sheep&#39;s wool insulation, solar panels. &quot;Daisy and Liam&quot; robots in the USA disassemble old iPhones to recover rare minerals — part of circular economy commitment.</p>
+<p><strong>Policy:</strong> 100% of guest packaging from renewable/recycled sources by 2025 (global target).</p>
+<h2 id="3-marketing-strategies-policies-data">3. Marketing — Strategies, Policies &amp; Data</h2>
+<h3 id="promotion-integrated-campaigns">Promotion — Integrated Campaigns</h3>
+<p><strong>Tags:</strong> Growth, Profitability</p>
+<p>2023 Marvel Cinematic Universe partnership: movie figurines with large meals — incentivised upsizing + repeat visits + word-of-mouth.</p>
+<p><strong>Data point:</strong> Revenue increased from $23,182M to $25,493M (+10%) — this promotion was a key driver alongside maintaining costs at ~$13.8B.</p>
+<h3 id="pricing-penetration-loss-leader">Pricing — Penetration + Loss Leader</h3>
+<p><strong>Tags:</strong> Growth, Profitability</p>
+<p><strong>Loss Leader:</strong> $1 Frozen Coke / $1 McFlurry — brings customers in, they buy high-margin items.</p>
+<p><strong>Penetration:</strong> McValue menu at lower price points to capture price-sensitive consumers during a cost-of-living crisis.</p>
+<h3 id="global-marketing-glocalisation">Global Marketing — Glocalisation</h3>
+<p><strong>Tags:</strong> Growth, Customisation</p>
+<p><strong>Standardisation:</strong> Golden Arches, &quot;I&#39;m Lovin&#39; It&quot; slogan, core menu (Big Mac, Fries) are globally consistent.</p>
+<p><strong>Customisation / Localisation:</strong> Australia: McCafé (premium coffee), Chicken Salt on fries, Aussie Angus Burger. India: no beef, McAloo Tikki. Japan: Teriyaki Burger.</p>
+<h3 id="consumer-law-compliance-cca-2010">Consumer Law Compliance (CCA 2010)</h3>
+<p><strong>Tags:</strong> Ethics, Reputation</p>
+<p>Previously scrutinised by the ACCC for advertising food as &quot;healthy&quot; despite high sugar/fat content (misleading conduct under the CCA).</p>
+<p><strong>Response:</strong> Introduced clear nutritional labelling on packaging and menu boards, accurate calorie counts in all advertising.</p>
+<h3 id="e-marketing-digital-ecosystem">E-Marketing — Digital Ecosystem</h3>
+<p><strong>Tags:</strong> Growth, Efficiency</p>
+<p>MyMacca&#39;s app with loyalty program, personalised offers based on purchase history, geolocation-based promotions. &gt;30 million app downloads in Australia.</p>
+<h3 id="market-segmentation">Market Segmentation</h3>
+<p><strong>Demographic:</strong> Families (Happy Meals), young adults (value deals, late-night), coffee drinkers (McCafé).</p>
+<p><strong>Behavioural:</strong> Loyalty app users get targeted deals.</p>
+<p><strong>Geographic:</strong> Regional menu variations.</p>
+<h2 id="4-finance-ratios-strategies-analysis">4. Finance — Ratios, Strategies &amp; Analysis</h2>
+<h3 id="financial-ratio-data-2022-vs-2023">Financial Ratio Data (2022 vs 2023)</h3>
+<table>
+<thead>
+<tr>
+<th>Ratio</th>
+<th>2022</th>
+<th>2023</th>
+<th>Trend</th>
+<th>What It Means</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>NP Ratio (Profitability)</td>
+<td>27%</td>
+<td>33%</td>
+<td>Improved</td>
+<td>Revenue rose 10% while operating costs rose only ~0.3%, so profit margin expanded. Yum Brands: 23% in 2023, so McDonald&#39;s outperforms its competitor.</td>
+</tr>
+<tr>
+<td>Current Ratio (Liquidity)</td>
+<td>1.43:1</td>
+<td>1.16:1</td>
+<td>Worsened</td>
+<td>Below ideal 2:1. Still &gt;1:1, so it can meet short-term obligations, but the declining trend is a concern.</td>
+</tr>
+<tr>
+<td>Gearing / D/E (Solvency)</td>
+<td>(598)%</td>
+<td>(869)%</td>
+<td>Negative</td>
+<td>Negative due to an aggressive share buyback program reducing equity. Still relies more on debt than equity — high financial risk, but characteristic of mature franchise businesses with stable cash flows.</td>
+</tr>
+<tr>
+<td>AR Turnover (Efficiency)</td>
+<td>31.74 days</td>
+<td>32.88 days</td>
+<td>Stable</td>
+<td>Collects receivables in ~32 days (~11.4x/year). Slight slowdown but not material for a business that is mostly cash-based.</td>
+</tr>
+<tr>
+<td>Inventory</td>
+<td>~$52M</td>
+<td>~$52M</td>
+<td>Stable</td>
+<td>JIT working — revenue grew 10% but inventory didn&#39;t increase, showing efficiency gains.</td>
+</tr>
+</tbody></table>
+<h3 id="finance-strategies-at-mcdonald-s">Finance Strategies at McDonald&#39;s</h3>
+<h3 id="profitability-management-cost-control">Profitability Management — Cost Control</h3>
+<p><strong>Tags:</strong> Profitability, Efficiency</p>
+<p><strong>Cost centres:</strong> Each store is treated as a cost centre with local P&amp;L responsibility. Managers control labour scheduling, food waste, and utilities.</p>
+<p><strong>Data:</strong> Operating costs rose only 0.3% ($13,811.6M → $13,847M) while revenue rose 10%, demonstrating effective cost control.</p>
+<h3 id="working-capital-management">Working Capital Management</h3>
+<p><strong>Tags:</strong> Liquidity, Efficiency</p>
+<p>Cash-based business model minimises receivables; franchisees pay royalties and rent monthly. Tight inventory via JIT keeps current assets lean. However, the declining current ratio (1.43 → 1.16) signals a need for improved working capital management.</p>
+<h3 id="global-financial-management">Global Financial Management</h3>
+<p><strong>Tags:</strong> Growth, Solvency</p>
+<p><strong>Hedging:</strong> McDonald&#39;s operates in 100+ countries, exposed to ~50 currencies. Uses forward contracts and currency swaps to hedge against exchange rate fluctuations, protecting AUD-denominated profits when repatriating to US HQ.</p>
+<h3 id="cash-flow-management">Cash Flow Management</h3>
+<p><strong>Tags:</strong> Liquidity, Profitability</p>
+<p>Franchise model ensures steady cash inflows (royalties ~4–5% of gross sales + rent). Discounts for early payment from franchisees. Factoring is not typically used due to mostly cash-based operations.</p>
+<h2 id="5-hr-policies-legal-compliance-case-law">5. HR — Policies, Legal Compliance &amp; Case Law</h2>
+<h3 id="nes-compliance">NES Compliance</h3>
+<p>McDonald&#39;s Australia complies with all 11 NES including:</p>
+<ul>
+<li>Max 38hr/week for full-time</li>
+<li>4 weeks annual leave</li>
+<li>Parental leave (12mo unpaid + 24wks paid)</li>
+<li>Minimum wage $26.64/hr (above award for some roles)</li>
+<li>Casual loading 25%</li>
+</ul>
+<h3 id="whs-act-2011-compliance">WHS Act 2011 Compliance</h3>
+<ul>
+<li>PPE provided: non-slip shoes, heat-resistant gloves</li>
+<li>Mandatory safety training for all new hires</li>
+<li>Workers compensation insurance for all employees (incl. casuals)</li>
+<li>Return-to-work plans for injured workers</li>
+<li>SafeWork Australia compliance audits</li>
+</ul>
+<h3 id="enterprise-agreement">Enterprise Agreement</h3>
+<p>McDonald&#39;s Australia operates under an Enterprise Agreement negotiated between the company and employee representatives (SDA — Shop, Distributive and Allied Employees&#39; Association). It must pass the BOOT (Better Off Overall Test) compared to the Fast Food Industry Award.</p>
+<h3 id="wfh-case-law-fair-work-act-2009">WFH Case Law (Fair Work Act 2009)</h3>
+<p><strong>Key precedent:</strong> The Fair Work Commission ruled in favour of an employee&#39;s flexible working request (WFH under NES #2), allowing WFH despite employer pushback. The Commission upheld the employee&#39;s right to flexible arrangements to accommodate school drop-offs, citing strengthened workplace flexibility laws (2023 amendments to the Fair Work Act).</p>
+<p>Source: Yun, J. (2026) &quot;Mum wins WFH rights&quot; — Fair Work Commission arbitration.</p>
+<blockquote>
+<p><strong>HR Essay Strategy:</strong> Even though HR Strategies is not assessed, HR Influences (legal framework, stakeholders, economic/tech/social) and HR Processes (acquisition, development, maintenance, separation) CAN appear in a cross-topic Section III or in the SA section. The WFH case above is an excellent contemporary example of the Fair Work Act in action for any essay discussing legal influences on business.</p>
+</blockquote>
+</article></main></div><nav class="rail" aria-label="On this page"><div class="rail-title">On this page</div><ul><li><a href="#quick-jump" data-target="quick-jump">Quick Jump</a></li><li><a href="#1-company-profile-key-statistics" data-target="1-company-profile-key-statistics">1. Company Profile &amp; Key Statistics</a><ul class="sub"><li><a href="#mcdonald-s-corporation" data-target="mcdonald-s-corporation" data-parent="1-company-profile-key-statistics">McDonald's Corporation</a></li><li><a href="#key-essay-statistics-2023" data-target="key-essay-statistics-2023" data-parent="1-company-profile-key-statistics">Key Essay Statistics (2023)</a></li></ul></li><li><a href="#2-operations-strategies-policies-data" data-target="2-operations-strategies-policies-data">2. Operations — Strategies, Policies &amp; Data</a><ul class="sub"><li><a href="#supply-chain-management-global-sourcing" data-target="supply-chain-management-global-sourcing" data-parent="2-operations-strategies-policies-data">Supply Chain Management — Global Sourcing</a></li><li><a href="#quality-management-tqm" data-target="quality-management-tqm" data-parent="2-operations-strategies-policies-data">Quality Management — TQM</a></li><li><a href="#technology-automation" data-target="technology-automation" data-parent="2-operations-strategies-policies-data">Technology — Automation</a></li><li><a href="#inventory-management-jit" data-target="inventory-management-jit" data-parent="2-operations-strategies-policies-data">Inventory Management — JIT</a></li><li><a href="#global-factors-economies-of-scale" data-target="global-factors-economies-of-scale" data-parent="2-operations-strategies-policies-data">Global Factors — Economies of Scale</a></li><li><a href="#environmental-sustainability-csr" data-target="environmental-sustainability-csr" data-parent="2-operations-strategies-policies-data">Environmental Sustainability — CSR</a></li></ul></li><li><a href="#3-marketing-strategies-policies-data" data-target="3-marketing-strategies-policies-data">3. Marketing — Strategies, Policies &amp; Data</a><ul class="sub"><li><a href="#promotion-integrated-campaigns" data-target="promotion-integrated-campaigns" data-parent="3-marketing-strategies-policies-data">Promotion — Integrated Campaigns</a></li><li><a href="#pricing-penetration-loss-leader" data-target="pricing-penetration-loss-leader" data-parent="3-marketing-strategies-policies-data">Pricing — Penetration + Loss Leader</a></li><li><a href="#global-marketing-glocalisation" data-target="global-marketing-glocalisation" data-parent="3-marketing-strategies-policies-data">Global Marketing — Glocalisation</a></li><li><a href="#consumer-law-compliance-cca-2010" data-target="consumer-law-compliance-cca-2010" data-parent="3-marketing-strategies-policies-data">Consumer Law Compliance (CCA 2010)</a></li><li><a href="#e-marketing-digital-ecosystem" data-target="e-marketing-digital-ecosystem" data-parent="3-marketing-strategies-policies-data">E-Marketing — Digital Ecosystem</a></li><li><a href="#market-segmentation" data-target="market-segmentation" data-parent="3-marketing-strategies-policies-data">Market Segmentation</a></li></ul></li><li><a href="#4-finance-ratios-strategies-analysis" data-target="4-finance-ratios-strategies-analysis">4. Finance — Ratios, Strategies &amp; Analysis</a><ul class="sub"><li><a href="#financial-ratio-data-2022-vs-2023" data-target="financial-ratio-data-2022-vs-2023" data-parent="4-finance-ratios-strategies-analysis">Financial Ratio Data (2022 vs 2023)</a></li><li><a href="#finance-strategies-at-mcdonald-s" data-target="finance-strategies-at-mcdonald-s" data-parent="4-finance-ratios-strategies-analysis">Finance Strategies at McDonald's</a></li><li><a href="#profitability-management-cost-control" data-target="profitability-management-cost-control" data-parent="4-finance-ratios-strategies-analysis">Profitability Management — Cost Control</a></li><li><a href="#working-capital-management" data-target="working-capital-management" data-parent="4-finance-ratios-strategies-analysis">Working Capital Management</a></li><li><a href="#global-financial-management" data-target="global-financial-management" data-parent="4-finance-ratios-strategies-analysis">Global Financial Management</a></li><li><a href="#cash-flow-management" data-target="cash-flow-management" data-parent="4-finance-ratios-strategies-analysis">Cash Flow Management</a></li></ul></li><li><a href="#5-hr-policies-legal-compliance-case-law" data-target="5-hr-policies-legal-compliance-case-law">5. HR — Policies, Legal Compliance &amp; Case Law</a><ul class="sub"><li><a href="#nes-compliance" data-target="nes-compliance" data-parent="5-hr-policies-legal-compliance-case-law">NES Compliance</a></li><li><a href="#whs-act-2011-compliance" data-target="whs-act-2011-compliance" data-parent="5-hr-policies-legal-compliance-case-law">WHS Act 2011 Compliance</a></li><li><a href="#enterprise-agreement" data-target="enterprise-agreement" data-parent="5-hr-policies-legal-compliance-case-law">Enterprise Agreement</a></li><li><a href="#wfh-case-law-fair-work-act-2009" data-target="wfh-case-law-fair-work-act-2009" data-parent="5-hr-policies-legal-compliance-case-law">WFH Case Law (Fair Work Act 2009)</a></li></ul></li></ul></nav><script>
+function toggleTheme(ev){
+var oldTheme=document.documentElement.getAttribute("data-theme")||"dark";
+var next=oldTheme==="light"?"dark":"light";
+function apply(){document.documentElement.setAttribute("data-theme",next);try{localStorage.setItem("vault-theme",next)}catch(e){}updateThemeIcons(next);}
+var reduced=false;try{reduced=window.matchMedia("(prefers-reduced-motion: reduce)").matches}catch(e){}
+if(reduced){apply();return;}
+if(window.__vaultThemeAnimating){return;}
+window.__vaultThemeAnimating=1;
+var newPaper=next==="light"?"#faf8f2":"#13151b";
+var W=window.innerWidth,H=window.innerHeight;
+var spacing=W<768?36:28;
+var maxR=spacing*0.78;
+var dpr=1;try{dpr=W<768?1:Math.min(window.devicePixelRatio||1,1.5);}catch(e){}
+var canvas=document.createElement("canvas");
+canvas.id="theme-wave";
+canvas.style.cssText="position:fixed;left:0;top:0;width:"+W+"px;height:"+H+"px;z-index:9999;pointer-events:none;";
+canvas.width=Math.round(W*dpr);canvas.height=Math.round(H*dpr);
+var ctx=canvas.getContext("2d");
+try{ctx.setTransform(dpr,0,0,dpr,0,0);}catch(e){}
+ctx.fillStyle=newPaper;
+var dots=[];
+for(var y=spacing/2;y<H+spacing;y+=spacing){for(var x=spacing/2;x<W+spacing;x+=spacing){dots.push({x:x,y:y,delay:(x+y)/(W+H)*450,done:0});}}
+var waveMs=450,growMs=300;
+var start=Date.now();
+function easeOutCubic(p){return 1-Math.pow(1-p,3);}
+function step(){
+var elapsed=Date.now()-start;
+var allDone=true;
+var any=false;
+ctx.beginPath();
+for(var i=0;i<dots.length;i++){
+var d=dots[i];
+if(d.done){continue;}
+var p=(elapsed-d.delay)/growMs;
+if(p<0){allDone=false;continue;}
+if(p<1){allDone=false;}
+else{d.done=1;}
+var r=maxR*easeOutCubic(p<1?p:1);
+if(r>0){ctx.moveTo(d.x+r,d.y);ctx.arc(d.x,d.y,r,0,Math.PI*2);any=true;}
+}
+if(any){ctx.fill();}
+if(!allDone){requestAnimationFrame(step);return;}
+apply();
+canvas.style.transition="opacity 0.15s ease";
+canvas.style.opacity="0";
+setTimeout(function(){window.__vaultThemeAnimating=0;if(canvas.parentNode)canvas.parentNode.removeChild(canvas);},180);
+}
+document.body.appendChild(canvas);
+requestAnimationFrame(step);
+}
+function updateThemeIcons(theme){var icon=theme==="dark"?"☀":"☾";document.querySelectorAll(".theme-btn").forEach(function(b){b.textContent=icon;});}
+try{updateThemeIcons(document.documentElement.getAttribute("data-theme")||"dark");}catch(e){}
+function toggleMenu(force){document.body.classList.toggle("menu-open",force)}
+document.addEventListener("keydown",function(e){if(e.key==="/"&&!/INPUT|TEXTAREA/.test(document.activeElement.tagName)){e.preventDefault();var s=document.querySelector(".side-search");if(s)s.focus()}});
+document.addEventListener("click",function(e){if(e.target.closest(".side a"))toggleMenu(false)});
+(function(){try{
+var links=Array.prototype.slice.call(document.querySelectorAll(".rail a"));
+if(!links.length||!window.IntersectionObserver)return;
+var map={};links.forEach(function(a){map[a.getAttribute("data-target")]=a});
+var obs=new IntersectionObserver(function(es){
+  es.forEach(function(e){
+    if(e.isIntersecting){
+      links.forEach(function(a){a.classList.remove("active");a.classList.remove("parent-active")});
+      var l=map[e.target.id];
+      if(l){l.classList.add("active");var p=l.getAttribute("data-parent");if(p&&map[p])map[p].classList.add("parent-active")}
+    }
+  });
+}, {rootMargin:"-20% 0px -70% 0px"});
+document.querySelectorAll(".prose h2[id], .prose h3[id]").forEach(function(h){obs.observe(h)});
+}catch(e){}})();
+(function(){try{
+var cv=document.getElementById("dotgrid");if(!cv)return;var ctx=cv.getContext("2d");if(!ctx)return;
+var reduced=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+var W=0,H=0,dpr=1,cols=0,rows=0,SP=28,px=0,py=0,pt=0,hasP=false;
+function dotRGB(){try{return getComputedStyle(document.documentElement).getPropertyValue("--dot-rgb").trim()||"233,231,225"}catch(e){return "233,231,225"}}
+function resize(){dpr=Math.min(window.devicePixelRatio||1,window.innerWidth<700?1.5:2);SP=window.innerWidth<700?36:28;W=window.innerWidth;H=window.innerHeight;cv.width=W*dpr;cv.height=H*dpr;cv.style.width=W+"px";cv.style.height=H+"px";ctx.setTransform(dpr,0,0,dpr,0,0);cols=Math.ceil(W/SP)+1;rows=Math.ceil(H/SP)+1}
+var R=Math.random()*Math.PI*2;
+var FORCES=[
+ {ax:.42,ay:.15,tx:26,ty:31,px:R,py:R+1.3,circ:false},
+ {ax:.38,ay:.42,tx:37,ty:23,px:R+2.1,py:R+0.7,circ:false},
+ {ax:.30,ay:.30,tx:41,ty:41,px:R+4.0,py:R+4.0,circ:true}
+];
+function draw(now){var t=now/1000;var rgb=dotRGB();
+var activeForces=W>=1280?FORCES:FORCES.slice(0,1);
+var pFade=hasP?Math.max(0,1-(now-pt)/4000):0;
+ctx.clearRect(0,0,W,H);
+for(var y=0;y<rows;y++)for(var x=0;x<cols;x++){var ox=x*SP+10,oy=y*SP+10,a=0.14,dispX=0,dispY=0;
+for(var fi=0;fi<activeForces.length;fi++){var F=activeForces[fi];
+var fx=F.circ?W*(0.5+F.ax*Math.cos(t*2*Math.PI/F.tx+F.px)):W*(0.5+F.ax*Math.sin(t*2*Math.PI/F.tx+F.px));
+var fy=F.circ?H*(0.5+F.ay*Math.sin(t*2*Math.PI/F.ty+F.py)):H*(0.5+F.ay*Math.sin(t*2*Math.PI/F.ty+F.py));
+var ddx=ox-fx,ddy=oy-fy,d=Math.sqrt(ddx*ddx+ddy*ddy);
+if(d<170&&d>0.01){var f=1-d/170;f=f*f;dispX+=(ddx/d)*6*f;dispY+=(ddy/d)*6*f;a+=0.20*f}}
+var dm=Math.sqrt(dispX*dispX+dispY*dispY);if(dm>9){dispX*=9/dm;dispY*=9/dm}
+var dx=ox+dispX,dy=oy+dispY;if(a>0.38)a=0.38;
+if(pFade>0){var pdx=ox-px,pdy=oy-py,pd=Math.sqrt(pdx*pdx+pdy*pdy);
+if(pd<150&&pd>0.01){var pf=1-pd/150;pf=pf*pf*pFade;dx+=(pdx/pd)*5*pf;dy+=(pdy/pd)*5*pf;a=Math.min(0.38,a+0.18*pf)}}
+ctx.beginPath();ctx.arc(dx,dy,1.3,0,Math.PI*2);ctx.fillStyle="rgba("+rgb+","+a.toFixed(3)+")";ctx.fill()}}
+function loop(now){if(!window.__vaultThemeAnimating)draw(now);if(!reduced)requestAnimationFrame(loop)}
+window.addEventListener("resize",resize);resize();
+window.addEventListener("pointermove",function(e){px=e.clientX;py=e.clientY;pt=performance.now();hasP=true},{passive:true});
+requestAnimationFrame(loop);
+}catch(e){}})();
+</script></body></html>

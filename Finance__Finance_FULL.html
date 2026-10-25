@@ -1,0 +1,1915 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Finance — Full Module Note — HSC Business Vault</title><style>
+:root{--paper:#faf8f2;--ink:#1e1b16;--muted:#6b655a;--line:#e3ddd0;--accent:#1d4ed8;--card:#fffdf8;--side:#f3efe6;--side-bg:rgba(243,239,230,.88);--active:#e8e0cd;--rail-tint:rgba(29,78,216,.14);--rail-tint-soft:rgba(29,78,216,.07);--code:#efe9db;--quote:#4a4438;--dot-rgb:30,27,22;--scheme:light}
+[data-theme="dark"]{--paper:#13151b;--ink:#e9e7e1;--muted:#9aa0ab;--line:#2b2f3a;--accent:#8ab4ff;--card:#1b1e27;--side:#101218;--side-bg:rgba(16,18,24,.88);--active:#262b38;--rail-tint:rgba(138,180,255,.18);--rail-tint-soft:rgba(138,180,255,.09);--code:#262a36;--quote:#c3c7cf;--dot-rgb:233,231,225;--scheme:dark}
+*{box-sizing:border-box}html{color-scheme:var(--scheme)}body{margin:0;background:var(--paper);color:var(--ink);font:16.5px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;overflow-x:hidden}
+a{color:var(--accent);text-decoration:none;transition:color .18s ease}a:hover{text-decoration:underline}
+#dotgrid{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:0}
+.wrap{position:relative;z-index:1;display:grid;grid-template-columns:280px 1fr;min-height:100vh}
+.side{position:sticky;top:0;height:100vh;overflow:auto;padding:22px 18px;border-right:1px solid var(--line);background:var(--side-bg)}
+.side h3{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:22px 0 6px}
+.side ul{list-style:none;margin:0;padding:0}.side li{margin:3px 0}
+.side a{display:block;padding:7px 10px;border-radius:8px;color:var(--ink);transition:background .18s ease,transform .18s ease}
+.side a.active{background:var(--active);font-weight:600}
+.side a:hover{background:var(--active);text-decoration:none;transform:translateX(3px)}
+.side-head{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.theme-btn{flex:none;width:40px;height:40px;border:1px solid var(--line);border-radius:50%;background:var(--card);color:var(--ink);font-size:18px;cursor:pointer;transition:background .18s ease}
+.theme-btn:hover{background:var(--active)}
+.home-link{font-weight:700;font-size:18px}.side-search{width:100%;margin:14px 0 4px;padding:10px 12px;border:1px solid var(--line);border-radius:8px;background:var(--card);color:var(--ink);font-size:16px}
+.side-note{font-size:12.5px;color:var(--muted);line-height:1.5;margin-top:24px}
+.topbar{display:none}.backdrop{display:none}
+main{padding:36px 44px;max-width:860px}.prose h1{font-size:32px;line-height:1.2;letter-spacing:-.02em;margin:0 0 6px}
+.prose h2{font-size:23px;margin:34px 0 8px;padding-top:14px;border-top:1px solid var(--line)}
+.prose h3{font-size:18px;margin:26px 0 6px}.prose p{margin:10px 0}
+.prose table{border-collapse:collapse;width:100%;margin:14px 0;font-size:14.5px;display:block;overflow-x:auto;-webkit-overflow-scrolling:touch}
+.prose th,.prose td{border:1px solid var(--line);padding:7px 10px;text-align:left;vertical-align:top}
+.prose th{background:var(--side)}.prose blockquote{border-left:3px solid var(--line);margin:14px 0;padding:2px 14px;color:var(--quote);background:var(--card)}
+.prose code{background:var(--code);padding:1px 5px;border-radius:4px;font-size:14px}.prose pre{background:#0d0f14;color:#f5f1e6;padding:14px;border-radius:8px;overflow:auto}
+.prose pre code{background:none;color:inherit;padding:0}.prose hr{border:none;border-top:1px solid var(--line);margin:24px 0}
+.meta{color:var(--muted);font-size:14px;margin-bottom:20px}.toc{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 18px;margin:18px 0}
+.toc b{font-size:13px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}.toc ul{margin:8px 0 0;padding-left:18px}.toc li{margin:3px 0}
+.cards{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:20px 0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 18px;transition:transform .2s ease,border-color .2s ease,box-shadow .2s ease}
+.card:hover{transform:translateY(-3px);border-color:var(--accent);box-shadow:0 8px 24px rgba(0,0,0,.18)}
+.card h3{margin:0 0 4px}.card p{margin:0;color:var(--muted);font-size:14.5px}
+#search{width:100%;padding:13px 14px;font-size:17px;border:1px solid var(--line);border-radius:10px;background:var(--card);color:var(--ink)}
+.result{border-bottom:1px solid var(--line);padding:14px 6px;border-radius:8px;transition:background .18s ease,transform .18s ease}
+.result:hover{background:var(--card);transform:translateX(3px)}
+.result h3{margin:0}.result p{margin:4px 0;color:var(--quote)}.result .path{font-size:13px;color:var(--muted)}
+mark{background:#fde68a;color:#1e1b16;padding:0 1px}
+html{scroll-behavior:smooth}
+.rail{display:none}
+@media(min-width:1280px){
+main{max-width:min(860px,calc(100vw - 692px))}
+.rail{display:block;position:fixed;right:24px;top:50%;transform:translateY(-50%);width:340px;max-height:76vh;overflow:auto;z-index:15;background:none;border:none;box-shadow:none;padding:18px 14px;-webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 36px,#000 calc(100% - 36px),transparent 100%);mask-image:linear-gradient(to bottom,transparent 0,#000 36px,#000 calc(100% - 36px),transparent 100%)}
+.rail-title{font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:2px 0 12px 12px}
+.rail ul{list-style:none;margin:0;padding:0}
+.rail li{margin:3px 0}
+.rail a{display:block;padding:11px 14px;border-radius:10px;color:var(--ink);font-size:17px;line-height:1.4;transition:transform .2s ease,background .2s ease}
+.rail a:hover,.rail a:focus-visible{background:var(--rail-tint-soft);transform:translateX(-4px) scale(1.02);text-decoration:none}
+.rail a.active{background:var(--rail-tint);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);font-weight:600;transform:translateX(-12px);width:calc(100% + 12px)}
+.rail a.parent-active{background:var(--rail-tint-soft)}
+.rail ul.sub{margin:3px 0 3px 14px;padding-left:14px;border-left:1px solid var(--line)}
+.rail ul.sub a{padding:9px 12px;font-size:15px;color:var(--muted)}
+.rail ul.sub a:hover{color:var(--ink)}
+.rail ul.sub a.active{color:var(--ink);transform:translateX(-8px);width:calc(100% + 8px)}
+}
+@media(max-width:900px){
+.topbar{display:flex;position:sticky;top:0;z-index:20;align-items:center;gap:10px;padding:12px 14px;background:var(--side);border-bottom:1px solid var(--line)}
+.topbar b{flex:1;font-size:17px}.menu-btn,.topbar .theme-btn{width:44px;height:44px;border:1px solid var(--line);border-radius:10px;background:var(--card);color:var(--ink);font-size:19px;cursor:pointer}
+.wrap{grid-template-columns:1fr}
+.wrap{z-index:auto}
+.side{background:var(--side)}
+.side a{padding:11px 12px}
+body.menu-open{overflow:hidden}
+.side{position:fixed;inset:0 auto 0 0;width:300px;max-width:86vw;height:100dvh;z-index:30;transform:translateX(-105%);transition:transform .25s ease;box-shadow:0 0 40px rgba(0,0,0,.4)}
+body.menu-open .side{transform:translateX(0)}
+.backdrop{display:none}body.menu-open .backdrop{display:block;position:fixed;inset:0;z-index:25;background:rgba(0,0,0,.45)}
+main{padding:22px 16px}.prose h1{font-size:26px}.prose h2{font-size:21px}.cards{grid-template-columns:1fr}
+.prose table{font-size:14px}.prose pre{font-size:13.5px}
+}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}html{scroll-behavior:auto}}
+</style><script>(function(){try{var t=localStorage.getItem("vault-theme")||"dark";document.documentElement.setAttribute("data-theme",t)}catch(e){document.documentElement.setAttribute("data-theme","dark")}})()</script></head><body><canvas id="dotgrid" aria-hidden="true"></canvas><header class="topbar"><button class="menu-btn" type="button" onclick="toggleMenu()" aria-label="Open notes menu">☰</button><b>Business Vault</b><button class="theme-btn" type="button" onclick="toggleTheme(event)" aria-label="Toggle dark / light mode">◐</button></header><div class="backdrop" onclick="toggleMenu(false)"></div><div class="wrap"><nav class="side" id="side"><div class="side-head"><a class="home-link" href="index.html">⌂ Vault home</a><button class="theme-btn" type="button" onclick="toggleTheme(event)" aria-label="Toggle dark / light mode">◐</button></div><input class="side-search" type="search" placeholder="Search notes…  ( / )" onkeydown="if(event.key==='Enter'){location.href='index.html?q='+encodeURIComponent(this.value)}"><h3>Operations</h3><ul><li><a class="" href="Operations__Operations_1_Role.html">1 Role</a></li><li><a class="" href="Operations__Operations_2_Influences.html">2 Influences</a></li><li><a class="" href="Operations__Operations_3_Processes.html">3 Processes</a></li><li><a class="" href="Operations__Operations_4_Strategies.html">4 Strategies</a></li><li><a class="" href="Operations__Operations_Syllabus_Summary.html">Syllabus Summary</a></li><li><a class="" href="Operations__Operations_FULL.html">FULL</a></li></ul><h3>Marketing</h3><ul><li><a class="" href="Marketing__Marketing_1_Role.html">1 Role</a></li><li><a class="" href="Marketing__Marketing_2_Influences.html">2 Influences</a></li><li><a class="" href="Marketing__Marketing_3_Processes.html">3 Processes</a></li><li><a class="" href="Marketing__Marketing_4_Strategies.html">4 Strategies</a></li><li><a class="" href="Marketing__Marketing_Syllabus_Summary.html">Syllabus Summary</a></li><li><a class="" href="Marketing__Marketing_FULL.html">FULL</a></li></ul><h3>Finance</h3><ul><li><a class="" href="Finance__Finance_1_Role.html">1 Role</a></li><li><a class="" href="Finance__Finance_2_Influences.html">2 Influences</a></li><li><a class="" href="Finance__Finance_3_Processes.html">3 Processes</a></li><li><a class="" href="Finance__Finance_4_Strategies.html">4 Strategies</a></li><li><a class="" href="Finance__Finance_Syllabus_Summary.html">Syllabus Summary</a></li><li><a class="active" href="Finance__Finance_FULL.html">FULL</a></li></ul><h3>Human Resources</h3><ul><li><a class="" href="Human_Resources__Human_Resources_1_Role.html">1 Role</a></li><li><a class="" href="Human_Resources__Human_Resources_2_Influences.html">2 Influences</a></li><li><a class="" href="Human_Resources__Human_Resources_3_Processes.html">3 Processes</a></li><li><a class="" href="Human_Resources__Human_Resources_4_Strategies.html">4 Strategies</a></li><li><a class="" href="Human_Resources__Human_Resources_Syllabus_Summary.html">Syllabus Summary</a></li><li><a class="" href="Human_Resources__Human_Resources_FULL.html">FULL</a></li></ul><h3>Exam &amp; revision</h3><ul><li><a class="" href="MOC.html">Final Notes</a></li><li><a class="" href="Case_Study_Stats_Sheet.html">Business Studies Case Study Stats Sheet</a></li><li><a class="" href="Case_Studies.html">Case Studies — HSC Business Studies Final Notes</a></li><li><a class="" href="Confusing_Pairs.html">Confusing Pairs — MCQ Drill Sheet</a></li><li><a class="" href="Crichton_Office_Supplies_Report_and_Apple_Marketing_Essay.html">Crichton Office Supplies Report and Apple Marketing Essay</a></li><li><a class="" href="Trial_Practice_Killara_2022.html">Killara 2022 Trial — Marked Paper and Model Answers</a></li><li><a class="" href="McDonalds_Case_Study.html">McDonald's Case Study — Section IV Essay Resource</a></li><li><a class="" href="Section_III_Business_Report.html">Section III — How to Write the Business Report</a></li><li><a class="" href="Section_IV_Extended_Response.html">Section IV — How to Write the Extended Response</a></li><li><a class="" href="Marketing_Universal_Essay.html">Universal Marketing Essay — McDonald's Case Study</a></li><li><a class="" href="Finance_Management.html">Finance (moved)</a></li><li><a class="" href="Human_Resources.html">Human Resources (moved)</a></li><li><a class="" href="Marketing.html">Marketing (moved)</a></li><li><a class="" href="Operations.html">Operations (moved)</a></li></ul><p class="side-note">Source: TheSashi HSC Business Studies Notes, Final folder. Cloned 25 Oct 2026. Plus one added McDonald's note (see Exam & revision).</p></nav><main><article class="prose"><h1>Finance — Full Module Note</h1><p class="meta">Finance · Finance/Finance_FULL.md</p><div class="toc"><b>On this page</b><ul><li><a href="#1-role-of-financial-management">1. Role of Financial Management</a></li><li><a href="#2-influences-on-financial-management">2. Influences on Financial Management</a></li><li><a href="#3-processes-of-financial-management">3. Processes of Financial Management</a></li><li><a href="#4-financial-management-strategies">4. Financial Management Strategies</a></li><li><a href="#5-section-iv-essay-structures">5. Section IV Essay Structures</a></li><li><a href="#6-common-exam-pitfalls">6. Common Exam Pitfalls</a></li><li><a href="#7-glossary-terms-students-mix-up">7. Glossary — Terms Students Mix Up</a></li><li><a href="#8-key-definitions-quick-reference">8. Key Definitions Quick Reference</a></li></ul></div><h1>📕 Finance — Full Module Note</h1>
+<blockquote>
+<p><strong>The whole module in one file.</strong> Split versions: <a href="Finance__Finance_1_Role.html">① Role</a> · <a href="Finance__Finance_2_Influences.html">② Influences</a> · <a href="Finance__Finance_3_Processes.html">③ Processes</a> · <a href="Finance__Finance_4_Strategies.html">④ Strategies</a></p>
+</blockquote>
+<blockquote>
+<p><strong>Scope:</strong> the full HSC Finance module is examinable.</p>
+</blockquote>
+<blockquote>
+<p>🔧 <strong>Maintenance note:</strong> sections 1–4 below are mirrored in the four split files. <strong>If one is corrected, correct both.</strong> Sections 5–8 exist only here.</p>
+</blockquote>
+<hr>
+<h2 id="1-role-of-financial-management">1. Role of Financial Management</h2>
+<p><strong>Definition</strong>: Financial management deals with the <strong>analysis, interpretation and evaluation</strong> of all financial records. It is the financial manager&#39;s responsibility to source finance that enables the business to achieve its strategic goals.</p>
+<h3 id="1-1-strategic-role-of-financial-management">1.1 Strategic Role of Financial Management</h3>
+<ul>
+<li>The process of <strong>setting objectives</strong> throughout the business and deciding <strong>what resources are needed</strong> to achieve them</li>
+<li>Developing a strategic plan as part of financial management ensures the business <strong>survives and grows</strong> in a competitive world</li>
+<li>Financial management <strong>provides a framework for all other business activities</strong> — it does not follow the lead of other managers</li>
+</ul>
+<blockquote>
+<p><strong>Exam trap</strong>: A common multiple-choice question asks what the strategic role of finance is. The answer is <em>&quot;provides a framework for all other business activities&quot;</em> — <strong>not</strong> &quot;sets short-term goals&quot; (that&#39;s tactical/operational).</p>
+</blockquote>
+<h3 id="1-2-objectives-of-financial-management">1.2 Objectives of Financial Management</h3>
+<p>Five objectives, split by time horizon.</p>
+<table>
+<thead>
+<tr>
+<th>Horizon</th>
+<th>Objective</th>
+<th>Definition</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Short term</strong> (within 12 months)</td>
+<td><strong>Liquidity</strong></td>
+<td>The ability to pay back <strong>current liabilities</strong> with <strong>current assets</strong></td>
+</tr>
+<tr>
+<td><strong>Short term</strong></td>
+<td><strong>Profitability</strong></td>
+<td>The ability of the business to <strong>maximise profits</strong></td>
+</tr>
+<tr>
+<td><strong>Short term</strong></td>
+<td><strong>Efficiency</strong></td>
+<td>The ability to manage <strong>costs</strong> and the <strong>collection of money</strong> from customers</td>
+</tr>
+<tr>
+<td><strong>Long term</strong> (2–5 years)</td>
+<td><strong>Growth</strong></td>
+<td>The ability of the business to grow and expand</td>
+</tr>
+<tr>
+<td><strong>Long term</strong></td>
+<td><strong>Solvency</strong></td>
+<td>How the business is financed (debt vs equity) — the ability to meet <strong>long-term</strong> financial commitments</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>Confusing pair — Liquidity vs Solvency</strong>
+<strong>Liquidity</strong> = <em>short</em>-term. Can we pay bills due <strong>now</strong> with assets we can convert to cash <strong>now</strong>? Measured by the <strong>current ratio</strong>.
+<strong>Solvency</strong> = <em>long</em>-term. Can we meet commitments over <strong>years</strong>? Measured by the <strong>gearing ratio</strong>.
+Both are about paying debts — the difference is purely the <strong>time frame</strong>.</p>
+</blockquote>
+<p><strong>Long-term goal of the business</strong> is to increase the <strong>wealth of the owners</strong>. Long-term goals depend on <strong>profitability in the short term</strong> resulting from increased operating efficiency.</p>
+<h3 id="1-3-interdependence-with-other-key-business-functions">1.3 Interdependence with Other Key Business Functions</h3>
+<p><strong>Interdependence</strong> = the mutual reliance between finance and the other key business functions.</p>
+<table>
+<thead>
+<tr>
+<th>Function</th>
+<th>Relationship with Finance</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Operations</strong></td>
+<td>Finance provides funding and budgets so products can be made profitably. Operations produces quality products with minimal expense, generating higher revenue margins that flow back to finance</td>
+</tr>
+<tr>
+<td><strong>Marketing</strong></td>
+<td>Finance sets the marketing budget. Marketing generates the sales revenue that finance then allocates, monitors and reinvests</td>
+</tr>
+<tr>
+<td><strong>Human Resources</strong></td>
+<td>Wages and training are major budget items. Finance sets salary budgets; HR must justify expenditure through productivity gains. Commission and incentive schemes are a <strong>joint HR–finance</strong> decision</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>Model &quot;Explain&quot; answer (scaffold from class)</strong>
+<strong>Define</strong> — Financial management is interdependent with operations because of the relationship between business revenue and expenditure.
+<strong>Relationship</strong> — Finance provides funding and budgets so the product can be produced profitably, while operations produces quality products with minimal expense to generate a higher revenue margin.
+<strong>Implications</strong> — Both functions supply each other with information and resources that drive growth and profit maximisation.
+<strong>Link</strong> — Hence the business grows in the marketplace and increases revenue margins, leading to increased profitability.</p>
+</blockquote>
+<hr>
+<h2 id="2-influences-on-financial-management">2. Influences on Financial Management</h2>
+<h3 id="2-1-internal-sources-of-finance">2.1 Internal Sources of Finance</h3>
+<p>Internal sources are recorded under <strong>equity</strong> in the balance sheet. The money comes from the owners or from the business&#39;s own activities.</p>
+<table>
+<thead>
+<tr>
+<th>Source</th>
+<th>Definition</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Owner&#39;s equity</strong></td>
+<td>Funds contributed by owners or partners to establish and build the business</td>
+</tr>
+<tr>
+<td><strong>Retained profits</strong></td>
+<td>Net profit that has been <strong>reinvested</strong> in the business. Added as equity — increases the owner&#39;s claim</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>Owner&#39;s Equity section of the Balance Sheet</strong> = Capital <strong>+</strong> Retained Profits</p>
+</blockquote>
+<h3 id="2-2-external-sources-of-finance">2.2 External Sources of Finance</h3>
+<p>Financed from external organisations — either <strong>debt</strong> or <strong>equity</strong>.</p>
+<ul>
+<li><strong>Debt</strong> = any money that has been <strong>borrowed</strong>. Short-term debt is repayable within 12 months; long-term is over 12 months.</li>
+<li><strong>Equity</strong> = attached to the <strong>ownership of shares</strong> in an incorporated business — the owner&#39;s financial claim on the assets.</li>
+</ul>
+<h4>Debt Finance — Short Term</h4>
+<table>
+<thead>
+<tr>
+<th>Source</th>
+<th>Detail</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Overdraft</strong></td>
+<td>Flexibility to borrow from a bank at short notice through a cheque/current account. Interest must be paid. Used for <strong>working capital</strong> and claimable as a tax deduction. More flexible than a bank loan; assists with short-term <strong>liquidity</strong> issues</td>
+</tr>
+<tr>
+<td><strong>Commercial bill</strong></td>
+<td>A written order for a loan amount <strong>guaranteed by the business&#39;s bank</strong>. Borrowed from businesses with surplus funds. Normally <strong>30–180 days</strong>, usually for amounts <strong>over $100,000</strong></td>
+</tr>
+<tr>
+<td><strong>Factoring</strong></td>
+<td>Selling <strong>accounts receivable</strong> to a specialist factoring firm to create cash inflow. The factoring company takes over management and collection of the unpaid accounts and pays the seller the value <strong>minus a commission</strong>. Business receives up to <strong>90% within 48 hours</strong>. The <strong>riskiest</strong> source because of unpaid debts — that risk is borne by the debt collection agency</td>
+</tr>
+</tbody></table>
+<h4>Debt Finance — Long Term</h4>
+<table>
+<thead>
+<tr>
+<th>Source</th>
+<th>Detail</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Mortgage</strong></td>
+<td>A loan repaid over a set number of years with interest, used to purchase <strong>land or property</strong>. The property becomes the <strong>security</strong>. If the business defaults, the bank takes and sells the property</td>
+</tr>
+<tr>
+<td><strong>Debenture</strong></td>
+<td>Long-term debt acquired by offering a <strong>prospectus</strong> to the general public on the securities exchange. Set interest rate for a fixed time. <strong>More risky to the lender than a mortgage</strong> — not tied to specific property, so there is no security. Unlike shares, the level of profit does <strong>not</strong> affect the interest rate</td>
+</tr>
+<tr>
+<td><strong>Unsecured notes</strong></td>
+<td>Usually issued by finance companies to gain funds. <strong>Higher interest rates</strong> reflecting greater risk. Also called <strong>bonds</strong></td>
+</tr>
+<tr>
+<td><strong>Leasing</strong></td>
+<td>Leasing non-current assets (cars, equipment) for payments to the owner. Reduces the cost of acquiring assets as full value need not be paid instantly. <strong>Lease payments are tax deductible</strong> — they appear under Expenses in the Profit and Loss Statement, reducing net profit and therefore company tax</td>
+</tr>
+</tbody></table>
+<p><strong>Two types of lease:</strong></p>
+<ol>
+<li><strong>Operating lease</strong> — short periods, normally <strong>shorter than the life</strong> of the asset. The <strong>owner</strong> carries out maintenance.</li>
+<li><strong>Financial lease</strong> — the lessor purchases the asset on behalf of the lessee. Runs for the <strong>lifetime of the asset</strong>.</li>
+</ol>
+<blockquote>
+<p><strong>Why lease rather than buy?</strong> Lease costs are tax deductible; flexibility if the asset is only needed for a short period; distributes the cost over time, which is better for <strong>cash flow</strong>.</p>
+</blockquote>
+<h4>Equity Financing</h4>
+<p>Equity financing comes from the <strong>owners</strong>. Equity reflects the owner&#39;s financial claim on the assets of the business.</p>
+<table>
+<thead>
+<tr>
+<th>Legal structure</th>
+<th>Term used</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Sole trader / Partnership</td>
+<td><strong>Owners&#39; Equity</strong></td>
+</tr>
+<tr>
+<td>Public / Private companies</td>
+<td><strong>Shareholders&#39; Funds</strong></td>
+</tr>
+</tbody></table>
+<p><strong>Private equity</strong> — current owners invite people or organisations to invest. Normally <strong>proprietary companies</strong> (Pty Ltd). Shareholders do not necessarily have control, and there is no guarantee of dividends.</p>
+<p><strong>Public equity</strong> — companies listed on the <strong>ASX</strong>; anyone can invest.</p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Definition</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Ordinary shares</strong></td>
+<td>Issued on the ASX, with or without voting rights at the AGM</td>
+</tr>
+<tr>
+<td><strong>New share issues</strong></td>
+<td>Shares sold for the <strong>first time</strong> on the public market — either an <strong>IPO</strong> (initial public offering) or a new offering if more finance is needed</td>
+</tr>
+<tr>
+<td><strong>Rights issue</strong></td>
+<td>The company offers <strong>existing shareholders</strong> the chance to buy more shares</td>
+</tr>
+<tr>
+<td><strong>Placements</strong></td>
+<td>Additional shares offered to <strong>specific institutions</strong> (venture capitalists) and specific investors</td>
+</tr>
+<tr>
+<td><strong>Share purchase plans</strong></td>
+<td>An offer to existing shareholders to purchase more shares <strong>without brokerage fees</strong>, normally <strong>below</strong> normal prices. Requires <strong>ASIC</strong> permission</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th>Equity — Advantages</th>
+<th>Equity — Disadvantages</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>No debt servicing costs such as interest</td>
+<td>Takes <strong>time</strong></td>
+</tr>
+<tr>
+<td>If the business makes a loss, no dividend needs to be paid (though this may worry shareholders into selling)</td>
+<td><strong>Dilutes ownership</strong></td>
+</tr>
+</tbody></table>
+<h4>Financial Grants</h4>
+<p>Financial <strong>gifts</strong> from government to help businesses establish. Strict criteria: location, personal characteristics of the owner, type of industry, type of goods/services. Criteria commonly include Indigenous people, regional businesses, the IT industry, and businesses providing innovative or essential services.</p>
+<blockquote>
+<p>The government is <strong>not paid back</strong> and gets <strong>no ownership</strong>. Its return comes through increased <strong>employment, growth and taxes</strong>.</p>
+</blockquote>
+<h3 id="2-3-financial-institutions">2.3 Financial Institutions</h3>
+<table>
+<thead>
+<tr>
+<th>Institution</th>
+<th>Role</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Banks</strong></td>
+<td>Accept deposits and provide loans; the largest source of funds for business</td>
+</tr>
+<tr>
+<td><strong>Investment banks</strong></td>
+<td>Trade in money, securities and financial futures; arrange <strong>long-term finance</strong> for expansion; advise on <strong>foreign exchange cover</strong>, <strong>mergers</strong> (two businesses agree to combine, e.g. Westpac and St George) and <strong>takeovers</strong> (one business buys another, which ceases to exist); operate <strong>unit trusts</strong>; arrange <strong>overseas finance</strong> at cheaper interest rates. <em>Example: Macquarie Bank</em></td>
+</tr>
+<tr>
+<td><strong>Finance and life insurance companies</strong></td>
+<td>Non-bank financial intermediaries specialising in <strong>smaller commercial finance</strong>. Provide secured and unsecured loans. Policyholders pay a <strong>premium</strong>, which is lent to businesses; the company earns income from interest</td>
+</tr>
+<tr>
+<td><strong>Superannuation funds</strong></td>
+<td>Provide funds to the corporate sector through investment of <strong>superannuation contributions</strong></td>
+</tr>
+<tr>
+<td><strong>Unit trusts</strong> (mutual funds)</td>
+<td>Take funds from a <strong>large number of small investors</strong> and invest them in specific types of financial assets</td>
+</tr>
+<tr>
+<td><strong>Australian Securities Exchange (ASX)</strong></td>
+<td>Market operator, clearing house and payment system facilitator. Oversees compliance with operating rules and promotes <strong>corporate governance</strong> among listed companies</td>
+</tr>
+</tbody></table>
+<h4>Primary vs Secondary Market — a guaranteed exam distinction</h4>
+<table>
+<thead>
+<tr>
+<th></th>
+<th><strong>Primary market</strong></th>
+<th><strong>Secondary market</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>What is traded</td>
+<td><strong>New</strong> shares, issued for the first time</td>
+<td><strong>Pre-owned</strong> (existing) securities</td>
+</tr>
+<tr>
+<td>Who gets the money</td>
+<td><strong>The company</strong> receives the proceeds</td>
+<td>The <strong>selling shareholder</strong> — the company receives <strong>nothing</strong></td>
+</tr>
+<tr>
+<td>Purpose</td>
+<td>Raise <strong>new capital</strong></td>
+<td>Provide <strong>liquidity</strong> so investors can buy and sell easily</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>Because the secondary market provides liquidity, it makes investing in the primary market more attractive.</p>
+</blockquote>
+<h3 id="2-4-influence-of-government">2.4 Influence of Government</h3>
+<table>
+<thead>
+<tr>
+<th>Influence</th>
+<th>Detail</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Monetary policy</strong></td>
+<td>The <strong>RBA</strong> assists the federal government to achieve low inflation and economic growth. Securities and loans are bought and sold to put pressure on <strong>interest rates</strong> and alter the economic cycle. This impacts <strong>debt servicing costs</strong> — if interest rates rise, loan repayment costs rise</td>
+</tr>
+<tr>
+<td><strong>ASIC</strong> (Australian Securities and Investments Commission)</td>
+<td>Enforces and administers the <strong>Corporations Act</strong>; protects consumers in investments, life and general insurance, superannuation and banking (except lending). Aims to reduce <strong>fraud and unfair practices</strong>. Ensures companies adhere to the law, collects company information and makes it public</td>
+</tr>
+<tr>
+<td><strong>Company taxation</strong></td>
+<td>Companies pay <strong>company tax on profits</strong>, paid <strong>before</strong> dividends are distributed to shareholders</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>Why company tax matters to financial management</strong>: Tax reduces net profit available for distribution and reinvestment. It also makes <strong>debt more attractive than equity</strong>, because interest payments are generally <strong>tax-deductible</strong> expenses while dividends are not.</p>
+</blockquote>
+<h3 id="2-5-global-market-influences">2.5 Global Market Influences</h3>
+<p>Financial risks in global markets are <strong>greater</strong> than domestic ones, but such risk is necessary for business strategy.</p>
+<table>
+<thead>
+<tr>
+<th>Influence</th>
+<th>Definition</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Interest rates</strong></td>
+<td>Comparison of domestic interest rates to rates in other countries</td>
+</tr>
+<tr>
+<td><strong>Availability of funds</strong></td>
+<td>The <strong>ease</strong> with which a business can access funds on the international financial market</td>
+</tr>
+<tr>
+<td><strong>Global economic outlook</strong></td>
+<td>The <strong>projected changes</strong> to the level of economic growth throughout the world</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>Why are these &quot;uncontrollable&quot;?</strong> They are external macro-environmental factors existing independently of any one business. A single firm cannot change global interest rates or economic trends — it can only develop <strong>internal strategies to mitigate</strong> their impact.</p>
+</blockquote>
+<blockquote>
+<p><strong>Negative global outlook → funding</strong>: When the outlook is negative, lenders become risk-averse and restrict lending because they fear non-repayment. Finance becomes harder to obtain, and where available, carries a <strong>higher interest rate</strong>.</p>
+</blockquote>
+<hr>
+<h2 id="3-processes-of-financial-management">3. Processes of Financial Management</h2>
+<h3 id="3-1-planning-and-implementing">3.1 Planning and Implementing</h3>
+<p><strong>Financial planning</strong> is responsible for both short-term and long-term planning. It includes:</p>
+<ol>
+<li>Determining the <strong>viability</strong> of projects</li>
+<li>Making decisions and projections for future <strong>liquidity and performance</strong></li>
+<li>Setting <strong>financial goals</strong>, and determining and implementing strategies to achieve them</li>
+</ol>
+<p><strong>Financial needs</strong>: A <strong>new</strong> business must determine <strong>establishment costs</strong> and how to finance them (debt and/or equity). An <strong>existing</strong> business must determine the financing required for <strong>future plans</strong>.</p>
+<h4>Budgets</h4>
+<p><strong>Budgets</strong> show the cash required for planned outlays for a particular period, and the cost of capital expenditure and associated expenses.</p>
+<p>Budgets are used as:</p>
+<ul>
+<li>A <strong>plan</strong> for achieving set outcomes</li>
+<li>A means of <strong>establishing standards</strong> for monitoring</li>
+</ul>
+<blockquote>
+<p>Budgets sit in <strong>both</strong> the planning process (giving departments and cost centres a plan to follow) <strong>and</strong> the implementation process (identifying <strong>variances</strong> and flagging areas to investigate).</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Type of budget</th>
+<th>Covers</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Operating budgets</strong></td>
+<td>Main activities — sales, production, raw materials, labour</td>
+</tr>
+<tr>
+<td><strong>Project budgets</strong></td>
+<td>Capital expenditure and research and development</td>
+</tr>
+<tr>
+<td><strong>Financial budgets</strong></td>
+<td>Funds required to pay for inputs and anticipated inflows from future sales</td>
+</tr>
+</tbody></table>
+<h4>Record Systems</h4>
+<p>Systems that ensure data recorded and information provided is <strong>accurate, reliable, efficient and accessible</strong>. Minimising errors is important to fulfil the legal requirement to provide information to <strong>shareholders and the ATO</strong>.</p>
+<blockquote>
+<p>Most errors in computerised accounting systems occur through <strong>human error</strong> at data entry.</p>
+</blockquote>
+<p><strong>All public companies are legally required to have an audit every year.</strong> Auditors are qualified, <strong>independent, external</strong> people who check the records to ensure the accounts show a <strong>true and fair view</strong>.</p>
+<h4>Financial Risks</h4>
+<p>The risk that a business is <strong>unable to pay its debts as they fall due</strong>. Factors include:</p>
+<ol>
+<li>Theft of goods</li>
+<li>Not meeting sales targets</li>
+<li>Non-payment of accounts by accounts receivable</li>
+<li>Interest rate rises</li>
+</ol>
+<blockquote>
+<p><strong>Risk and borrowing</strong>: There is a <strong>direct relationship</strong> between borrowing and risk. Higher debt (gearing) increases fixed interest costs, reduces financial flexibility, and raises the risk of insolvency if sales targets are not met.</p>
+</blockquote>
+<h4>Financial Controls</h4>
+<p>Controls ensuring financial plans are implemented effectively and achieving set goals:</p>
+<ol>
+<li><strong>Monitoring and controlling budgets</strong> — ongoing throughout the year</li>
+<li><strong>Monitoring finances</strong> through the preparation of the cash flow statement, income statement and balance sheet — for most businesses, <strong>monthly</strong></li>
+<li><strong>Use of financial ratios</strong> to monitor performance</li>
+</ol>
+<h3 id="3-2-debt-vs-equity-financing">3.2 Debt vs Equity Financing</h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th><strong>Debt</strong></th>
+<th><strong>Equity</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Repayment</td>
+<td><strong>Must</strong> be repaid</td>
+<td>No repayment obligation</td>
+</tr>
+<tr>
+<td>Cost</td>
+<td>Interest — <strong>tax deductible</strong></td>
+<td>Dividends — <strong>not</strong> tax deductible</td>
+</tr>
+<tr>
+<td>Ownership</td>
+<td>Ownership retained</td>
+<td><strong>Dilutes</strong> ownership</td>
+</tr>
+<tr>
+<td>Risk to business</td>
+<td>Higher — fixed commitments regardless of profit</td>
+<td>Lower — no payment required if a loss is made</td>
+</tr>
+<tr>
+<td>Effect on gearing</td>
+<td><strong>Increases</strong> gearing</td>
+<td><strong>Decreases</strong> gearing</td>
+</tr>
+<tr>
+<td>Speed</td>
+<td>Generally faster</td>
+<td>Slower — takes time</td>
+</tr>
+</tbody></table>
+<h3 id="3-3-the-matching-principle">3.3 The Matching Principle</h3>
+<p><strong>Matching the term and source of finance to the use of finance.</strong></p>
+<ul>
+<li><strong>Short-term</strong> finance (overdraft, commercial bill, factoring) should fund <strong>short-term</strong> needs — working capital, inventory, wages</li>
+<li><strong>Long-term</strong> finance (mortgage, debenture, shares, leasing) should fund <strong>long-term</strong> assets — property, plant, equipment</li>
+</ul>
+<blockquote>
+<p><strong>Why it matters</strong>: Using an overdraft to buy a factory means the debt falls due long before the asset generates a return, creating a <strong>liquidity crisis</strong>. Using a 20-year mortgage to buy stock means paying interest for two decades on inventory sold in a month.</p>
+</blockquote>
+<blockquote>
+<p><strong>Note — a second meaning.</strong> &quot;Matching principle&quot; is <em>also</em> an accounting term (see §3.6): revenue must be matched to the expenses incurred in earning it, in the same accounting period. Read the question carefully to see which is being asked.</p>
+</blockquote>
+<h3 id="3-4-the-three-financial-statements">3.4 The Three Financial Statements</h3>
+<blockquote>
+<p><strong>Memorise these three structures — they are examinable directly.</strong></p>
+</blockquote>
+<h4>Cash Flow Statement</h4>
+<pre><code>Opening Cash Balance
++ Cash Receipts (inflows)
+− Cash Payments (outflows)
+= Closing Cash Balance
+</code></pre>
+<p>Records <strong>actual</strong> cash movements over a period. A <strong>cash flow budget</strong>, by contrast, is a <strong>forecast</strong> of expected future cash flows used to identify shortfalls in advance.</p>
+<h4>Income Statement (Revenue Statement / Profit and Loss)</h4>
+<pre><code>        Sales
+Less:   Sales Returns
+   =    NET SALES
+
+Less:   Cost of Goods Sold
+   =    GROSS PROFIT
+
+Less:   Expenses  (selling + administrative + financial)
+   =    NET PROFIT
+</code></pre>
+<blockquote>
+<p><strong>The whole statement is two subtractions.</strong>
+Sales − COGS = <strong>Gross Profit</strong>. Gross Profit − Expenses = <strong>Net Profit</strong>.</p>
+</blockquote>
+<p><strong>Cost of Goods Sold</strong> is itself a calculation:</p>
+<pre><code>COGS = Opening Stock + Purchases − Closing Stock
+</code></pre>
+<blockquote>
+<p><strong>Why closing stock is subtracted:</strong> stock still sitting in the warehouse wasn&#39;t sold, so it isn&#39;t a cost of goods <em>sold</em>. It carries forward as next period&#39;s opening stock.</p>
+</blockquote>
+<p><strong>The three expense categories</strong> — you may be asked to classify these:</p>
+<table>
+<thead>
+<tr>
+<th>Category</th>
+<th>What goes in it</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Selling</strong></td>
+<td>Advertising, sales staff wages and commission, delivery to customers</td>
+</tr>
+<tr>
+<td><strong>Administrative</strong></td>
+<td>Office wages, rent, electricity, insurance, stationery, depreciation</td>
+</tr>
+<tr>
+<td><strong>Financial</strong></td>
+<td>Interest on loans, bank fees, discounts given, bad debts</td>
+</tr>
+</tbody></table>
+<h5>Worked example — building a revenue statement from scratch</h5>
+<blockquote>
+<p><strong>Given</strong>: Sales $620,000 | Sales returns $20,000 | Opening stock $60,000 | Purchases $310,000 | Closing stock $70,000 | Selling expenses $55,000 | Administrative expenses $50,000 | Financial expenses $15,000</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Step</th>
+<th>Working</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Net Sales</td>
+<td>620,000 − 20,000</td>
+<td><strong>$600,000</strong></td>
+</tr>
+<tr>
+<td>COGS</td>
+<td>60,000 + 310,000 − 70,000</td>
+<td><strong>$300,000</strong></td>
+</tr>
+<tr>
+<td><strong>Gross Profit</strong></td>
+<td>600,000 − 300,000</td>
+<td><strong>$300,000</strong></td>
+</tr>
+<tr>
+<td>Total Expenses</td>
+<td>55,000 + 50,000 + 15,000</td>
+<td><strong>$120,000</strong></td>
+</tr>
+<tr>
+<td><strong>Net Profit</strong></td>
+<td>300,000 − 120,000</td>
+<td><strong>$180,000</strong></td>
+</tr>
+</tbody></table>
+<p>Then the ratios follow straight off it:</p>
+<ul>
+<li><strong>Gross Profit Ratio</strong> = (300,000 ÷ 600,000) × 100 = <strong>50%</strong></li>
+<li><strong>Net Profit Ratio</strong> = (180,000 ÷ 600,000) × 100 = <strong>30%</strong></li>
+<li><strong>Expense Ratio</strong> = (120,000 ÷ 600,000) × 100 = <strong>20%</strong></li>
+</ul>
+<blockquote>
+<p><strong>Check:</strong> Gross Profit Ratio − Expense Ratio = Net Profit Ratio. 50 − 20 = 30 ✅
+Use this to catch arithmetic errors in the exam in about five seconds.</p>
+</blockquote>
+<h5>Four traps in these calculations</h5>
+<table>
+<thead>
+<tr>
+<th>Trap</th>
+<th>The fix</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Using <strong>Sales</strong> instead of <strong>Net Sales</strong> as the denominator</td>
+<td>If the question gives sales returns, you must deduct them first. Every ratio then uses <strong>net sales</strong></td>
+</tr>
+<tr>
+<td><strong>Adding</strong> closing stock in COGS</td>
+<td>It&#39;s <strong>minus</strong>. Opening <strong>plus</strong>, closing <strong>minus</strong></td>
+</tr>
+<tr>
+<td>Dividing profit ratios by <strong>Gross Profit</strong></td>
+<td>The denominator for gross profit ratio, net profit ratio <em>and</em> expense ratio is always <strong>sales</strong></td>
+</tr>
+<tr>
+<td>Forgetting <strong>× 100</strong> and the <strong>%</strong> sign</td>
+<td>These three are percentages. Current ratio and gearing are <strong>ratios</strong> written <code>2:1</code> — no percentage</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>Net Profit vs Return on Owners&#39; Equity.</strong> Both use net profit on top. Net profit ratio divides by <strong>sales</strong> (how efficiently the business converts revenue into profit). ROE divides by <strong>owners&#39; equity</strong> (what the owners get back on what they put in). Different question, same numerator.</p>
+</blockquote>
+<h4>Balance Sheet</h4>
+<pre><code>Owners&#39; Equity = Assets (Current + Non-Current) − Liabilities (Current + Non-Current)
+</code></pre>
+<p>Shows the <strong>financial position at a point in time</strong> — a snapshot. The income statement, by contrast, shows <strong>performance over a period</strong>.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Current</th>
+<th>Non-Current</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Assets</strong></td>
+<td>Cash, accounts receivable, inventory</td>
+<td>Property, plant, equipment, vehicles, intangibles (goodwill, patents)</td>
+</tr>
+<tr>
+<td><strong>Liabilities</strong></td>
+<td>Overdraft, accounts payable, short-term loans</td>
+<td>Mortgage, debentures, long-term loans</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>Worked example — building a balance sheet</strong>
+A business has: Cash $20,000 | Accounts Receivable $40,000 | Inventory $50,000 | Equipment $200,000 | Accounts Payable $30,000 | Overdraft $20,000 | Mortgage $150,000</p>
+<ul>
+<li>Current Assets = 20,000 + 40,000 + 50,000 = <strong>$110,000</strong></li>
+<li>Non-Current Assets = <strong>$200,000</strong> → Total Assets = <strong>$310,000</strong></li>
+<li>Current Liabilities = 30,000 + 20,000 = <strong>$50,000</strong></li>
+<li>Non-Current Liabilities = <strong>$150,000</strong> → Total Liabilities = <strong>$200,000</strong></li>
+<li><strong>Owners&#39; Equity = 310,000 − 200,000 = $110,000</strong></li>
+</ul>
+</blockquote>
+<h3 id="3-5-financial-ratios">3.5 Financial Ratios</h3>
+<blockquote>
+<p><strong>These are the ratios your course requires, with the formulas and benchmarks as taught.</strong> Learn these exact forms.</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Ratio</th>
+<th>Formula</th>
+<th>Objective</th>
+<th>Benchmark</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td><strong>Current Ratio</strong></td>
+<td>Current Assets ÷ Current Liabilities</td>
+<td><strong>Liquidity</strong></td>
+<td><strong>2:1</strong></td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>Gearing Ratio</strong></td>
+<td>Total Liabilities ÷ <strong>Owners&#39; Equity</strong></td>
+<td><strong>Solvency</strong></td>
+<td><strong>0.5:1 to 1:1</strong> (i.e. up to 100%)</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>Gross Profit Ratio</strong></td>
+<td>(Gross Profit ÷ Sales) × 100</td>
+<td><strong>Profitability</strong></td>
+<td>No ideal — compare to previous periods and industry average</td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>Net Profit Ratio</strong></td>
+<td>(Net Profit ÷ Sales) × 100</td>
+<td><strong>Profitability</strong></td>
+<td>No ideal — compare to previous periods and industry average</td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>Return on Owners&#39; Equity</strong></td>
+<td>(Net Profit ÷ Owners&#39; Equity) × 100</td>
+<td><strong>Profitability</strong></td>
+<td>No ideal — compare to previous periods and industry average</td>
+</tr>
+<tr>
+<td>6</td>
+<td><strong>Expense Ratio</strong></td>
+<td>(Total Expenses ÷ Sales) × 100</td>
+<td><strong>Efficiency</strong></td>
+<td><strong>Lowest possible</strong></td>
+</tr>
+<tr>
+<td>7</td>
+<td><strong>Accounts Receivable Turnover</strong></td>
+<td><strong>Step 1:</strong> Sales ÷ Accounts Receivable → <strong>Step 2:</strong> 365 ÷ Step 1 answer</td>
+<td><strong>Efficiency</strong></td>
+<td><strong>30 days</strong></td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>Common error — the gearing formula.</strong> Gearing is <strong>Total Liabilities ÷ Owners&#39; Equity</strong>, <em>not</em> non-current liabilities over total assets. Some textbooks use other variants; use the one above for this course.</p>
+</blockquote>
+<blockquote>
+<p><strong>Confusing pair — Gearing vs Leverage.</strong> They describe the same idea: the proportion of the business funded by <strong>debt</strong> rather than <strong>equity</strong>. &quot;Highly geared&quot; = &quot;highly leveraged&quot; = heavy reliance on borrowed funds → higher <strong>financial risk</strong> but potentially higher return to owners.</p>
+</blockquote>
+<h4>What each ratio <em>tells you</em> (say this in the exam, don&#39;t just calculate)</h4>
+<table>
+<thead>
+<tr>
+<th>Ratio</th>
+<th>Plain-English meaning</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Current Ratio</td>
+<td>For every <strong>$1</strong> of current liabilities, how many <strong>$</strong> of current assets the business has</td>
+</tr>
+<tr>
+<td>Gearing Ratio</td>
+<td>For every <strong>$1</strong> of equity, how much <strong>debt</strong> the business has</td>
+</tr>
+<tr>
+<td>Gross Profit Ratio</td>
+<td>For every <strong>$1</strong> of sales, how much is left after paying <strong>COGS</strong></td>
+</tr>
+<tr>
+<td>Net Profit Ratio</td>
+<td>For every <strong>$1</strong> of sales, how much is left after paying <strong>all expenses</strong></td>
+</tr>
+<tr>
+<td>Return on Owners&#39; Equity</td>
+<td>How much <strong>return owners get back</strong> from their investment</td>
+</tr>
+<tr>
+<td>Expense Ratio</td>
+<td>For every <strong>$1</strong> of sales, how much is <strong>spent on expenses</strong></td>
+</tr>
+<tr>
+<td>Accounts Receivable Turnover</td>
+<td>How many <strong>days</strong> it takes to collect money from customers</td>
+</tr>
+</tbody></table>
+<h4>Worked Ratio Example — full set</h4>
+<blockquote>
+<p><strong>Given</strong>: Sales $500,000 | COGS $300,000 | Total Expenses $120,000 | Current Assets $150,000 | Current Liabilities $75,000 | Total Liabilities $200,000 | Owners&#39; Equity $250,000 | Accounts Receivable $41,000</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Ratio</th>
+<th>Working</th>
+<th>Result</th>
+<th>Interpretation</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Gross Profit</td>
+<td>500,000 − 300,000</td>
+<td>$200,000</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Net Profit</td>
+<td>200,000 − 120,000</td>
+<td>$80,000</td>
+<td>—</td>
+</tr>
+<tr>
+<td><strong>Current Ratio</strong></td>
+<td>150,000 ÷ 75,000</td>
+<td><strong>2:1</strong></td>
+<td>Meets the 2:1 benchmark — sound liquidity</td>
+</tr>
+<tr>
+<td><strong>Gearing</strong></td>
+<td>200,000 ÷ 250,000</td>
+<td><strong>0.8:1</strong></td>
+<td>Within the 0.5–1:1 range — acceptable solvency</td>
+</tr>
+<tr>
+<td><strong>Gross Profit Ratio</strong></td>
+<td>(200,000 ÷ 500,000) × 100</td>
+<td><strong>40%</strong></td>
+<td>40c in every sales dollar remains after COGS</td>
+</tr>
+<tr>
+<td><strong>Net Profit Ratio</strong></td>
+<td>(80,000 ÷ 500,000) × 100</td>
+<td><strong>16%</strong></td>
+<td>16c in every sales dollar is net profit</td>
+</tr>
+<tr>
+<td><strong>Return on Owners&#39; Equity</strong></td>
+<td>(80,000 ÷ 250,000) × 100</td>
+<td><strong>32%</strong></td>
+<td>Owners earn 32c per dollar invested</td>
+</tr>
+<tr>
+<td><strong>Expense Ratio</strong></td>
+<td>(120,000 ÷ 500,000) × 100</td>
+<td><strong>24%</strong></td>
+<td>24c of every sales dollar goes to expenses</td>
+</tr>
+<tr>
+<td><strong>AR Turnover</strong></td>
+<td>Step 1: 500,000 ÷ 41,000 = 12.2 → Step 2: 365 ÷ 12.2</td>
+<td><strong>≈ 30 days</strong></td>
+<td>Meets the 30-day benchmark</td>
+</tr>
+</tbody></table>
+<h3 id="3-6-limitations-of-financial-reports">3.6 Limitations of Financial Reports</h3>
+<blockquote>
+<p>Financial reports can be complicated to understand without a financial background and <strong>may not give a clear picture</strong> of the performance and position of the business.</p>
+</blockquote>
+<h4>Normalised Earnings</h4>
+<p>Earnings <strong>adjusted for the cyclical ups and downs</strong> of the economy. On the Profit and Loss Statement and Retained Profits on the Balance Sheet, earnings are adjusted to <strong>remove unusual or one-off influences</strong>.</p>
+<blockquote>
+<p><em>Example</em>: the sale of land or property where the business made a capital gain. Normalised earnings show a <strong>true reflection of earnings from operations</strong>.</p>
+</blockquote>
+<h4>Capitalising Expenses</h4>
+<p>The purchase price of a non-current asset is added to the cost of setting it up, and that total is used as the <strong>value of the asset in the balance sheet</strong>. The value is then written off as an expense in the income statement over the asset&#39;s useful life — this is <strong>depreciation</strong>.</p>
+<p><strong>Worked example — capitalising expenses</strong></p>
+<p>Purchased new equipment for $1,000,000:</p>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Amount</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Purchase price</td>
+<td>$1,000,000</td>
+</tr>
+<tr>
+<td>Delivery costs</td>
+<td>$500</td>
+</tr>
+<tr>
+<td>Installation costs</td>
+<td>$1,500</td>
+</tr>
+<tr>
+<td>Training costs</td>
+<td>$5,000</td>
+</tr>
+<tr>
+<td><strong>Value of asset in Balance Sheet</strong></td>
+<td><strong>$1,007,000</strong> (historical cost)</td>
+</tr>
+</tbody></table>
+<p>These costs would normally appear as <strong>expenses</strong> in the P&amp;L, <strong>except</strong> where they relate to purchasing a non-current asset — then they are included in the <strong>asset&#39;s value</strong> on the Balance Sheet.</p>
+<p><strong>The abuse</strong>: Taking ordinary expenses and <strong>inappropriately capitalising</strong> them is illegal. It lowers reported expenses, inflates profit, and misleads stakeholders.</p>
+<h4>Valuing Assets</h4>
+<p>Businesses normally follow the <strong>historical cost concept</strong> — recording assets at purchase price. But real values change:</p>
+<ol>
+<li><strong>Appreciation</strong> — inflation and market forces mean land and property tend to <strong>rise</strong> in value, so the business should <strong>revalue</strong> to show a true reflection</li>
+<li><strong>Wear and tear</strong> — equipment loses value, so it should be <strong>devalued</strong> through depreciation</li>
+</ol>
+<p><strong>Increasing asset values</strong>: To increase the value of assets such as land and property, a business needs <strong>at least two independent valuations</strong> as evidence.</p>
+<p><strong>Worked example — straight-line depreciation</strong>
+Historical cost $1,000,000 | Useful lifetime 10 years | Disposal value $1,000</p>
+<pre><code>Straight-line depreciation = (Historical cost − Disposal value) ÷ Useful lifetime
+                           = (1,000,000 − 1,000) ÷ 10
+                           = 999,000 ÷ 10
+                           = $99,900 per year
+</code></pre>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Income Statement (Expenses)</th>
+<th>Balance Sheet (Non-Current Assets)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Year 1</strong></td>
+<td>Depreciation $99,900</td>
+<td>1,000,000 − 99,900 accumulated = <strong>$900,100</strong></td>
+</tr>
+<tr>
+<td><strong>Year 2</strong></td>
+<td>Depreciation $99,900</td>
+<td>1,000,000 − 199,800 accumulated = <strong>$800,200</strong></td>
+</tr>
+</tbody></table>
+<p><strong>Intangibles</strong>: Goodwill, trademarks, licences and patents are <strong>impossible to value accurately</strong>, which is itself a limitation.</p>
+<h4>Timing Issues</h4>
+<p>Financial reports cover a <strong>period</strong>, usually one year. If the business experiences <strong>seasonal fluctuations</strong>, the position may not be a true representation — and businesses may exploit this to appear more profitable.</p>
+<p><strong>The matching principle (accounting sense)</strong>: Each transaction should be recorded at the time it <strong>actually occurs</strong>. Revenue must be matched to all expenses incurred in earning that revenue in a particular accounting period — <strong>even if cash has not been paid or received</strong>.</p>
+<blockquote>
+<p>By recording some transactions <strong>outside</strong> the current financial year, they will not appear on the current reports.</p>
+</blockquote>
+<h4>Debt Repayments</h4>
+<p>Reports <strong>do not disclose specific information</strong> about some debt repayments.</p>
+<blockquote>
+<p><em>Example</em>: money owed to workers for annual leave or sick leave. It is difficult to predict when workers will take leave, so the business cannot recognise exactly when the debt will be paid.</p>
+</blockquote>
+<h4>Notes to the Financial Statements</h4>
+<p>The <strong>details and additional information left out</strong> of the main reporting documents (balance sheet, income statement). These normally appear in the <strong>appendices</strong> of Annual Reports and/or a Prospectus.</p>
+<blockquote>
+<p><strong>Limitation</strong>: Notes are <strong>not regulated by law as strictly</strong> as the financial report itself, so notes may in fact be used to <strong>mislead</strong>.</p>
+</blockquote>
+<h3 id="3-7-ethical-issues-in-financial-reporting">3.7 Ethical Issues in Financial Reporting</h3>
+<p>Accountants must display:</p>
+<ul>
+<li><strong>Integrity</strong></li>
+<li><strong>Objectivity</strong></li>
+<li><strong>Confidentiality</strong></li>
+<li>A high level of <strong>professional and technical ability</strong></li>
+</ul>
+<blockquote>
+<p>Financial managers and accountants therefore cannot be <strong>&quot;creative&quot;</strong> when recording transactions and preparing reports in order to make the business appear more profitable.</p>
+</blockquote>
+<p><strong>Standards</strong>: <strong>IFRS</strong> (International Financial Reporting Standards) and <strong>AAS</strong> (Australian Accounting Standards). AAS selects the appropriate IFRS standards to adapt to the Australian market and adds specific requirements. Business accounts must be <strong>audited and monitored</strong> by independent organisations such as <strong>ASIC</strong>, which checks accounts and procedures to ensure a <strong>true and fair representation</strong>.</p>
+<h4>Unethical Financial Practices</h4>
+<table>
+<thead>
+<tr>
+<th>Practice</th>
+<th>Definition</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Audits (misuse of)</strong></td>
+<td>Audits are independent examinations of financial information — internal or external. External auditors are <strong>independent</strong>; compromising that independence is unethical</td>
+</tr>
+<tr>
+<td><strong>Cut-off periods</strong></td>
+<td>Financial reporting <strong>timed</strong> to give a misleading impression of current performance</td>
+</tr>
+<tr>
+<td><strong>Inappropriate use of funds</strong></td>
+<td>Company officials using company assets for personal gain; false invoices issued for more than inputs are worth</td>
+</tr>
+<tr>
+<td><strong>Corporate raiding</strong></td>
+<td>Buying an undervalued company and increasing profit or <strong>selling off the assets</strong>. The owner&#39;s personal wealth increases at the cost of employees who lose their jobs</td>
+</tr>
+<tr>
+<td><strong>Misuse of business credit cards</strong></td>
+<td>Managers and employees using business credit cards and money for personal use</td>
+</tr>
+</tbody></table>
+<p>Other issues: <strong>fictitious revenues, hidden liabilities and expenses, improper disclosures or omissions, and fraudulent asset valuations</strong>.</p>
+<h4>Six Named Ethical Examples</h4>
+<table>
+<thead>
+<tr>
+<th>Issue</th>
+<th>Explanation and example</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Window dressing</strong></td>
+<td>Using <strong>legal</strong> techniques to show a better financial position than actually exists. <em>Example</em>: at year end, offering a valued customer bulk stock at a discount. This shows improved cash flow and low stock on the Balance Sheet. Ethically it may not show a true and fair position — it hides whether stock was sold below cost, or would have sold at all at full price</td>
+</tr>
+<tr>
+<td><strong>Income smoothing</strong> (timing)</td>
+<td>Reducing taxation by reducing net profit. <em>Example</em>: XYZ pays $10,000 insurance in advance in January 2022 for the year, and records <strong>all</strong> of it as an expense in June for FY2021/22. Only 6 months was incurred, so $5,000 belongs in FY2021/22 and $5,000 in FY2022/23. Profit falls, so less tax is paid</td>
+</tr>
+<tr>
+<td><strong>Continuous disclosure</strong></td>
+<td>Legally a business need not inform shareholders if it is likely to make a loss after previously indicating profit. <strong>Ethically</strong> it should, so shareholders can make informed decisions. Disclosure requirements are also reduced during takeovers</td>
+</tr>
+<tr>
+<td><strong>Valuing intangible assets</strong></td>
+<td>Hard to value. <em>Example</em>: Facebook bought WhatsApp for <strong>$19 billion</strong> despite it never making a profit, but with over 45 million users. Should it be valued at purchase price or potential future value?</td>
+</tr>
+<tr>
+<td><strong>Valuing assets</strong></td>
+<td>Legally a business needs an independent valuation — but it can obtain several and <strong>choose the one that suits</strong> the position it wants to show. Legal, but may not be the most accurate</td>
+</tr>
+<tr>
+<td><strong>Debt repayments</strong></td>
+<td>A business must provide for annual leave and long service leave. Annual leave is easy to estimate. <strong>Long service leave</strong> vests after 10 years, so the business must assess the probability of employees staying that long and when they will take it — raising the ethical question of how to value that future liability</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="4-financial-management-strategies">4. Financial Management Strategies</h2>
+<blockquote>
+<p><strong>Each objective has its own strategy family.</strong> This mapping is the spine of most extended-response questions.</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Objective</th>
+<th>Strategy family</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Profitability</strong></td>
+<td>Cost controls (fixed and variable, cost centres, expense minimisation); revenue controls (marketing objectives)</td>
+</tr>
+<tr>
+<td><strong>Liquidity</strong></td>
+<td>Working capital management — control of current assets and current liabilities; leasing; sale and lease-back</td>
+</tr>
+<tr>
+<td><strong>Efficiency</strong></td>
+<td>Cash flow management — cash flow statements, distribution of payments, discounts for early payment, factoring</td>
+</tr>
+<tr>
+<td><strong>Solvency</strong></td>
+<td>Choosing the best <strong>source of finance</strong> for the situation (debt vs equity)</td>
+</tr>
+</tbody></table>
+<h3 id="4-1-cash-flow-management">4.1 Cash Flow Management</h3>
+<p><strong>Cash flow statements</strong> record inflows and outflows. Strategies:</p>
+<table>
+<thead>
+<tr>
+<th>Strategy</th>
+<th>How it works</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Distribution of payments</strong></td>
+<td>Spreading payments through the month/year so large outflows do not coincide, avoiding a cash shortfall</td>
+</tr>
+<tr>
+<td><strong>Discounts for early payment</strong></td>
+<td>Offering customers a discount (e.g. 2/10 net 30) to pay sooner — reduces debtor days and accelerates inflow</td>
+</tr>
+<tr>
+<td><strong>Factoring</strong></td>
+<td>Selling accounts receivable for immediate cash (at a cost)</td>
+</tr>
+</tbody></table>
+<p><strong>Other ways to increase inflows</strong>: tighten credit terms, increase sales revenue, sell unused non-current assets, lease rather than purchase.
+<strong>Other ways to decrease outflows</strong>: negotiate longer supplier payment terms, reduce inventory (JIT), cut discretionary expenses, refinance at lower rates, delay non-essential capital expenditure.</p>
+<blockquote>
+<p><strong>Cash flow cycle</strong>: Cash → Inventory → Production → Sales → Debtors → Cash. The <strong>longer</strong> the cycle, the more working capital is needed. Businesses aim to <strong>shorten</strong> it.</p>
+</blockquote>
+<h3 id="4-2-working-capital-management">4.2 Working Capital Management</h3>
+<p><strong>Working Capital = Current Assets − Current Liabilities</strong></p>
+<h4>Control of Current Assets</h4>
+<table>
+<thead>
+<tr>
+<th>Asset</th>
+<th>Management focus</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Cash</strong></td>
+<td>Maintain adequate levels — not so much that it sits idle, not so little that bills cannot be paid</td>
+</tr>
+<tr>
+<td><strong>Receivables</strong></td>
+<td>Minimise collection time; check creditworthiness; offer early payment discounts; enforce credit policies</td>
+</tr>
+<tr>
+<td><strong>Inventories</strong></td>
+<td>Balance too much (storage costs, obsolescence) against too little (stockouts, lost sales)</td>
+</tr>
+</tbody></table>
+<h4>Control of Current Liabilities</h4>
+<table>
+<thead>
+<tr>
+<th>Liability</th>
+<th>Management focus</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Payables</strong></td>
+<td>Maximise payment time <strong>without</strong> damaging supplier relationships or credit terms</td>
+</tr>
+<tr>
+<td><strong>Loans</strong></td>
+<td>Seek the lowest-cost finance; monitor charges and interest</td>
+</tr>
+<tr>
+<td><strong>Overdrafts</strong></td>
+<td>Use for genuine short-term shortfalls; minimise interest paid</td>
+</tr>
+</tbody></table>
+<h4>Named Working Capital Strategies</h4>
+<table>
+<thead>
+<tr>
+<th>Strategy</th>
+<th>Effect</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Leasing</strong></td>
+<td>Frees cash that would be tied up in purchasing assets outright; payments are tax deductible</td>
+</tr>
+<tr>
+<td><strong>Sale and lease-back</strong></td>
+<td>Selling an asset the business owns and <strong>leasing it straight back</strong>. Generates an immediate large cash inflow while retaining the use of the asset</td>
+</tr>
+</tbody></table>
+<h3 id="4-3-profitability-management">4.3 Profitability Management</h3>
+<h4>Cost Controls</h4>
+<table>
+<thead>
+<tr>
+<th>Control</th>
+<th>Detail</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Fixed and variable costs</strong></td>
+<td><strong>Fixed costs</strong> do not change with output (rent, insurance, salaries). <strong>Variable costs</strong> change directly with output (raw materials, wages per unit). Managing the mix affects break-even</td>
+</tr>
+<tr>
+<td><strong>Cost centres</strong></td>
+<td>A <strong>cost centre</strong> is a department or area of the business to which costs can be directly attributed, so performance can be measured and controlled. <strong>Direct</strong> cost centres relate to production; <strong>indirect</strong> cost centres (HR, IT) support the whole business</td>
+</tr>
+<tr>
+<td><strong>Expense minimisation</strong></td>
+<td>Systematically reducing expenses — bulk buying, global sourcing, outsourcing, reducing overheads, automation</td>
+</tr>
+</tbody></table>
+<h4>Revenue Controls</h4>
+<p>Setting <strong>marketing objectives</strong> and using the marketing mix to drive sales revenue: product differentiation, market development, product development, diversification, pricing strategies, improved promotion.</p>
+<blockquote>
+<p><strong>Profit formula</strong></p>
+<pre><code>Profit = Total Revenue − Total Costs
+Profit = (Price × Quantity Sold) − (Fixed Costs + Variable Costs)
+</code></pre>
+<p>To improve profit: <strong>increase revenue</strong> (price or quantity) OR <strong>decrease costs</strong> (fixed or variable).</p>
+</blockquote>
+<h4>Break-Even Analysis</h4>
+<table>
+<thead>
+<tr>
+<th>Concept</th>
+<th>Formula</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Break-Even Point (units)</strong></td>
+<td>Fixed Costs ÷ (Selling Price per unit − Variable Cost per unit)</td>
+</tr>
+<tr>
+<td><strong>Break-Even Point ($)</strong></td>
+<td>Break-even units × Selling Price per unit</td>
+</tr>
+<tr>
+<td><strong>Contribution per unit</strong></td>
+<td>Selling Price per unit − Variable Cost per unit</td>
+</tr>
+<tr>
+<td><strong>Margin of Safety</strong></td>
+<td>Actual (or expected) sales − Break-even sales</td>
+</tr>
+<tr>
+<td><strong>Target Profit (units)</strong></td>
+<td>(Fixed Costs + Target Profit) ÷ Contribution per unit</td>
+</tr>
+</tbody></table>
+<p><strong>Worked example</strong></p>
+<p>A café has fixed costs of <strong>$60,000/year</strong>. Each coffee sells for <strong>$5</strong> with a variable cost of <strong>$2</strong>.</p>
+<table>
+<thead>
+<tr>
+<th>Calculation</th>
+<th>Working</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Contribution per unit</td>
+<td>5 − 2</td>
+<td><strong>$3</strong></td>
+</tr>
+<tr>
+<td>Break-even (units)</td>
+<td>60,000 ÷ 3</td>
+<td><strong>20,000 coffees</strong></td>
+</tr>
+<tr>
+<td>Break-even ($)</td>
+<td>20,000 × 5</td>
+<td><strong>$100,000</strong></td>
+</tr>
+<tr>
+<td>Margin of safety (selling 25,000)</td>
+<td>25,000 − 20,000</td>
+<td><strong>5,000 coffees</strong></td>
+</tr>
+<tr>
+<td>Units for $15,000 target profit</td>
+<td>(60,000 + 15,000) ÷ 3</td>
+<td><strong>25,000 coffees</strong></td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th>Change</th>
+<th>Effect on Break-Even Point</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>↑ Selling price</td>
+<td><strong>Decreases</strong> (fewer units needed)</td>
+</tr>
+<tr>
+<td>↑ Variable costs</td>
+<td><strong>Increases</strong></td>
+</tr>
+<tr>
+<td>↑ Fixed costs</td>
+<td><strong>Increases</strong></td>
+</tr>
+<tr>
+<td>↓ Selling price</td>
+<td><strong>Increases</strong></td>
+</tr>
+<tr>
+<td>↓ Variable costs</td>
+<td><strong>Decreases</strong></td>
+</tr>
+<tr>
+<td>↓ Fixed costs</td>
+<td><strong>Decreases</strong></td>
+</tr>
+</tbody></table>
+<h3 id="4-4-global-financial-management">4.4 Global Financial Management</h3>
+<p>Four additional factors/risks when operating globally: <strong>exchange rates, interest rates, methods of international payment, hedging and derivatives</strong>.</p>
+<h4>Exchange Rates</h4>
+<p><strong>Exchange rate</strong> = the value of a country&#39;s money calculated using another country&#39;s money.</p>
+<blockquote>
+<p><strong>Appreciation</strong> = the AUD <strong>rises</strong> in value against another currency.
+<strong>Depreciation</strong> = the AUD <strong>falls</strong> in value against another currency.</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Scenario</th>
+<th>Effect on the Australian business</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Business <strong>imports</strong> from China and the AUD <strong>depreciates</strong> against the Yuan</td>
+<td>Costs <strong>more</strong></td>
+</tr>
+<tr>
+<td>Business has <strong>borrowed</strong> from the US and the AUD <strong>appreciates</strong> against the USD</td>
+<td>Pays <strong>less</strong></td>
+</tr>
+<tr>
+<td>Business has <strong>lent</strong> money to a UK business and the AUD <strong>depreciates</strong> against the pound</td>
+<td>Receives <strong>less</strong></td>
+</tr>
+<tr>
+<td>Business <strong>exports</strong> to France and the AUD <strong>appreciates</strong> against the Euro</td>
+<td>Costs the Australian business <strong>less</strong></td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>Memory hook</strong>: A <strong>strong (appreciating)</strong> AUD makes <strong>imports cheaper</strong> and <strong>exports dearer</strong> (less competitive overseas). A <strong>weak (depreciating)</strong> AUD makes <strong>imports dearer</strong> and <strong>exports cheaper</strong> (more competitive overseas).</p>
+</blockquote>
+<h4>Interest Rates</h4>
+<p>It is important to find the <strong>lowest</strong> interest rates, as exchange rate fluctuations can make repayments more costly.</p>
+<p><strong>Advantages of borrowing overseas:</strong></p>
+<ol>
+<li>The interest rate can be <strong>cheaper</strong></li>
+<li>There are <strong>fewer restrictions</strong></li>
+<li>Finance may be acquired <strong>more quickly and easily</strong></li>
+</ol>
+<blockquote>
+<p><strong>The risk</strong>: If the AUD <strong>depreciates</strong>, the foreign loan becomes much more expensive to repay. If global interest rates rise, repayments increase beyond what was planned.</p>
+</blockquote>
+<h4>Methods of International Payment</h4>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>How it works</th>
+<th>Risk</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Payment in advance</strong></td>
+<td>Exporter receives payment, <strong>then</strong> sends the goods</td>
+<td><strong>No risk for the exporter</strong>; risk sits with the importer (goods may never arrive). Few importers accept this</td>
+</tr>
+<tr>
+<td><strong>Letter of credit</strong></td>
+<td>A document issued by a <strong>bank</strong> to the seller, with instructions from the buyer authorising the seller to draw a specified amount from the buyer&#39;s bank account under certain conditions. The bank ensures the exporter gets paid</td>
+<td>Existing risk for the importer</td>
+</tr>
+<tr>
+<td><strong>Bill of exchange</strong></td>
+<td>A <strong>written order from the seller</strong> requesting the buyer pay a specified amount at a specified time. The bank ensures the importer receives goods and the exporter is paid</td>
+<td>Existing risk for the exporter</td>
+</tr>
+<tr>
+<td><strong>Clean payment</strong></td>
+<td>Goods are <strong>shipped before</strong> payment is received</td>
+<td><strong>Significant risk for the exporter</strong> — used only with trusted long-standing partners</td>
+</tr>
+</tbody></table>
+<h4>Hedging</h4>
+<p><strong>Hedging</strong> = any strategy used by a business to <strong>reduce financial risks</strong>. It is like buying insurance to protect property — protection against unforeseen risks. Businesses hedge when <strong>uncertain of the future</strong>, to reduce <strong>foreign exchange</strong> and <strong>interest rate</strong> risks.</p>
+<p><strong>Natural hedging</strong> occurs when a business:</p>
+<ul>
+<li>Sets up <strong>subsidiaries</strong> in other countries and uses them to pay for expenses and goods purchased from that country</li>
+<li>Sets up <strong>bank accounts</strong> in a country where it buys or sells goods, and uses funds from that account to pay expenses in that country</li>
+</ul>
+<h4>Derivatives</h4>
+<p>A <strong>derivative</strong> is a special contract between global businesses and suppliers. Three main types:</p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>How it works</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Forward exchange contract</strong></td>
+<td>An agreement with a FOREX business guaranteeing a <strong>certain exchange rate on a certain day</strong></td>
+</tr>
+<tr>
+<td><strong>Currency options contract</strong></td>
+<td>The business has the <strong>option</strong> (no obligation) to buy or sell foreign currency when the exchange rate movement is to its advantage. Allows use of the <strong>spot rate</strong></td>
+</tr>
+<tr>
+<td><strong>Swap contract</strong></td>
+<td>A written contract allowing an Australian business to pay an overseas supplier <strong>in another currency</strong> at a spot rate</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>Spot rate</strong> = the exchange rate at a specific time on a specific day.</p>
+</blockquote>
+<p><strong>Forward exchange contract — the trade-off:</strong></p>
+<ul>
+<li><strong>Advantage</strong>: If the spot rate turns out <strong>less favourable</strong> (e.g. the AUD has depreciated), the contracted rate is <strong>cheaper</strong> for the business. <em>Example</em>: contracted at AUD$1:USD$0.72, spot in 6 months is AUD$1:USD$0.63 → the contract is better.</li>
+<li><strong>Disadvantage</strong>: If the spot rate turns out <strong>more favourable</strong> (e.g. the AUD has appreciated), the contracted rate is <strong>more expensive</strong>. <em>Example</em>: spot in 6 months is AUD$1:USD$0.95 → the contract is worse than the spot rate.</li>
+</ul>
+<blockquote>
+<p><strong>Why choose an options contract over a forward contract?</strong> Options protect against unfavourable movements <strong>while retaining the opportunity to gain</strong> if movements are favourable — you simply don&#39;t exercise the option. The trade-off is that options cost a premium.</p>
+</blockquote>
+<blockquote>
+<p><strong>Swap contract example</strong>: An Australian business has excess USD and needs to pay a Chinese company for materials. The Chinese company may agree to accept USD, because it can then use those USD to pay an American supplier of its own.</p>
+</blockquote>
+<hr>
+<h2 id="5-section-iv-essay-structures">5. Section IV Essay Structures</h2>
+<h3 id="assess-evaluate-judgement-based">Assess / Evaluate (Judgement-Based)</h3>
+<p><strong>Introduction</strong>: Start with a judgement sentence → state what you are evaluating (use syllabus dot points) → include your case studies.</p>
+<table>
+<thead>
+<tr>
+<th>Body Paragraph</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>1</strong></td>
+<td>Answer the question — judgement with brief overview. Define key concepts. Include case study</td>
+</tr>
+<tr>
+<td><strong>2</strong></td>
+<td><strong>Advantages</strong> — prove they are advantages by linking to a <strong>financial objective</strong>. Use figures</td>
+</tr>
+<tr>
+<td><strong>3</strong></td>
+<td><strong>Disadvantages</strong> — prove they are disadvantages by linking to a <strong>financial objective</strong></td>
+</tr>
+<tr>
+<td><strong>4</strong></td>
+<td>Re-state judgement, link to long-term business goals</td>
+</tr>
+</tbody></table>
+<p><strong>Conclusion</strong>: 1–2 summary sentences per body paragraph, including case study.</p>
+<h3 id="analyse-explain-how-cause-and-effect">Analyse / Explain How (Cause-and-Effect)</h3>
+<p><strong>Introduction</strong>: Link two ideas (cause and effect) → state what you are analysing → include case studies.</p>
+<table>
+<thead>
+<tr>
+<th>Body Paragraph</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>1</strong></td>
+<td>Cause/effect #1 — how is the business impacted, and why? Case study</td>
+</tr>
+<tr>
+<td><strong>2</strong></td>
+<td>Cause/effect #2 — same structure, linked to #1</td>
+</tr>
+<tr>
+<td><strong>3</strong></td>
+<td><strong>Positive implications (long term)</strong> — link to strategic role and business goals</td>
+</tr>
+<tr>
+<td><strong>4</strong></td>
+<td><strong>Negative implications</strong> — point out an issue</td>
+</tr>
+</tbody></table>
+<h3 id="the-explain-scaffold-used-in-class">The &quot;Explain&quot; Scaffold (used in class)</h3>
+<pre><code>A. Define      — What is it?
+B. Cause/s     — How does the issue impact the business?
+C. Effects     — What does this lead to?
+D. Link        — What does this mean for the business?
+</code></pre>
+<h3 id="assessing-financial-performance-ratio-scaffold">Assessing Financial Performance — Ratio Scaffold</h3>
+<ol>
+<li><strong>Intro</strong>: Brief intro about the business; state which ratios you are analysing</li>
+<li><strong>Current Ratio</strong>: Cause → How → Effect → Judgement (link to <strong>liquidity</strong>)</li>
+<li><strong>Gearing Ratio</strong>: Same structure (link to <strong>solvency</strong>)</li>
+<li><strong>Net Profit Ratio</strong>: Same structure (link to <strong>profitability</strong>)</li>
+</ol>
+<blockquote>
+<p><strong>Top-band tip</strong>: Integrate strategies from <strong>other topics</strong> (e.g. JIT from Operations) and link them back to the <strong>finance</strong> impact.</p>
+</blockquote>
+<p><strong>Financial strategies scenario — PEEL example</strong>
+<em>Scenario: XYZ Retail has high inventory, low cash, high receivables.</em></p>
+<ul>
+<li><strong>P</strong>: JIT inventory management can control high inventory levels</li>
+<li><strong>E</strong>: High inventory increases storage costs and the risk of obsolescence</li>
+<li><strong>E</strong>: JIT reduces storage costs, minimises expenses and improves profitability. Risk: may not have enough stock to meet demand</li>
+<li><strong>L</strong>: By reducing inventory costs, XYZ Retail maximises profit for reinvestment and business growth</li>
+</ul>
+<hr>
+<h2 id="6-common-exam-pitfalls">6. Common Exam Pitfalls</h2>
+<ol>
+<li><strong>Don&#39;t just calculate — interpret.</strong> A ratio means nothing without a comment on whether it is good or bad, and why.</li>
+<li><strong>Compare</strong> ratios over time or to industry benchmarks.</li>
+<li><strong>Use specific numbers</strong> from the stimulus — don&#39;t be vague.</li>
+<li><strong>Link everything back</strong> to the business in the question.</li>
+<li><strong>Profit ≠ cash flow.</strong> A profitable business can still fail from poor liquidity.</li>
+<li><strong>Liquidity ≠ solvency.</strong> Current ratio = short term. Gearing = long term.</li>
+<li><strong>Break-even</strong>: check whether the question wants <strong>units</strong> or <strong>dollars</strong>.</li>
+<li><strong>Inventory MANAGEMENT vs VALUATION</strong>: management = JIT/JIC; valuation = FIFO/LIFO.</li>
+<li><strong>Variance</strong>: favourable on costs means spending was <strong>below</strong> budget; adverse on revenue means sales were <strong>below</strong> budget.</li>
+<li><strong>Gearing formula</strong>: Total Liabilities ÷ Owners&#39; Equity.</li>
+</ol>
+<hr>
+<h2 id="7-glossary-terms-students-mix-up">7. Glossary — Terms Students Mix Up</h2>
+<table>
+<thead>
+<tr>
+<th>Term</th>
+<th>Plain meaning</th>
+<th>Don&#39;t confuse with</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Liquidity</strong></td>
+<td>Short-term ability to pay debts</td>
+<td><strong>Solvency</strong> (long-term)</td>
+</tr>
+<tr>
+<td><strong>Solvency</strong></td>
+<td>Long-term ability to meet commitments</td>
+<td><strong>Liquidity</strong> (short-term)</td>
+</tr>
+<tr>
+<td><strong>Gearing / Leverage</strong></td>
+<td>Proportion of funding from debt vs equity</td>
+<td>These two are the <strong>same thing</strong></td>
+</tr>
+<tr>
+<td><strong>Debenture</strong></td>
+<td>Long-term debt sold to the public via prospectus; <strong>no security</strong></td>
+<td><strong>Mortgage</strong> (secured against property)</td>
+</tr>
+<tr>
+<td><strong>Unsecured note</strong></td>
+<td>Higher-interest bond issued by finance companies</td>
+<td><strong>Debenture</strong> (also unsecured but company-issued)</td>
+</tr>
+<tr>
+<td><strong>Factoring</strong></td>
+<td>Selling receivables for immediate cash</td>
+<td><strong>Leasing</strong> (renting an asset)</td>
+</tr>
+<tr>
+<td><strong>Primary market</strong></td>
+<td>New shares — <strong>company</strong> gets the money</td>
+<td><strong>Secondary market</strong> — company gets <strong>nothing</strong></td>
+</tr>
+<tr>
+<td><strong>Overdraft</strong></td>
+<td>Flexible short-term borrowing on a current account</td>
+<td><strong>Bank loan</strong> (fixed amount and term)</td>
+</tr>
+<tr>
+<td><strong>Operating lease</strong></td>
+<td>Short-term; <strong>owner</strong> maintains the asset</td>
+<td><strong>Financial lease</strong> — runs for the asset&#39;s life</td>
+</tr>
+<tr>
+<td><strong>Appreciation</strong></td>
+<td>Asset (or currency) <strong>rises</strong> in value</td>
+<td><strong>Depreciation</strong> — falls in value</td>
+</tr>
+<tr>
+<td><strong>Depreciation</strong></td>
+<td>Systematic write-off of an asset&#39;s cost over its life</td>
+<td>Currency depreciation (AUD falling) — same word, different context</td>
+</tr>
+<tr>
+<td><strong>Capitalising an expense</strong></td>
+<td>Recording a cost as an <strong>asset</strong> on the Balance Sheet</td>
+<td>Expensing it immediately on the P&amp;L</td>
+</tr>
+<tr>
+<td><strong>Normalised earnings</strong></td>
+<td>Earnings with <strong>one-off events removed</strong></td>
+<td>Window dressing (deliberately misleading)</td>
+</tr>
+<tr>
+<td><strong>Window dressing</strong></td>
+<td><strong>Legal</strong> techniques making the position look better</td>
+<td>Fraud (illegal)</td>
+</tr>
+<tr>
+<td><strong>Income smoothing</strong></td>
+<td>Shifting expenses between years to reduce tax</td>
+<td>Normalised earnings (removes one-offs for clarity)</td>
+</tr>
+<tr>
+<td><strong>Matching principle</strong></td>
+<td>(a) Match finance term to use; (b) match revenue to expenses in a period</td>
+<td>Two distinct meanings — read the question</td>
+</tr>
+<tr>
+<td><strong>Hedging</strong></td>
+<td>Any strategy to reduce financial risk</td>
+<td><strong>Derivative</strong> — a specific <em>type</em> of hedging contract</td>
+</tr>
+<tr>
+<td><strong>Spot rate</strong></td>
+<td>Exchange rate <strong>today</strong></td>
+<td><strong>Forward rate</strong> — locked in for a future date</td>
+</tr>
+<tr>
+<td><strong>Cash flow statement</strong></td>
+<td><strong>Record</strong> of past cash movements</td>
+<td><strong>Cash flow budget</strong> — forecast of future cash</td>
+</tr>
+<tr>
+<td><strong>Income statement</strong></td>
+<td>Performance <strong>over a period</strong></td>
+<td><strong>Balance sheet</strong> — position at a <strong>point in time</strong></td>
+</tr>
+<tr>
+<td><strong>Cost centre</strong></td>
+<td>Area of the business costs are attributed to</td>
+<td>Profit centre (also generates revenue)</td>
+</tr>
+<tr>
+<td><strong>Merger</strong></td>
+<td>Two businesses <strong>agree</strong> to combine</td>
+<td><strong>Takeover</strong> — one buys the other, which ceases to exist</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="8-key-definitions-quick-reference">8. Key Definitions Quick Reference</h2>
+<table>
+<thead>
+<tr>
+<th>Term</th>
+<th>One-Line Definition</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Financial management</td>
+<td>Analysis, interpretation and evaluation of all financial records</td>
+</tr>
+<tr>
+<td>Strategic role of finance</td>
+<td>Provides a framework for all other business activities</td>
+</tr>
+<tr>
+<td>Liquidity</td>
+<td>Ability to pay current liabilities with current assets</td>
+</tr>
+<tr>
+<td>Solvency</td>
+<td>Ability to meet long-term financial commitments</td>
+</tr>
+<tr>
+<td>Profitability</td>
+<td>Ability of the business to maximise profits</td>
+</tr>
+<tr>
+<td>Efficiency</td>
+<td>Ability to manage costs and collection of money from customers</td>
+</tr>
+<tr>
+<td>Growth</td>
+<td>Ability of the business to grow and expand</td>
+</tr>
+<tr>
+<td>Owner&#39;s equity</td>
+<td>Funds contributed by owners to establish and build the business</td>
+</tr>
+<tr>
+<td>Retained profits</td>
+<td>Net profit reinvested in the business</td>
+</tr>
+<tr>
+<td>Overdraft</td>
+<td>Flexible short-notice borrowing on a current account</td>
+</tr>
+<tr>
+<td>Commercial bill</td>
+<td>Loan guaranteed by a bank, 30–180 days, usually over $100,000</td>
+</tr>
+<tr>
+<td>Factoring</td>
+<td>Selling accounts receivable to a specialist firm for immediate cash</td>
+</tr>
+<tr>
+<td>Mortgage</td>
+<td>Long-term loan secured against land or property</td>
+</tr>
+<tr>
+<td>Debenture</td>
+<td>Long-term debt offered to the public via prospectus, no security</td>
+</tr>
+<tr>
+<td>Leasing</td>
+<td>Paying to use a non-current asset owned by another party</td>
+</tr>
+<tr>
+<td>Sale and lease-back</td>
+<td>Selling an owned asset and leasing it straight back</td>
+</tr>
+<tr>
+<td>IPO</td>
+<td>Initial public offering — shares sold publicly for the first time</td>
+</tr>
+<tr>
+<td>Rights issue</td>
+<td>Offer to existing shareholders to buy more shares</td>
+</tr>
+<tr>
+<td>Placement</td>
+<td>Additional shares offered to specific institutions/investors</td>
+</tr>
+<tr>
+<td>ASX</td>
+<td>Market operator, clearing house and payment system facilitator</td>
+</tr>
+<tr>
+<td>ASIC</td>
+<td>Enforces the Corporations Act; reduces fraud and unfair practices</td>
+</tr>
+<tr>
+<td>Monetary policy</td>
+<td>RBA use of interest rates to influence the economy</td>
+</tr>
+<tr>
+<td>Company tax</td>
+<td>Tax on company profits, paid before dividends</td>
+</tr>
+<tr>
+<td>Working capital</td>
+<td>Current Assets − Current Liabilities</td>
+</tr>
+<tr>
+<td>Cost centre</td>
+<td>Area of a business to which costs are directly attributed</td>
+</tr>
+<tr>
+<td>Break-even point</td>
+<td>Level of sales where total revenue equals total costs</td>
+</tr>
+<tr>
+<td>Normalised earnings</td>
+<td>Earnings adjusted to remove unusual or one-off influences</td>
+</tr>
+<tr>
+<td>Capitalising expenses</td>
+<td>Adding set-up costs to an asset&#39;s balance-sheet value</td>
+</tr>
+<tr>
+<td>Historical cost</td>
+<td>Recording assets at their original purchase price</td>
+</tr>
+<tr>
+<td>Depreciation</td>
+<td>Systematic write-off of an asset&#39;s cost over its useful life</td>
+</tr>
+<tr>
+<td>Matching principle</td>
+<td>Revenue matched to expenses incurred in earning it</td>
+</tr>
+<tr>
+<td>Notes to financial statements</td>
+<td>Additional detail in the appendices of annual reports</td>
+</tr>
+<tr>
+<td>Window dressing</td>
+<td>Legal techniques making the financial position look better</td>
+</tr>
+<tr>
+<td>Income smoothing</td>
+<td>Reducing net profit to reduce tax payable</td>
+</tr>
+<tr>
+<td>Audit</td>
+<td>Independent examination of financial information</td>
+</tr>
+<tr>
+<td>IFRS / AAS</td>
+<td>International / Australian accounting standards</td>
+</tr>
+<tr>
+<td>Exchange rate</td>
+<td>Value of one currency expressed in another</td>
+</tr>
+<tr>
+<td>Hedging</td>
+<td>Any strategy used to reduce financial risk</td>
+</tr>
+<tr>
+<td>Derivative</td>
+<td>A contract used to hedge — forward, option or swap</td>
+</tr>
+<tr>
+<td>Spot rate</td>
+<td>The exchange rate on a particular day</td>
+</tr>
+<tr>
+<td>Letter of credit</td>
+<td>Bank document guaranteeing payment to the exporter</td>
+</tr>
+<tr>
+<td>Bill of exchange</td>
+<td>Written order from seller requesting payment at a specified time</td>
+</tr>
+</tbody></table>
+<hr>
+<blockquote>
+<p><strong>See also:</strong> <a href="Marketing__Marketing_FULL.html">Marketing</a> | <a href="Operations__Operations_FULL.html">Operations</a> | <a href="Human_Resources__Human_Resources_FULL.html">Human Resources</a> | <a href="Case_Studies.html">Case Studies</a> | <a href="MOC.html">MOC</a></p>
+</blockquote>
+</article></main></div><nav class="rail" aria-label="On this page"><div class="rail-title">On this page</div><ul><li><a href="#1-role-of-financial-management" data-target="1-role-of-financial-management">1. Role of Financial Management</a><ul class="sub"><li><a href="#1-1-strategic-role-of-financial-management" data-target="1-1-strategic-role-of-financial-management" data-parent="1-role-of-financial-management">1.1 Strategic Role of Financial Management</a></li><li><a href="#1-2-objectives-of-financial-management" data-target="1-2-objectives-of-financial-management" data-parent="1-role-of-financial-management">1.2 Objectives of Financial Management</a></li><li><a href="#1-3-interdependence-with-other-key-business-functions" data-target="1-3-interdependence-with-other-key-business-functions" data-parent="1-role-of-financial-management">1.3 Interdependence with Other Key Business Functions</a></li></ul></li><li><a href="#2-influences-on-financial-management" data-target="2-influences-on-financial-management">2. Influences on Financial Management</a><ul class="sub"><li><a href="#2-1-internal-sources-of-finance" data-target="2-1-internal-sources-of-finance" data-parent="2-influences-on-financial-management">2.1 Internal Sources of Finance</a></li><li><a href="#2-2-external-sources-of-finance" data-target="2-2-external-sources-of-finance" data-parent="2-influences-on-financial-management">2.2 External Sources of Finance</a></li><li><a href="#2-3-financial-institutions" data-target="2-3-financial-institutions" data-parent="2-influences-on-financial-management">2.3 Financial Institutions</a></li><li><a href="#2-4-influence-of-government" data-target="2-4-influence-of-government" data-parent="2-influences-on-financial-management">2.4 Influence of Government</a></li><li><a href="#2-5-global-market-influences" data-target="2-5-global-market-influences" data-parent="2-influences-on-financial-management">2.5 Global Market Influences</a></li></ul></li><li><a href="#3-processes-of-financial-management" data-target="3-processes-of-financial-management">3. Processes of Financial Management</a><ul class="sub"><li><a href="#3-1-planning-and-implementing" data-target="3-1-planning-and-implementing" data-parent="3-processes-of-financial-management">3.1 Planning and Implementing</a></li><li><a href="#3-2-debt-vs-equity-financing" data-target="3-2-debt-vs-equity-financing" data-parent="3-processes-of-financial-management">3.2 Debt vs Equity Financing</a></li><li><a href="#3-3-the-matching-principle" data-target="3-3-the-matching-principle" data-parent="3-processes-of-financial-management">3.3 The Matching Principle</a></li><li><a href="#3-4-the-three-financial-statements" data-target="3-4-the-three-financial-statements" data-parent="3-processes-of-financial-management">3.4 The Three Financial Statements</a></li><li><a href="#3-5-financial-ratios" data-target="3-5-financial-ratios" data-parent="3-processes-of-financial-management">3.5 Financial Ratios</a></li><li><a href="#3-6-limitations-of-financial-reports" data-target="3-6-limitations-of-financial-reports" data-parent="3-processes-of-financial-management">3.6 Limitations of Financial Reports</a></li><li><a href="#3-7-ethical-issues-in-financial-reporting" data-target="3-7-ethical-issues-in-financial-reporting" data-parent="3-processes-of-financial-management">3.7 Ethical Issues in Financial Reporting</a></li></ul></li><li><a href="#4-financial-management-strategies" data-target="4-financial-management-strategies">4. Financial Management Strategies</a><ul class="sub"><li><a href="#4-1-cash-flow-management" data-target="4-1-cash-flow-management" data-parent="4-financial-management-strategies">4.1 Cash Flow Management</a></li><li><a href="#4-2-working-capital-management" data-target="4-2-working-capital-management" data-parent="4-financial-management-strategies">4.2 Working Capital Management</a></li><li><a href="#4-3-profitability-management" data-target="4-3-profitability-management" data-parent="4-financial-management-strategies">4.3 Profitability Management</a></li><li><a href="#4-4-global-financial-management" data-target="4-4-global-financial-management" data-parent="4-financial-management-strategies">4.4 Global Financial Management</a></li></ul></li><li><a href="#5-section-iv-essay-structures" data-target="5-section-iv-essay-structures">5. Section IV Essay Structures</a><ul class="sub"><li><a href="#assess-evaluate-judgement-based" data-target="assess-evaluate-judgement-based" data-parent="5-section-iv-essay-structures">Assess / Evaluate (Judgement-Based)</a></li><li><a href="#analyse-explain-how-cause-and-effect" data-target="analyse-explain-how-cause-and-effect" data-parent="5-section-iv-essay-structures">Analyse / Explain How (Cause-and-Effect)</a></li><li><a href="#the-explain-scaffold-used-in-class" data-target="the-explain-scaffold-used-in-class" data-parent="5-section-iv-essay-structures">The &quot;Explain&quot; Scaffold (used in class)</a></li><li><a href="#assessing-financial-performance-ratio-scaffold" data-target="assessing-financial-performance-ratio-scaffold" data-parent="5-section-iv-essay-structures">Assessing Financial Performance — Ratio Scaffold</a></li></ul></li><li><a href="#6-common-exam-pitfalls" data-target="6-common-exam-pitfalls">6. Common Exam Pitfalls</a></li><li><a href="#7-glossary-terms-students-mix-up" data-target="7-glossary-terms-students-mix-up">7. Glossary — Terms Students Mix Up</a></li><li><a href="#8-key-definitions-quick-reference" data-target="8-key-definitions-quick-reference">8. Key Definitions Quick Reference</a></li></ul></nav><script>
+function toggleTheme(ev){
+var oldTheme=document.documentElement.getAttribute("data-theme")||"dark";
+var next=oldTheme==="light"?"dark":"light";
+function apply(){document.documentElement.setAttribute("data-theme",next);try{localStorage.setItem("vault-theme",next)}catch(e){}updateThemeIcons(next);}
+var reduced=false;try{reduced=window.matchMedia("(prefers-reduced-motion: reduce)").matches}catch(e){}
+if(reduced){apply();return;}
+if(window.__vaultThemeAnimating){return;}
+window.__vaultThemeAnimating=1;
+var newPaper=next==="light"?"#faf8f2":"#13151b";
+var W=window.innerWidth,H=window.innerHeight;
+var spacing=W<768?36:28;
+var maxR=spacing*0.78;
+var dpr=1;try{dpr=W<768?1:Math.min(window.devicePixelRatio||1,1.5);}catch(e){}
+var canvas=document.createElement("canvas");
+canvas.id="theme-wave";
+canvas.style.cssText="position:fixed;left:0;top:0;width:"+W+"px;height:"+H+"px;z-index:9999;pointer-events:none;";
+canvas.width=Math.round(W*dpr);canvas.height=Math.round(H*dpr);
+var ctx=canvas.getContext("2d");
+try{ctx.setTransform(dpr,0,0,dpr,0,0);}catch(e){}
+ctx.fillStyle=newPaper;
+var dots=[];
+for(var y=spacing/2;y<H+spacing;y+=spacing){for(var x=spacing/2;x<W+spacing;x+=spacing){dots.push({x:x,y:y,delay:(x+y)/(W+H)*450,done:0});}}
+var waveMs=450,growMs=300;
+var start=Date.now();
+function easeOutCubic(p){return 1-Math.pow(1-p,3);}
+function step(){
+var elapsed=Date.now()-start;
+var allDone=true;
+var any=false;
+ctx.beginPath();
+for(var i=0;i<dots.length;i++){
+var d=dots[i];
+if(d.done){continue;}
+var p=(elapsed-d.delay)/growMs;
+if(p<0){allDone=false;continue;}
+if(p<1){allDone=false;}
+else{d.done=1;}
+var r=maxR*easeOutCubic(p<1?p:1);
+if(r>0){ctx.moveTo(d.x+r,d.y);ctx.arc(d.x,d.y,r,0,Math.PI*2);any=true;}
+}
+if(any){ctx.fill();}
+if(!allDone){requestAnimationFrame(step);return;}
+apply();
+canvas.style.transition="opacity 0.15s ease";
+canvas.style.opacity="0";
+setTimeout(function(){window.__vaultThemeAnimating=0;if(canvas.parentNode)canvas.parentNode.removeChild(canvas);},180);
+}
+document.body.appendChild(canvas);
+requestAnimationFrame(step);
+}
+function updateThemeIcons(theme){var icon=theme==="dark"?"☀":"☾";document.querySelectorAll(".theme-btn").forEach(function(b){b.textContent=icon;});}
+try{updateThemeIcons(document.documentElement.getAttribute("data-theme")||"dark");}catch(e){}
+function toggleMenu(force){document.body.classList.toggle("menu-open",force)}
+document.addEventListener("keydown",function(e){if(e.key==="/"&&!/INPUT|TEXTAREA/.test(document.activeElement.tagName)){e.preventDefault();var s=document.querySelector(".side-search");if(s)s.focus()}});
+document.addEventListener("click",function(e){if(e.target.closest(".side a"))toggleMenu(false)});
+(function(){try{
+var links=Array.prototype.slice.call(document.querySelectorAll(".rail a"));
+if(!links.length||!window.IntersectionObserver)return;
+var map={};links.forEach(function(a){map[a.getAttribute("data-target")]=a});
+var obs=new IntersectionObserver(function(es){
+  es.forEach(function(e){
+    if(e.isIntersecting){
+      links.forEach(function(a){a.classList.remove("active");a.classList.remove("parent-active")});
+      var l=map[e.target.id];
+      if(l){l.classList.add("active");var p=l.getAttribute("data-parent");if(p&&map[p])map[p].classList.add("parent-active")}
+    }
+  });
+}, {rootMargin:"-20% 0px -70% 0px"});
+document.querySelectorAll(".prose h2[id], .prose h3[id]").forEach(function(h){obs.observe(h)});
+}catch(e){}})();
+(function(){try{
+var cv=document.getElementById("dotgrid");if(!cv)return;var ctx=cv.getContext("2d");if(!ctx)return;
+var reduced=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+var W=0,H=0,dpr=1,cols=0,rows=0,SP=28,px=0,py=0,pt=0,hasP=false;
+function dotRGB(){try{return getComputedStyle(document.documentElement).getPropertyValue("--dot-rgb").trim()||"233,231,225"}catch(e){return "233,231,225"}}
+function resize(){dpr=Math.min(window.devicePixelRatio||1,window.innerWidth<700?1.5:2);SP=window.innerWidth<700?36:28;W=window.innerWidth;H=window.innerHeight;cv.width=W*dpr;cv.height=H*dpr;cv.style.width=W+"px";cv.style.height=H+"px";ctx.setTransform(dpr,0,0,dpr,0,0);cols=Math.ceil(W/SP)+1;rows=Math.ceil(H/SP)+1}
+var R=Math.random()*Math.PI*2;
+var FORCES=[
+ {ax:.42,ay:.15,tx:26,ty:31,px:R,py:R+1.3,circ:false},
+ {ax:.38,ay:.42,tx:37,ty:23,px:R+2.1,py:R+0.7,circ:false},
+ {ax:.30,ay:.30,tx:41,ty:41,px:R+4.0,py:R+4.0,circ:true}
+];
+function draw(now){var t=now/1000;var rgb=dotRGB();
+var activeForces=W>=1280?FORCES:FORCES.slice(0,1);
+var pFade=hasP?Math.max(0,1-(now-pt)/4000):0;
+ctx.clearRect(0,0,W,H);
+for(var y=0;y<rows;y++)for(var x=0;x<cols;x++){var ox=x*SP+10,oy=y*SP+10,a=0.14,dispX=0,dispY=0;
+for(var fi=0;fi<activeForces.length;fi++){var F=activeForces[fi];
+var fx=F.circ?W*(0.5+F.ax*Math.cos(t*2*Math.PI/F.tx+F.px)):W*(0.5+F.ax*Math.sin(t*2*Math.PI/F.tx+F.px));
+var fy=F.circ?H*(0.5+F.ay*Math.sin(t*2*Math.PI/F.ty+F.py)):H*(0.5+F.ay*Math.sin(t*2*Math.PI/F.ty+F.py));
+var ddx=ox-fx,ddy=oy-fy,d=Math.sqrt(ddx*ddx+ddy*ddy);
+if(d<170&&d>0.01){var f=1-d/170;f=f*f;dispX+=(ddx/d)*6*f;dispY+=(ddy/d)*6*f;a+=0.20*f}}
+var dm=Math.sqrt(dispX*dispX+dispY*dispY);if(dm>9){dispX*=9/dm;dispY*=9/dm}
+var dx=ox+dispX,dy=oy+dispY;if(a>0.38)a=0.38;
+if(pFade>0){var pdx=ox-px,pdy=oy-py,pd=Math.sqrt(pdx*pdx+pdy*pdy);
+if(pd<150&&pd>0.01){var pf=1-pd/150;pf=pf*pf*pFade;dx+=(pdx/pd)*5*pf;dy+=(pdy/pd)*5*pf;a=Math.min(0.38,a+0.18*pf)}}
+ctx.beginPath();ctx.arc(dx,dy,1.3,0,Math.PI*2);ctx.fillStyle="rgba("+rgb+","+a.toFixed(3)+")";ctx.fill()}}
+function loop(now){if(!window.__vaultThemeAnimating)draw(now);if(!reduced)requestAnimationFrame(loop)}
+window.addEventListener("resize",resize);resize();
+window.addEventListener("pointermove",function(e){px=e.clientX;py=e.clientY;pt=performance.now();hasP=true},{passive:true});
+requestAnimationFrame(loop);
+}catch(e){}})();
+</script></body></html>
